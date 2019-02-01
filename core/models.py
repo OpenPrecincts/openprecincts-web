@@ -12,5 +12,8 @@ class Locality(models.Model):
     ocd_id = models.CharField(max_length=200, unique=True)
     census_geoid = models.CharField(max_length=5, unique=True)
 
+    def __str__(self):
+        return f"{self.name}, {self.state}"
+
     class Meta:
         verbose_name_plural = "localities"
