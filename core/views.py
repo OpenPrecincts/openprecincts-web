@@ -1,7 +1,6 @@
 import us
 from django.shortcuts import render, get_object_or_404
-from .models import Locality
-from contact.models import Official, LogEntry
+from .models import Locality, Official, ContactLog
 
 
 def _states():
@@ -27,7 +26,7 @@ def state_overview(request, state):
 def locality_overview(request, id):
     locality = get_object_or_404(Locality, pk=id)
     officials = Official.objects.filter(locality=locality)
-    contact_log = LogEntry.objects.filter(official__locality=locality)
+    contact_log = ContactLog.objects.filter(official__locality=locality)
 
     return render(request, "core/locality.html", {
         "locality": locality,

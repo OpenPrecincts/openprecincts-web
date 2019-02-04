@@ -34,7 +34,7 @@ class Official(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 
-class LogEntry(models.Model):
+class ContactLog(models.Model):
     official = models.ForeignKey(Official, on_delete=models.PROTECT,
                                  related_name="contact_log_entries")
     contact_date = models.DateField()
@@ -46,6 +46,3 @@ class LogEntry(models.Model):
     # change tracking
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        verbose_name_plural = "log entries"

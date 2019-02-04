@@ -3,8 +3,7 @@ import csv
 from django.db import transaction
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User
-from core.models import Locality
-from contact.models import Official
+from core.models import Locality, Official
 
 FIX_MAPPING = {
     'Isle of Wight': 'Isle of Wight County',
