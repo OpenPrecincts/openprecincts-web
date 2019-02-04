@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block body %}
+<h1 class="title is-2">{{ locality.name }}</h1>
+<h2 class="subtitle is-2">{{ locality.state }}</h2>
+
+<section>
+    <h2 class="title is-3">Officials</h2>
+
+    {% if not officials %}
+        So far we haven't collected any officials.  Typically this is where the work starts- if you'd like to help us get started, <a href="#">contact us</a>.
+    {% else %}
+        {% for official in officials %}
+
+        <div class="box official">
+            <span class="title is-5">{{ official.title }} {{ official.first_name }} {{official.last_name }}</span>
+            <span>{{ official.job_title }}</span>
+            <div>
+                <span class="icon has-text-info">
+                  <i class="fas fa-phone"></i>
+                </span>
+                <a href="tel:{{ official.phone_number }}">{{ official.phone_number }}</a>
+                <span class="icon has-text-info">
+                  <i class="fas fa-at"></i>
+                </span>
+                <a href="mailto:{{ official.email }}">{{ official.email }}</a>
+            </div>
+            <div>{{ official.notes }}</div>
+        </div>
+        {% endfor %}
+    {% endif %}
+</section>
+
+<section>
+    <h3 class="title is-3">Contact Log</h3>
+    {% if not contact_log %}
+        TODO
+    {% else %}
+        <table class="table">        
+        <thead>
+            <tr>
+                <th>Official</th>
+                <th>Date</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cl in contact_log %}
+            <tr>
+                <td>{{ cl.official }}</td>
+                <td>{{ cl.contact_date }}</td>
+                <td>{{ cl.notes }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    {% endif %}
+</section>
+
+{% endblock %}

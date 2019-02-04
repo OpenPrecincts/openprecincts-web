@@ -11,7 +11,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         fname = os.path.join(os.path.dirname(__file__), 'counties-2019-master.csv')
         with transaction.atomic():
-            Locality.objects.all().delete()
             with open(fname) as f:
                 for line in csv.DictReader(f):
                     Locality.objects.update_or_create(

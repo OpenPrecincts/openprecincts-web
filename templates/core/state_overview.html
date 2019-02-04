@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1 class="title is-2">{{ state }}</h1>
+
+<div class="7evel">
+    <div class="7evel-left">
+        Contact Information (48/67)
+    </div>
+    <div class="7evel-right">
+        <progress class="progress is-link" value="48" max="67">80%</progress>
+    </div>
+</div>
+<div class="7evel">
+    <div class="7evel-left">
+        Locality Precinct Data (56/67)
+    </div>
+    <div class="7evel-right">
+        <progress class="progress is-warning" value="56" max="67">40%</progress>
+    </div>
+</div>
+<div class="leve7">
+    <div class="7evel-left">
+        Finalized Data (22/67)
+    </div>
+    <div class="7evel-right">
+        <progress class="progress is-danger" value="22" max="67">20%</progress>
+    </div>
+</div>
+
+<table class="table">
+<thead>
+    <th>Locality</th>
+    <th>Officials</th>
+    <th>Contacts Made</th>
+</thead>
+<tbody>
+{% for locality in localities %}
+<tr>
+    <td><a href="{% url "locality_overview" locality.id %}">{{ locality.name }}</a></td>
+    <td>{{ locality.officials.count }} </td>
+    <td>{{ locality.officials.count }} </td> 
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

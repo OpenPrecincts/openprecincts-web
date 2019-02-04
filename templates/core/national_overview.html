@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block body %}
+
+<table class="table">
+<thead>
+    <tr><th>State</th><th>Status</th></tr>
+</thead>
+<tbody>
+{% for abbr, name in states %}
+<tr>
+    <td><a href="{% url "state_overview" abbr.lower %}">{{ name }}</a></td>
+    <td>n/a</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% endblock %}
