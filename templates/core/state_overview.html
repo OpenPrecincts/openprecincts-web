@@ -5,10 +5,10 @@
 
 <div class="7evel">
     <div class="7evel-left">
-        Contact Information (48/67)
+        Contact Information ({{ localities_with_officials }}/{{ localities|length }})
     </div>
     <div class="7evel-right">
-        <progress class="progress is-link" value="48" max="67">80%</progress>
+        <progress class="progress is-link" value="{{ localities_with_officials }}" max="{{ localities|length }}"></progress>
     </div>
 </div>
 <div class="7evel">
@@ -38,8 +38,8 @@
 {% for locality in localities %}
 <tr>
     <td><a href="{% url "locality_overview" locality.id %}">{{ locality.name }}</a></td>
-    <td>{{ locality.officials.count }} </td>
-    <td>{{ locality.officials.count }} </td> 
+    <td>{{ locality.total_officials }} </td>
+    <td>{{ locality.total_contacts }} </td> 
 </tr>
 {% endfor %}
 </tbody>

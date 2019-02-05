@@ -1,5 +1,6 @@
 import us
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Count
 from .models import Locality, Official, ContactLog
 
 
@@ -15,11 +16,16 @@ def national_overview(request):
 
 def state_overview(request, state):
     state = us.states.lookup(state)
-    localities = Locality.objects.filter(state=state)
-
+    localities = Locality.objects.filter(state=state).annotate(
+        total_officials=Count('officials'),
+        total_contacts=Count('officials__contact_log_entries'),
+    )
+    localities_with_officials = sum(1 for l in localities if l.total_officials)
+    localities_with_officials_pct = localities_with_officials / localities.count()
     return render(request, "core/state_overview.html", {
         "state": state,
         "localities": localities,
+        "localities_with_officials": localities_with_officials,
     })
 
 
