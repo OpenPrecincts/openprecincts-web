@@ -38,7 +38,7 @@ class ContactLog(models.Model):
     official = models.ForeignKey(Official, on_delete=models.PROTECT,
                                  related_name="contact_log_entries")
     contact_date = models.DateField()
-    contacted_by = models.ForeignKey(User, 
+    contacted_by = models.ForeignKey(User,
                                      on_delete=models.PROTECT,
                                      related_name="contact_log_entries")
     notes = models.TextField(blank=True)

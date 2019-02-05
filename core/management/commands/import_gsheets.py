@@ -16,6 +16,7 @@ FIX_MAPPING = {
 @transaction.atomic
 def import_contact_csv(state, filename):
     bot, _ = User.objects.get_or_create(username='migration-bot')
+    Official.objects.all().delete()
 
     with open(filename) as f:
         # skip a few lines
@@ -26,7 +27,7 @@ def import_contact_csv(state, filename):
             locality_name = FIX_MAPPING.get(locality_name, locality_name)
             print(locality_name)
             locality = Locality.objects.get(state=state, name=locality_name)
-            Official.objects.create(
+            o = Official.objects.create(
                 locality=locality,
                 first_name=line['First Name'],
                 last_name=line['Last Name'],
@@ -37,6 +38,11 @@ def import_contact_csv(state, filename):
                 notes=line[''],
                 created_by=bot,
             )
+            if line['msg #'] == '1':
+                o.contact_log_entries.create(contact_date='2018-10-11',
+                                             contacted_by=bot,
+                                             official=o,
+                                             notes='sent mail merge message')
 
 
 class Command(BaseCommand):

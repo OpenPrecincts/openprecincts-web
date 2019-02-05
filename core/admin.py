@@ -1,9 +1,11 @@
 from django.contrib import admin
 from .models import Locality, Official, ContactLog
 
+
 class LocalityAdmin(admin.ModelAdmin):
     list_display = ('name', 'state', 'official_url')
     list_filter = ('state',)
+
 
 admin.site.register(Locality, LocalityAdmin)
 
@@ -27,6 +29,7 @@ class OfficialAdmin(admin.ModelAdmin):
         obj.created_by = request.user
         super().save_model(request, obj, form, change)
 
+
 admin.site.register(Official, OfficialAdmin)
 
 
@@ -42,5 +45,6 @@ class ContactAdmin(admin.ModelAdmin):
 
     def official_contacted(self, obj):
         return f"{obj.official} ({obj.official.locality})"
+
 
 admin.site.register(ContactLog, ContactAdmin)
