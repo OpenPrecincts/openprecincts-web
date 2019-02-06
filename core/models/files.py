@@ -15,10 +15,9 @@ class File(models.Model):
     ))
 
     # information on the file itself
-    file_type = models.CharField(max_length=100)
     mime_type = models.CharField(max_length=100)
-    # format will be s3://BUCKET/state/locality_geoid/uuid/filename
-    # but we store the actual s3 path on the model so that if anything changes
+    size = models.PositiveIntegerField()
+    # we store the actual s3 path on the model so that if anything changes
     # we don't lose files
     s3_path = models.CharField(max_length=500, editable=False)
 
