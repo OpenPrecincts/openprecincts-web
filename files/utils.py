@@ -10,6 +10,12 @@ def make_s3_path(locality, id, stage, filename):
     return f"{locality.state_abbreviation}/{stage}/{locality.census_geoid}/{id}-{filename}"
 
 
+def get_from_s3(key):
+    s3 = boto3.client('s3')
+    bucket = settings.RAW_FILE_S3_BUCKET
+    return s3.get_object(Bucket=bucket, Key=key.s3_path)['Body']
+
+
 def upload_django_file(file, *, stage, locality, created_by):
     new_uuid = uuid.uuid4()
     s3_path = make_s3_path(locality, new_uuid, stage, file.name)

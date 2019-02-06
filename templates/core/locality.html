@@ -66,6 +66,28 @@
         <input type="file" name="files" multiple>
         <input type="submit">
     </form>
+
+    <h4>Files</h4>
+    <table class="table">        
+    <thead>
+        <tr>
+            <th>Status</th>
+            <th>File Name</th>
+            <th>Date</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for f in files %}
+        <tr>
+            <td>{{ f.get_stage_display }}</td>
+            <td>{{ f.source_filename }}</td>
+            <td>{{ f.created_at }}</td>
+            <td><a href="{% url "download" f.id %}">Download</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
 </section>
 
 {% endblock %}
