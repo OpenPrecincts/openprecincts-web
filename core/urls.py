@@ -19,4 +19,5 @@ urlpatterns = [
     path('', views.national_overview),
     path('<state:state>/', views.state_overview, name="state_overview"),
     path('<int:id>/', views.locality_overview, name="locality_overview"),
+    path('upload/', views.UploadFiles.as_view()),
 ]

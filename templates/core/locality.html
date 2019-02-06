@@ -56,4 +56,16 @@
     {% endif %}
 </section>
 
+<section>
+    <h3 class="title is-3">File Management</h3>
+
+    <h4>Add Files</h4>
+    <form action="/upload/" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" name="locality" value="{{ locality.id }}">
+        <input type="file" name="files" multiple>
+        <input type="submit">
+    </form>
+</section>
+
 {% endblock %}
