@@ -2,16 +2,13 @@ import us
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Count
 from .models import Locality, Official, ContactLog
+from .utils import all_states
 from files.models import File
-
-
-def _states():
-    return [(s.abbr, s.name) for s in us.STATES] + [('PR', 'Puerto Rico')]
 
 
 def national_overview(request):
     return render(request, "core/national_overview.html", {
-        "states": _states()
+        "states": all_states()
     })
 
 
