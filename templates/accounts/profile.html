@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<h2>Profile</h2>
+
+<div>Email: {{ request.user.email }} </div>
+
+<div>Display Name: {{ request.user.first_name }} </div>
+
+<a class="button is-danger" href="{% url 'logout' %}">
+<strong>Sign Out</strong>
+</a>
+
+{% endblock %}

@@ -68,3 +68,7 @@ class Login(FormView):
                        "expiry_minutes": int(settings.SESAME_MAX_AGE / 60),
                        }
                       )
+
+
+def profile(request):
+    return render(request, "accounts/profile.html", {})
