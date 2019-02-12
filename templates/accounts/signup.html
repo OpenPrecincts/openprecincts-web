@@ -1,9 +1,12 @@
 {% extends "base.html" %}
+{% load common %}
 
 {% block body %}
 
+<h2 class="title">Sign Up</h2>
+
 <form method="POST">
-    {{ form }}
+    {% render_form form %}
     {% csrf_token %}
     <input type="submit">
 </form>
