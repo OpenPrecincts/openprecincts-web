@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+{% if user %}
+<h2>Email Sent</h2>
+<p>
+    An email has been sent to {{ user.email }}.  Please click the link which will log you in.  The code in the email is only valid for {{ expiry_minutes }}  minutes.
+{% else %}
+<h2>Could Not Email</h2>
+{% endif %}
+
+{% endblock %}
