@@ -66,3 +66,21 @@ def test_upload_files_unauthorized(client, locality, user, s3):
                         })
     # user isn't in NC write group
     assert resp.status_code == 403
+
+
+@pytest.mark.django_db
+def test_download(client, locality, user, s3):
+    user.groups.create(name="NC write")
+    client.force_login(user)
+    faux_file = StringIO("file contents")
+    faux_file.name = "fake.txt"
+    resp = client.post("/files/upload/",
+                       {"locality": locality.id,
+                        "files": [faux_file],
+                        })
+
+    assert resp.status_code == 302
+    f = File.objects.all().get()
+    resp = client.get(f"/files/download/{f.id}/")
+    assert resp.status_code == 200
+    assert resp.get('Content-Disposition') == 'attachment; filename="fake.txt"'
