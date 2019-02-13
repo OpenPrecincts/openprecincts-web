@@ -8,14 +8,28 @@ from core.models import Locality
 from files.models import File
 
 
-@mock_s3
-@pytest.mark.django_db
-def test_upload_files(client):
-    locality = Locality.objects.create(name="Raleigh", state="NC")
-    user = User.objects.create(username="testuser")
-    s3 = boto3.resource('s3', region_name='us-east-1')
-    s3.create_bucket(Bucket=settings.RAW_FILE_S3_BUCKET)
+@pytest.fixture
+def locality():
+    return Locality.objects.create(name="Raleigh", state="NC")
 
+
+@pytest.fixture
+def user():
+    return User.objects.create(username="testuser")
+
+
+@pytest.fixture
+def s3():
+    with mock_s3():
+        s3 = boto3.resource('s3', region_name='us-east-1')
+        s3.create_bucket(Bucket=settings.RAW_FILE_S3_BUCKET)
+        # yield to keep context manager active
+        yield s3
+
+
+@pytest.mark.django_db
+def test_upload_files(client, locality, user, s3):
+    user.groups.create(name="NC write")
     client.force_login(user)
     faux_file = StringIO("file contents")
     faux_file.name = "fake.txt"
@@ -39,3 +53,16 @@ def test_upload_files(client):
     # check s3 for the file
     body = s3.Object(settings.RAW_FILE_S3_BUCKET, f.s3_path).get()['Body'].read().decode("utf-8")
     assert body == "file contents"
+
+
+@pytest.mark.django_db
+def test_upload_files_unauthorized(client, locality, user, s3):
+    client.force_login(user)
+    faux_file = StringIO("file contents")
+    faux_file.name = "fake.txt"
+    resp = client.post("/files/upload/",
+                       {"locality": locality.id,
+                        "files": [faux_file],
+                        })
+    # user isn't in NC write group
+    assert resp.status_code == 403

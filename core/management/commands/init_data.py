@@ -4,7 +4,7 @@ from django.db import transaction
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import Group
 from core.models import Locality
-from core.utils import all_states
+from core.utils import all_states, Permissions
 
 
 class Command(BaseCommand):
@@ -38,7 +38,7 @@ class Command(BaseCommand):
 
     def init_groups(self):
         for abbr, name in all_states():
-            Group.objects.get_or_create(name=f"{abbr} admin")
-            Group.objects.get_or_create(name=f"{abbr} gis")
-            Group.objects.get_or_create(name=f"{abbr} contact")
-            Group.objects.get_or_create(name=f"{abbr} write")
+            Group.objects.get_or_create(name=f"{abbr} {Permissions.admin}")
+            Group.objects.get_or_create(name=f"{abbr} {Permissions.gis}")
+            Group.objects.get_or_create(name=f"{abbr} {Permissions.contact}")
+            Group.objects.get_or_create(name=f"{abbr} {Permissions.write}")

@@ -1,4 +1,5 @@
 import us
+from django.core.exceptions import PermissionDenied
 
 
 def all_states():
@@ -21,20 +22,30 @@ Each state will have groups for:
 """
 
 
+class Permissions:
+    admin = "admin"
+    gis = "gis"
+    contact = "contact"
+    write = "write"
+
+
 def has_permission(user, state, permission):
-    """
-    permission:
-        admin, gis, contact, write
-    """
-    state_groups = user.groups.filter(name__startswith=state)
+    # normalize state to abbreviation
+    abbr = us.states.lookup(state).abbr
+    state_groups = user.groups.filter(name__startswith=abbr)
     for group in state_groups:
-        state, permtype = group.name.split("-")
-        if permtype == 'admin':
+        state, permtype = group.name.split(" ")
+        if permtype == Permissions.admin:
             return True
-        elif permtype == 'contact' and permission == 'write':
+        elif permtype == Permissions.contact and permission == Permissions.write:
             return True
         elif permtype == permission:
             return True
 
     # no valid permission found
     return False
+
+
+def ensure_permission(user, state, permission):
+    if not has_permission(user, state, permission):
+        raise PermissionDenied
