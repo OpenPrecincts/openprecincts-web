@@ -2,7 +2,7 @@ import us
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Count
 from .models import Locality, Official, ContactLog
-from .utils import all_states
+from .utils import all_states, has_permission, Permissions
 from files.models import File
 
 
@@ -33,10 +33,14 @@ def locality_overview(request, id):
     officials = Official.objects.filter(locality=locality)
     contact_log = ContactLog.objects.filter(official__locality=locality)
     files = File.objects.filter(locality=locality, active=True)
+    user_can_contact = has_permission(request.user, locality.state, Permissions.contact)
+    user_can_write = has_permission(request.user, locality.state, Permissions.write)
 
     return render(request, "core/locality.html", {
         "locality": locality,
         "officials": officials,
         "contact_log": contact_log,
         "files": files,
+        "user_can_contact": user_can_contact,
+        "user_can_write": user_can_write,
     })

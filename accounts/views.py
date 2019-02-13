@@ -1,6 +1,7 @@
 from django import forms
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.db import transaction
 from django.shortcuts import render
@@ -69,5 +70,6 @@ class Login(FormView):
                       )
 
 
+@login_required
 def profile(request):
     return render(request, "accounts/profile.html", {})
