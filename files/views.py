@@ -1,5 +1,5 @@
 from django.http import FileResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.views.decorators.http import require_POST, require_GET
 from core.models import Locality
 from .models import File
@@ -11,7 +11,7 @@ def upload_files(request):
     locality = Locality.objects.get(pk=request.POST['locality'])
     for file in request.FILES.getlist("files"):
         upload_django_file(file, stage="S", locality=locality, created_by=request.user)
-    return render(request, "core/thanks.html")
+    return redirect('locality_overview', locality.id)
 
 
 @require_GET

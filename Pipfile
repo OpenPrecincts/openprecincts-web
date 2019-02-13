@@ -5,6 +5,9 @@ name = "pypi"
 
 [dev-packages]
 "flake8" = "*"
+pytest = "*"
+pytest-django = "*"
+moto = {git = "https://github.com/spulec/moto", ref = "master"}
 
 [packages]
 django = "*"
