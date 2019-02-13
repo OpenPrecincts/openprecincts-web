@@ -1,0 +1,26 @@
+language: python
+dist: xenial
+# addons:
+#     postgresql: "10"
+#     apt:
+#         packages:
+#             - "postgresql-10-postgis-2.4"
+python:
+  - "3.7"
+install:
+  - pip install pipenv
+  - pipenv install --dev
+  - pipenv graph
+# before_script:
+#     - psql -c "CREATE USER test with PASSWORD 'test' CREATEDB SUPERUSER;" -U postgres
+#     - psql -c "CREATE DATABASE test;" -U postgres
+#     - psql -c "CREATE EXTENSION postgis;" -U postgres -d test
+jobs:
+  include:
+    - script: pipenv run pytest --ds=openprecincts_web.settings --reuse-db -v
+      name: "Run Tests"
+    - script: pipenv run flake8
+      name: "flake8"
+notifications:
+    email:
+        - jpturk@princeton.edu
