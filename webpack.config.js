@@ -9,6 +9,16 @@ module.exports = {
     path: path.resolve(output_dir),
     filename: "[name]-[hash].js",
   },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        // query: { plugins: ['transform-runtime'] } 
+      },
+    ]
+  },
   plugins: [
     new BundleTracker({filename: './webpack-stats.json'})
   ]
