@@ -1,0 +1,52 @@
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-body {
+    background-image: url("/static/img/precincts.png");
+}
+.hero-body .title,.subtitle {
+    color: white;
+}
+
+.homepage-columns .column { 
+    padding-left: 2em;
+    padding-right: 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.homepage-columns .column i {
+    font-size: 2em;
+    text-align: center;
+}
+.homepage-columns .column h2 {
+    text-align: center;
+}
+
+.homepage-columns .column p {
+    margin-bottom: 1em;
+}
+
+.homepage-columns .column .button {
+    margin-top: auto;
+}
+
+.divider-l {
+    border-left: 1px solid #999;
+}
+
+.footer {
+    background-color: #333;
+}
+.footer-cc-license { 
+    color: #ccc;
+}
+ul.footer-links {
+    list-style: none;
+}
+.footer a:hover {
+    color: white;
+}
