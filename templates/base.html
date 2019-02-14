@@ -6,6 +6,60 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
+    <style>
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-body {
+            background-image: url("/static/img/precincts.png");
+        }
+        .hero-body .title,.subtitle {
+            color: white;
+        }
+
+        .homepage-columns .column { 
+            padding-left: 2em;
+            padding-right: 2em;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .homepage-columns .column i {
+            font-size: 2em;
+            text-align: center;
+        }
+        .homepage-columns .column h2 {
+            text-align: center;
+        }
+
+        .homepage-columns .column p {
+            margin-bottom: 1em;
+        }
+
+        .homepage-columns .column .button {
+            margin-top: auto;
+        }
+
+        .divider-l {
+            border-left: 1px solid #999;
+        }
+
+        .footer {
+            background-color: #333;
+        }
+        .footer-cc-license { 
+            color: #ccc;
+        }
+        ul.footer-links {
+            list-style: none;
+        }
+        .footer a:hover {
+            color: white;
+        }
+    </style>
 </head>
 <body>
 
@@ -69,5 +123,39 @@
 
 {% block body %}
 {% endblock %}
+
+<footer class="footer">
+  <div class="content">
+      <div class="columns">
+          <div class="column footer-cc-license is-two-fifths">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+          </div>
+          <div class="column"></div>
+          <div class="column">
+              <ul class="footer-links">
+                  <li>
+                      <a href="https://github.com/openprecincts">
+                          <i class="fab fa-github"></i>
+                          GitHub
+                      </a>
+                  </li>
+                  <li>
+                      <a href="https://twitter.com/openprecincts">
+                          <i class="fab fa-twitter"></i>
+                          Twitter
+                      </a>
+                  </li>
+                  <li>
+                      <a href="https://twitter.com/openprecincts">
+                          <i class="fas fa-envelope"></i>
+                          Contact
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+</footer>
+
 </body>
 </html>

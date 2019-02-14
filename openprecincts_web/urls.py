@@ -1,7 +1,9 @@
 from django.contrib import admin
 from django.urls import path, include
+from core.views import homepage
 
 urlpatterns = [
+    path('', homepage, name="homepage"),
     path('admin/', admin.site.urls),
     path('collect/', include('core.urls')),
     path('files/', include('files.urls')),

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block body %}
+<section class="hero is-medium">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title center is-1">OpenPrecincts</h1>
+            <h2 class="subtitle center">fighting gerrymandering one precinct at a time</h2>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="columns homepage-columns">
+            <div class="column">
+                <i class="fas fa-mail-bulk"></i>
+                <h2 class="title is-4">Gathering</h2>
+                <p>We're gathering source data in all formats from all 50 states, Washington DC, and Puerto Rico.</p>
+                <button class="button">Start Helping</button>
+            </div>
+            <div class="column divider-l">
+                <i class="fas fa-cogs"></i>
+                <h2 class="title is-4">Cleaning &amp; Validating</h2>
+                <p>We employ a rigorous process to make sure our data is top quality.</p>
+                <button class="button">Read More</button>
+            </div>
+            <div class="column divider-l">
+                <i class="fas fa-database"></i>
+                <h2 class="title is-4">Publishing</h2>
+                <p>All of our data is available for the public to use.</p>
+                <button class="button">Explore the Data</button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

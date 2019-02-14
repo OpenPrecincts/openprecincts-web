@@ -1,15 +1,13 @@
 {% extends "base.html" %}
 {% block body %}
-
-<section>
 <div class="container">
+
+<section class="section">
     <h1 class="title is-2">{{ locality.name }}</h1>
     <p class="subtitle is-3">{{ locality.state }}</p>
-</div>
 </section>
 
-<section>
-    <div class="container">
+<section class="section">
     <h2 class="title is-3">Officials</h2>
 
     {% if not officials %}
@@ -34,10 +32,9 @@
         </div>
         {% endfor %}
     {% endif %}
-    </div>
 </section>
 
-<section>
+<section class="section">
     <h3 class="title is-3">Contact Log</h3>
     {% if not contact_log %}
         This official has not yet been contacted.
@@ -63,7 +60,7 @@
     {% endif %}
 </section>
 
-<section>
+<section class="section">
     <h3 class="title is-3">File Management</h3>
 
     {% if user_can_write %}
@@ -116,4 +113,5 @@
     </table>
 </section>
 
+</div>
 {% endblock %}

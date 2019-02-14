@@ -6,6 +6,10 @@ from .utils import all_states, has_permission, Permissions
 from files.models import File
 
 
+def homepage(request):
+    return render(request, "core/homepage.html", {})
+
+
 def national_overview(request):
     return render(request, "core/national_overview.html", {
         "states": all_states()
