@@ -1,0 +1,17 @@
+{
+  "name": "openprecincts-web",
+  "version": "0.1.0",
+  "description": "OpenPrecincts web application",
+  "dependencies": {
+    "react": "^16.8.1",
+    "webpack": "^4.29.3"
+  },
+  "devDependencies": {
+    "webpack-bundle-tracker": "^0.4.2-beta",
+    "webpack-cli": "^3.2.3"
+  },
+  "scripts": {
+    "start": "webpack --watch --config webpack.config.js",
+    "build": "webpack --config webpack.config.js"
+  }
+}

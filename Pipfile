@@ -14,6 +14,7 @@ django = "*"
 us = "*"
 "boto3" = "*"
 django-sesame = "*"
+django-webpack-loader = "*"
 
 [requires]
 python_version = "3.7"
