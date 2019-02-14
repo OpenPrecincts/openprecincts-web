@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'webpack_loader',
     'core',
     'files',
     'accounts',
@@ -115,6 +116,18 @@ STATICFILES_DIRS = [
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # third party apps
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'TIMEOUT': None,
+        'IGNORE': [r'.+\.hot-update.js', r'.+\.map']
+    }
+}
+
 
 SESAME_MAX_AGE = 30*60      # 30 minutes
 
