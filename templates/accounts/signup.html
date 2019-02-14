@@ -2,12 +2,22 @@
 {% load common %}
 
 {% block body %}
-
+<section class="section">
+<div class="container">
+    
 <h2 class="title">Sign Up</h2>
 
+<p>Sign up and you'll be able to start contributing to the effort to gather precinct data in your state.
+</p>
+
+<div class="box signup">
 <form method="POST">
     {% render_form form %}
     {% csrf_token %}
-    <input type="submit">
+    <input type="submit" class="button is-primary">
 </form>
+</div>
+
+</div>
+</section>
 {% endblock %}

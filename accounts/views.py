@@ -12,21 +12,28 @@ from .models import UserProfile
 
 
 class SignupForm(forms.Form):
-    display_name = forms.CharField(max_length=30)
-    email = forms.EmailField()
+    email = forms.EmailField(label='Email address')
+    display_name = forms.CharField(max_length=30, label='What should we call you?')
     state = forms.ChoiceField(
-        choices=all_states()
+        choices=[('', '------')] + all_states(),
+        label='Your state'
     )
 
     def clean_email(self):
         email = self.cleaned_data['email']
         if User.objects.filter(email=email).count():
-            raise forms.ValidationError("email already in use")
+            raise forms.ValidationError("Email already in use.")
         return email
 
 
 class LoginForm(forms.Form):
     email = forms.EmailField()
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if not User.objects.filter(email=email).count():
+            raise forms.ValidationError("No registered user with this email.")
+        return email
 
 
 class Signup(FormView):
@@ -50,17 +57,15 @@ class Login(FormView):
     success_url = '/'
 
     def form_valid(self, form):
-        try:
-            u = User.objects.get(email=form.cleaned_data["email"])
-        except User.DoesNotExist:
-            u = None
+        # at this point we can be sure there is a user with this email
+        u = User.objects.get(email=form.cleaned_data["email"])
 
-        if u:
-            send_mail("OpenPrecincts Login",
-                      "magic link: http://localhost:8000/" + sesame.utils.get_query_string(u),
-                      "noreply@openprecincts.org",
-                      [u.email]
-                      )
+        # TODO: make this email more legitimate
+        send_mail("OpenPrecincts Login",
+                  "magic link: http://localhost:8000/" + sesame.utils.get_query_string(u),
+                  "noreply@openprecincts.org",
+                  [u.email]
+                  )
 
         return render(self.request,
                       "accounts/email_sent.html",

@@ -46,3 +46,10 @@ def test_login(client, mailoutbox):
     client.get(url[0])
     user = auth.get_user(client)
     assert user == newuser
+
+
+@pytest.mark.django_db
+def test_login_invalid_email(client, mailoutbox):
+    resp = client.post("/accounts/login/", {"email": "test@example.com"})
+    assert resp.status_code == 200
+    assert not resp.context["form"].is_valid()

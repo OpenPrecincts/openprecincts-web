@@ -2,12 +2,21 @@
 {% load common %}
 
 {% block body %}
+<section class="section">
+<div class="container">
 
 <h2 class="title">Login</h2>
 
+<p>Enter your email and we'll send you a link to login.</p>
+
+<div class="box login">
 <form method="POST">
     {% render_form form %}
     {% csrf_token %}
-    <input type="submit">
+    <input type="submit" class="button is-primary">
 </form>
+</div>
+
+</div>
+</section>
 {% endblock %}

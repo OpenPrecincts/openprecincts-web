@@ -2,7 +2,10 @@
 
 {% block body %}
 
-<h2>Profile</h2>
+<section class="section">
+<div class="container">
+
+<h2 class="title">Profile</h2>
 
 <div>Email: {{ request.user.email }} </div>
 
@@ -11,5 +14,8 @@
 <a class="button is-danger" href="{% url 'logout' %}">
 <strong>Sign Out</strong>
 </a>
+
+</div>
+</section>
 
 {% endblock %}
