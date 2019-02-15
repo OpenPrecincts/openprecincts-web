@@ -43,9 +43,5 @@ class Locality(models.Model):
     def __str__(self):
         return f"{self.name}, {self.state}"
 
-    @property
-    def state_abbreviation(self):
-        return us.states.lookup(self.state).abbr
-
     class Meta:
         verbose_name_plural = "localities"

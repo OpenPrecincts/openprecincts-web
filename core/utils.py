@@ -1,4 +1,5 @@
 import us
+from enum import Enum
 from django.core.exceptions import PermissionDenied
 
 
@@ -22,22 +23,25 @@ Each state will have groups for:
 """
 
 
-class Permissions:
-    admin = "admin"
-    gis = "gis"
-    contact = "contact"
-    write = "write"
+class Permissions(Enum):
+    ADMIN = "admin"
+    GIS = "gis"
+    CONTACT = "contact"
+    WRITE = "write"
 
 
 def has_permission(user, state, permission):
     # normalize state to abbreviation
-    abbr = us.states.lookup(state).abbr
+    if hasattr(state, 'abbreviation'):
+        abbr = state.abbreviation
+    else:
+        abbr = us.states.lookup(state).abbr
     state_groups = user.groups.filter(name__startswith=abbr)
     for group in state_groups:
         state, permtype = group.name.split(" ")
-        if permtype == Permissions.admin:
+        if permtype == Permissions.ADMIN:
             return True
-        elif permtype == Permissions.contact and permission == Permissions.write:
+        elif permtype == Permissions.CONTACT and permission == Permissions.WRITE:
             return True
         elif permtype == permission:
             return True

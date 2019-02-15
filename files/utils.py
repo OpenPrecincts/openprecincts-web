@@ -7,7 +7,7 @@ from .models import File
 
 def make_s3_path(locality, id, stage, filename):
     stage = {"S": "source", "I": "intermediate"}[stage]
-    return f"{locality.state_abbreviation}/{stage}/{locality.census_geoid}/{id}-{filename}"
+    return f"{locality.state_id}/{stage}/{locality.census_geoid}/{id}-{filename}"
 
 
 def get_from_s3(key):

@@ -37,8 +37,8 @@ def locality_overview(request, id):
     officials = Official.objects.filter(locality=locality)
     contact_log = ContactLog.objects.filter(official__locality=locality)
     files = File.objects.filter(locality=locality, active=True)
-    user_can_contact = has_permission(request.user, locality.state, Permissions.contact)
-    user_can_write = has_permission(request.user, locality.state, Permissions.write)
+    user_can_contact = has_permission(request.user, locality.state, Permissions.CONTACT)
+    user_can_write = has_permission(request.user, locality.state, Permissions.WRITE)
 
     return render(request, "core/locality.html", {
         "locality": locality,

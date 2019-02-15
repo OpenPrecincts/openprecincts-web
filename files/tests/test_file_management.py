@@ -9,11 +9,6 @@ from files.models import File
 
 
 @pytest.fixture
-def locality():
-    return Locality.objects.create(name="Raleigh", state="NC")
-
-
-@pytest.fixture
 def user():
     return User.objects.create(username="testuser")
 
@@ -28,7 +23,8 @@ def s3():
 
 
 @pytest.mark.django_db
-def test_upload_files(client, locality, user, s3):
+def test_upload_files(client, user, s3):
+    locality = Locality.objects.get(name='Wake County', state_id='NC')
     user.groups.create(name="NC write")
     client.force_login(user)
     faux_file = StringIO("file contents")
@@ -40,7 +36,7 @@ def test_upload_files(client, locality, user, s3):
 
     # ensure redirect to state page
     assert resp.status_code == 302
-    assert resp.url == "/collect/1/"
+    assert resp.url == f"/collect/{locality.id}/"
 
     # ensure the file was created
     f = File.objects.all().get()
@@ -56,12 +52,12 @@ def test_upload_files(client, locality, user, s3):
 
 
 @pytest.mark.django_db
-def test_upload_files_unauthorized(client, locality, user, s3):
+def test_upload_files_unauthorized(client, user, s3):
     client.force_login(user)
     faux_file = StringIO("file contents")
     faux_file.name = "fake.txt"
     resp = client.post("/files/upload/",
-                       {"locality": locality.id,
+                       {"locality": 1,
                         "files": [faux_file],
                         })
     # user isn't in NC write group
@@ -69,7 +65,8 @@ def test_upload_files_unauthorized(client, locality, user, s3):
 
 
 @pytest.mark.django_db
-def test_download(client, locality, user, s3):
+def test_download(client, user, s3):
+    locality = Locality.objects.get(name='Wake County', state_id='NC')
     user.groups.create(name="NC write")
     client.force_login(user)
     faux_file = StringIO("file contents")

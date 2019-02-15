@@ -20,7 +20,7 @@ class Command(BaseCommand):
 
     def init_groups(self):
         for abbr, name in all_states():
-            Group.objects.get_or_create(name=f"{abbr} {Permissions.admin}")
-            Group.objects.get_or_create(name=f"{abbr} {Permissions.gis}")
-            Group.objects.get_or_create(name=f"{abbr} {Permissions.contact}")
-            Group.objects.get_or_create(name=f"{abbr} {Permissions.write}")
+            Group.objects.get_or_create(name=f"{abbr} {Permissions.ADMIN}")
+            Group.objects.get_or_create(name=f"{abbr} {Permissions.GIS}")
+            Group.objects.get_or_create(name=f"{abbr} {Permissions.CONTACT}")
+            Group.objects.get_or_create(name=f"{abbr} {Permissions.WRITE}")
