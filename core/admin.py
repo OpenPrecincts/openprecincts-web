@@ -1,10 +1,19 @@
 from django.contrib import admin
-from .models import Locality, Official, ContactLog
+from .models import State, Locality, Official, ContactLog
+
+
+class StateAdmin(admin.ModelAdmin):
+    list_display = ('name', 'get_precinct_plan_display')
+    readonly_fields = ('name', 'abbreviation', 'census_geoid')
+
+admin.site.register(State, StateAdmin)
 
 
 class LocalityAdmin(admin.ModelAdmin):
     list_display = ('name', 'state', 'official_url')
     list_filter = ('state',)
+
+    readonly_fields = ('state',)
 
 
 admin.site.register(Locality, LocalityAdmin)

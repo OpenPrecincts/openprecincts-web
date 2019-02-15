@@ -1,0 +1,41 @@
+import os
+import us
+import csv
+from django.db import migrations
+
+
+def load_states(apps, schema_editor):
+    State = apps.get_model('core', 'State')
+    for s in us.STATES:
+        State.objects.create(abbreviation=s.abbr,
+                             name=s.name,
+                             census_geoid=s.fips,
+                             )
+    State.objects.create(abbreviation='PR', name='Puerto Rico', census_geoid=us.states.PR.fips)
+
+
+def init_counties(apps, schema_editor):
+    Locality = apps.get_model('core', 'Locality')
+    fname = os.path.join(os.path.dirname(__file__), 'counties-2019-master.csv')
+    with open(fname) as f:
+        for line in csv.DictReader(f):
+            Locality.objects.create(
+                name=line['name'],
+                state_id=us.states.lookup(line['state']).abbr,
+                wikipedia_url=line['wikipedia_url'],
+                official_url=line['official_url'],
+                ocd_id=line['OCDID'],
+                census_geoid=line['census_geoid'],
+            )
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('core', '0001_initial'),
+    ]
+
+    operations = [
+        migrations.RunPython(load_states),
+        migrations.RunPython(init_counties),
+    ]
