@@ -1,3 +1,4 @@
+import us
 from django import forms
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -7,7 +8,6 @@ from django.db import transaction
 from django.shortcuts import render
 from django.views.generic.edit import FormView
 import sesame.utils
-from core.utils import all_states
 from .models import UserProfile
 
 
@@ -15,7 +15,7 @@ class SignupForm(forms.Form):
     email = forms.EmailField(label='Email address')
     display_name = forms.CharField(max_length=30, label='What should we call you?')
     state = forms.ChoiceField(
-        choices=[('', '------')] + all_states(),
+        choices=[('', '------')] + [(s.abbr, s.name) for s in us.STATES] + [('PR', 'Puerto Rico')],
         label='Your state'
     )
 

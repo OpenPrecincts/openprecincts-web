@@ -6,13 +6,11 @@ from django.db import migrations
 
 def load_states(apps, schema_editor):
     State = apps.get_model('core', 'State')
-    for s in us.STATES:
+    for s in us.STATES + [us.states.PR]:
         State.objects.create(abbreviation=s.abbr,
                              name=s.name,
                              census_geoid=s.fips,
                              )
-    State.objects.create(abbreviation='PR', name='Puerto Rico', census_geoid=us.states.PR.fips)
-
 
 def init_counties(apps, schema_editor):
     Locality = apps.get_model('core', 'Locality')

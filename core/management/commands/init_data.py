@@ -1,10 +1,7 @@
-import os
-import csv
-from django.db import transaction
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import Group
-from core.models import Locality
-from core.utils import all_states, Permissions
+from core.models import State
+from core.permissions import Permissions
 
 
 class Command(BaseCommand):
@@ -19,8 +16,7 @@ class Command(BaseCommand):
             self.init_groups()
 
     def init_groups(self):
-        for abbr, name in all_states():
-            Group.objects.get_or_create(name=f"{abbr} {Permissions.ADMIN}")
-            Group.objects.get_or_create(name=f"{abbr} {Permissions.GIS}")
-            Group.objects.get_or_create(name=f"{abbr} {Permissions.CONTACT}")
-            Group.objects.get_or_create(name=f"{abbr} {Permissions.WRITE}")
+        Group.objects.all().delete()
+        for s in State.objects.all():
+            for p in Permissions:
+                Group.objects.get_or_create(name=f"{s.abbreviation} {p.value}")

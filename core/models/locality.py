@@ -1,4 +1,3 @@
-import us
 from django.db import models
 from enum import Enum
 

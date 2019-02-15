@@ -1,18 +1,30 @@
 {% extends "base.html" %}
 {% block body %}
 
+<section class="section">
+<div class="container">
+    <div data-hook="state-map"></div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+
 <table class="table">
 <thead>
     <tr><th>State</th><th>Status</th></tr>
 </thead>
 <tbody>
-{% for abbr, name in states %}
+{% for state in states %}
 <tr>
-    <td><a href="{% url "state_overview" abbr.lower %}">{{ name }}</a></td>
+    <td><a href="{% url "state_overview" state.abbreviation.lower %}">{{ state.name }}</a></td>
     <td>n/a</td>
 </tr>
 {% endfor %}
 </tbody>
 </table>
+
+</div>
+</section>
 
 {% endblock %}

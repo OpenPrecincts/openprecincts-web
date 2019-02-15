@@ -1,8 +1,8 @@
 import us
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Count
-from .models import Locality, Official, ContactLog
-from .utils import all_states, has_permission, Permissions
+from .models import Locality, Official, ContactLog, State
+from .permissions import has_permission, Permissions
 from files.models import File
 
 
@@ -12,7 +12,7 @@ def homepage(request):
 
 def national_overview(request):
     return render(request, "core/national_overview.html", {
-        "states": all_states()
+        "states": State.objects.all()
     })
 
 

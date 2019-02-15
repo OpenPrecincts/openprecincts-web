@@ -6,6 +6,7 @@ class StateAdmin(admin.ModelAdmin):
     list_display = ('name', 'get_precinct_plan_display')
     readonly_fields = ('name', 'abbreviation', 'census_geoid')
 
+
 admin.site.register(State, StateAdmin)
 
 

@@ -2,7 +2,7 @@ from django.http import FileResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.views.decorators.http import require_POST, require_GET
 from core.models import Locality
-from core.utils import ensure_permission
+from core.permissions import ensure_permission
 from .models import File
 from .utils import upload_django_file, get_from_s3
 

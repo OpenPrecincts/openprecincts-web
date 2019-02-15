@@ -3,10 +3,6 @@ from enum import Enum
 from django.core.exceptions import PermissionDenied
 
 
-def all_states():
-    return [(s.abbr, s.name) for s in us.STATES] + [('PR', 'Puerto Rico')]
-
-
 """
 Using Django's groups for state-level permissions.
 
