@@ -1,8 +1,8 @@
 from django.db import models
-from enum import Enum
+from enum import IntEnum
 
 
-class PrecinctPlan(Enum):
+class PrecinctPlan(IntEnum):
     UNKNOWN = 0
     COUNTY_BY_COUNTY = 1
     EXTERNAL_PARTNER = 2

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block body %}
+<section class="section">
+<div class="container">    
+    <h1 class="title is-2">{{ state }}</h1>
+
+    {% if is_unknown %}
+    <p>At the moment this state is inactive because we don't yet know which approach we'll need to take.  If you're interested in helping us get started in {{ state }}, <a href="mailto:gerrymander@princeton.edu">contact us</a>!
+    </p>
+    {% elif is_external  %}
+    <p>Right now we're holding off on starting work on {{ state }} because we've been notified another group is aiming to tackle it.  We're trying to avoid duplicate effort so we'll wait a bit longer to see what they come up with. </p>
+    <br>
+    <p> We'll post more here once we know details, in the meantime we could definitely use your help in <a href="../">another state!</a></p>
+    {% endif %}
+</div>
+</section>
+{% endblock %}

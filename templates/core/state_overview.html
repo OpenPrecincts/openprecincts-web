@@ -1,47 +1,51 @@
 {% extends "base.html" %}
 
 {% block body %}
-<h1 class="title is-2">{{ state }}</h1>
+<section class="section">
+<div class="container">    
+    <h1 class="title is-2">{{ state }}</h1>
 
-<div class="7evel">
-    <div class="7evel-left">
-        Contact Information ({{ localities_with_officials }}/{{ localities|length }})
+<!-- step 1 -->
+{% if not localities %}
+    In {{ state }} precinct data is maintained at the state level, so there's no need to contact local governments.  We've gone ahead and done this, so we have data to start working with already!
+{% else  %}
+    In {{ state }} we'll need to collect data from each county. This work starts with finding Elections &amp; GIS officials that can provide us with a map of precincts, preferably already as a shapefile.
+
+    <div>
+    Contact Information ({{ localities_with_officials }}/{{ localities|length }})
+    <progress class="progress is-link" value="{{ localities_with_officials }}" max="{{ localities|length }}"></progress>
     </div>
-    <div class="7evel-right">
-        <progress class="progress is-link" value="{{ localities_with_officials }}" max="{{ localities|length }}"></progress>
-    </div>
+{% endif %}
+
+
+<div>
+    Locality Precinct Data (56/67)
+    <progress class="progress is-warning" value="56" max="67">40%</progress>
 </div>
-<div class="7evel">
-    <div class="7evel-left">
-        Locality Precinct Data (56/67)
-    </div>
-    <div class="7evel-right">
-        <progress class="progress is-warning" value="56" max="67">40%</progress>
-    </div>
-</div>
-<div class="leve7">
-    <div class="7evel-left">
-        Finalized Data (22/67)
-    </div>
-    <div class="7evel-right">
-        <progress class="progress is-danger" value="22" max="67">20%</progress>
-    </div>
+<div>
+    Finalized Data (22/67)
+    <progress class="progress is-danger" value="22" max="67">20%</progress>
 </div>
 
-<table class="table">
-<thead>
-    <th>Locality</th>
-    <th>Officials</th>
-    <th>Contacts Made</th>
-</thead>
-<tbody>
-{% for locality in localities %}
-<tr>
-    <td><a href="{% url "locality_overview" locality.id %}">{{ locality.name }}</a></td>
-    <td>{{ locality.total_officials }} </td>
-    <td>{{ locality.total_contacts }} </td> 
-</tr>
-{% endfor %}
-</tbody>
-</table>
+{% if localities %}
+    <table class="table">
+    <thead>
+        <th>Locality</th>
+        <th>Officials</th>
+        <th>Contacts Made</th>
+    </thead>
+    <tbody>
+    {% for locality in localities %}
+    <tr>
+        <td><a href="{% url "locality_overview" locality.id %}">{{ locality.name }}</a></td>
+        <td>{{ locality.total_officials }} </td>
+        <td>{{ locality.total_contacts }} </td> 
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% endif %}
+
+</div>
+</section>
 {% endblock %}
