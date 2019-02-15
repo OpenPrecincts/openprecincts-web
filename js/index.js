@@ -3,6 +3,12 @@ import ReactDOM from 'react-dom'
 
 import StateMap from './state-map'
 
+function reveal() {
+  document.querySelector(`[data-hidden=${this.dataset.reveal}]`).style.display = "block";
+  this.style.display = "none";
+}
+
+
 // TODO: get this data dynamically
 window.addEventListener('load', () => {
   const sm = document.querySelector('[data-hook="state-map"]');
@@ -24,4 +30,8 @@ window.addEventListener('load', () => {
       sm
     );
   }
+
+  // bind hidden/reveal hooks
+  document.querySelectorAll('[data-hidden]').forEach(e => e.style.display = "none");
+  document.querySelectorAll('[data-reveal]').forEach(e => e.onclick = reveal);
 });

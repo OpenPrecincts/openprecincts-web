@@ -35,11 +35,11 @@ def has_permission(user, state, permission):
     state_groups = user.groups.filter(name__startswith=abbr)
     for group in state_groups:
         state, permtype = group.name.split(" ")
-        if permtype == Permissions.ADMIN:
+        if permtype == Permissions.ADMIN.value:
             return True
-        elif permtype == Permissions.CONTACT and permission == Permissions.WRITE:
+        elif permtype == Permissions.CONTACT.value and permission == Permissions.WRITE.value:
             return True
-        elif permtype == permission:
+        elif permtype == permission.value:
             return True
 
     # no valid permission found

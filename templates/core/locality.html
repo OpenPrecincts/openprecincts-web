@@ -1,23 +1,40 @@
 {% extends "base.html" %}
+{% load common %}
+
 {% block body %}
-<div class="container">
 
 <section class="section">
+<div class="container">
     <h1 class="title is-2">{{ locality.name }}</h1>
     <p class="subtitle is-3">{{ locality.state }}</p>
+</div>
 </section>
 
 <section class="section">
+<div class="container">
     <h2 class="title is-3">Officials</h2>
 
+    {% if user_can_write %}
+    <button class="button is-primary" data-reveal="official">Add Official</button>
+    <div class="box simpleform" data-hidden="official">
+    <form method="POST">
+        <input type="hidden" name="locality" value="{{ locality.id }}">
+        {% render_form official_form %}
+        {% csrf_token %}
+        <input type="submit" class="button is-primary">
+    </form>
+    </div>
+    {% endif %}
+
     {% if not officials %}
-        So far we haven't collected any officials.  Typically this is where the work starts- if you'd like to help us get started, <a href="#">contact us</a>.
+        <p>So far we haven't collected any officials.  </p>
     {% else %}
         {% for official in officials %}
 
         <div class="box official">
             <span class="title is-5">{{ official.title }} {{ official.first_name }} {{official.last_name }}</span>
             <span>{{ official.job_title }}</span>
+            {% if user_can_contact or request.user == official.created_by %}
             <div>
                 <span class="icon has-text-info">
                   <i class="fas fa-phone"></i>
@@ -28,13 +45,18 @@
                 </span>
                 <a href="mailto:{{ official.email }}">{{ official.email }}</a>
             </div>
+            {% else %}
+            <p>Contact details hidden for privacy.</p>
+            {% endif %}
             <div>{{ official.notes }}</div>
         </div>
         {% endfor %}
     {% endif %}
+</div>
 </section>
 
 <section class="section">
+<div class="container">
     <h3 class="title is-3">Contact Log</h3>
     {% if not contact_log %}
         This official has not yet been contacted.
@@ -58,9 +80,11 @@
         </tbody>
         </table>
     {% endif %}
+</div>
 </section>
 
 <section class="section">
+<div class="container">
     <h3 class="title is-3">File Management</h3>
 
     {% if user_can_write %}
@@ -111,7 +135,6 @@
     {% endfor %}
     </tbody>
     </table>
-</section>
-
 </div>
+</section>
 {% endblock %}

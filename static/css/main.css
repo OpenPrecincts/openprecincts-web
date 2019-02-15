@@ -7,7 +7,7 @@
 .hero-body {
     background-image: url("/static/img/precincts.png");
 }
-.hero-body .title,.subtitle {
+.hero-body .title,.hero-body .subtitle {
     color: white;
 }
 .homepage-columns .column { 
@@ -55,4 +55,7 @@ ul.footer-links {
 .signup, .login {
     width: 40%;
     margin-top: 1em;
+}
+.simpleform {
+    width: 40%;
 }

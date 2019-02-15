@@ -12,16 +12,16 @@
     In {{ state }} we'll need to collect data from each county. This work starts with finding Elections &amp; GIS officials that can provide us with a map of precincts, preferably already as a shapefile.
 
     <div>
-    Contact Information ({{ localities_with_officials }}/{{ localities|length }})
-    <progress class="progress is-link" value="{{ localities_with_officials }}" max="{{ localities|length }}"></progress>
+        Contact Information ({{ localities_with_officials }}/{{ localities|length }})
+        <progress class="progress is-link" value="{{ localities_with_officials }}" max="{{ localities|length }}"></progress>
+        </div>
+    <div>
+        Locality Precinct Data (0/ {{ localities|length }})
+        <progress class="progress is-warning" value="0" max="{{ localities|length }}">40%</progress>
     </div>
 {% endif %}
 
 
-<div>
-    Locality Precinct Data (56/67)
-    <progress class="progress is-warning" value="56" max="67">40%</progress>
-</div>
 <div>
     Finalized Data (22/67)
     <progress class="progress is-danger" value="22" max="67">20%</progress>
