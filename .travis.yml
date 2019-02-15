@@ -13,6 +13,8 @@ install:
   - pip install pipenv
   - pipenv install --dev
   - pipenv graph
+  - npm ci
+  - npm run build
 # before_script:
 #     - psql -c "CREATE USER test with PASSWORD 'test' CREATEDB SUPERUSER;" -U postgres
 #     - psql -c "CREATE DATABASE test;" -U postgres
