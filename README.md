@@ -12,6 +12,7 @@ Getting Started
 * ``pipenv install``
 * Install [npm](https://www.npmjs.com/)
 * ``npm install``
+* ``npm run build``  (or ``npm run start`` if doing active work on JS components)
 * ``pipenv run ./manage.py migrate``
 * ``pipenv run ./manage.py init_data --groups``
 * ``pipenv run ./manage.py runserver``

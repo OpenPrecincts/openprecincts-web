@@ -17,8 +17,8 @@
     "webpack-cli": "^3.2.3"
   },
   "scripts": {
-    "start": "webpack --watch --config webpack.config.js",
-    "build": "webpack --config webpack.config.js"
+    "start": "webpack --watch --config webpack.config.js --mode=development",
+    "build": "webpack --config webpack.config.js --mode=production"
   },
   "babel": {
     "presets": ["@babel/preset-env", "@babel/preset-react"]
