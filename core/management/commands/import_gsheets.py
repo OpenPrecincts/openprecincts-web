@@ -26,7 +26,7 @@ def import_contact_csv(state, filename):
             locality_name = re.sub(' [cC]ity$', ', City of', line['Locality'])
             locality_name = FIX_MAPPING.get(locality_name, locality_name)
             print(locality_name)
-            locality = Locality.objects.get(state=state, name=locality_name)
+            locality = Locality.objects.get(state_id=state, name=locality_name)
             o = Official.objects.create(
                 locality=locality,
                 first_name=line['First Name'],
@@ -52,4 +52,4 @@ class Command(BaseCommand):
         parser.add_argument('--contact', type=str, help='path to contact CSV')
 
     def handle(self, *args, **options):
-        import_contact_csv('Virginia', options['contact'])
+        import_contact_csv('VA', options['contact'])

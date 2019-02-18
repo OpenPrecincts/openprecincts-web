@@ -13,13 +13,29 @@
 
 <table class="table">
 <thead>
-    <tr><th>State</th><th>Status</th></tr>
+    <tr>
+      <th>State</th>
+      <th>Status</th>
+      <th>Data Collection</th>
+    </tr>
 </thead>
 <tbody>
 {% for state in states %}
 <tr>
     <td><a href="{% url "state_overview" state.abbreviation.lower %}">{{ state.name }}</a></td>
-    <td>n/a</td>
+    <td>
+        {% if state.status.value == "unknown" %}
+        TBD
+        {% elif state.status.value == "waiting" %}
+        External Partner
+        {% elif state.status.value == "in-progress" %}
+        In Progress
+        {% elif state.status.value == "collection-complete" %}
+        Collection Complete
+        {% elif state.status.value == "fully-complete" %}
+        Fully Complete
+        {% endif %}
+    </td>
 </tr>
 {% endfor %}
 </tbody>

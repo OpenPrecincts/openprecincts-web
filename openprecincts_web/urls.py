@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from core.views import homepage
+from django.views.generic.base import TemplateView
 
 admin.site.site_header = "OpenPrecincts Admin"
 
@@ -10,4 +11,7 @@ urlpatterns = [
     path('collect/', include('core.urls')),
     path('files/', include('files.urls')),
     path('accounts/', include('accounts.urls')),
+
+    # flat pages
+    path('process/', TemplateView.as_view(template_name="flat/process.html")),
 ]

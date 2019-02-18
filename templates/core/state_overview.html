@@ -7,16 +7,21 @@
 
 <!-- step 1 -->
 {% if not localities %}
-    In {{ state }} precinct data is maintained at the state level, so there's no need to contact local governments.  We've gone ahead and done this, so we have data to start working with already!
+<p>In {{ state }} precinct data is maintained at the state level, so there's no need to contact local governments.  We've gone ahead and done this, so we have data to start working with already!</p>
 {% else  %}
-    In {{ state }} we'll need to collect data from each county. This work starts with finding Elections &amp; GIS officials that can provide us with a map of precincts, preferably already as a shapefile.
+<p>In {{ state }} we'll need to collect data from each county. This work starts with finding Elections &amp; GIS officials that can provide us with a map of precincts, preferably already as a shapefile.</p>
+</div>
+</section>
 
+
+<section class="section">
+<div class="container">    
     <div>
         Contact Information ({{ localities_with_officials }}/{{ localities|length }})
         <progress class="progress is-link" value="{{ localities_with_officials }}" max="{{ localities|length }}"></progress>
         </div>
     <div>
-        Locality Precinct Data (0/ {{ localities|length }})
+        Locality Precinct Data (0/{{ localities|length }})
         <progress class="progress is-warning" value="0" max="{{ localities|length }}">40%</progress>
     </div>
 {% endif %}

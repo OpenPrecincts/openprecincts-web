@@ -39,7 +39,7 @@ def has_permission(user, state, permission):
             return True
         elif permtype == Permissions.CONTACT.value and permission == Permissions.WRITE.value:
             return True
-        elif permtype == permission.value:
+        elif permtype == permission:
             return True
 
     # no valid permission found

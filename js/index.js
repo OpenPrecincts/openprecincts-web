@@ -11,8 +11,8 @@ function reveal() {
 
 window.addEventListener('load', () => {
   const sm = document.querySelector('[data-hook="state-map"]');
-  const states = JSON.parse(document.getElementById('state-status').textContent);
   if (sm) {
+    const states = JSON.parse(document.getElementById('state-status').textContent);
     ReactDOM.render(React.createElement(
       StateMap,
       {
@@ -20,8 +20,8 @@ window.addEventListener('load', () => {
         statuses: {
           'unknown': {'name': 'Unknown', 'fill': '#999'},
           'waiting': {'name': 'External Partner', 'fill': 'orange'},
-          'in-progress': {'name': 'Data Available', 'fill': 'lightblue'},
-          'collection-complete': {'name': 'Data Available', 'fill': 'lightgreen'},
+          'in-progress': {'name': 'In Progress', 'fill': 'lightblue'},
+          'collection-complete': {'name': 'Collection Complete', 'fill': 'lightgreen'},
           'fully-complete': {'name': 'Data Available', 'fill': 'darkgreen'},
         }
       }),

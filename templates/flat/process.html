@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block body %}
+<style>
+.process-step .column:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: none;
+    width: 20%;
+}
+
+
+.process-step .column:first-child div {
+    font-size: 200%;
+    border: 8px solid gray;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    line-height: 60px;
+    text-align: center;
+}
+
+</style>
+
+<section class="section">
+<div class="container">
+
+    <h1 class="title">About Our Process</h1>
+
+    <p>
+    While our ultimate goal is to obtain high-quality districts for the entire
+    nation, the path to getting there can vary quite a bit state to state.
+
+    Here's a rough overview of how things work, but of course the real world is messy and you'll likely see that each state will have quirks all its own.
+    </p>
+
+    <div class="process-step columns">
+        <div class="column">
+            <div>1</div>
+        </div>
+        <div class="column">
+            <h2 class="title">Research</h2>
+            <p>
+                First, we do a bit of research to determine the best path. 
+                This might mean we find that a state has a master map of precinct files, 
+                or it might mean that we find that a state delegates that to each individual county.
+                Depending on how it looks, we'll initialize the state in question on this site to begin the process of collecting source data to cover the entire state.
+            </p>
+        </div>
+    </div>
+
+    <div class="process-step columns">
+        <div class="column">
+            <div>2</div>
+            </div>
+            <div class="column">
+                <h2 class="title">Data Collection</h2>
+                <p>
+                    Now we begin collecting precinct information, often at the county level.
+                    Of course sometimes this is easier, but the default fallback is to contact officials in each county and build up from there.  In a best-case-scenario the state will provide us with a single file containing all precincts.
+                </p>
+            </div>
+        </div>
+
+        <div class="process-step columns">
+            <div class="column">
+                <div>3</div>
+            </div>
+            <div class="column">
+                <h2 class="title">Data Cleaning</h2>
+                <p>
+                    This is a really long and complicated step and I don't know how to explain it just yet.  Stay tuned.
+                </p>
+            </div>
+        </div>
+
+        <div class="process-step columns">
+            <div class="column">
+                <div>4</div>
+            </div>
+            <div class="column">
+                <h2 class="title">Validation & Publishing</h2>
+                <p>
+                    At this point we have good data, and we have matched it to election data and census blocks.  We'll now publish the data in a variety of data formats.   Etc.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
