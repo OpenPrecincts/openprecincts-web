@@ -9,22 +9,20 @@ function reveal() {
 }
 
 
-// TODO: get this data dynamically
 window.addEventListener('load', () => {
   const sm = document.querySelector('[data-hook="state-map"]');
+  const states = JSON.parse(document.getElementById('state-status').textContent);
   if (sm) {
     ReactDOM.render(React.createElement(
       StateMap,
       {
-        states: {
-          'VA': 'available',
-          'PA': 'available',
-          'OH': 'available',
-          'NJ': 'pending',
-        },
+        states: states,
         statuses: {
-          'available': {'name': 'Data Available', 'fill': '#c7efcf'},
-          'pending': {'name': 'In Progress', 'fill': 'beige'},
+          'unknown': {'name': 'Unknown', 'fill': '#999'},
+          'waiting': {'name': 'External Partner', 'fill': 'orange'},
+          'in-progress': {'name': 'Data Available', 'fill': 'lightblue'},
+          'collection-complete': {'name': 'Data Available', 'fill': 'lightgreen'},
+          'fully-complete': {'name': 'Data Available', 'fill': 'darkgreen'},
         }
       }),
       sm

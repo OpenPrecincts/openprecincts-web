@@ -14,12 +14,18 @@ class OfficialForm(ModelForm):
 
 
 def homepage(request):
-    return render(request, "core/homepage.html", {})
+    state_status = {s.abbreviation: s.status().value
+                    for s in State.objects.all()}
+    return render(request, "core/homepage.html",
+                  {'state_status': state_status})
 
 
 def national_overview(request):
+    state_status = {s.abbreviation: s.status().value
+                    for s in State.objects.all()}
     return render(request, "core/national_overview.html", {
-        "states": State.objects.all()
+        "states": State.objects.all(),
+        "state_status": state_status,
     })
 
 

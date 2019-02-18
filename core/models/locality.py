@@ -1,5 +1,5 @@
 from django.db import models
-from enum import IntEnum
+from enum import IntEnum, Enum
 
 
 class PrecinctPlan(IntEnum):
@@ -7,6 +7,14 @@ class PrecinctPlan(IntEnum):
     COUNTY_BY_COUNTY = 1
     EXTERNAL_PARTNER = 2
     STATEWIDE_ORG = 3
+
+
+class StateStatus(Enum):
+    UNKNOWN = 'unknown'
+    WAITING = 'waiting'
+    IN_PROGRESS = 'in-progress'
+    COLLECTION_COMPLETE = 'collection-complete'
+    FULLY_COMPLETE = 'fully-complete'
 
 
 PRECINCT_PLAN_CHOICES = [(n.value, name) for (name, n) in PrecinctPlan.__members__.items()]
@@ -23,6 +31,16 @@ class State(models.Model):
     # settings
     precinct_plan = models.PositiveIntegerField(choices=PRECINCT_PLAN_CHOICES,
                                                 default=PrecinctPlan.UNKNOWN.value)
+
+    def status(self):
+        # TODO: check data for COLLECTION_COMPLETE and FULLY_COMPLETE status
+        if self.precinct_plan == PrecinctPlan.UNKNOWN:
+            return StateStatus.UNKNOWN
+        elif self.precinct_plan == PrecinctPlan.EXTERNAL_PARTNER:
+            return StateStatus.WAITING
+        elif (self.precinct_plan == PrecinctPlan.COUNTY_BY_COUNTY or
+              self.precinct_plan == PrecinctPlan.STATEWIDE_ORG):
+            return StateStatus.IN_PROGRESS
 
     def __str__(self):
         return self.name
