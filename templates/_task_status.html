@@ -1,0 +1,10 @@
+{% if task_status is not None %}
+<li>
+    {% if task_status is True %}
+        <i class="fas fa-check"></i>
+    {% elif task_status is False %}
+        <i class="far fa-times-circle"></i>
+    {% endif %}
+    {{ label }}
+</li>
+{% endif %}

@@ -2,22 +2,12 @@ from django.db import models
 from enum import IntEnum, Enum
 
 
-class PrecinctPlan(IntEnum):
-    UNKNOWN = 0
-    COUNTY_BY_COUNTY = 1
-    EXTERNAL_PARTNER = 2
-    STATEWIDE_ORG = 3
-
-
 class StateStatus(Enum):
     UNKNOWN = 'unknown'
     WAITING = 'waiting'
     IN_PROGRESS = 'in-progress'
     COLLECTION_COMPLETE = 'collection-complete'
     FULLY_COMPLETE = 'fully-complete'
-
-
-PRECINCT_PLAN_CHOICES = [(n.value, name) for (name, n) in PrecinctPlan.__members__.items()]
 
 
 class State(models.Model):
@@ -29,18 +19,39 @@ class State(models.Model):
     census_geoid = models.CharField(max_length=2, unique=True)
 
     # settings
-    precinct_plan = models.PositiveIntegerField(choices=PRECINCT_PLAN_CHOICES,
-                                                default=PrecinctPlan.UNKNOWN.value)
+    task_collect = models.BooleanField(null=True, default=None)
+    task_contact = models.BooleanField(null=True, default=None)
+    task_files = models.BooleanField(null=True, default=None)
+    task_digitization = models.BooleanField(null=True, default=None)
+    task_verification = models.BooleanField(null=True, default=None)
+    task_published = models.BooleanField(null=True, default=None)
+
+    def collection_status(self):
+        if self.task_collect == 0 or self.task_contact == 0 or self.task_files == 0:
+            return "wip"
+        if self.task_collect == 1 and self.task_contact == 1 and self.task_files == 1:
+            return "complete"
+        return "inactive"
+
+    def cleaning_status(self):
+        if self.task_digitization == 0:
+            return "wip"
+        if self.task_digitization == 1:
+            return "complete"
+        return "inactive"
 
     def status(self):
-        # TODO: check data for COLLECTION_COMPLETE and FULLY_COMPLETE status
-        if self.precinct_plan == PrecinctPlan.UNKNOWN:
+        if (self.task_collect is None and
+                self.task_contact is None and
+                self.task_files is None and
+                self.task_digitization is None and
+                self.task_verification is None and
+                self.task_published is None):
             return StateStatus.UNKNOWN
-        elif self.precinct_plan == PrecinctPlan.EXTERNAL_PARTNER:
-            return StateStatus.WAITING
-        elif (self.precinct_plan == PrecinctPlan.COUNTY_BY_COUNTY or
-              self.precinct_plan == PrecinctPlan.STATEWIDE_ORG):
+        if self.task_contact is False or self.task_collect is False or self.task_files is False:
             return StateStatus.IN_PROGRESS
+        # re-add WAITING status and ALL_COMPLETE
+        return StateStatus.COLLECTION_COMPLETE
 
     def __str__(self):
         return self.name

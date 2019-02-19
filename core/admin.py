@@ -3,7 +3,7 @@ from .models import State, Locality, Official, ContactLog
 
 
 class StateAdmin(admin.ModelAdmin):
-    list_display = ('name', 'get_precinct_plan_display')
+    list_display = ('name', 'status')
     readonly_fields = ('name', 'abbreviation', 'census_geoid')
 
 

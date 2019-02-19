@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load common %}
 
 {% block body %}
 <section class="section">
@@ -6,54 +7,28 @@
     <h1 class="title is-2">{{ state }}</h1>
 
     <div class="columns">
-        <div class="column state-stage-done">
+        <div class="column state-stage-{{ state.collection_status }}">
             <h2 class="title is-4">Collection</h2>
 
             <ul>
-                <li>
-                    <i class="fas fa-check"></i>
-                    Collect Contact Details
-                </li>
-                <li>
-                    <i class="fas fa-check"></i>
-                    Contact Officials
-                </li>
-                <li>
-                    <i class="fas fa-check"></i>
-                    Raw File Collection
-                </li>
+            {% state_status_item state.task_collect "Collect Contact Information" %}
+            {% state_status_item state.task_contact "Contact Officials" %}
+            {% state_status_item state.task_files "Raw File Collection" %}
             </ul>
         </div>
 
-        <div class="column state-stage-wip">
+        <div class="column state-stage-{{ state.cleaning_status }}">
             <h2 class="title is-4">Cleaning</h2>
             <ul>
-                <li>
-                    <i class="far fa-times-circle"></i>
-                    Digitization
-                </li>
-                <li>
-                    <i class="far fa-times-circle"></i>
-                    Cleaning
-                </li>
-                <li>
-                    <i class="far fa-times-circle"></i>
-                    Election Matching
-                </li>
+                {% state_status_item state.task_digitization "Digitization" %}
             </ul>
         </div>
 
         <div class="column state-stage-inactive">
             <h2 class="title is-4">Finalization</h2>
             <ul>
-                <li>
-                    <i class="far fa-times-circle"></i>
-                    Verification
-                </li>
-                <li>
-                    <i class="far fa-times-circle"></i>
-                    Publishing
-                </li>
+                {% state_status_item state.task_verification "Verification" %}
+                {% state_status_item state.task_published "Published" %}
             </ul>
         </div>
     </div>

@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.db.models import Count
 from django.forms import ModelForm
-from .models import Locality, Official, ContactLog, State, PrecinctPlan
+from .models import Locality, Official, ContactLog, State
 from .permissions import ensure_permission, has_permission, Permissions
 from files.models import File
 
@@ -34,28 +34,24 @@ def state_overview(request, state):
 
     context = {"state": state}
 
-    if state.precinct_plan == PrecinctPlan.COUNTY_BY_COUNTY:
-        localities = Locality.objects.filter(state=state).annotate(
-            total_officials=Count('officials'),
-            total_contacts=Count('officials__contact_log_entries'),
-        )
-        localities_with_officials = sum(1 for l in localities if l.total_officials)
-        localities_with_officials_pct = localities_with_officials / localities.count()
-        context.update({
-            "localities": localities,
-            "localities_with_officials": localities_with_officials,
-            "localities_with_officials_pct": localities_with_officials_pct,
-        })
-        return render(request, "core/state_overview.html", context)
-    elif state.precinct_plan == PrecinctPlan.STATEWIDE_ORG:
-        context["localities"] = None
-        return render(request, "core/state_overview.html", context)
-    elif state.precinct_plan in (PrecinctPlan.UNKNOWN, PrecinctPlan.EXTERNAL_PARTNER):
-        context.update({
-            "is_unknown": state.precinct_plan == PrecinctPlan.UNKNOWN,
-            "is_external": state.precinct_plan == PrecinctPlan.EXTERNAL_PARTNER,
-        })
-        return render(request, "core/state_inactive.html", context)
+    localities = Locality.objects.filter(state=state).annotate(
+        total_officials=Count('officials'),
+        total_contacts=Count('officials__contact_log_entries'),
+    )
+    localities_with_officials = sum(1 for l in localities if l.total_officials)
+    localities_with_officials_pct = localities_with_officials / localities.count()
+    context.update({
+        "localities": localities,
+        "localities_with_officials": localities_with_officials,
+        "localities_with_officials_pct": localities_with_officials_pct,
+    })
+    return render(request, "core/state_overview.html", context)
+    # elif state.precinct_plan in (PrecinctPlan.UNKNOWN, PrecinctPlan.EXTERNAL_PARTNER):
+    #     context.update({
+    #         "is_unknown": state.precinct_plan == PrecinctPlan.UNKNOWN,
+    #         "is_external": state.precinct_plan == PrecinctPlan.EXTERNAL_PARTNER,
+    #     })
+    #     return render(request, "core/state_inactive.html", context)
 
 
 def locality_overview(request, id):
