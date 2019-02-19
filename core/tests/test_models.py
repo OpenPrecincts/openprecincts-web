@@ -89,12 +89,12 @@ def test_state_status():
     s.task_verification = False
     s.task_published = False
 
-    assert s.status() == StateStatus.IN_PROGRESS
+    assert s.status() == StateStatus.COLLECTION
 
     s.task_files = True
-    assert s.status() == StateStatus.COLLECTION_COMPLETE
+    assert s.status() == StateStatus.CLEANING
 
     s.task_digitization = True
     s.task_verification = True
     s.task_published = True
-    assert s.status() == StateStatus.FULLY_COMPLETE
+    assert s.status() == StateStatus.AVAILABLE

@@ -21,10 +21,10 @@ window.addEventListener('load', () => {
         states: states,
         statuses: {
           'unknown': {'name': 'Unknown', 'fill': '#999'},
-          'waiting': {'name': 'External Partner', 'fill': 'orange'},
-          'in-progress': {'name': 'In Progress', 'fill': 'lightblue'},
-          'collection-complete': {'name': 'Collection Complete', 'fill': 'lightgreen'},
-          'fully-complete': {'name': 'Data Available', 'fill': 'darkgreen'},
+          // 'waiting': {'name': 'External Partner', 'fill': 'orange'},
+          'collection': {'name': 'Collection In Progress', 'fill': 'lightblue'},
+          'cleaning': {'name': 'Cleaning Data', 'fill': 'lightgreen'},
+          'available': {'name': 'Data Available', 'fill': 'darkgreen'},
         }
       }),
       sm

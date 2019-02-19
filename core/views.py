@@ -46,12 +46,6 @@ def state_overview(request, state):
         "localities_with_officials_pct": localities_with_officials_pct,
     })
     return render(request, "core/state_overview.html", context)
-    # elif state.precinct_plan in (PrecinctPlan.UNKNOWN, PrecinctPlan.EXTERNAL_PARTNER):
-    #     context.update({
-    #         "is_unknown": state.precinct_plan == PrecinctPlan.UNKNOWN,
-    #         "is_external": state.precinct_plan == PrecinctPlan.EXTERNAL_PARTNER,
-    #     })
-    #     return render(request, "core/state_inactive.html", context)
 
 
 def locality_overview(request, id):

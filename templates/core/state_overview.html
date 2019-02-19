@@ -6,6 +6,15 @@
 <div class="container">    
     <h1 class="title is-2">{{ state }}</h1>
 
+    {# top section: overview of where things are at and where they're going next #}
+
+    {% if state.status.value == "unknown" %}
+    <p>
+        We haven't yet determined the best course of action for {{ state }}.  If you're interested in helping us get started <a href="mailto:gerrymander@princeton.edu">contact us</a> and we'd be glad to work with you to get things started here!
+    </p>
+
+    {% else %}
+
     <div class="columns">
         <div class="column state-stage-{{ state.collection_status }}">
             <h2 class="title is-4">Collection</h2>
@@ -24,7 +33,7 @@
             </ul>
         </div>
 
-        <div class="column state-stage-inactive">
+        <div class="column state-stage-{{ state.final_status }}">
             <h2 class="title is-4">Finalization</h2>
             <ul>
                 {% state_status_item state.task_verification "Verification" %}
@@ -32,18 +41,15 @@
             </ul>
         </div>
     </div>
-
-<!-- step 1 -->
-{% if not localities %}
-<p>In {{ state }} precinct data is maintained at the state level, so there's no need to contact local governments.  We've gone ahead and done this, so we have data to start working with already!</p>
-{% else  %}
-<p>In {{ state }} we'll need to collect data from each county. This work starts with finding Elections &amp; GIS officials that can provide us with a map of precincts, preferably already as a shapefile.</p>
+    {% endif %}
 </div>
 </section>
 
-
+{% if state.collection_status == "wip" %}
 <section class="section">
 <div class="container">    
+    <h3 class="title is-3">Data Collection</h3>
+
     <div>
         Contact Information ({{ localities_with_officials }}/{{ localities|length }})
         <progress class="progress is-link" value="{{ localities_with_officials }}" max="{{ localities|length }}"></progress>
@@ -52,13 +58,6 @@
         Locality Precinct Data (0/{{ localities|length }})
         <progress class="progress is-warning" value="0" max="{{ localities|length }}">40%</progress>
     </div>
-{% endif %}
-
-
-<div>
-    Finalized Data (22/67)
-    <progress class="progress is-danger" value="22" max="67">20%</progress>
-</div>
 
 {% if localities %}
     <table class="table">
@@ -78,7 +77,8 @@
     </tbody>
     </table>
 {% endif %}
-
 </div>
 </section>
+{% endif %}
+
 {% endblock %}

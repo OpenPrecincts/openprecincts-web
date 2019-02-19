@@ -26,14 +26,12 @@
     <td>
         {% if state.status.value == "unknown" %}
         TBD
-        {% elif state.status.value == "waiting" %}
-        External Partner
-        {% elif state.status.value == "in-progress" %}
-        In Progress
-        {% elif state.status.value == "collection-complete" %}
-        Collection Complete
-        {% elif state.status.value == "fully-complete" %}
-        Fully Complete
+        {% elif state.status.value == "collection" %}
+        Collection In Progress
+        {% elif state.status.value == "cleaning" %}
+        Cleaning Data
+        {% elif state.status.value == "available" %}
+        Data Available
         {% endif %}
     </td>
 </tr>

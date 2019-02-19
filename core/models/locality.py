@@ -6,9 +6,9 @@ class StateStatus(Enum):
     UNKNOWN = 'unknown'
     # TODO: restore waiting status
     # WAITING = 'waiting'
-    IN_PROGRESS = 'in-progress'
-    COLLECTION_COMPLETE = 'collection-complete'
-    FULLY_COMPLETE = 'fully-complete'
+    COLLECTION = 'collection'
+    CLEANING = 'cleaning'
+    AVAILABLE = 'available'
 
 
 class State(models.Model):
@@ -56,14 +56,14 @@ class State(models.Model):
                 self.final_status() == "inactive"):
             return StateStatus.UNKNOWN
         if self.collection_status() == "wip":
-            return StateStatus.IN_PROGRESS
+            return StateStatus.COLLECTION
         if (self.collection_status() == "complete" and
                 self.cleaning_status() == "complete" and
                 self.final_status() == "complete"):
-            return StateStatus.FULLY_COMPLETE
+            return StateStatus.AVAILABLE
         if self.collection_status() == "complete" and (
                 self.cleaning_status() == "wip" or self.final_status() == "wip"):
-            return StateStatus.COLLECTION_COMPLETE
+            return StateStatus.CLEANING
 
     def __str__(self):
         return self.name
