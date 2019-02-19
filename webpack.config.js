@@ -4,7 +4,7 @@ var BundleTracker = require('webpack-bundle-tracker');
 const output_dir = 'static/bundles'
 
 module.exports = {
-  entry: './js/index.js',
+  entry: './raw_static/js/index.js',
   output: {
     path: path.resolve(output_dir),
     filename: "[name]-[hash].js",
@@ -17,6 +17,17 @@ module.exports = {
         loader: "babel-loader",
         // query: { plugins: ['transform-runtime'] } 
       },
+      {
+        test: /\.scss$/,
+        use: [
+          { loader: "style-loader", options: {sourceMap: true} },
+          { loader: "css-loader" },
+          { loader: "sass-loader", options: { 
+            //includePaths: [path.resolve(__dirname, 'node_modules')],
+            sourceMap: true
+          } } 
+        ]
+      }
     ]
   },
   plugins: [

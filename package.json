@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "description": "OpenPrecincts web application",
   "dependencies": {
+    "css-loader": "^2.1.0",
+    "node-sass": "^4.11.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-inlinesvg": "^0.8.4",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
     "webpack": "^4.29.3"
   },
   "devDependencies": {
@@ -21,6 +25,9 @@
     "build": "webpack --config webpack.config.js --mode=production"
   },
   "babel": {
-    "presets": ["@babel/preset-env", "@babel/preset-react"]
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
   }
 }

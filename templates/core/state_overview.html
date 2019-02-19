@@ -5,6 +5,59 @@
 <div class="container">    
     <h1 class="title is-2">{{ state }}</h1>
 
+    <div class="columns">
+        <div class="column state-stage-done">
+            <h2 class="title is-4">Collection</h2>
+
+            <ul>
+                <li>
+                    <i class="fas fa-check"></i>
+                    Collect Contact Details
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    Contact Officials
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    Raw File Collection
+                </li>
+            </ul>
+        </div>
+
+        <div class="column state-stage-wip">
+            <h2 class="title is-4">Cleaning</h2>
+            <ul>
+                <li>
+                    <i class="far fa-times-circle"></i>
+                    Digitization
+                </li>
+                <li>
+                    <i class="far fa-times-circle"></i>
+                    Cleaning
+                </li>
+                <li>
+                    <i class="far fa-times-circle"></i>
+                    Election Matching
+                </li>
+            </ul>
+        </div>
+
+        <div class="column state-stage-inactive">
+            <h2 class="title is-4">Finalization</h2>
+            <ul>
+                <li>
+                    <i class="far fa-times-circle"></i>
+                    Verification
+                </li>
+                <li>
+                    <i class="far fa-times-circle"></i>
+                    Publishing
+                </li>
+            </ul>
+        </div>
+    </div>
+
 <!-- step 1 -->
 {% if not localities %}
 <p>In {{ state }} precinct data is maintained at the state level, so there's no need to contact local governments.  We've gone ahead and done this, so we have data to start working with already!</p>

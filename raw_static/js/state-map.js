@@ -31,8 +31,8 @@ export default class StateMap extends React.Component {
             <table className="table">
                 <tbody>
                   { Object.values(this.props.statuses).map(st => (
-                    <tr>
-                      <td style={{"background-color": st.fill}}>&nbsp;</td>
+                    <tr key={st.name}>
+                      <td style={{"backgroundColor": st.fill}}>&nbsp;</td>
                       <td>{st.name}</td>
                     </tr>
                   )) }
@@ -41,7 +41,7 @@ export default class StateMap extends React.Component {
         </div>
       </div>
       <div>
-      <p className="is-pulled-right" style={{"font-size": "70%"}}>State map is based on <a href="https://commons.wikimedia.org/wiki/File:Blank_USA,_w_territories.svg">this base map</a>, licensed under a <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC-BY-SA 3.0 Unported License</a>.  </p>
+      <p className="is-pulled-right" style={{"fontSize": "70%"}}>State map is based on <a href="https://commons.wikimedia.org/wiki/File:Blank_USA,_w_territories.svg">this base map</a>, licensed under a <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC-BY-SA 3.0 Unported License</a>.  </p>
       </div>
       </div>
     );

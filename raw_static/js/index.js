@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import '../styles/main.scss'
+
 import StateMap from './state-map'
 
 function reveal() {
