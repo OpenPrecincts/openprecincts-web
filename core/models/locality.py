@@ -4,7 +4,8 @@ from enum import IntEnum, Enum
 
 class StateStatus(Enum):
     UNKNOWN = 'unknown'
-    WAITING = 'waiting'
+    # TODO: restore waiting status
+    # WAITING = 'waiting'
     IN_PROGRESS = 'in-progress'
     COLLECTION_COMPLETE = 'collection-complete'
     FULLY_COMPLETE = 'fully-complete'
@@ -26,32 +27,43 @@ class State(models.Model):
     task_verification = models.BooleanField(null=True, default=None)
     task_published = models.BooleanField(null=True, default=None)
 
-    def collection_status(self):
-        if self.task_collect == 0 or self.task_contact == 0 or self.task_files == 0:
+    def _calc_status(self, *tasks):
+        # all portions of this are undecided
+        if all([t is None for t in tasks]):
+            return "inactive"
+        # if it is active, we're either all done or wip
+        if any([t is False for t in tasks]):
             return "wip"
-        if self.task_collect == 1 and self.task_contact == 1 and self.task_files == 1:
+        else:
             return "complete"
-        return "inactive"
+
+    def collection_status(self):
+        return self._calc_status(self.task_collect, self.task_contact, self.task_files)
 
     def cleaning_status(self):
-        if self.task_digitization == 0:
-            return "wip"
-        if self.task_digitization == 1:
-            return "complete"
-        return "inactive"
+        if self.collection_status() == "wip":
+            return "inactive"
+        return self._calc_status(self.task_digitization)
+
+    def final_status(self):
+        if self.collection_status() == "wip" or self.cleaning_status() == "wip":
+            return "inactive"
+        return self._calc_status(self.task_verification, self.task_published)
 
     def status(self):
-        if (self.task_collect is None and
-                self.task_contact is None and
-                self.task_files is None and
-                self.task_digitization is None and
-                self.task_verification is None and
-                self.task_published is None):
+        if (self.collection_status() == "inactive" and
+                self.cleaning_status() == "inactive" and
+                self.final_status() == "inactive"):
             return StateStatus.UNKNOWN
-        if self.task_contact is False or self.task_collect is False or self.task_files is False:
+        if self.collection_status() == "wip":
             return StateStatus.IN_PROGRESS
-        # re-add WAITING status and ALL_COMPLETE
-        return StateStatus.COLLECTION_COMPLETE
+        if (self.collection_status() == "complete" and
+                self.cleaning_status() == "complete" and
+                self.final_status() == "complete"):
+            return StateStatus.FULLY_COMPLETE
+        if self.collection_status() == "complete" and (
+                self.cleaning_status() == "wip" or self.final_status() == "wip"):
+            return StateStatus.COLLECTION_COMPLETE
 
     def __str__(self):
         return self.name
