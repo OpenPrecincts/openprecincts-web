@@ -113,10 +113,22 @@ ul.footer-links {
     text-align: center;
 }
 
+/* utilities */
+
+.allow-wide { 
+    width: 80%;
+}
+.allow-wide .progress {
+    margin-bottom: 0.1em;
+}
 
 
 /* state page */
 
+.fraction {
+    font-size: 70%;
+    color: $color-gray-light;
+}
 .state-stage-done, .state-stage-wip, .state-stage-inactive {
     margin-left: 1em;
 }

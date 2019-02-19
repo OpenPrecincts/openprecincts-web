@@ -1,5 +1,5 @@
 from django.db import models
-from enum import IntEnum, Enum
+from enum import Enum
 
 
 class StateStatus(Enum):

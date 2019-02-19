@@ -37,13 +37,36 @@ def state_overview(request, state):
     localities = Locality.objects.filter(state=state).annotate(
         total_officials=Count('officials'),
         total_contacts=Count('officials__contact_log_entries'),
+        total_files=Count('files'),
     )
-    localities_with_officials = sum(1 for l in localities if l.total_officials)
-    localities_with_officials_pct = localities_with_officials / localities.count()
+    # TODO: ensure file count only includes source files
+
+    # compute totals
+    localities_with_officials = 0
+    total_officials = 0
+    localities_with_contacts = 0
+    total_contacts = 0
+    localities_with_files = 0
+    total_files = 0
+    for l in localities:
+        if l.total_officials:
+            total_officials += l.total_officials
+            localities_with_officials += 1
+        if l.total_contacts:
+            total_contacts += l.total_contacts
+            localities_with_contacts += 1
+        if l.total_files:
+            total_files += l.total_files
+            localities_with_files += 1
+
     context.update({
         "localities": localities,
         "localities_with_officials": localities_with_officials,
-        "localities_with_officials_pct": localities_with_officials_pct,
+        "total_officials": total_officials,
+        "localities_with_contacts": localities_with_contacts,
+        "total_contacts": total_contacts,
+        "localities_with_files": localities_with_files,
+        "total_files": total_files,
     })
     return render(request, "core/state_overview.html", context)
 

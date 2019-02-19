@@ -50,14 +50,42 @@
 <div class="container">    
     <h3 class="title is-3">Data Collection</h3>
 
-    <div>
-        Contact Information ({{ localities_with_officials }}/{{ localities|length }})
-        <progress class="progress is-link" value="{{ localities_with_officials }}" max="{{ localities|length }}"></progress>
+    <div class="level">
+        <div class="level-item has-text-centered">
+         <div class="allow-wide">
+          <p class="heading">Officials</p>
+          <p class="title">{{ total_officials }}</p>
+          <progress class="progress is-link" value="{{ localities_with_officials }}" max="{{ localities|length }}"></progress>
+          <p class="fraction">
+              {{ localities_with_officials }}/{{ localities|length }}
+          </p>
+          </div>
+      </div>
+
+      <div class="level-item has-text-centered">
+        <div class="allow-wide">
+          <p class="heading">Contacted</p>
+          <p class="title">{{ total_contacts }}</p>
+          <progress class="progress is-link" value="{{ localities_with_contacts }}" max="{{ localities|length }}"></progress>
+          <p class="fraction">
+              {{ localities_with_contacts }}/{{ localities|length }}
+          </p>
         </div>
-    <div>
-        Locality Precinct Data (0/{{ localities|length }})
-        <progress class="progress is-warning" value="0" max="{{ localities|length }}">40%</progress>
-    </div>
+      </div>
+
+      <div class="level-item has-text-centered">
+        <div class="allow-wide">
+          <p class="heading">Files</p>
+          <p class="title">{{ total_files }}</p>
+          <progress class="progress is-link" value="{{ localities_with_files }}" max="{{ localities|length }}"></progress>
+          <p class="fraction">
+              {{ localities_with_files }}/{{ localities|length }}
+          </p>
+        </div>
+     </div>
+
+  </div>
+
 
 {% if localities %}
     <table class="table">
@@ -65,6 +93,7 @@
         <th>Locality</th>
         <th>Officials</th>
         <th>Contacts Made</th>
+        <th>Files Received</th>
     </thead>
     <tbody>
     {% for locality in localities %}
@@ -72,6 +101,7 @@
         <td><a href="{% url "locality_overview" locality.id %}">{{ locality.name }}</a></td>
         <td>{{ locality.total_officials }} </td>
         <td>{{ locality.total_contacts }} </td> 
+        <td>{{ locality.total_files }} </td> 
     </tr>
     {% endfor %}
     </tbody>
