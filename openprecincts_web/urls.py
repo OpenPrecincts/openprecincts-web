@@ -13,5 +13,5 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
 
     # flat pages
-    path('process/', TemplateView.as_view(template_name="flat/process.html")),
+    path('about/', TemplateView.as_view(template_name="flat/about.html"), name="about"),
 ]
