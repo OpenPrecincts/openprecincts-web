@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
-from django.db.models import Count
+from django.db.models.expressions import RawSQL
 from django.forms import ModelForm
 from .models import Locality, Official, ContactLog, State
 from .permissions import ensure_permission, has_permission, Permissions
@@ -34,12 +34,20 @@ def state_overview(request, state):
 
     context = {"state": state}
 
-    localities = Locality.objects.filter(state=state).annotate(
-        total_officials=Count('officials'),
-        total_contacts=Count('officials__contact_log_entries'),
-        total_files=Count('files'),
+    localities = Locality.objects.filter(state=state)
+    localities = localities.annotate(
+        total_officials=RawSQL(
+            "SELECT COUNT(*) FROM core_official WHERE core_official.locality_id=core_locality.id",
+            ()),
+        total_contacts=RawSQL(
+            "SELECT COUNT(*) FROM core_contactlog JOIN core_official "
+            " ON core_contactlog.official_id=core_official.id "
+            " WHERE core_official.locality_id=core_locality.id",
+            ()),
+        total_files=RawSQL(
+            "SELECT COUNT(*) FROM files_file WHERE files_file.locality_id=core_locality.id",
+            ()),
     )
-    # TODO: ensure file count only includes source files
 
     # compute totals
     localities_with_officials = 0
