@@ -21,7 +21,7 @@ install:
 #     - psql -c "CREATE EXTENSION postgis;" -U postgres -d test
 jobs:
   include:
-    - script: pipenv run pytest --ds=openprecincts_web.settings --reuse-db -v
+    - script: pipenv run pytest --ds=openprecincts_web.test_settings --reuse-db -v
       name: "Run Tests"
     - script: pipenv run flake8
       name: "flake8"
