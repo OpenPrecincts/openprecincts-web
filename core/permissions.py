@@ -3,6 +3,9 @@ from enum import Enum
 from django.core.exceptions import PermissionDenied
 
 
+STATE_NAME_TO_ABBR = {s.name: s.abbr for s in us.states.STATES_AND_TERRITORIES}
+
+
 """
 Using Django's groups for state-level permissions.
 

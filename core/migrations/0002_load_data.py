@@ -2,6 +2,7 @@ import os
 import us
 import csv
 from django.db import migrations
+from core.permissions import STATE_NAME_TO_ABBR
 
 
 def load_states(apps, schema_editor):
@@ -19,7 +20,7 @@ def init_counties(apps, schema_editor):
         for line in csv.DictReader(f):
             Locality.objects.create(
                 name=line['name'],
-                state_id=us.states.lookup(line['state']).abbr,
+                state_id=STATE_NAME_TO_ABBR[line['state']],
                 wikipedia_url=line['wikipedia_url'],
                 official_url=line['official_url'],
                 ocd_id=line['OCDID'],
