@@ -16,6 +16,7 @@ us = "*"
 django-sesame = "*"
 django-webpack-loader = "*"
 python-magic = "*"
+dj-database-url = "*"
 
 [requires]
 python_version = "3.7"
