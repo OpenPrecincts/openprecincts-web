@@ -57,13 +57,12 @@ class State(models.Model):
             return StateStatus.UNKNOWN
         if self.collection_status() == "wip":
             return StateStatus.COLLECTION
-        if (self.collection_status() == "complete" and
-                self.cleaning_status() == "complete" and
-                self.final_status() == "complete"):
+        if self.final_status() == "complete":
             return StateStatus.AVAILABLE
         if self.collection_status() == "complete" and (
                 self.cleaning_status() == "wip" or self.final_status() == "wip"):
             return StateStatus.CLEANING
+        return StateStatus.UNKNOWN
 
     def __str__(self):
         return self.name

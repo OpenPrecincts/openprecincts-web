@@ -76,4 +76,4 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         File.objects.all().delete()
         # import_contact_csv('VA', options['contact'])
-        import_sourcefiles('VA', '/Users/james/Downloads/Virginia p*/*/source*Q*')
+        import_sourcefiles('VA', '/Users/james/Downloads/Virginia p*/*/source*')
