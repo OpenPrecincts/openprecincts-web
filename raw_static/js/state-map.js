@@ -7,6 +7,7 @@ export default class StateMap extends React.Component {
   
   constructor (props) {
     super(props);
+    this.state = {'activeMap': 'grid'};
     this.colorMap = this.colorMap.bind(this);
   }
 
@@ -20,11 +21,35 @@ export default class StateMap extends React.Component {
   }
 
   render() {
+    var mapElement = null;
+    if (this.state.activeMap === 'grid') {
+      mapElement = (<div className="state-grid">
+        {
+          Object.entries(this.props.states).map(function (e) {
+            const [state, status] = e;
+            return (<div key={state} className={"state-grid-box " + state}>{state}</div>);
+        })
+        }
+      </div>);
+    } else {
+      mapElement = (
+        <SVG src="/static/img/usa_base.svg" uniqueHash="mapsvg" onLoad={this.colorMap}></SVG>
+      );
+    }
+
     return (
       <div>
       <div className="columns">
         <div className="column is-three-quarters">
-          <SVG src="/static/img/usa_base.svg" uniqueHash="mapsvg" onLoad={this.colorMap}></SVG>
+        <div className="tabs is-small">
+          <ul>
+            <li className={this.state.activeMap === 'grid' ? 'is-active' : ''}>
+              <a onClick={() => this.setState({'activeMap': 'grid'})}>Grid</a></li>
+            <li className={this.state.activeMap === 'map' ? 'is-active' : ''}>
+              <a onClick={() => this.setState({'activeMap': 'map'})}>Map</a></li>
+          </ul>
+        </div>
+          {mapElement}
         </div>
         <div className="column">
             <h4 className="title is-4">Key</h4>
@@ -41,16 +66,7 @@ export default class StateMap extends React.Component {
         </div>
       </div>
       <div>
-      <p className="is-pulled-right" style={{"fontSize": "70%"}}>State map is based on <a href="https://commons.wikimedia.org/wiki/File:Blank_USA,_w_territories.svg">this base map</a>, licensed under a <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC-BY-SA 3.0 Unported License</a>.  </p>
-      </div>
-
-      <div className="state-grid">
-        {
-          Object.entries(this.props.states).map(function (e) {
-            const [state, status] = e;
-            return (<div key={state} className={"state-grid-box " + state}>{state}</div>);
-        })
-        }
+        {this.state.activeMap === 'grid' ? '' : (<p className="is-pulled-right" style={{"fontSize": "70%"}}>State map is based on <a href="https://commons.wikimedia.org/wiki/File:Blank_USA,_w_territories.svg">this base map</a>, licensed under a <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC-BY-SA 3.0 Unported License</a>.</p>)}
       </div>
 
       </div>
