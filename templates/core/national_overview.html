@@ -4,6 +4,7 @@
 
 <section class="section">
 <div class="container">
+    <h2 class="title is-2">State Overview</h2>
     <div data-hook="state-map"></div>
 </div>
 </section>
@@ -11,12 +12,15 @@
 <section class="section">
 <div class="container">
 
+<div class="columns">
+    
+<div class="column">
+<h3 class="title is-4">State Details</h3>
 <table class="table">
 <thead>
     <tr>
       <th>State</th>
       <th>Status</th>
-      <th>Data Collection</th>
     </tr>
 </thead>
 <tbody>
@@ -38,10 +42,14 @@
 {% endfor %}
 </tbody>
 </table>
+</div>
+
+<div class="column">
+{% include "_components/leaderboard.html" %}
+</div>
 
 </div>
 </section>
 
-{% include "_components/leaderboard.html" %}
 
 {% endblock %}
