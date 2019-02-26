@@ -23,11 +23,16 @@ export default class StateMap extends React.Component {
   render() {
     var mapElement = null;
     if (this.state.activeMap === 'grid') {
+      const statuses = this.props.statuses;
       mapElement = (<div className="state-grid">
         {
           Object.entries(this.props.states).map(function (e) {
             const [state, status] = e;
-            return (<div key={state} className={"state-grid-box " + state}>{state}</div>);
+            return (<div key={state}
+              className={"state-grid-box " + state}
+              style={{"backgroundColor": statuses[status].fill}}>
+              {state}
+              </div>);
         })
         }
       </div>);

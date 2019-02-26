@@ -2,17 +2,20 @@
 $state-grid-size: 50px;
 .state-grid {
     display: grid;
+    align-items: center;
     grid-template-columns: repeat(12, $state-grid-size);
     grid-template-rows: repeat(8, $state-grid-size);
-    grid-gap: 5px;
-    padding: 5px;
+    grid-gap: 1px;
+    padding: 1px;
     background-color: white;
 }
 .state-grid-box {
     text-align: center;
-    background-color: white;
-    border: 1px solid black;
     background-color: $color-gray-light;
+    height: 100%;
+    line-height: $state-grid-size;
+    font-weight: bold;
+    color: white;
 }
 .ME { grid-area: 1 / 12 / span 1 / span 1; }
 
