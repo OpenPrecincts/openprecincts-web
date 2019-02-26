@@ -1,0 +1,22 @@
+{% if contributors %}
+<section class="section">
+<div class="container">    
+    <h3 class="title is-3">Top Contributors</h3>
+    <table class="table">
+        <thead>
+            <th>User</th>
+            <th>Officials</th>
+            <th>Files Gathered</th>
+        </thead>
+
+        {% for user in contributors %}
+        <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.num_officials }}</td>
+            <td>{{ user.num_files }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+</section>
+{% endif %}

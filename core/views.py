@@ -25,21 +25,28 @@ def homepage(request):
 def national_overview(request):
     state_status = {s.abbreviation: s.status().value
                     for s in State.objects.all()}
+    contributors = _get_contributors(state=None)
     return render(request, "core/national_overview.html", {
-        "states": State.objects.all(),
+        "states": State.objects.all().order_by('name'),
         "state_status": state_status,
+        "contributors": contributors,
     })
 
 
 def _get_contributors(state):
+    official_filter = None
+    file_filter = None
+
+    if state:
+        official_filter = Q(created_officials__locality__state=state)
+        file_filter = Q(created_files__locality__state=state)
+
     # get merged list of user contributions
     official_contribs = User.objects.all().annotate(
-        num_officials=Count('created_officials',
-                            filter=Q(created_officials__locality__state=state)),
+        num_officials=Count('created_officials', filter=official_filter)
     ).order_by('id')
     file_contribs = {u.id: u for u in User.objects.annotate(
-        num_files=Count('created_files',
-                        filter=Q(created_files__locality__state=state))
+        num_files=Count('created_files', filter=file_filter)
     )}
     contributors = [
         {'id': u.id,
@@ -56,7 +63,7 @@ def _get_contributors(state):
         c['total'] = c['num_officials'] + c['num_files']
         if c['total']:
             contributors_filtered.append(c)
-    return sorted(contributors_filtered, key=lambda c: c['total'])
+    return sorted(contributors_filtered, key=lambda c: c['total'], reverse=True)
 
 
 def state_overview(request, state):
