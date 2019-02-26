@@ -1,0 +1,76 @@
+/* state grid */
+$state-grid-size: 50px;
+.state-grid {
+    display: grid;
+    grid-template-columns: repeat(12, $state-grid-size);
+    grid-template-rows: repeat(8, $state-grid-size);
+    grid-gap: 5px;
+    padding: 5px;
+    background-color: white;
+}
+.state-grid-box {
+    text-align: center;
+    background-color: white;
+    border: 1px solid black;
+    background-color: $color-gray-light;
+}
+.ME { grid-area: 1 / 12 / span 1 / span 1; }
+
+.AK { grid-area: 2 / 1 / span 1 / span 1; }
+.VT { grid-area: 2 / 11 / span 1 / span 1; }
+.NH { grid-area: 2 / 12 / span 1 / span 1; }
+
+.WA { grid-area: 3 / 2 / span 1 / span 1; }
+.ID { grid-area: 3 / 3 / span 1 / span 1; }
+.MT { grid-area: 3 / 4 / span 1 / span 1; }
+.ND { grid-area: 3 / 5 / span 1 / span 1; }
+.MN { grid-area: 3 / 6 / span 1 / span 1; }
+.WI { grid-area: 3 / 7 / span 1 / span 1; }
+.MI { grid-area: 3 / 8 / span 1 / span 1; }
+.NY { grid-area: 3 / 10 / span 1 / span 1; }
+.MA { grid-area: 3 / 11 / span 1 / span 1; }
+.RI { grid-area: 3 / 12 / span 1 / span 1; }
+
+.OR { grid-area: 4 / 2 / span 1 / span 1; }
+.UT { grid-area: 4 / 3 / span 1 / span 1; }
+.WY { grid-area: 4 / 4 / span 1 / span 1; }
+.SD { grid-area: 4 / 5 / span 1 / span 1; }
+.IA { grid-area: 4 / 6 / span 1 / span 1; }
+.IL { grid-area: 4 / 7 / span 1 / span 1; }
+.OH { grid-area: 4 / 8 / span 1 / span 1; }
+.PA { grid-area: 4 / 9 / span 1 / span 1; }
+.NJ { grid-area: 4 / 10 / span 1 / span 1; }
+.CT { grid-area: 4 / 11 / span 1 / span 1; }
+
+.CA { grid-area: 5 / 2 / span 1 / span 1; }
+.NV { grid-area: 5 / 3 / span 1 / span 1; }
+.CO { grid-area: 5 / 4 / span 1 / span 1; }
+.NE { grid-area: 5 / 5 / span 1 / span 1; }
+.MO { grid-area: 5 / 6 / span 1 / span 1; }
+.IN { grid-area: 5 / 7 / span 1 / span 1; }
+.WV { grid-area: 5 / 8 / span 1 / span 1; }
+.VA { grid-area: 5 / 9 / span 1 / span 1; }
+.MD { grid-area: 5 / 10 / span 1 / span 1; }
+.DE { grid-area: 5 / 11 / span 1 / span 1; }
+
+
+.AZ { grid-area: 6 / 3 / span 1 / span 1; }
+.NM { grid-area: 6 / 4 / span 1 / span 1; }
+.KS { grid-area: 6 / 5 / span 1 / span 1; }
+.AR { grid-area: 6 / 6 / span 1 / span 1; }
+.KY { grid-area: 6 / 7 / span 1 / span 1; }
+.TN { grid-area: 6 / 8 / span 1 / span 1; }
+.NC { grid-area: 6 / 9 / span 1 / span 1; }
+.DC { grid-area: 6 / 10 / span 1 / span 1; }
+
+.OK { grid-area: 7 / 5 / span 1 / span 1; }
+.LA { grid-area: 7 / 6 / span 1 / span 1; }
+.MS { grid-area: 7 / 7 / span 1 / span 1; }
+.AL { grid-area: 7 / 8 / span 1 / span 1; }
+.SC { grid-area: 7 / 9 / span 1 / span 1; }
+.GA { grid-area: 7 / 10 / span 1 / span 1; }
+
+.HI { grid-area: 8 / 1 / span 1 / span 1; }
+.TX { grid-area: 8 / 6 / span 1 / span 1; }
+.FL { grid-area: 8 / 10 / span 1 / span 1; }
+.PR { grid-area: 8 / 12 / span 1 / span 1; }
