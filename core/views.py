@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.db.models.expressions import RawSQL
+from django.db.models import Count, Q
 from django.forms import ModelForm
 from .models import Locality, Official, ContactLog, State
 from .permissions import ensure_permission, has_permission, Permissions
@@ -29,6 +31,34 @@ def national_overview(request):
     })
 
 
+def _get_contributors(state):
+    # get merged list of user contributions
+    official_contribs = User.objects.all().annotate(
+        num_officials=Count('created_officials',
+                            filter=Q(created_officials__locality__state=state)),
+    ).order_by('id')
+    file_contribs = {u.id: u for u in User.objects.annotate(
+        num_files=Count('created_files',
+                        filter=Q(created_files__locality__state=state))
+    )}
+    contributors = [
+        {'id': u.id,
+         'name': u.first_name or u.username,
+         'num_officials': u.num_officials,
+         'num_files': file_contribs[u.id].num_files,
+         }
+        for u in official_contribs
+    ]
+
+    # sort by total contributions
+    contributors_filtered = []
+    for c in contributors:
+        c['total'] = c['num_officials'] + c['num_files']
+        if c['total']:
+            contributors_filtered.append(c)
+    return sorted(contributors_filtered, key=lambda c: c['total'])
+
+
 def state_overview(request, state):
     state = get_object_or_404(State, pk=state.upper())
 
@@ -48,6 +78,8 @@ def state_overview(request, state):
             "SELECT COUNT(*) FROM files_file WHERE files_file.locality_id=core_locality.id",
             ()),
     )
+
+    contributors = _get_contributors(state)
 
     # compute totals
     localities_with_officials = 0
@@ -75,6 +107,7 @@ def state_overview(request, state):
         "total_contacts": total_contacts,
         "localities_with_files": localities_with_files,
         "total_files": total_files,
+        "contributors": contributors,
     })
     return render(request, "core/state_overview.html", context)
 
