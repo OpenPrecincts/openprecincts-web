@@ -43,6 +43,16 @@ export default class StateMap extends React.Component {
       <div>
       <p className="is-pulled-right" style={{"fontSize": "70%"}}>State map is based on <a href="https://commons.wikimedia.org/wiki/File:Blank_USA,_w_territories.svg">this base map</a>, licensed under a <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC-BY-SA 3.0 Unported License</a>.  </p>
       </div>
+
+      <div className="state-grid">
+        {
+          Object.entries(this.props.states).map(function (e) {
+            const [state, status] = e;
+            return (<div key={state} className={"state-grid-box " + state}>{state}</div>);
+        })
+        }
+      </div>
+
       </div>
     );
   }
