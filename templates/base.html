@@ -39,8 +39,13 @@
     <div class="navbar-end">
         <div class="navbar-item">
         {% if request.user.is_authenticated %}
-        Welcome back,&nbsp;
-        <a href="{% url 'profile' %}">{{ request.user.first_name }}</a>!
+        <p id="welcome-back">
+            Welcome back,
+            <a href="{% url 'profile' %}">{{ request.user.first_name }}</a>!
+        </p>
+        <a class="button" href="{% url 'logout' %}">
+          Log out
+        </a>
         {% else %}
         <div class="buttons">
           <a class="button is-primary" href="{% url 'signup' %}">

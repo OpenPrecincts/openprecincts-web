@@ -1,0 +1,11 @@
+Hi {{ user.first_name }},
+
+{% if login %}
+Thank you for signing up for an OpenPrecincts account!
+{% endif %}
+
+Instead of using a password you can sign in with this magic link:
+
+{{ domain }}{{ login_url }}
+
+This link is good for {{ expiry_minutes }} minutes, if you need another one visit {{ domain }}accounts/login/

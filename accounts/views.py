@@ -5,10 +5,31 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.db import transaction
+from django.template.loader import render_to_string
 from django.shortcuts import render
 from django.views.generic.edit import FormView
 import sesame.utils
 from .models import UserProfile
+
+
+def send_login_email(user, *, domain, is_signup):
+    login_url = sesame.utils.get_query_string(user)
+
+    if is_signup:
+        title = "Welcome to OpenPrecincts!"
+    else:
+        title = "Sign in to OpenPrecincts"
+
+    body = render_to_string("accounts/email_body.txt",
+                            {"user": user,
+                             "is_signup": is_signup,
+                             "domain": domain,
+                             "login_url": login_url,
+                             "expiry_minutes": int(settings.SESAME_MAX_AGE / 60),
+                             }
+                            )
+
+    send_mail(title, body, settings.DEFAULT_FROM_EMAIL, [user.email])
 
 
 class SignupForm(forms.Form):
@@ -48,24 +69,30 @@ class Signup(FormView):
                                 first_name=form.cleaned_data['display_name'],
                                 )
         UserProfile.objects.create(user=u, state=form.cleaned_data['state'])
-        return super().form_valid(form)
+
+        send_login_email(u,
+                         domain=self.request.build_absolute_uri('/'),
+                         is_signup=True)
+
+        return render(self.request,
+                      "accounts/email_sent.html",
+                      {"user": u,
+                       "expiry_minutes": int(settings.SESAME_MAX_AGE / 60),
+                       }
+                      )
 
 
 class Login(FormView):
     template_name = 'accounts/login.html'
     form_class = LoginForm
-    success_url = '/'
 
     def form_valid(self, form):
         # at this point we can be sure there is a user with this email
         u = User.objects.get(email=form.cleaned_data["email"])
 
-        # TODO: make this email more legitimate
-        send_mail("OpenPrecincts Login",
-                  "magic link: http://localhost:8000/" + sesame.utils.get_query_string(u),
-                  "noreply@openprecincts.org",
-                  [u.email]
-                  )
+        send_login_email(u,
+                         domain=self.request.build_absolute_uri('/'),
+                         is_signup=False)
 
         return render(self.request,
                       "accounts/email_sent.html",
