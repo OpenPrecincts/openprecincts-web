@@ -25,7 +25,8 @@ window.addEventListener('load', () => {
           'collection': {'name': 'Collection In Progress', 'fill': 'lightblue'},
           'cleaning': {'name': 'Cleaning Data', 'fill': 'lightgreen'},
           'available': {'name': 'Data Available', 'fill': 'darkgreen'},
-        }
+        },
+        link_template: state => `/collect/${state.toLowerCase()}`
       }),
       sm
     );

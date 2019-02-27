@@ -4,6 +4,7 @@ import SVG from 'react-inlinesvg';
 export default class StateMap extends React.Component {
   // statuses: {'good': {'name': 'Good State', 'fill': 'green'}, ...}
   // states: [{'NC': 'good'}, ...]
+  // link_template: () => "/collect/${state}"
   
   constructor (props) {
     super(props);
@@ -24,12 +25,16 @@ export default class StateMap extends React.Component {
     var mapElement = null;
     if (this.state.activeMap === 'grid') {
       const statuses = this.props.statuses;
+      const link_template = this.props.link_template;
       mapElement = (<div className="state-grid">
         {
           Object.entries(this.props.states).map(function (e) {
             const [state, status] = e;
             return (<div key={state}
               className={"state-grid-box " + state}
+              onClick={function() {
+                window.location = link_template(state);
+              }}
               style={{"backgroundColor": statuses[status].fill}}>
               {state}
               </div>);
