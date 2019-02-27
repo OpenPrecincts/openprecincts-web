@@ -116,10 +116,10 @@ ul.footer-links {
     font-size: 70%;
     color: $color-gray-light;
 }
-.state-stage-done, .state-stage-wip, .state-stage-inactive {
+.state-stage-complete, .state-stage-wip, .state-stage-inactive {
     margin-left: 1em;
 }
-.state-stage-done {
+.state-stage-complete {
     border: 3px solid $color-green-2;
     background-color: $color-green-1;
 }

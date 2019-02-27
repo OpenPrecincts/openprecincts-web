@@ -8,12 +8,34 @@
 
     {# top section: overview of where things are at and where they're going next #}
 
-    {% if state.status.value == "unknown" %}
+    <div class="columns">
+    <div class="column">
     <p>
+    {% if state.status.value == "unknown" %}
         We haven't yet determined the best course of action for {{ state }}.  If you're interested in helping us get started <a href="mailto:gerrymander@princeton.edu">contact us</a> and we'd be glad to work with you to get things started here!
+    {% else %}
+
+    {% if state.status.value == "collection" %}
+        We are in the process of collecting data for {{ state }}, you can help us by collecting contact information or individual files below.
+    {% endif %}
     </p>
 
+{# user permission status, only showing if logged in #}
+{% if not request.user.is_anonymous %}
+    <br>
+    {% if user_can_contact or user_can_write %}
+    <p class="has-text-success has-text-weight-semibold">
+        You have permission to contribute to this state's data collection.
+    </p>
     {% else %}
+    <p class="has-text-grey has-text-weight-semibold">
+        You don't have permission to contribute to this state's data collection. <a href="mailto:gerrymander@princeton.edu">Contact Us</a> and we'll help you get started.
+    </p>
+    {% endif %}
+{% endif %}
+
+    </div>
+    </div>
 
     <div class="columns">
         <div class="column state-stage-{{ state.collection_status }}">
@@ -46,7 +68,14 @@
 </div>
 </section>
 
-{% include "_components/leaderboard.html" %}
+
+
+<section class="section">
+<div class="container">    
+    {% include "_components/leaderboard.html" %}
+</div>
+</section>
+
 
 {% if state.collection_status == "wip" %}
 <section class="section">

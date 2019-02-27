@@ -71,7 +71,7 @@ def state_overview(request, state):
 
     context = {"state": state}
 
-    localities = Locality.objects.filter(state=state)
+    localities = Locality.objects.filter(state=state).order_by('name')
     localities = localities.annotate(
         total_officials=RawSQL(
             "SELECT COUNT(*) FROM core_official WHERE core_official.locality_id=core_locality.id",
@@ -106,6 +106,9 @@ def state_overview(request, state):
             total_files += l.total_files
             localities_with_files += 1
 
+    user_can_contact = has_permission(request.user, state, Permissions.CONTACT)
+    user_can_write = has_permission(request.user, state, Permissions.WRITE)
+
     context.update({
         "localities": localities,
         "localities_with_officials": localities_with_officials,
@@ -114,6 +117,8 @@ def state_overview(request, state):
         "total_contacts": total_contacts,
         "localities_with_files": localities_with_files,
         "total_files": total_files,
+        "user_can_contact": user_can_contact,
+        "user_can_write": user_can_write,
         "contributors": contributors,
     })
     return render(request, "core/state_overview.html", context)
