@@ -6,7 +6,14 @@
     <h1 class="title is-2">What Is OpenPrecincts?</h1>
 
     <p>
-    We're a collection of people.
+        OpenPrecincts is a data and software resource to open the redistricting process to all citizens and ensure that the next decade’s district boundaries are fair for all voters.
+    </p>
+    <br>
+    <p>In 2021, state governments will start to draw new Congressional and state legislative districts. It will be critical for the public to understand whether the proposed maps fairly represent voters. But there is no central database of voting precincts across the country. Consequently, citizens cannot judge the fairness of a map or offer their own maps. We will fill this gap by building a complete, legislative-quality database of electoral precinct data for all 50 states, the District of Columbia, and Puerto Rico. Ultimately, this database will be integrated with web-based redistricting software so that any citizen group can draw and propose maps.
+    </p>
+    <br>
+    <p>
+        This work is being led by the <a href="http://gerrymander.princeton.edu">Princeton Gerrymandering Project</a>, working in close cooperation with [TODO: who to list], and <a href="#TODO-leaderboard">volunteers on this site</a>.
     </p>
 </div>
 </section>
@@ -33,8 +40,12 @@
             <p>
                 First, we do a bit of research to determine the best path. 
                 This might mean we find that a state has a master map of precinct files, 
-                or it might mean that we find that a state delegates that to each individual county.
+                or it might mean that we find that a state delegates that responsibility to each individual county.
                 Depending on how it looks, we'll initialize the state in question on this site to begin the process of collecting source data to cover the entire state.
+            </p>
+            <br>
+            <p>
+                If your state is still in the "Unknown" status, it means we need to do some research to get started.  Get in touch with us and you can help us kick that process off!
             </p>
         </div>
     </div>
@@ -47,7 +58,11 @@
                 <h2 class="title">Data Collection</h2>
                 <p>
                     Now we begin collecting precinct information, often at the county level.
-                    Of course sometimes this is easier, but the default fallback is to contact officials in each county and build up from there.  In a best-case-scenario the state will provide us with a single file containing all precincts.
+                    Of course sometimes this is easier, but we're set up to collect information on officials in each county, contact them, and build up our source data from there.  In a best case scenario the state will provide us with a single file containing all precincts.
+                </p>
+                <br>
+                <p>
+                    During this phase we aren't too concerned about what format the data is provided in, we of course prefer digital formats like Esri shapefile, but if the only data available is a non-digitized map, we'll work with that.
                 </p>
             </div>
         </div>
@@ -57,9 +72,13 @@
                 <div>3</div>
             </div>
             <div class="column">
-                <h2 class="title">Data Cleaning</h2>
+                <h2 class="title">Digitization &amp; Cleaning</h2>
                 <p>
-                    This is a really long and complicated step and I don't know how to explain it just yet.  Stay tuned.
+                    This is the step with the most variance, since it really depends what data we were able to collect.  We might be taking high quality scans and using computer graphics algorithms or we might be simply doing some name matching to verify that the data we collected can be cleanly matched to election results.
+                </p>
+                <br>
+                <p>
+                    Ultimately the variance in what localities can provide means that we'll have a variety of processes developed as-needed to clean data.  If you're technically savvy, we could probably use your help in improving these processes as things progress.
                 </p>
             </div>
         </div>
@@ -69,9 +88,24 @@
                 <div>4</div>
             </div>
             <div class="column">
-                <h2 class="title">Validation & Publishing</h2>
+                <h2 class="title">Matching & Validation</h2>
                 <p>
-                    At this point we have good data, and we have matched it to election data and census blocks.  We'll now publish the data in a variety of data formats.   Etc.
+                    In order to make precinct data useful for analyzing gerrymandering, we have to match precincts to Census-collected demographic data.  This means aligning precincts to Census blocks and matching with precinct-level election results.  Our friends at <a href="http://www.openelections.net/">OpenElections</a> are gathering that data, and we're matching those results with our precinct data.
+                </p>
+            </div>
+        </div>
+
+        <div class="process-step columns">
+            <div class="column">
+                <div>5</div>
+            </div>
+            <div class="column">
+                <h2 class="title">Publishing</h2>
+                <p>
+                    Our final product is a high-quality set of precinct data files, suitable for use by citizens,
+                    researchers, and even redistricters themselves.  We will be providing both a way to look at the
+                    data in a browser as well as providing it to organizations building redistricting tools like
+                    <a href="http://gardow.com/davebradlee/redistricting/launchapp.html">Dave's Redistricting App</a>.
                 </p>
             </div>
         </div>
