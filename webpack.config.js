@@ -1,5 +1,6 @@
 const path = require('path');
-var BundleTracker = require('webpack-bundle-tracker');
+const BundleTracker = require('webpack-bundle-tracker');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const output_dir = 'static/bundles'
 
@@ -31,6 +32,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new BundleTracker({filename: './webpack-stats.json'})
+    new BundleTracker({filename: './webpack-stats.json'}),
+    new CleanWebpackPlugin([output_dir], {watch: true})
   ]
 };
