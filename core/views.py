@@ -8,7 +8,6 @@ from .models import Locality, Official, ContactLog, State
 from .permissions import ensure_permission, has_permission, Permissions
 from files.models import File
 
-
 class OfficialForm(ModelForm):
     class Meta:
         model = Official
@@ -152,3 +151,119 @@ def locality_overview(request, id):
         "user_can_write": user_can_write,
         "official_form": official_form,
     })
+
+def state_overview_internal(request, state):
+    state = get_object_or_404(State, pk=state.upper())
+
+    context = {"state": state}
+
+    # Convert querysets for Officials, ContactLog, and Files into dictionaries
+    localities = Locality.objects.filter(state=state)
+    localities_values = Locality.objects.filter(state=state).values()
+
+    # Get Officials in the state
+    off = {}
+    official_ix = 0
+    # Loop through each official in each loaclity
+    for i, l in enumerate(localities_values):
+        officials = Official.objects.filter(locality=localities[i])
+
+        # Create dictionary for officials in a given county
+        off[l['name']] = {}
+
+        for o in officials.values():
+            # Give each official an index to access in dictionary 
+            off[l['name']][official_ix] = {}
+
+            # add all fields
+            for name in o.keys():
+                off[l['name']][official_ix][name] = o[name]
+
+            # Increment index
+            official_ix += 1
+
+        # Reset official index for locality
+        official_ix = 0
+
+    # Get ContactLog in the state
+    con = {}
+    contact_ix = 0
+    # Loop through each contnact for each official in each loaclity
+    for i, l in enumerate(localities_values):
+
+        officials = Official.objects.filter(locality=localities[i])
+
+        # Create dictionary for each contact log in a given county
+        con[l['name']] = {}
+
+        for o in officials:
+            contact = ContactLog.objects.filter(official=o)
+
+            for c in contact.values():
+                # Give each contact log entry an index to access in dictionary 
+                con[l['name']][contact_ix] = {}
+
+                # add all fields
+                for name in c.keys():
+                    con[l['name']][contact_ix][name] = c[name]
+
+                # Increment index
+                contact_ix += 1
+
+        # Reset official index for locality
+        contact_ix = 0
+
+    # Match user id's to info
+    user = {}
+    for u in User.objects.all().values():
+        user[u['id']] = u['username']
+
+    localities = Locality.objects.filter(state=state)
+    localities = localities.annotate(
+        total_officials=RawSQL(
+            "SELECT COUNT(*) FROM core_official WHERE core_official.locality_id=core_locality.id",
+            ()),
+        total_contacts=RawSQL(
+            "SELECT COUNT(*) FROM core_contactlog JOIN core_official "
+            " ON core_contactlog.official_id=core_official.id "
+            " WHERE core_official.locality_id=core_locality.id",
+            ()),
+        total_files=RawSQL(
+            "SELECT COUNT(*) FROM files_file WHERE files_file.locality_id=core_locality.id",
+            ()),
+    )
+
+    # compute totals
+    localities_with_officials = 0
+    total_officials = 0
+    localities_with_contacts = 0
+    total_contacts = 0
+    localities_with_files = 0
+    total_files = 0
+    for l in localities:
+        if l.total_officials:
+            total_officials += l.total_officials
+            localities_with_officials += 1
+        if l.total_contacts:
+            total_contacts += l.total_contacts
+            localities_with_contacts += 1
+        if l.total_files:
+            total_files += l.total_files
+            localities_with_files += 1
+
+
+    context.update({
+        "localities": localities,
+        "localities_with_officials": localities_with_officials,
+        "total_officials": total_officials,
+        "localities_with_contacts": localities_with_contacts,
+        "total_contacts": total_contacts,
+        "localities_with_files": localities_with_files,
+        "total_files": total_files,
+        # Pass in data about officials, contact log, and user ids
+        "officials": off,
+        "contact_log": con,
+        "username_mapping": user,
+        
+    })
+    return render(request, "core/state_overview_internal.html", context)

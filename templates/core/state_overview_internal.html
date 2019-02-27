@@ -1,0 +1,544 @@
+{% extends "base.html" %}
+{% load common %}
+
+{% block body %}
+<section class="section">
+<div class="container">    
+    <h1 class="title is-2">{{ state }} - Internal Overview</h1>
+
+    {# top section: overview of where things are at and where they're going next #}
+
+    {% if state.status.value == "unknown" %}
+    <p>
+        We haven't yet determined the best course of action for {{ state }}.  If you're interested in helping us get started <a href="mailto:gerrymander@princeton.edu">contact us</a> and we'd be glad to work with you to get things started here!
+    </p>
+
+    {% else %}
+
+    <div class="columns">
+        <div class="column state-stage-{{ state.collection_status }}">
+            <h2 class="title is-4">Collection</h2>
+
+            <ul>
+            {% state_status_item state.task_collect "Collect Contact Information" %}
+            {% state_status_item state.task_contact "Contact Officials" %}
+            {% state_status_item state.task_files "Raw File Collection" %}
+            </ul>
+        </div>
+
+        <div class="column state-stage-{{ state.cleaning_status }}">
+            <h2 class="title is-4">Cleaning</h2>
+            <ul>
+                {% state_status_item state.task_digitization "Digitization" %}
+            </ul>
+        </div>
+
+        <div class="column state-stage-{{ state.final_status }}">
+            <h2 class="title is-4">Finalization</h2>
+            <ul>
+                {% state_status_item state.task_verification "Verification" %}
+                {% state_status_item state.task_published "Published" %}
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+</div>
+</section>
+
+{% if state.collection_status == "wip" %}
+<section class="section">
+<div class="container">    
+    <h3 class="title is-3">Data Collection</h3>
+
+    <div class="level">
+        <div class="level-item has-text-centered">
+         <div class="allow-wide">
+          <p class="heading">Officials</p>
+          <p class="title">{{ total_officials }}</p>
+          <progress class="progress is-link" value="{{ localities_with_officials }}" max="{{ localities|length }}"></progress>
+          <p class="fraction">
+              {{ localities_with_officials }}/{{ localities|length }}
+          </p>
+          </div>
+      </div>
+
+      <div class="level-item has-text-centered">
+        <div class="allow-wide">
+          <p class="heading">Contacted</p>
+          <p class="title">{{ total_contacts }}</p>
+          <progress class="progress is-link" value="{{ localities_with_contacts }}" max="{{ localities|length }}"></progress>
+          <p class="fraction">
+              {{ localities_with_contacts }}/{{ localities|length }}
+          </p>
+        </div>
+      </div>
+
+      <div class="level-item has-text-centered">
+        <div class="allow-wide">
+          <p class="heading">Files</p>
+          <p class="title">{{ total_files }}</p>
+          <progress class="progress is-link" value="{{ localities_with_files }}" max="{{ localities|length }}"></progress>
+          <p class="fraction">
+              {{ localities_with_files }}/{{ localities|length }}
+          </p>
+        </div>
+     </div>
+
+  </div>
+
+
+{% if localities %}
+
+<!-- Add script to manipulate Table -->
+<script>
+
+function get_users(off_str, con_str, user_str) {
+  /* This function gets all of the users that contributed to a state 
+  Args:
+    off_str: string to official data
+    con_str: string to contact data
+    user_str: string to user data
+  */
+  var off = JSON.parse(document.getElementById(off_str).textContent);
+  var con = JSON.parse(document.getElementById(con_str).textContent);
+  var user = JSON.parse(document.getElementById(user_str).textContent);
+
+  // Iterate through official data and get usernames in array
+  var usernames = []
+
+  for (var local in off) {
+    for (var official_ix in off[local]) {
+      uname = user[off[local][official_ix]['created_by_id']];
+      if (usernames.indexOf(uname) === -1) {
+        usernames.push(uname);
+      }
+    }
+  }
+
+  // Iterate through contacts data and get usernames in array
+  for (var local in con) {
+    for (var contact_log_ix in con[local]) {
+      uname = user[con[local][contact_log_ix]['contacted_by_id']];
+      if (usernames.indexOf(uname) === -1) {
+        usernames.push(uname);
+      }
+    }
+  }
+  return usernames;
+}
+
+// Add values to a given list. List is a select. vals is an array of strings
+function addValsToList(list, vals) {
+  /* Add values to a drop down list in alphabetical order
+  Args:
+    list -> select lists or string to a drop down list element
+    vals -> array containing values to add */
+  if (typeof list == 'string') {
+    var list = document.getElementById(list);
+  }
+  vals.sort();
+  // Iterate through adding each element in values
+  for (var i = 0; i < vals.length; i++) {
+    var option = document.createElement("option");
+    option.text = vals[i];
+    option.value = vals[i];
+    list.add(option);
+  }
+}
+
+function toggle_date_range(off_str, con_str, user_str) {
+  /* Display / Hide date range */
+
+  // Determine whether box is checked
+  var check = document.getElementById("all_dates").checked;
+
+  // If checkbox is selected display
+  if (check) {
+    document.getElementById("date_range").style.display="none";
+
+    // Run fill table
+    fill_table(off_str, con_str, user_str);
+
+    // Reset date range
+    var start = document.getElementById("start_date");
+    start.value = '';
+    var end = document.getElementById("end_date");
+    end.value = '';
+
+  }
+  // If checkbox is not selected hide
+  else {
+    document.getElementById("date_range").style.display="block";
+  }
+}
+
+function is_date_in_range(start, end, date) {
+  /* Determine if a date is in a date range 
+  Args:
+    start: string/date to start date
+    end: string/date to end date
+    date: string/date to date in question */
+
+  // Convert to dates if strings. Don't convert if empty string
+  if (typeof(start) === 'string' && start !== '') {
+    var start = new Date(start);
+  }
+  if (typeof(end) === 'string' && end !== '') {
+    var end = new Date(end);
+  }
+  if (typeof(date) === 'string') {
+    var date = new Date(date);
+  }
+
+  // Check if date is before range. Only if start date is actually entered
+  if (start !== '') {
+    if (start > date) {
+      return false;
+    }
+  }
+    
+  // Check if date is after range. Only if end date is actually enntered
+  if (end !== '') {
+    if (end < date) {
+      return false;
+    }
+  }
+
+  // Date is in range
+  return true;
+}
+
+function filter_object_by_date(obj, start, end, date_key) {
+  /* Filter object by date in range. This function iterates through each 
+  locality and through each index entry, then accesses the date by the key
+  value. Split date string by T to get time
+  Args:
+    obj: object to iterate through
+    start: string/date to start string
+    end: string/date to end string
+    date_key: string to key that gives date*/
+
+  // Initialize new object
+  var new_object = {};
+
+  // Set start and end to dates. Don't convert if they are empty strings
+  if (start !== '') {
+    var start = new Date(start);
+  }
+  if (end !== '') {
+    var end = new Date(end);
+  }
+  // Iterate through localities
+  for (var k1 in obj) {
+    new_object[k1] = {};
+
+    // Iterate through locality's object
+    var locality = obj[k1];
+    for (var k2 in locality) {
+
+      // Get date string and split
+      var d = locality[k2][date_key].split("T")[0];  
+      //alert(d)    
+      //alert(is_date_in_range(start, end, d));
+      
+      // If the value is in the date range add it to the new object
+      if (is_date_in_range(start, end, d)) {
+        new_object[k1][k2] = locality[k2];
+      }
+    }
+  }
+  return new_object;
+}
+
+function filter_object_by_user(obj, user_id, user_key) {
+  /* Filter object by user id. This function iterates through each locality
+  and through each index entry, then accesses the id by user_key
+  Args:
+    obj: object to iterate through
+    user_id: int of id of user to filter by 
+    date_key: string to key that gives user */
+
+  // Initialize new object
+  var new_object = {};
+
+  // Iterate through localities
+  for (var k1 in obj) {
+    new_object[k1] = {};
+
+    // Iterate through locality's object
+    var locality = obj[k1];
+    for (var k2 in locality) {
+
+      // Get user id
+      var entry_user_id = locality[k2][user_key];
+
+      // If entry's id is user_id
+      if (entry_user_id === user_id) {
+        new_object[k1][k2] = locality[k2];
+      }
+    }
+  }
+  return new_object;
+}
+
+function get_count_by_key(obj) {
+  /* get number of objects for each key 
+  Args:
+    obj: object of objects */
+  var count_obj = {};
+
+  for (var k1 in obj) {
+
+    // Initialize key count to 0
+    count_obj[k1] = 0;
+
+    // Iterate through objects inside
+    for (var k2 in obj[k1]) {
+      count_obj[k1] += 1;
+    }
+  }
+  return count_obj;
+}
+
+function get_contributors(obj, contrib_key) {
+  /* Get list of user id by locality. This function iterates through
+  each locality and indexed object. 
+  Args:
+    obj: object to locality. Each locality object values are indexes to objects
+     */
+
+  // Iterate through official data and get usernames in array
+  var contrib_obj = {};
+  for (var k1 in obj) {
+
+    // Initialize object value as empty list
+    contrib_obj[k1] = []
+    for (var k2 in obj[k1]) {
+
+      // Get contributor and add to list if not already in list
+      var contrib = obj[k1][k2][contrib_key];
+      if (contrib_obj[k1].indexOf(contrib) === -1) {
+        contrib_obj[k1].push(contrib);
+      }
+    }
+  }
+  return contrib_obj;
+}
+
+function total_contributors(obj_list) {
+  /* Get total unique users for each locality. Returns an object that gives
+  id, names, and count
+  Args:
+    obj_list: list of objects that contain names ids of contributors for each
+    locality*/
+
+  // Initialize count object and locality lists
+  var contributor_obj = {}
+  for (k in obj_list[0]) {
+    contributor_obj[k] = [];
+  }
+
+  // For each object in the list, add unique id names
+  for (var i = 0; i < obj_list.length; i++) {
+    var obj = obj_list[i];
+    for (k in obj) {
+
+      // Iterate through contributors and add if they are unique
+      var locality_contributors = obj[k];
+
+      for (var j = 0; j < locality_contributors.length; j++) {
+        var c = locality_contributors[j];
+        if (contributor_obj[k].indexOf(c) === -1) {
+          contributor_obj[k].push(c);
+        }
+      }
+    }
+  }
+  return contributor_obj;
+}
+
+function count_contributors(contributor_obj) {
+  /* Get the number of unique users per locality 
+  Args:
+    contributor_obj: unique contributor id's for each locality*/
+  count_obj = {};
+  for (var k in contributor_obj) {
+    var id_list = contributor_obj[k];
+    count_obj[k] = id_list.length;
+  }
+  return count_obj;
+}
+
+function initialize_columns(tbody_id, num_cols) {
+  /* Insert cells in table from col ix 1 to num_cols - 1 for ever row 
+  Args:
+    tbody_id: str to id of table body initializing
+    num_cols: number of columns in the table */
+  var table = document.getElementById(tbody_id);
+
+  // Iterate through each row
+  for (var i = 0, row; row = table.rows[i]; i++) {
+    // Initialize cells in each row
+    for (var j = 1; j < num_cols; j++) {
+      row.insertCell(j);
+    }
+  }
+}
+
+
+function fill_table_column_by_object(obj, col_ix, tbody_id) {
+  /* Update values by column index 
+  Args:
+    obj: object to add values through
+    col_ix: index to add column value
+    tbody_id: str to id to get to access table body
+    */
+
+  var table = document.getElementById(tbody_id);
+
+  // initialize counter
+  var i = 0;
+  for (var k in obj) {
+    // Update row
+    row = table.rows[i];
+    row.cells[col_ix].innerHTML = obj[k];
+
+    // increment
+    i++;
+  }
+}
+
+function fill_table(off_str, con_str, user_str) {
+  /* enter data into data given the correct filters
+  Args:
+    off_str: string to official data
+    con_str: string to contact data
+    user_str: string to user mapping data
+    */
+
+  // get official and contact object
+  var off = JSON.parse(document.getElementById(off_str).textContent);
+  var con = JSON.parse(document.getElementById(con_str).textContent);
+  var user = JSON.parse(document.getElementById(user_str).textContent);
+
+  // Filter Objects by Userif user is selected
+  var u = document.getElementById("user").value;
+  if (u !== 'All Users') {
+
+    // Get User ID
+    for (k in user) {
+      if (user[k] == u) {
+        var user_id = Number(k);
+        break
+      }
+    }
+
+    // Filter according to id
+    off = filter_object_by_user(off, user_id, 'created_by_id')
+    con = filter_object_by_user(con, user_id, 'contacted_by_id')
+  }
+
+  // Filter Objects by Date Range
+  if (! document.getElementById("all_dates").checked) {
+    var start = document.getElementById("start_date").value;
+    var end = document.getElementById("end_date").value;
+    off = filter_object_by_date(off, start, end, 'created_at');
+    con = filter_object_by_date(con, start, end, 'contact_date');
+  }
+
+  // Get Officials by Number
+  var off_count = get_count_by_key(off);
+
+  // Get Contacts by Number
+  var con_count = get_count_by_key(con);
+
+  // Get Contributors
+  var off_contributors = get_contributors(off, 'created_by_id');
+  var con_contributors = get_contributors(con, 'contacted_by_id');
+
+  // Get Number of Contributors. Iterate through counties
+  var obj_list = [off_contributors, con_contributors];
+  var all_contributors = total_contributors(obj_list);
+  var num_contributors = count_contributors(all_contributors);
+
+  // Fill table with Officials
+  fill_table_column_by_object(off_count, 1, 'locality_table')
+
+  // Fill table with Contacts
+  fill_table_column_by_object(con_count, 2, 'locality_table')
+
+  // Fill table with Contributors
+  fill_table_column_by_object(num_contributors, 4, 'locality_table')
+  return false;
+}
+
+</script>
+
+
+<!-- Load in Context data -->
+{{officials|json_script:"official-data"}}
+{{contact_log|json_script:"contact-log-data"}}
+{{username_mapping|json_script:"user-data"}}
+
+<!-- Date Range and User Selection -->
+<form>
+Select User:
+<select id="user" onChange="fill_table('official-data', 'contact-log-data', 'user-data')"></select>
+</form>
+<form onsubmit="return false">
+All Dates:
+<input type="checkbox" id="all_dates" checked onchange="toggle_date_range(
+'official-data', 'contact-log-data','user-data')">
+(toggle to display/hide date range)
+<div id="date_range">
+Start Date:
+<input type="date" id="start_date">
+End Date:
+<input type="date" id="end_date">
+<button onclick="fill_table('official-data', 'contact-log-data', 'user-data')">
+Update Date Range</button>
+</div>
+</form>
+
+<!-- Locality Table -->
+<br>
+    <table class="table">
+    <thead>
+        <th>Locality</th>
+        <th>Officials</th>
+        <th>Contacts Made</th>
+        <th>Files Received</th>
+        <th># Contributors</th>
+
+    </thead>
+    <tbody id='locality_table'>
+    {% for locality in localities %}
+    <tr>
+        <td><a href="{% url "locality_overview" locality.id %}">{{ locality.name }}</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+<!-- Table Initialization -->
+<script type="text/javascript">
+  // Get users and add to list. Add 'All Users' option
+  var users = get_users('official-data', 'contact-log-data','user-data');
+  users.push('All Users');
+  addValsToList("user", users);
+
+  // Hide date range
+  document.getElementById("date_range").style.display="none";
+
+  // Fill Table
+  initialize_columns('locality_table', 5);
+  fill_table('official-data', 'contact-log-data','user-data');
+</script>
+
+{% endif %}
+
+</div>
+</section>
+{% endif %}
+
+{% endblock %}
