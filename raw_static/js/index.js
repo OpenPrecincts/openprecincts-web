@@ -26,7 +26,7 @@ window.addEventListener('load', () => {
           'cleaning': {'name': 'Cleaning Data', 'fill': 'lightgreen'},
           'available': {'name': 'Data Available', 'fill': 'darkgreen'},
         },
-        link_template: state => `/collect/${state.toLowerCase()}`
+        link_template: state => `/${state.toLowerCase()}`
       }),
       sm
     );
