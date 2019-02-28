@@ -5,7 +5,7 @@ import glob
 from django.db import transaction
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User
-from core.models import Locality, Official
+from core.models import Locality, Official, ContactLog
 from files.utils import upload_local_file, File
 
 FIX_MAPPING = {
@@ -27,7 +27,6 @@ def get_locality(state, locality_name):
 @transaction.atomic
 def import_contact_csv(state, filename):
     bot, _ = User.objects.get_or_create(username='migration-bot')
-    Official.objects.all().delete()
 
     with open(filename) as f:
         # skip a few lines
@@ -40,10 +39,10 @@ def import_contact_csv(state, filename):
                 first_name=line['First Name'],
                 last_name=line['Last Name'],
                 title=line['Title'],
-                phone_number=line['Phone'],
+                phone_number=line['Phone'].replace('-', '')[:10],
                 email=line['Email'],
                 job_title=line['Job Title'],
-                notes=line[''],
+                # notes=line[''],
                 created_by=bot,
             )
             if line['msg #'] == '1':
@@ -70,10 +69,12 @@ def import_sourcefiles(state, path):
 class Command(BaseCommand):
     help = 'Import data from Google Drive'
 
-    def add_arguments(self, parser):
-        parser.add_argument('--contact', type=str, help='path to contact CSV')
-
     def handle(self, *args, **options):
-        File.objects.all().delete()
-        # import_contact_csv('VA', options['contact'])
+        # File.objects.all().delete()
         import_sourcefiles('VA', '/Users/james/Downloads/Virginia p*/*/source*')
+        # ContactLog.objects.all().delete()
+        # Official.objects.all().delete()
+
+        # import_contact_csv('VA', 'va-contact.csv')
+        # import_contact_csv('PA', 'pa-contact.csv')
+        # import_contact_csv('MI', 'mi-contact.csv')
