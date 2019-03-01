@@ -5,10 +5,22 @@ import '../styles/main.scss'
 
 import StateMap from './state-map'
 
+
 function reveal() {
   document.querySelector(`[data-hidden=${this.dataset.reveal}]`).style.display = "block";
   this.style.display = "none";
 }
+
+
+function onFileChange() {
+  if(this.files.length == 0) {
+    document.querySelector(".file-name").innerHTML = "";
+  } else if(this.files.length == 1) {
+    document.querySelector(".file-name").innerHTML = this.files[0].name;
+  } else {
+    document.querySelector(".file-name").innerHTML = `${this.files.length} files`;
+  }
+};
 
 
 window.addEventListener('load', () => {
@@ -35,4 +47,5 @@ window.addEventListener('load', () => {
   // bind hidden/reveal hooks
   document.querySelectorAll('[data-hidden]').forEach(e => e.style.display = "none");
   document.querySelectorAll('[data-reveal]').forEach(e => e.onclick = reveal);
+  document.querySelectorAll('input[type=file]').forEach(e => e.onchange = onFileChange);
 });

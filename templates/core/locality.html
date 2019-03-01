@@ -14,44 +14,54 @@
 <div class="container">
     <h2 class="title is-3">Officials</h2>
 
-    {% if user_can_write %}
-    <button class="button is-primary" data-reveal="official">Add Official</button>
-    <div class="box simpleform" data-hidden="official">
-    <form method="POST">
-        <input type="hidden" name="locality" value="{{ locality.id }}">
-        {% render_form official_form %}
-        {% csrf_token %}
-        <input type="submit" class="button is-primary">
-    </form>
-    </div>
-    {% endif %}
+    <div class="columns">
+        <div class="column">
+        {% if not officials %}
+            <p>So far we haven't collected any officials.  </p>
+        {% else %}
+            {% for official in officials %}
 
-    {% if not officials %}
-        <p>So far we haven't collected any officials.  </p>
-    {% else %}
-        {% for official in officials %}
+            <div class="box official">
+                <span class="title is-5">{{ official.title }} {{ official.first_name }} {{official.last_name }}</span>
+                <span>{{ official.job_title }}</span>
+                {% if user_can_contact or request.user == official.created_by %}
+                <div>
+                    {% if official.phone_number %}
+                    <span class="icon has-text-info">
+                      <i class="fas fa-phone"></i>
+                    </span>
 
-        <div class="box official">
-            <span class="title is-5">{{ official.title }} {{ official.first_name }} {{official.last_name }}</span>
-            <span>{{ official.job_title }}</span>
-            {% if user_can_contact or request.user == official.created_by %}
-            <div>
-                <span class="icon has-text-info">
-                  <i class="fas fa-phone"></i>
-                </span>
-                <a href="tel:{{ official.phone_number }}">{{ official.phone_number }}</a>
-                <span class="icon has-text-info">
-                  <i class="fas fa-at"></i>
-                </span>
-                <a href="mailto:{{ official.email }}">{{ official.email }}</a>
+                    <a href="tel:{{ official.phone_number }}">{{ official.phone_number }}</a>
+                    {% endif %}
+                    {% if official.email %}
+                    <span class="icon has-text-info">
+                      <i class="fas fa-at"></i>
+                    </span>
+                    <a href="mailto:{{ official.email }}">{{ official.email }}</a>
+                    {% endif %}
+                </div>
+                {% else %}
+                <p>Contact details hidden for privacy.</p>
+                {% endif %}
+                <div>{{ official.notes }}</div>
             </div>
-            {% else %}
-            <p>Contact details hidden for privacy.</p>
-            {% endif %}
-            <div>{{ official.notes }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="column">
+        {% if user_can_write %}
+        <button class="button is-primary" data-reveal="official">Add Official</button>
+        <div class="box simpleform" data-hidden="official">
+        <form method="POST">
+            <input type="hidden" name="locality" value="{{ locality.id }}">
+            {% render_form official_form %}
+            {% csrf_token %}
+            <input type="submit" class="button is-primary">
+        </form>
         </div>
-        {% endfor %}
-    {% endif %}
+        {% endif %}
+    </div>
+
 </div>
 </section>
 
@@ -59,7 +69,7 @@
 <div class="container">
     <h3 class="title is-3">Contact Log</h3>
     {% if not contact_log %}
-        This official has not yet been contacted.
+        <p>This locality has not yet been contacted.</p>
     {% else %}
         <table class="table">        
         <thead>
@@ -88,26 +98,47 @@
     <h3 class="title is-3">File Management</h3>
 
     {% if user_can_write %}
-    <h4>Add Files</h4>
     <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="hidden" name="locality" value="{{ locality.id }}">
 
-        <div class="file">
-          <label class="file-label">
-            <input class="file-input" type="file" name="files" multiple>
-            <span class="file-cta">
-              <span class="file-icon">
-                <i class="fas fa-upload"></i>
+        <div class="level">
+            <div class="level-left">
+            <div class="file level-item has-name">
+              <label class="file-label">
+                <input class="file-input" type="file" name="files" multiple>
+                <span class="file-cta">
+                  <span class="file-icon">
+                    <i class="fas fa-upload"></i>
+                  </span>
+                  <span class="file-label">
+                    Select files to upload…
+                  </span>
               </span>
-              <span class="file-label">
-                Select files…
+              <span class="file-name">
               </span>
-            </span>
-          </label>
+            </label>
+                </div>
+            <div class="level-item">
+                <input type="submit" class="button is-primary">
+            </div>
+            </div>
+
+            <div class="level-right">
+                <div class="level-item">
+                <span class="file-cta">
+                  <span class="file-icon">
+                    <i class="fas fa-download"></i>
+                  </span>
+                  <span class="file-label">
+                    Download All Files
+                  </span>
+                  </span>
+              </div>
+            </div>
+
         </div>
 
-        <input type="submit">
     </form>
     {% endif %}
 

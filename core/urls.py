@@ -19,5 +19,5 @@ urlpatterns = [
     path('', views.homepage, name="homepage"),
     path('overview/', views.national_overview, name="national_overview"),
     path('<state:state>/', views.state_overview, name="state_overview"),
-    path('<int:id>/', views.locality_overview, name="locality_overview"),
+    path('locality/<int:id>/', views.locality_overview, name="locality_overview"),
 ]
