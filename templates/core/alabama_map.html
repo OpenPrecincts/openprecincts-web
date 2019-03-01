@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Interactive maps for Django web apps</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+  </head>
+  <body>
+   <h1>Map time!</h1>
+   {{alabama|json_script:"al"}}
+   <div id='map' style='width: 400px; height: 300px;'></div>
+	<script>
+	var al = JSON.parse(document.getElementById("al").textContent);
+	var al = JSON.parse(al);
+
+	mapboxgl.accessToken = 'pk.eyJ1IjoiY29ubm9ybW9mZmF0dCIsImEiOiJjanNubjllcnowNXRtNDVxbXJycGk2bGphIn0.tIVxZ6bTWPunc1fe1Xpmdw';
+	var map = new mapboxgl.Map({container: 'map',
+	style: 'mapbox://styles/mapbox/dark-v9',
+	center:[-86.3077, 32.3792],
+	zoom: 5
+	});
+	map.addLayer("counties", {
+		"type": "geojson",
+		"data": { al
+		}
+	})
+	</script>
+
+
+  </body>
+</html>

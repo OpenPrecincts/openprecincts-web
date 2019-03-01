@@ -21,5 +21,7 @@ urlpatterns = [
     path('<state:state>/', views.state_overview, name="state_overview"),
     path('<int:id>/', views.locality_overview, name="locality_overview"),
     path('<state:state>/internal/', views.state_overview_internal,
-    name="state_overview_internal")
+        name="state_overview_internal"),
+    path('default_map/', views.default_map, name="default_map"),
+    path('alabama_map/', views.alabama_map, name="alabama_map")
 ]

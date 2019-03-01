@@ -7,6 +7,9 @@ from django.forms import ModelForm
 from .models import Locality, Official, ContactLog, State
 from .permissions import ensure_permission, has_permission, Permissions
 from files.models import File
+import json
+import os
+from django.conf import settings
 
 class OfficialForm(ModelForm):
     class Meta:
@@ -267,3 +270,15 @@ def state_overview_internal(request, state):
         
     })
     return render(request, "core/state_overview_internal.html", context)
+
+def default_map(request):
+    mapbox_access_token = 'pk.eyJ1IjoiY29ubm9ybW9mZmF0dCIsImEiOiJjanNubjllcnowNXRtNDVxbXJycGk2bGphIn0.tIVxZ6bTWPunc1fe1Xpmdw'
+    return render(request, 'core/default_map.html', 
+        {'mapbox_access_token':mapbox_access_token})
+
+def alabama_map(request):
+    path = os.path.join(settings.STATICFILES_DIRS[0], 'geodata', 'AL-01-alabama-counties.json')
+    al = open(path)
+    al = json.load(al)
+    al = json.dumps(al)
+    return render(request, 'core/alabama_map.html', {'alabama': al})
