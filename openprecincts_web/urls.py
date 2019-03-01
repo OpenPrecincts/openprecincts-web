@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.urls import path, include
-from core.views import homepage
 from django.views.generic.base import TemplateView
 
 admin.site.site_header = "OpenPrecincts Admin"

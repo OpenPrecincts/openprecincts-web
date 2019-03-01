@@ -5,8 +5,8 @@ import glob
 from django.db import transaction
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User
-from core.models import Locality, Official, ContactLog
-from files.utils import upload_local_file, File
+from core.models import Locality, Official
+from files.utils import upload_local_file
 
 FIX_MAPPING = {
     'Isle of Wight': 'Isle of Wight County',
