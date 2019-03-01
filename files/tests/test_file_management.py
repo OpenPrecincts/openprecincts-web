@@ -36,7 +36,7 @@ def test_upload_files(client, user, s3):
 
     # ensure redirect to state page
     assert resp.status_code == 302
-    assert resp.url == f"/collect/{locality.id}/"
+    assert resp.url == f"/locality/{locality.id}/"
 
     # ensure the file was created
     f = File.objects.all().get()
