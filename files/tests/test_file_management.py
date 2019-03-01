@@ -1,4 +1,5 @@
-from io import StringIO
+from io import StringIO, BytesIO
+import zipfile
 import pytest
 from moto import mock_s3
 import boto3
@@ -81,3 +82,32 @@ def test_download(client, user, s3):
     resp = client.get(f"/files/download/{f.id}/")
     assert resp.status_code == 200
     assert resp.get('Content-Disposition') == 'attachment; filename="fake.txt"'
+
+
+@pytest.mark.django_db
+def test_download_zip(client, user, s3):
+    locality = Locality.objects.get(name='Wake County', state_id='NC')
+    user.groups.create(name="NC write")
+    client.force_login(user)
+    faux_file = StringIO("file contents")
+    faux_file.name = "fake.txt"
+    faux_file2 = StringIO("different file")
+    faux_file2.name = "other.txt"
+    resp = client.post("/files/upload/",
+                       {"locality": locality.id,
+                        "files": [faux_file, faux_file2],
+                        })
+
+    assert resp.status_code == 302
+    file_ids = [f.id for f in File.objects.all()]
+
+    assert len(file_ids) == 2
+
+    resp = client.post("/files/download_zip/",
+                       {"id": file_ids})
+    assert resp.status_code == 200
+    assert resp.get('Content-Disposition') == 'attachment; filename="download.zip"'
+
+    zip_content = BytesIO(b"".join(resp.streaming_content))
+    zip = zipfile.ZipFile(zip_content)
+    assert len(zip.namelist()) == 2

@@ -98,11 +98,11 @@
     <h3 class="title is-3">File Management</h3>
 
     {% if user_can_write %}
-    <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="hidden" name="locality" value="{{ locality.id }}">
-
         <div class="level">
+
+            <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="locality" value="{{ locality.id }}">
             <div class="level-left">
             <div class="file level-item has-name">
               <label class="file-label">
@@ -123,23 +123,29 @@
                 <input type="submit" class="button is-primary">
             </div>
             </div>
+            </form>
 
-            <div class="level-right">
-                <div class="level-item">
-                <span class="file-cta">
-                  <span class="file-icon">
-                    <i class="fas fa-download"></i>
-                  </span>
-                  <span class="file-label">
-                    Download All Files
-                  </span>
-                  </span>
-              </div>
-            </div>
+            {% if files %}
+                <form action="{% url 'download_zip' %}" method="POST">
+                {% csrf_token %}
+                {% for f in files %}
+                <input type="hidden" name="id" value="{{ f.id }}">
+                {% endfor %}
+                <div class="level-right">
+                    <div class="level-item">
+                    <button class="button" type="submit">
+                      <span class="file-icon">
+                        <i class="fas fa-download"></i>
+                      </span>
+                      Download All Files
+                    </button>
+                      </div>
+                  </div>
+              </form>
+          {% endif %}
 
         </div>
 
-    </form>
     {% endif %}
 
     <table class="table">        
