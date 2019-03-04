@@ -16,6 +16,7 @@ $state-grid-size: 50px;
     line-height: $state-grid-size;
     font-weight: bold;
     color: white;
+    cursor: pointer;
 }
 .state-grid-box.ME { grid-area: 1 / 12 / span 1 / span 1; }
 
