@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from .locality import Locality
+from core.models import Locality
 
 
 class Official(models.Model):

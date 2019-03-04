@@ -13,6 +13,7 @@ class Migration(migrations.Migration):
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ('core', '0001_initial'),
+        ('contact', '0001_initial'),
     ]
 
     operations = [
@@ -31,7 +32,7 @@ class Migration(migrations.Migration):
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('created_by', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='created_files', to=settings.AUTH_USER_MODEL)),
                 ('locality', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='files', to='core.Locality')),
-                ('official', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, related_name='files', to='core.Official')),
+                ('official', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, related_name='files', to='contact.Official')),
                 ('parent_file', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, related_name='children', to='files.File')),
             ],
         ),

@@ -1,7 +1,8 @@
 import uuid
 from django.db import models
 from django.contrib.auth.models import User
-from core.models import Locality, Official
+from core.models import Locality
+from contact.models import Official
 
 
 class File(models.Model):

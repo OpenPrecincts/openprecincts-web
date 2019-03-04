@@ -1,4 +1,4 @@
-from core.models.locality import State, StateStatus
+from core.models import State, StateStatus
 
 
 def test_state_collection_status():
