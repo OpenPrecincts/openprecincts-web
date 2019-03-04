@@ -75,12 +75,13 @@ def state_overview(request, state):
     localities = Locality.objects.filter(state=state).order_by('name')
     localities = localities.annotate(
         total_officials=RawSQL(
-            "SELECT COUNT(*) FROM core_official WHERE core_official.locality_id=core_locality.id",
+            "SELECT COUNT(*) FROM contact_official "
+            "WHERE contact_official.locality_id=core_locality.id",
             ()),
         total_contacts=RawSQL(
-            "SELECT COUNT(*) FROM core_contactlog JOIN core_official "
-            " ON core_contactlog.official_id=core_official.id "
-            " WHERE core_official.locality_id=core_locality.id",
+            "SELECT COUNT(*) FROM contact_contactlog JOIN contact_official "
+            " ON contact_contactlog.official_id=contact_official.id "
+            " WHERE contact_official.locality_id=core_locality.id",
             ()),
         total_files=RawSQL(
             "SELECT COUNT(*) FROM files_file WHERE files_file.locality_id=core_locality.id",
