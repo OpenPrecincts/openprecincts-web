@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load common %}
+
+{% block body %}
+
+<section class="section">
+<div class="container">
+
+<form method="POST">
+{% csrf_token %}
+{% render_field form.subject_template %}
+{% render_field form.body_template %}
+
+<table class="table">
+    <thead>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Locality</th>
+        <th>Times Contacted</th>
+        <th>Last Contacted</th>
+    </thead>
+    <tbody>
+        {% for official in officials %}
+        <tr>
+            <td><input type="checkbox" value="{{ official.id }}" name="recipients"></td>
+            <td>{{ official }}</td>
+            <td>{{ official.locality.name }}</td>
+            <td>{{ official.times_contacted }}</td>
+            <td>{{ official.last_contacted }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<input class="button" type="submit" value="Save Draft">
+<input class="button is-primary" type="submit" value="Send For Approval">
+
+</form>
+</div>
+</section>
+
+{% endblock %}
