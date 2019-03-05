@@ -46,3 +46,25 @@ class ContactLog(models.Model):
     # change tracking
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+class EmailMessage(models.Model):
+    officials = models.ManyToManyField(Official, related_name='messages')
+
+    subject_template = models.CharField(max_length=100)
+    body_template = models.TextField()
+
+    sent_at = models.DateTimeField(null=True)
+
+    # change tracking
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(User, on_delete=models.PROTECT,
+                                   related_name="email_messages")
+
+
+    def status(self):
+        if self.sent_at is None:
+            return 'unsent'
+        else:
+            return 'sent'
