@@ -16,19 +16,25 @@ def bulk_email(request, state):
 
     if request.method == "POST":
         form = EmailForm(request.POST)
-        if form.is_valid():
+        recipients = request.POST.getlist('recipients')
+        if form.is_valid() and recipients:
             email = EmailMessage.objects.create(
                 subject_template=form.cleaned_data['subject_template'],
                 body_template=form.cleaned_data['body_template'],
                 created_by=request.user,
             )
-            email.officials.set(request.POST['recipients'])
+            email.officials.set(recipients)
             return redirect('preview_email', email.id)
+        elif not recipients:
+            messages.error(request, "Must specify at least one recipient.")
     else:
         form = EmailForm()
 
     officials = Official.objects.filter(
-        locality__state__abbreviation=state.upper(), active=True
+        locality__state__abbreviation=state.upper(),
+        active=True,
+    ).exclude(
+        email="",
     ).annotate(
         times_contacted=Count('messages'),
         last_contacted=Max('messages__sent_at'),
