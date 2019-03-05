@@ -1,0 +1,24 @@
+<div class="field">
+  <label class="label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+  <div class="control">
+
+    {% if field.field.widget.input_type == "text" or field.field.widget.input_type == "email" %} 
+    <input id="{{ field.id_for_label }}" class="input {% if field.errors %}is-danger{% endif %}" type="{{ field.field.widget.input_type }}" name="{{ field.html_name }}" {% if field.value %}value="{{ field.value }}" {% endif %}>
+    {% elif field.field.widget.input_type == "select" %}
+        <div class="select"> {{ field }} </div> 
+    {% elif not field.field.widget.input_type %}
+        <textarea class="textarea" name="{{ field.html_name }}" cols="40" rows="10" id="{{ field.id_for_label }}">{% if field.value %}{{ field.value }}{% endif %}</textarea>
+    {% else %}
+        {# handle these better #}
+        Need to add suppport for {{ field.field.widget }}
+    {% endif %}
+
+      {% if field.errors %}
+      <p class="help is-error">
+         {% for error in field.errors %}
+            {{ error|escape }}
+         {% endfor %}
+      </p>
+      {% endif %}
+  </div>
+</div>

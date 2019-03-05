@@ -3,27 +3,5 @@
 {% endfor %}
 
 {% for field in form.visible_fields %}
-<div class="field">
-  <label class="label" for="{{ field.id_for_label }}">{{ field.label }}</label>
-  <div class="control">
-
-    {% if field.field.widget.input_type == "text" or field.field.widget.input_type == "email" %} 
-    <input id="{{ field.id_for_label }}" class="input {% if field.errors %}is-danger{% endif %}" type="{{ field.field.widget.input_type }}" name="{{ field.html_name }}" {% if field.value %}value="{{ field.value }}" {% endif %}>
-    {% elif field.field.widget.input_type == "select" %}
-        <div class="select"> {{ field }} </div> 
-    {% else %}
-        {# handle these better #}
-        {{ field.field.widget.input_type }}
-        {{ field }}
-    {% endif %}
-
-      {% if field.errors %}
-      <p class="help is-error">
-         {% for error in field.errors %}
-            {{ error|escape }}
-         {% endfor %}
-      </p>
-      {% endif %}
-  </div>
-</div>
+    {% include "_components/field.html" %}
 {% endfor %}
