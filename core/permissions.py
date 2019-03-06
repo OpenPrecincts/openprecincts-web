@@ -33,6 +33,8 @@ def has_permission(user, state, permission):
     # normalize state to abbreviation
     if hasattr(state, 'abbr'):
         abbr = state.abbr
+    elif hasattr(state, 'abbreviation'):
+        abbr = state.abbreviation
     else:
         abbr = us.states.lookup(state).abbr
 

@@ -2,6 +2,7 @@ import us
 import pytest
 from django.contrib.auth.models import User, Group
 from core.permissions import Permissions, has_permission
+from core.models import State
 
 
 def setup():
@@ -26,6 +27,7 @@ def test_has_permission_basics():
     assert has_permission(u, "NC", "write")
     assert has_permission(u, "NC", Permissions.WRITE)
     assert has_permission(u, us.states.lookup("NC"), "write")
+    assert has_permission(u, State(abbreviation="NC"), "write")
 
     assert not has_permission(u, "NC", "contact")
     assert not has_permission(u, "VA", "write")
