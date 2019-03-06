@@ -1,0 +1,245 @@
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+
+<div class="section">
+<div class="container">
+  <nav id="precinct-menu"></nav>
+  <div id='precinct-map'></div>
+  <!-- <pre id='precinct-info'></pre> show coordinates -->
+</div>
+</div>
+
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoid3RhZGxlciIsImEiOiJjajk3bXB3engwOGY1MzNvN3RndnI0cHlzIn0.mHvtyr2Z3xnFx624vKPqrQ';
+
+var bounds = [
+  [-84, 36.3], // SW coordinates
+  [-74.7, 39.7] // NE coordinates
+]
+
+var maxbounds = [ // should find a programmatic way to get these sets of coordinates
+  [-86, 32.3], // SW coordinates
+  [-72.7, 43.7] // NE coordinates
+]
+
+var map = new mapboxgl.Map({
+  container: 'precinct-map', // container id
+  style: 'mapbox://styles/wtadler/cjspnljel33xz1fsb5bfgb9yi?fresh=true', // stylesheet location
+  center: [-79.261, 37], // starting position [lng, lat]
+  zoom: 6.5, // starting zoom
+  maxBounds: maxbounds
+});
+
+// show coordinates of mouse
+// map.on('mousemove', function(e) {
+//   document.getElementById('info').innerHTML =
+//     // e.point is the x, y coordinates of the mousemove event relative
+//     // to the top-left corner of the map
+//     JSON.stringify(e.point) + '<br />' +
+//     // e.lngLat is the longitude, latitude geographical position of the event
+//     JSON.stringify(e.lngLat);
+// });
+// 
+// 
+
+
+map.on('load', function() {
+  map.fitBounds(bounds, {
+    duration: 0
+  });
+
+  var layers = map.getStyle().layers;
+  // Find the index of the first symbol layer in the map style
+  var firstSymbolId;
+  for (var i = 0; i < layers.length; i++) {
+    if (layers[i].type === 'symbol') {
+      firstSymbolId = layers[i].id;
+      break;
+    }
+  }
+
+  map.addLayer({
+    id: 'precincts',
+    type: 'fill',
+    source: {
+      type: 'vector',
+      url: 'mapbox://wtadler.boctuyrn'
+    },
+    'source-layer': 'va',
+    paint: {
+      'fill-outline-color': ["case",
+        ["boolean", ["feature-state", "hover"], false],
+        "rgba(0,0,0,1)",
+        "rgba(0,0,0,0.0)"
+      ], // if we want to change the width of the outline on hover, we will unfortunately have to make a separate type: 'line' layer
+      'fill-color': [
+        "interpolate-lab", // perceptual color space interpolation
+        ['linear'],
+        ['/', ["get", "G16DPRS"],
+          ['+', ["get", "G16DPRS"],
+            ["get", "G16RPRS"]
+          ]
+        ], // if haven't coerced to a number in tippecanoe, use this ["to-number", ["get", "G16DPRS"]]
+        0, "red",
+        .5, "white", // note that, unlike functions, the "stops" are flat, not wrapped in two-element arrays
+        1, "blue"
+      ],
+      'fill-opacity': .5,
+    }
+  }, firstSymbolId);
+
+  map.addLayer({
+    id: 'counties',
+    type: 'line',
+    source: {
+      type: 'vector',
+      url: 'mapbox://wtadler.1y2uxtv2'
+    },
+    'source-layer': 'us_counties',
+    paint: {
+      'line-color': "#777",
+      'line-width': 1,
+    }
+  });
+
+  map.addLayer({
+    id: 'counties_label',
+    type: 'symbol',
+    source: {
+      type: 'vector',
+      url: 'mapbox://wtadler.5eil0ga9'
+    },
+    'source-layer': 'us_county_labels-7jb5xa',
+    layout: {
+      'text-field': '{NAME}',
+      'text-size': 11,
+    },
+    paint: {
+      'text-halo-width': 2,
+      'text-halo-color': 'rgba(255,255,255,0.7)'
+    }
+
+  });
+
+  map.setFilter('counties', ['==', 'STATEFP', '51']); // only show counties for VA
+  map.setFilter('counties_label', ['==', 'STATEFP', '51']);
+
+  function toFixed(value, precision) { //https://stackoverflow.com/questions/661562/how-to-format-a-float-in-javascript
+    var power = Math.pow(10, precision || 0);
+    return String(Math.round(value * power) / power);
+  }
+
+  function numberWithCommas(x) { // add thousands separators
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  var popup = new mapboxgl.Popup({
+    closeButton: false,
+    closeOnClick: false,
+    anchor: 'bottom-left',
+    offset: 0
+  });
+
+  var hoveredStateId = null;
+
+  map.on('mousemove', 'precincts', function(e) {
+    // Change the cursor style as a UI indicator.
+    map.getCanvas().style.cursor = 'pointer';
+
+    var coordinates = e.lngLat;
+    var description =
+      `
+    <div class="precinct-name">${e.features[0].properties.precinct}</div>
+    <div class="county-name">${e.features[0].properties.locality}</div>
+    <table class="elec-table">
+      <thead>
+        <tr>
+          <th class='cand'>Candidate</th>
+          <th class='votes'>Votes</th>
+          <th class='pct'>%</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class='cand'><span class="party-dem">&#9679;</span> Clinton (2016)</td>
+          <td>${numberWithCommas(e.features[0].properties.G16DPRS)}</td>
+          <td>${toFixed((100*e.features[0].properties.G16DPRS / (e.features[0].properties.G16DPRS + e.features[0].properties.G16RPRS)), 1)}</td>
+        </tr>
+        <tr>
+          <td class='cand'><span class="party-rep">&#9679;</span> Trump (2016)</td>
+          <td>${numberWithCommas(e.features[0].properties.G16RPRS)}</td>
+          <td>${toFixed((100*e.features[0].properties.G16RPRS / (e.features[0].properties.G16DPRS + e.features[0].properties.G16RPRS)), 1)}</td>
+        </tr>
+      </tbody>
+    </table>        
+    `
+
+
+    // Populate the popup and set its coordinates
+    // based on the feature found.
+    popup.setLngLat(coordinates)
+      .setHTML(description)
+      .addTo(map);
+
+    if (hoveredStateId) {
+      map.setFeatureState({
+        source: 'precincts',
+        id: hoveredStateId,
+        sourceLayer: 'va'
+      }, {
+        hover: false
+      });
+    }
+    hoveredStateId = e.features[0].id;
+    map.setFeatureState({
+      source: 'precincts',
+      id: hoveredStateId,
+      sourceLayer: 'va'
+    }, {
+      hover: true
+    });
+
+  });
+
+  map.on('mouseleave', 'precincts', function() {
+    map.getCanvas().style.cursor = '';
+    popup.remove();
+  });
+
+});
+
+toggleLayer(['counties_label', 'counties'], 'Counties'); // group county and county label into one button
+// toggleLayer(['precincts'], 'Precincts');
+
+
+function toggleLayer(ids, name) {
+  var link = document.createElement('a');
+  link.href = '#';
+  link.className = 'active';
+  link.textContent = name;
+
+  link.onclick = function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    for (layers in ids) {
+      var visibility = map.getLayoutProperty(ids[layers], 'visibility');
+      if (visibility === 'visible') {
+        map.setLayoutProperty(ids[layers], 'visibility', 'none');
+        this.className = '';
+      } else {
+        this.className = 'active';
+        map.setLayoutProperty(ids[layers], 'visibility', 'visible');
+      }
+    }
+
+  };
+
+  var layers = document.getElementById('precinct-menu');
+  layers.appendChild(link);
+}
+
+
+// make precinct boundaries and county boundaries match better—is this about the resolution of the files i've downloaded or processed in tippecanoe?
+
+// right now, using point labels for counties. at some point, it will be better to do dynamic labeling like: https://medium.com/@yixu0215/dynamic-label-placement-with-mapbox-gl-js-turf-polylabel-1f84f1d4bf6b
+</script>

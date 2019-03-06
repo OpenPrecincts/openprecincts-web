@@ -1,0 +1,118 @@
+
+#precinct-map {
+  height: 400px;
+}
+
+#precinct-info {
+  display: block;
+  position: relative;
+  margin: 0px auto;
+  width: 50%;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  text-align: center;
+  color: #222;
+  background: #fff;
+}
+
+#precinct-menu {
+  background: #fff;
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  right: 10px;
+  border-radius: 3px;
+  width: 120px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  font-family: 'Open Sans', sans-serif;
+}
+
+#precinct-menu a {
+  font-size: 13px;
+  color: #404040;
+  display: block;
+  margin: 0;
+  padding: 0;
+  padding: 10px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+#precinct-menu a:last-child {
+  border: none;
+}
+
+#precinct-menu a:hover {
+  background-color: #f8f8f8;
+  color: #404040;
+}
+
+#precinct-menu a.active {
+  background-color: #3887be;
+  color: #ffffff;
+}
+
+#precinct-menu a.active:hover {
+  background: #3074a4;
+}
+
+/* .mapboxgl-popup {
+  background: rgba(255, 255, 255, 0.5)
+} */
+
+.mapboxgl-popup-content {
+  background: rgba(255, 255, 255, 0.88);
+  padding: 9px 7px 5px;
+  line-height: 120%;
+}
+
+.mapboxgl-popup-tip {
+  border-top-color: rgba(255, 255, 255, 0.88);
+}
+
+.mapboxgl-popup .precinct-name {
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 6px;
+  margin-left: 4px;
+}
+
+.county-name {
+  margin-left: 4px;
+}
+
+.elec-table {
+  margin-top: 5px;
+  text-align: right;
+  line-height: 100%
+}
+
+.elec-table thead {
+  color: #999;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.elec-table .cand {
+  text-align: left;
+  width: 100px;
+}
+
+.elec-table .votes {
+  width: 40px;
+}
+
+.elec-table .pct {
+  width: 36px;
+}
+
+.elec-table .party-dem {
+  color: #44f
+}
+
+.elec-table .party-rep {
+  color: #f44
+}

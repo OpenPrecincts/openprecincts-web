@@ -74,6 +74,10 @@
 </div>
 </section>
 
+{% if state.status.value == "available" %}
+{% include "_components/state_complete.html" %}
+{% endif %}
+
 
 {% if state.status.value != "unknown"  %}
 
