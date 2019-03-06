@@ -62,7 +62,6 @@ class EmailMessage(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.PROTECT,
                                    related_name="email_messages")
 
-
     def status(self):
         if self.sent_at is None:
             return 'unsent'

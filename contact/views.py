@@ -39,7 +39,7 @@ def bulk_email(request, state):
             msg = EmailMessage.objects.get(pk=edit)
             # if user didn't create the message, make sure they are admin
             if msg.created_by != request.user:
-                ensure_permission(request.user, state, Permission.ADMIN)
+                ensure_permission(request.user, state, Permissions.ADMIN)
             form = EmailForm(dict(
                 subject_template=msg.subject_template,
                 body_template=msg.body_template
@@ -89,7 +89,9 @@ def preview(request, id):
     email = get_object_or_404(EmailMessage, pk=id)
 
     try:
-        _, preview_subject, preview_body = render_email(email, email.officials.first(), preview=True)
+        _, preview_subject, preview_body = render_email(
+            email, email.officials.first(), preview=True
+        )
     except KeyError as e:
         preview_subject = email.subject_template
         preview_body = email.body_template

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Official, ContactLog
+from .models import Official, ContactLog, EmailMessage
 
 
 class OfficialAdmin(admin.ModelAdmin):
@@ -40,3 +40,16 @@ class ContactAdmin(admin.ModelAdmin):
 
 
 admin.site.register(ContactLog, ContactAdmin)
+
+
+class EmailMessageAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (None, {'fields': ('subject_template', 'body_template', 'officials')}),
+        ('Administrative', {'fields': ('sent_at', 'created_at', 'updated_at', 'created_by')}),
+    )
+
+    list_display = ('subject_template', 'sent_at', 'created_by')
+    date_hierarchy = "created_at"
+
+
+admin.site.register(EmailMessage, EmailMessageAdmin)
