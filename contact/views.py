@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Count, Max
 from django.contrib import messages
 from django.utils.html import mark_safe
+from core.permissions import Permissions, ensure_permission
 from contact.models import Official, EmailMessage
 
 
@@ -12,7 +13,9 @@ class EmailForm(forms.Form):
 
 
 def bulk_email(request, state):
-    # TODO: add permission checking
+    ensure_permission(request.user, state, Permissions.CONTACT)
+
+    recipients = []
 
     if request.method == "POST":
         form = EmailForm(request.POST)
@@ -30,6 +33,19 @@ def bulk_email(request, state):
     else:
         form = EmailForm()
 
+        # populate form with some data if we're editing
+        edit = request.GET.get('edit')
+        if edit:
+            msg = EmailMessage.objects.get(pk=edit)
+            # if user didn't create the message, make sure they are admin
+            if msg.created_by != request.user:
+                ensure_permission(request.user, state, Permission.ADMIN)
+            form = EmailForm(dict(
+                subject_template=msg.subject_template,
+                body_template=msg.body_template
+            ))
+            recipients = [o.id for o in msg.officials.all()]
+
     officials = Official.objects.filter(
         locality__state__abbreviation=state.upper(),
         active=True,
@@ -39,6 +55,13 @@ def bulk_email(request, state):
         times_contacted=Count('messages'),
         last_contacted=Max('messages__sent_at'),
     )
+
+    # keep recipients marked
+    recipients = [int(r) for r in recipients]
+    for o in officials:
+        if o.id in recipients:
+            o.checked = True
+
     return render(request, 'contact/bulk_email.html', {
         'form': form,
         'officials': officials,

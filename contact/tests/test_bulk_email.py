@@ -1,5 +1,5 @@
 import pytest
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from core.models import Locality
 from contact.models import Official, EmailMessage
 from contact.views import render_email
@@ -7,7 +7,10 @@ from contact.views import render_email
 
 @pytest.fixture
 def user():
-    return User.objects.create(username="testuser")
+    u = User.objects.create(username="testuser")
+    g = Group.objects.create(name="NC contact")
+    u.groups.add(g)
+    return u
 
 
 def setup():
@@ -26,6 +29,7 @@ def setup():
 
 @pytest.mark.django_db
 def test_bulk_email_form(client, user):
+    client.force_login(user)
     # add an EmailMessage so we can test times contacted & last_contacted
     em = EmailMessage.objects.create(
         subject_template="Subj",
@@ -52,7 +56,8 @@ def test_bulk_email_form(client, user):
 
 
 @pytest.mark.django_db
-def test_bulk_email_form_no_recipients(client):
+def test_bulk_email_form_no_recipients(client, user):
+    client.force_login(user)
     resp = client.post("/contact/nc/",
                        {"subject_template": "Test",
                         "body_template": "Body",

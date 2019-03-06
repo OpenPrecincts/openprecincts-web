@@ -22,7 +22,7 @@
     <tbody>
         {% for official in officials %}
         <tr>
-            <td><input type="checkbox" value="{{ official.id }}" name="recipients"></td>
+            <td><input type="checkbox" value="{{ official.id }}" name="recipients" {% if official.checked %}checked{% endif %}></td>
             <td>{{ official }}</td>
             <td>{{ official.locality.name }}</td>
             <td>{{ official.times_contacted }}</td>
