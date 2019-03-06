@@ -1,6 +1,6 @@
 import pytest
 from django.contrib.auth.models import User, Group
-from core.models import Locality
+from core.models import Locality, State
 from contact.models import Official, EmailMessage
 from contact.views import render_email
 
@@ -30,12 +30,14 @@ def setup():
 @pytest.mark.django_db
 def test_bulk_email_form(client, user):
     client.force_login(user)
+    state = State.objects.get(abbreviation="NC")
     # add an EmailMessage so we can test times contacted & last_contacted
     em = EmailMessage.objects.create(
         subject_template="Subj",
         body_template="Body",
         created_by=user,
         sent_at='2019-01-01T12:00Z',
+        state=state,
     )
     em.officials.add(Official.objects.get(first_name='Anne'))
 
@@ -98,9 +100,11 @@ def test_render_email():
 @pytest.mark.django_db
 def test_preview_good(client, user):
     anne = Official.objects.get(first_name='Anne')
+    state = State.objects.get(abbreviation="NC")
     msg = EmailMessage.objects.create(
         subject_template="{LOCALITY} Boundaries",
         body_template="{NAME}, Please Help",
+        state=state,
         created_by=user,
     )
     msg.officials.add(anne)
@@ -113,9 +117,11 @@ def test_preview_good(client, user):
 @pytest.mark.django_db
 def test_preview_error(client, user):
     anne = Official.objects.get(first_name='Anne')
+    state = State.objects.get(abbreviation="NC")
     msg = EmailMessage.objects.create(
         subject_template="{LOCALITY} Boundaries",
         body_template="{NAME}, Please Help {BAD-VAR}",
+        state=state,
         created_by=user,
     )
     msg.officials.add(anne)

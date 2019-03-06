@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from core.models import Locality
+from core.models import State, Locality
 
 
 class Official(models.Model):
@@ -49,6 +49,8 @@ class ContactLog(models.Model):
 
 
 class EmailMessage(models.Model):
+    state = models.ForeignKey(State, on_delete=models.PROTECT,
+                              related_name="email_messages")
     officials = models.ManyToManyField(Official, related_name='messages')
 
     subject_template = models.CharField(max_length=100)

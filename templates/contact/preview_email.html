@@ -37,7 +37,7 @@
     </form>
     {% endcomment %}
 
-    <a href="{% url 'bulk_email' 'va' %}?edit={{ email.id }}" class="button">Edit</a>
+    <a href="{% url 'bulk_email' email.state.abbreviation.lower %}?edit={{ email.id }}" class="button">Edit</a>
 </div>
 
 </div>

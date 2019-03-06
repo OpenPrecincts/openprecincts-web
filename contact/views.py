@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Count, Max
 from django.contrib import messages
 from django.utils.html import mark_safe
+from core.models import State
 from core.permissions import Permissions, ensure_permission
 from contact.models import Official, EmailMessage
 
@@ -21,7 +22,9 @@ def bulk_email(request, state):
         form = EmailForm(request.POST)
         recipients = request.POST.getlist('recipients')
         if form.is_valid() and recipients:
+            state = State.objects.get(abbreviation=state.upper())
             email = EmailMessage.objects.create(
+                state=state,
                 subject_template=form.cleaned_data['subject_template'],
                 body_template=form.cleaned_data['body_template'],
                 created_by=request.user,
