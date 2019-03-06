@@ -32,6 +32,12 @@
         You don't have permission to contribute to this state's data collection. <a href="mailto:gerrymander@princeton.edu">Contact Us</a> and we'll help you get started.
     </p>
     {% endif %}
+
+    {% if user_can_contact %}
+    <p class="has-text-success has-text-weight-semibold">
+        You have permission to <a href="{% url 'bulk_email' state.abbreviation.lower %}">draft contact emails</a> for this state.
+    </p>
+    {% endif %}
 {% endif %}
 
     </div>

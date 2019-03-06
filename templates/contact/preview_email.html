@@ -30,10 +30,12 @@
         <dd>{{ email.officials.count }}</dd>
     </dl>
 
+    {% comment %}
     <form method="POST">
         <input type="submit" class="button is-success" value="Approve">
         <input type="submit" class="button is-danger" value="Reject">
     </form>
+    {% endcomment %}
 
     <a href="{% url 'bulk_email' 'va' %}?edit={{ email.id }}" class="button">Edit</a>
 </div>

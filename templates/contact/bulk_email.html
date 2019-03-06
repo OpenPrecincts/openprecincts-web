@@ -3,13 +3,45 @@
 
 {% block body %}
 
+<form method="POST">
+{% csrf_token %}
+
 <section class="section">
 <div class="container">
 
-<form method="POST">
-{% csrf_token %}
-{% render_field form.subject_template %}
-{% render_field form.body_template %}
+<div class="columns">
+    <div class="column is-two-thirds">
+        <h3 class="title is-3">Draft Email</h3>
+        {% render_field form.subject_template %}
+        {% render_field form.body_template %}
+
+        <input class="button" type="submit" value="Save Draft">
+    </div>
+    <div class="column">
+        <h3 class="title is-3">Template Variables</h3>
+        <p>
+            When composing your template the following variables are available:
+        </p>
+        <dl>
+            <dt>LOCALITY</dt>
+            <dd>Name of the locality, e.g. "Wake County"</dd>
+            <dt>NAME</dt>
+            <dd>Name of official, e.g. "Anne Smith"</dd>
+            <dt>FIRST</dt>
+            <dd>First name, e.g. "Anne"</dd>
+            <dt>LAST</dt>
+            <dd>Last name, e.g. "Smith"</dd>
+            <dt>TITLE</dt>
+            <dd>Title of official, e.g. "Mr."</dd>
+        </dl>
+    </div>
+</div>
+
+</section>
+</div>
+
+<section class="section">
+<div class="container">
 
 <table class="table">
     <thead>
@@ -33,10 +65,10 @@
 </table>
 
 <input class="button" type="submit" value="Save Draft">
-<input class="button is-primary" type="submit" value="Send For Approval">
 
-</form>
 </div>
 </section>
 
+
+</form>
 {% endblock %}
