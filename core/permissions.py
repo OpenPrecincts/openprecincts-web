@@ -31,10 +31,15 @@ class Permissions(Enum):
 
 def has_permission(user, state, permission):
     # normalize state to abbreviation
-    if hasattr(state, 'abbreviation'):
-        abbr = state.abbreviation
+    if hasattr(state, 'abbr'):
+        abbr = state.abbr
     else:
         abbr = us.states.lookup(state).abbr
+
+    # normalize permission to string value
+    if isinstance(permission, Permissions):
+        permission = permission.value
+
     state_groups = user.groups.filter(name__startswith=abbr)
     for group in state_groups:
         state, permtype = group.name.split(" ")
