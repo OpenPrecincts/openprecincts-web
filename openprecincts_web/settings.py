@@ -34,7 +34,7 @@ else:
     INTERNAL_IPS = ['127.0.0.1']
     DOMAIN = 'http://localhost:8000'
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    RAW_FILE_S3_BUCKET = "openprecincts-dev"
+    RAW_FILE_S3_BUCKET = os.environ.get('RAW_FILE_S3_BUCKET', 'openprecincts-dev')
 
 DATABASE_URL = os.environ.get(
     'DATABASE_URL',
