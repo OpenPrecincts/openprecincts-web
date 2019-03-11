@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block body %}
+{{ state_status|json_script:"state-status" }}
+
+<section class="section">
+<div class="container">
+    <h2 class="title is-2">State Overview</h2>
+    <div data-hook="interactive-map"></div>
+</div>
+</section>
+
+{% endblock %}

@@ -33,6 +33,183 @@ def national_overview(request):
         "state_status": state_status,
         "contributors": contributors,
     })
+def national_overview_internal(request):
+    state_status = {s.abbreviation: s.status().value
+                    for s in State.objects.all()}
+    contributors = _get_contributors(state=None)
+
+    # Initialize dictionaries for officials, contacts, and files
+    off = {}
+    off_fields = ['created_by_id', 'created_at']
+    con = {}
+    con_fields =  ['contacted_by_id', 'contact_date']
+    fil = {}
+    fil_fields = ['created_by_id', 'created_at']
+
+    # Initalize dictionaries sorted by state
+    for state in State.objects.all().values():
+        abbr = state['abbreviation']
+        off[abbr] = {}
+        con[abbr] = {}
+        fil[abbr] = {}
+
+    # Match user id's to info
+    user = {}
+    for u in User.objects.all().values():
+        user[u['id']] = u['username']
+
+    # Iterate through all of the officials
+    officials = Official.objects.all()
+    officials_vals = officials.values()
+    official_ix = 0
+    for i, o in enumerate(officials):
+
+        # Get state abbreviation
+        abbr = o.locality.state.abbreviation
+        off[abbr][official_ix] = {}
+
+        # iterate through all the necessary fields
+        for field in off_fields:
+            off[abbr][official_ix][field] = officials_vals[i][field]
+
+        # iterate index
+        official_ix += 1
+
+    # Iterate through all of the contacts
+    contacts = ContactLog.objects.all()
+    contacts_vals = contacts.values()
+    contact_ix = 0
+    for i, c in enumerate(contacts):
+
+        # Get state abbreviation
+        abbr = c.official.locality.state.abbreviation
+        con[abbr][contact_ix] = {}
+
+        # iterate through all the necessary fields
+        for field in con_fields:
+            con[abbr][contact_ix][field] = contacts_vals[i][field]
+
+        # iterate index
+        contact_ix += 1
+
+    # Iterate through all of the officials
+    files = File.objects.all()
+    files_vals = files.values()
+    file_ix = 0
+    for i, f in enumerate(files):
+
+        # Get state abbreviation
+        abbr = f.locality.state.abbreviation
+        fil[abbr][file_ix] = {}
+
+        # iterate through all the necessary fields
+        for field in fil_fields:
+            fil[abbr][file_ix][field] = files_vals[i][field]
+
+        # iterate index
+        file_ix += 1
+    
+
+    return render(request, "core/national_overview_internal.html", {
+        "officials": off,
+        "contact_log": con,
+        "files": fil,
+        "username_mapping": user,
+        "states": State.objects.all().order_by('name'),
+        "state_status": state_status,
+        "contributors": contributors,
+    })
+
+def national_overview_internal2(request):
+    state_status = {s.abbreviation: s.status().value
+                    for s in State.objects.all()}
+    contributors = _get_contributors(state=None)
+
+    # Initialize dictionaries for officials, contacts, and files
+    off = {}
+    off_fields = ['created_by_id', 'created_at']
+    con = {}
+    con_fields =  ['contacted_by_id', 'contact_date']
+    fil = {}
+    fil_fields = ['created_by_id', 'created_at']
+
+    # Match user id's to info
+    user = {}
+    for u in User.objects.all().values():
+        user[u['id']] = u['username']
+
+    # Iterate through all of the states
+    state_query = State.objects.all()
+    state_vals = state_query.values()
+    for ix1, state in enumerate(state_vals):
+        abbr = state['abbreviation']
+
+        # Initialize State Dictionary
+        off[abbr] = {}
+        con[abbr] = {}
+        fil[abbr] = {}
+
+        # Iterate through all of the states localities
+        localities = Locality.objects.filter(state=state_query[ix1])
+        localities_vals = localities.values()
+        for ix2, local in enumerate(localities_vals):
+
+            # Get officials
+            officials = Official.objects.filter(locality=localities[ix2])
+            officials_vals = officials.values()
+
+            # Update each of the officials 
+            official_ix = 0
+            for ix3, o in enumerate(officials_vals):
+                off[abbr][official_ix] = {}
+
+                # add proper fields
+                for field in off_fields:
+                    off[abbr][official_ix][field] = o[field]
+
+                # increment index
+                official_ix += 1
+
+                # Update each of the contacts
+                contact_ix = 0
+                contact = ContactLog.objects.filter(official=officials[ix3])
+                for c in contact.values():
+                    # Give each contact log entry and index
+                    con[abbr][contact_ix] = {}
+
+                    # add all field
+                    for field in con_fields:
+                        con[abbr][contact_ix][field] = c[field]
+                    contact_ix += 1
+
+            # Update files
+            files = File.objects.filter(locality=localities[ix2])
+            file_ix = 0
+            for f in files.values():
+                fil[abbr][file_ix] = {}
+
+                # add all fields
+                for field in fil_fields:
+                    fil[abbr][file_ix][field] = f[field]
+                file_ix += 1
+
+    return render(request, "core/national_overview_internal.html", {
+        "officials": off,
+        "contact_log": con,
+        "files": fil,
+        "username_mapping": user,
+        "states": State.objects.all().order_by('name'),
+        "state_status": state_status,
+        "contributors": contributors,
+    })
+
+def interactive_map(request):
+    state_status = {s.abbreviation: s.status().value
+                    for s in State.objects.all()}
+    return render(request, "core/interactive_map.html", {
+        "states": State.objects.all().order_by('name'),
+        "state_status": state_status,
+    })
 
 
 def _get_contributors(state):
@@ -69,6 +246,7 @@ def _get_contributors(state):
 
 
 def state_overview(request, state):
+    print(state)
     state = get_object_or_404(State, pk=state.upper())
 
     context = {"state": state}
@@ -116,7 +294,7 @@ def state_overview(request, state):
         "total_contacts": total_contacts,
         "localities_with_files": localities_with_files,
         "total_files": total_files,
-        "contributors": contributors,
+        #"contributors": contributors,
     })
     return render(request, "core/state_overview.html", context)
 
@@ -159,6 +337,11 @@ def state_overview_internal(request, state):
     state = get_object_or_404(State, pk=state.upper())
 
     context = {"state": state}
+
+    ############################################################################################
+    state_status = {s.abbreviation: s.status().value
+                    for s in State.objects.all()}
+    #################################################################################################
 
     # Convert querysets for Officials, ContactLog, and Files into dictionaries
     localities = Locality.objects.filter(state=state)
@@ -267,7 +450,9 @@ def state_overview_internal(request, state):
         "officials": off,
         "contact_log": con,
         "username_mapping": user,
-        
+        ############################################################################################
+        "state_status": state_status,
+        #################################################################################################
     })
     return render(request, "core/state_overview_internal.html", context)
 
