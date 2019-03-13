@@ -13,25 +13,33 @@ from files.models import File
 class OfficialForm(ModelForm):
     class Meta:
         model = Official
-        fields = ['title', 'first_name', 'last_name', 'phone_number', 'email', 'job_title']
+        fields = [
+            "title",
+            "first_name",
+            "last_name",
+            "phone_number",
+            "email",
+            "job_title",
+        ]
 
 
 def homepage(request):
-    state_status = {s.abbreviation: s.status().value
-                    for s in State.objects.all()}
-    return render(request, "core/homepage.html",
-                  {'state_status': state_status})
+    state_status = {s.abbreviation: s.status().value for s in State.objects.all()}
+    return render(request, "core/homepage.html", {"state_status": state_status})
 
 
 def national_overview(request):
-    state_status = {s.abbreviation: s.status().value
-                    for s in State.objects.all()}
+    state_status = {s.abbreviation: s.status().value for s in State.objects.all()}
     contributors = _get_contributors(state=None)
-    return render(request, "core/national_overview.html", {
-        "states": State.objects.all().order_by('name'),
-        "state_status": state_status,
-        "contributors": contributors,
-    })
+    return render(
+        request,
+        "core/national_overview.html",
+        {
+            "states": State.objects.all().order_by("name"),
+            "state_status": state_status,
+            "contributors": contributors,
+        },
+    )
 
 
 def _get_contributors(state):
@@ -43,28 +51,34 @@ def _get_contributors(state):
         file_filter = Q(created_files__locality__state=state)
 
     # get merged list of user contributions
-    official_contribs = User.objects.all().annotate(
-        num_officials=Count('created_officials', filter=official_filter)
-    ).order_by('id')
-    file_contribs = {u.id: u for u in User.objects.annotate(
-        num_files=Count('created_files', filter=file_filter)
-    )}
+    official_contribs = (
+        User.objects.all()
+        .annotate(num_officials=Count("created_officials", filter=official_filter))
+        .order_by("id")
+    )
+    file_contribs = {
+        u.id: u
+        for u in User.objects.annotate(
+            num_files=Count("created_files", filter=file_filter)
+        )
+    }
     contributors = [
-        {'id': u.id,
-         'name': u.first_name or u.username,
-         'num_officials': u.num_officials,
-         'num_files': file_contribs[u.id].num_files,
-         }
+        {
+            "id": u.id,
+            "name": u.first_name or u.username,
+            "num_officials": u.num_officials,
+            "num_files": file_contribs[u.id].num_files,
+        }
         for u in official_contribs
     ]
 
     # sort by total contributions
     contributors_filtered = []
     for c in contributors:
-        c['total'] = c['num_officials'] + c['num_files']
-        if c['total']:
+        c["total"] = c["num_officials"] + c["num_files"]
+        if c["total"]:
             contributors_filtered.append(c)
-    return sorted(contributors_filtered, key=lambda c: c['total'], reverse=True)
+    return sorted(contributors_filtered, key=lambda c: c["total"], reverse=True)
 
 
 def state_overview(request, state):
@@ -72,20 +86,23 @@ def state_overview(request, state):
 
     context = {"state": state}
 
-    localities = Locality.objects.filter(state=state).order_by('name')
+    localities = Locality.objects.filter(state=state).order_by("name")
     localities = localities.annotate(
         total_officials=RawSQL(
             "SELECT COUNT(*) FROM contact_official "
             "WHERE contact_official.locality_id=core_locality.id",
-            ()),
+            (),
+        ),
         total_contacts=RawSQL(
             "SELECT COUNT(*) FROM contact_contactlog JOIN contact_official "
             " ON contact_contactlog.official_id=contact_official.id "
             " WHERE contact_official.locality_id=core_locality.id",
-            ()),
+            (),
+        ),
         total_files=RawSQL(
             "SELECT COUNT(*) FROM files_file WHERE files_file.locality_id=core_locality.id",
-            ()),
+            (),
+        ),
     )
 
     contributors = _get_contributors(state)
@@ -111,18 +128,20 @@ def state_overview(request, state):
     user_can_contact = has_permission(request.user, state, Permissions.CONTACT)
     user_can_write = has_permission(request.user, state, Permissions.WRITE)
 
-    context.update({
-        "localities": localities,
-        "localities_with_officials": localities_with_officials,
-        "total_officials": total_officials,
-        "localities_with_contacts": localities_with_contacts,
-        "total_contacts": total_contacts,
-        "localities_with_files": localities_with_files,
-        "total_files": total_files,
-        "user_can_contact": user_can_contact,
-        "user_can_write": user_can_write,
-        "contributors": contributors,
-    })
+    context.update(
+        {
+            "localities": localities,
+            "localities_with_officials": localities_with_officials,
+            "total_officials": total_officials,
+            "localities_with_contacts": localities_with_contacts,
+            "total_contacts": total_contacts,
+            "localities_with_files": localities_with_files,
+            "total_files": total_files,
+            "user_can_contact": user_can_contact,
+            "user_can_write": user_can_write,
+            "contributors": contributors,
+        }
+    )
     return render(request, "core/state_overview.html", context)
 
 
@@ -150,12 +169,16 @@ def locality_overview(request, id):
     user_can_contact = has_permission(request.user, locality.state, Permissions.CONTACT)
     user_can_write = has_permission(request.user, locality.state, Permissions.WRITE)
 
-    return render(request, "core/locality.html", {
-        "locality": locality,
-        "officials": officials,
-        "contact_log": contact_log,
-        "files": files,
-        "user_can_contact": user_can_contact,
-        "user_can_write": user_can_write,
-        "official_form": official_form,
-    })
+    return render(
+        request,
+        "core/locality.html",
+        {
+            "locality": locality,
+            "officials": officials,
+            "contact_log": contact_log,
+            "files": files,
+            "user_can_contact": user_can_contact,
+            "user_can_write": user_can_write,
+            "official_form": official_form,
+        },
+    )

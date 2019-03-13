@@ -9,37 +9,59 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-    ]
+    dependencies = [migrations.swappable_dependency(settings.AUTH_USER_MODEL)]
 
     operations = [
         migrations.CreateModel(
-            name='Locality',
+            name="Locality",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('wikipedia_url', models.URLField()),
-                ('official_url', models.URLField()),
-                ('ocd_id', models.CharField(max_length=200, unique=True)),
-                ('census_geoid', models.CharField(max_length=5, unique=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("wikipedia_url", models.URLField()),
+                ("official_url", models.URLField()),
+                ("ocd_id", models.CharField(max_length=200, unique=True)),
+                ("census_geoid", models.CharField(max_length=5, unique=True)),
             ],
-            options={
-                'verbose_name_plural': 'localities',
-            },
+            options={"verbose_name_plural": "localities"},
         ),
         migrations.CreateModel(
-            name='State',
+            name="State",
             fields=[
-                ('abbreviation', models.CharField(max_length=2, primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=100)),
-                ('census_geoid', models.CharField(max_length=2, unique=True)),
-                ('precinct_plan', models.PositiveIntegerField(choices=[(0, 'UNKNOWN'), (1, 'COUNTY_BY_COUNTY'), (2, 'EXTERNAL_PARTNER'), (3, 'STATEWIDE_ORG')], default=0)),
+                (
+                    "abbreviation",
+                    models.CharField(max_length=2, primary_key=True, serialize=False),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("census_geoid", models.CharField(max_length=2, unique=True)),
+                (
+                    "precinct_plan",
+                    models.PositiveIntegerField(
+                        choices=[
+                            (0, "UNKNOWN"),
+                            (1, "COUNTY_BY_COUNTY"),
+                            (2, "EXTERNAL_PARTNER"),
+                            (3, "STATEWIDE_ORG"),
+                        ],
+                        default=0,
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='locality',
-            name='state',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='localities', to='core.State'),
+            model_name="locality",
+            name="state",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="localities",
+                to="core.State",
+            ),
         ),
     ]

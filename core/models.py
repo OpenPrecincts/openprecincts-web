@@ -3,18 +3,19 @@ from enum import Enum
 
 
 class StateStatus(Enum):
-    UNKNOWN = 'unknown'
+    UNKNOWN = "unknown"
     # TODO: restore waiting status
     # WAITING = 'waiting'
-    COLLECTION = 'collection'
-    CLEANING = 'cleaning'
-    AVAILABLE = 'available'
+    COLLECTION = "collection"
+    CLEANING = "cleaning"
+    AVAILABLE = "available"
 
 
 class State(models.Model):
     """
     States, used for configuration.
     """
+
     abbreviation = models.CharField(max_length=2, primary_key=True)
     name = models.CharField(max_length=100)
     census_geoid = models.CharField(max_length=2, unique=True)
@@ -51,16 +52,19 @@ class State(models.Model):
         return self._calc_status(self.task_verification, self.task_published)
 
     def status(self):
-        if (self.collection_status() == "inactive" and
-                self.cleaning_status() == "inactive" and
-                self.final_status() == "inactive"):
+        if (
+            self.collection_status() == "inactive"
+            and self.cleaning_status() == "inactive"
+            and self.final_status() == "inactive"
+        ):
             return StateStatus.UNKNOWN
         if self.collection_status() == "wip":
             return StateStatus.COLLECTION
         if self.final_status() == "complete":
             return StateStatus.AVAILABLE
         if self.collection_status() == "complete" and (
-                self.cleaning_status() == "wip" or self.final_status() == "wip"):
+            self.cleaning_status() == "wip" or self.final_status() == "wip"
+        ):
             return StateStatus.CLEANING
         return StateStatus.UNKNOWN
 
@@ -72,8 +76,11 @@ class Locality(models.Model):
     """
     County equivalents, the atomic unit by which we'll collect data.
     """
+
     name = models.CharField(max_length=100)
-    state = models.ForeignKey(State, related_name='localities', on_delete=models.PROTECT)
+    state = models.ForeignKey(
+        State, related_name="localities", on_delete=models.PROTECT
+    )
     wikipedia_url = models.URLField()
     official_url = models.URLField()
     ocd_id = models.CharField(max_length=200, unique=True)

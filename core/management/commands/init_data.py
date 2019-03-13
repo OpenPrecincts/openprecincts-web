@@ -5,14 +5,13 @@ from core.permissions import Permissions
 
 
 class Command(BaseCommand):
-    help = 'Initialize base data for OpenPrecincts'
+    help = "Initialize base data for OpenPrecincts"
 
     def add_arguments(self, parser):
-        parser.add_argument('--groups', action='store_true',
-                            help='Initialize Groups')
+        parser.add_argument("--groups", action="store_true", help="Initialize Groups")
 
     def handle(self, *args, **options):
-        if options['groups']:
+        if options["groups"]:
             self.init_groups()
 
     def init_groups(self):

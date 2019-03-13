@@ -31,9 +31,9 @@ class Permissions(Enum):
 
 def has_permission(user, state, permission):
     # normalize state to abbreviation
-    if hasattr(state, 'abbr'):
+    if hasattr(state, "abbr"):
         abbr = state.abbr
-    elif hasattr(state, 'abbreviation'):
+    elif hasattr(state, "abbreviation"):
         abbr = state.abbreviation
     else:
         abbr = us.states.lookup(state).abbr
@@ -47,7 +47,10 @@ def has_permission(user, state, permission):
         state, permtype = group.name.split(" ")
         if permtype == Permissions.ADMIN.value:
             return True
-        elif permtype == Permissions.CONTACT.value and permission == Permissions.WRITE.value:
+        elif (
+            permtype == Permissions.CONTACT.value
+            and permission == Permissions.WRITE.value
+        ):
             return True
         elif permtype == permission:
             return True
