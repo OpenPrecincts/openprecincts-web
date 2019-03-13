@@ -17,7 +17,7 @@ def user():
 @pytest.fixture
 def s3():
     with mock_s3():
-        s3 = boto3.resource('s3', region_name='us-east-1')
+        s3 = boto3.resource("s3", region_name="us-east-1")
         s3.create_bucket(Bucket=settings.RAW_FILE_S3_BUCKET)
         # yield to keep context manager active
         yield s3
@@ -25,15 +25,14 @@ def s3():
 
 @pytest.mark.django_db
 def test_upload_files(client, user, s3):
-    locality = Locality.objects.get(name='Wake County', state_id='NC')
+    locality = Locality.objects.get(name="Wake County", state_id="NC")
     user.groups.create(name="NC write")
     client.force_login(user)
     faux_file = StringIO("file contents")
     faux_file.name = "fake.txt"
-    resp = client.post("/files/upload/",
-                       {"locality": locality.id,
-                        "files": [faux_file],
-                        })
+    resp = client.post(
+        "/files/upload/", {"locality": locality.id, "files": [faux_file]}
+    )
 
     # ensure redirect to state page
     assert resp.status_code == 302
@@ -48,7 +47,12 @@ def test_upload_files(client, user, s3):
     assert f.created_by == user
 
     # check s3 for the file
-    body = s3.Object(settings.RAW_FILE_S3_BUCKET, f.s3_path).get()['Body'].read().decode("utf-8")
+    body = (
+        s3.Object(settings.RAW_FILE_S3_BUCKET, f.s3_path)
+        .get()["Body"]
+        .read()
+        .decode("utf-8")
+    )
     assert body == "file contents"
 
 
@@ -57,56 +61,50 @@ def test_upload_files_unauthorized(client, user, s3):
     client.force_login(user)
     faux_file = StringIO("file contents")
     faux_file.name = "fake.txt"
-    resp = client.post("/files/upload/",
-                       {"locality": 1,
-                        "files": [faux_file],
-                        })
+    resp = client.post("/files/upload/", {"locality": 1, "files": [faux_file]})
     # user isn't in NC write group
     assert resp.status_code == 403
 
 
 @pytest.mark.django_db
 def test_download(client, user, s3):
-    locality = Locality.objects.get(name='Wake County', state_id='NC')
+    locality = Locality.objects.get(name="Wake County", state_id="NC")
     user.groups.create(name="NC write")
     client.force_login(user)
     faux_file = StringIO("file contents")
     faux_file.name = "fake.txt"
-    resp = client.post("/files/upload/",
-                       {"locality": locality.id,
-                        "files": [faux_file],
-                        })
+    resp = client.post(
+        "/files/upload/", {"locality": locality.id, "files": [faux_file]}
+    )
 
     assert resp.status_code == 302
     f = File.objects.all().get()
     resp = client.get(f"/files/download/{f.id}/")
     assert resp.status_code == 200
-    assert resp.get('Content-Disposition') == 'attachment; filename="fake.txt"'
+    assert resp.get("Content-Disposition") == 'attachment; filename="fake.txt"'
 
 
 @pytest.mark.django_db
 def test_download_zip(client, user, s3):
-    locality = Locality.objects.get(name='Wake County', state_id='NC')
+    locality = Locality.objects.get(name="Wake County", state_id="NC")
     user.groups.create(name="NC write")
     client.force_login(user)
     faux_file = StringIO("file contents")
     faux_file.name = "fake.txt"
     faux_file2 = StringIO("different file")
     faux_file2.name = "other.txt"
-    resp = client.post("/files/upload/",
-                       {"locality": locality.id,
-                        "files": [faux_file, faux_file2],
-                        })
+    resp = client.post(
+        "/files/upload/", {"locality": locality.id, "files": [faux_file, faux_file2]}
+    )
 
     assert resp.status_code == 302
     file_ids = [f.id for f in File.objects.all()]
 
     assert len(file_ids) == 2
 
-    resp = client.post("/files/download_zip/",
-                       {"id": file_ids})
+    resp = client.post("/files/download_zip/", {"id": file_ids})
     assert resp.status_code == 200
-    assert resp.get('Content-Disposition') == 'attachment; filename="download.zip"'
+    assert resp.get("Content-Disposition") == 'attachment; filename="download.zip"'
 
     zip_content = BytesIO(b"".join(resp.streaming_content))
     zip = zipfile.ZipFile(zip_content)

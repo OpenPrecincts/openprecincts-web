@@ -13,21 +13,27 @@ def make_s3_path(locality, id, stage, filename):
 
 
 def get_from_s3(key):
-    s3 = boto3.client('s3')
+    s3 = boto3.client("s3")
     bucket = settings.RAW_FILE_S3_BUCKET
-    return s3.get_object(Bucket=bucket, Key=key.s3_path)['Body']
+    return s3.get_object(Bucket=bucket, Key=key.s3_path)["Body"]
 
 
-def _upload_file(*,
-                 stage, locality, mime_type, size, source_filename, created_by,
-                 file_path=None,
-                 file_obj=None,
-                 ):
+def _upload_file(
+    *,
+    stage,
+    locality,
+    mime_type,
+    size,
+    source_filename,
+    created_by,
+    file_path=None,
+    file_obj=None,
+):
     new_uuid = uuid.uuid4()
     s3_path = make_s3_path(locality, new_uuid, stage, source_filename)
 
     # do the s3 upload
-    s3 = boto3.client('s3')
+    s3 = boto3.client("s3")
     bucket = settings.RAW_FILE_S3_BUCKET
 
     # must specify one or the other
@@ -67,10 +73,10 @@ def upload_local_file(filename, *, stage, locality, created_by):
 
 def upload_django_file(file, *, stage, locality, created_by):
     kwarg = {}
-    if hasattr(file, 'temporary_file_path'):
-        kwarg = {'file_name': file.temporary_file_path()}
+    if hasattr(file, "temporary_file_path"):
+        kwarg = {"file_name": file.temporary_file_path()}
     else:
-        kwarg = {'file_obj': file}
+        kwarg = {"file_obj": file}
 
     _upload_file(
         stage=stage,

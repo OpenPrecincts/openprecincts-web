@@ -11,13 +11,13 @@ from .utils import upload_django_file, get_from_s3
 
 @require_POST
 def upload_files(request):
-    locality = Locality.objects.get(pk=request.POST['locality'])
+    locality = Locality.objects.get(pk=request.POST["locality"])
 
     ensure_permission(request.user, locality.state, "write")
 
     for file in request.FILES.getlist("files"):
         upload_django_file(file, stage="S", locality=locality, created_by=request.user)
-    return redirect('locality_overview', locality.id)
+    return redirect("locality_overview", locality.id)
 
 
 @require_GET
@@ -29,13 +29,13 @@ def download_file(request, uuid):
 
 @require_POST
 def download_zip(request):
-    id_list = request.POST.getlist('id')
+    id_list = request.POST.getlist("id")
     files = File.objects.filter(pk__in=id_list)
     assert len(id_list) == len(files)
 
     # build zip file
     buffer = io.BytesIO()
-    zf = zipfile.ZipFile(buffer, 'w')
+    zf = zipfile.ZipFile(buffer, "w")
     for file in files:
         fileobj = get_from_s3(file)
         zf.writestr(str(file.id) + file.source_filename, fileobj.read())
