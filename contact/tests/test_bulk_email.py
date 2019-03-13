@@ -16,13 +16,20 @@ def user():
 def setup():
     bot = User.objects.create(username="bot")
     loc = Locality.objects.get(name="Wake County", state__abbreviation="NC")
-    Official.objects.create(first_name="Anne", email="anne@example.com", locality=loc,
-                            created_by=bot)
-    Official.objects.create(first_name="Bob", email="bob@example.com", locality=loc,
-                            created_by=bot)
+    Official.objects.create(
+        first_name="Anne", email="anne@example.com", locality=loc, created_by=bot
+    )
+    Official.objects.create(
+        first_name="Bob", email="bob@example.com", locality=loc, created_by=bot
+    )
     # inactive
-    Official.objects.create(first_name="Cherry", email="cherry@example.com", locality=loc,
-                            active=False, created_by=bot)
+    Official.objects.create(
+        first_name="Cherry",
+        email="cherry@example.com",
+        locality=loc,
+        active=False,
+        created_by=bot,
+    )
     # no email
     Official.objects.create(first_name="Don", locality=loc, created_by=bot)
 
@@ -36,10 +43,10 @@ def test_bulk_email_form(client, user):
         subject_template="Subj",
         body_template="Body",
         created_by=user,
-        sent_at='2019-01-01T12:00Z',
+        sent_at="2019-01-01T12:00Z",
         state=state,
     )
-    em.officials.add(Official.objects.get(first_name='Anne'))
+    em.officials.add(Official.objects.get(first_name="Anne"))
 
     resp = client.get("/contact/nc/")
     assert resp.status_code == 200
@@ -60,13 +67,12 @@ def test_bulk_email_form(client, user):
 @pytest.mark.django_db
 def test_bulk_email_form_no_recipients(client, user):
     client.force_login(user)
-    resp = client.post("/contact/nc/",
-                       {"subject_template": "Test",
-                        "body_template": "Body",
-                        "recipients": [],
-                        })
+    resp = client.post(
+        "/contact/nc/",
+        {"subject_template": "Test", "body_template": "Body", "recipients": []},
+    )
     assert resp.status_code == 200
-    messages = list(resp.context['messages'])
+    messages = list(resp.context["messages"])
     assert str(messages[0]) == "Must specify at least one recipient."
 
 
@@ -75,11 +81,10 @@ def test_bulk_email_form_valid(client, user):
     client.force_login(user)
     resp = client.get("/contact/nc/")
     recipients = [o.id for o in resp.context["officials"]]
-    resp = client.post("/contact/nc/",
-                       {"subject_template": "Test",
-                        "body_template": "Body",
-                        "recipients": recipients,
-                        })
+    resp = client.post(
+        "/contact/nc/",
+        {"subject_template": "Test", "body_template": "Body", "recipients": recipients},
+    )
     assert resp.status_code == 302
     msg = EmailMessage.objects.get()
     assert msg.officials.count() == 2
@@ -87,9 +92,10 @@ def test_bulk_email_form_valid(client, user):
 
 @pytest.mark.django_db
 def test_render_email():
-    anne = Official.objects.get(first_name='Anne')
-    msg = EmailMessage(subject_template="{LOCALITY} Boundaries",
-                       body_template="{NAME}, Please Help")
+    anne = Official.objects.get(first_name="Anne")
+    msg = EmailMessage(
+        subject_template="{LOCALITY} Boundaries", body_template="{NAME}, Please Help"
+    )
 
     email, subject, body = render_email(msg, anne)
     assert email == "anne@example.com"
@@ -99,7 +105,7 @@ def test_render_email():
 
 @pytest.mark.django_db
 def test_preview_good(client, user):
-    anne = Official.objects.get(first_name='Anne')
+    anne = Official.objects.get(first_name="Anne")
     state = State.objects.get(abbreviation="NC")
     msg = EmailMessage.objects.create(
         subject_template="{LOCALITY} Boundaries",
@@ -116,7 +122,7 @@ def test_preview_good(client, user):
 
 @pytest.mark.django_db
 def test_preview_error(client, user):
-    anne = Official.objects.get(first_name='Anne')
+    anne = Official.objects.get(first_name="Anne")
     state = State.objects.get(abbreviation="NC")
     msg = EmailMessage.objects.create(
         subject_template="{LOCALITY} Boundaries",
@@ -128,5 +134,5 @@ def test_preview_error(client, user):
 
     resp = client.get("/contact/preview/1/")
     assert resp.status_code == 200
-    messages = list(resp.context['messages'])
-    assert 'BAD-VAR' in str(messages[0])
+    messages = list(resp.context["messages"])
+    assert "BAD-VAR" in str(messages[0])

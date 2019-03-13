@@ -7,15 +7,20 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0003_auto_20190219_0042'),
-        ('contact', '0002_emailmessage'),
+        ("core", "0003_auto_20190219_0042"),
+        ("contact", "0002_emailmessage"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='emailmessage',
-            name='state',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.PROTECT, related_name='email_messages', to='core.State'),
+            model_name="emailmessage",
+            name="state",
+            field=models.ForeignKey(
+                default=1,
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="email_messages",
+                to="core.State",
+            ),
             preserve_default=False,
-        ),
+        )
     ]

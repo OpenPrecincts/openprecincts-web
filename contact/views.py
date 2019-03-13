@@ -20,43 +20,45 @@ def bulk_email(request, state):
 
     if request.method == "POST":
         form = EmailForm(request.POST)
-        recipients = request.POST.getlist('recipients')
+        recipients = request.POST.getlist("recipients")
         if form.is_valid() and recipients:
             state = State.objects.get(abbreviation=state.upper())
             email = EmailMessage.objects.create(
                 state=state,
-                subject_template=form.cleaned_data['subject_template'],
-                body_template=form.cleaned_data['body_template'],
+                subject_template=form.cleaned_data["subject_template"],
+                body_template=form.cleaned_data["body_template"],
                 created_by=request.user,
             )
             email.officials.set(recipients)
-            return redirect('preview_email', email.id)
+            return redirect("preview_email", email.id)
         elif not recipients:
             messages.error(request, "Must specify at least one recipient.")
     else:
         form = EmailForm()
 
         # populate form with some data if we're editing
-        edit = request.GET.get('edit')
+        edit = request.GET.get("edit")
         if edit:
             msg = EmailMessage.objects.get(pk=edit)
             # if user didn't create the message, make sure they are admin
             if msg.created_by != request.user:
                 ensure_permission(request.user, state, Permissions.ADMIN)
-            form = EmailForm(dict(
-                subject_template=msg.subject_template,
-                body_template=msg.body_template
-            ))
+            form = EmailForm(
+                dict(
+                    subject_template=msg.subject_template,
+                    body_template=msg.body_template,
+                )
+            )
             recipients = [o.id for o in msg.officials.all()]
 
-    officials = Official.objects.filter(
-        locality__state__abbreviation=state.upper(),
-        active=True,
-    ).exclude(
-        email="",
-    ).annotate(
-        times_contacted=Count('messages'),
-        last_contacted=Max('messages__sent_at'),
+    officials = (
+        Official.objects.filter(
+            locality__state__abbreviation=state.upper(), active=True
+        )
+        .exclude(email="")
+        .annotate(
+            times_contacted=Count("messages"), last_contacted=Max("messages__sent_at")
+        )
     )
 
     # keep recipients marked
@@ -65,10 +67,9 @@ def bulk_email(request, state):
         if o.id in recipients:
             o.checked = True
 
-    return render(request, 'contact/bulk_email.html', {
-        'form': form,
-        'officials': officials,
-    })
+    return render(
+        request, "contact/bulk_email.html", {"form": form, "officials": officials}
+    )
 
 
 def render_email(email, official, preview=False):
@@ -76,7 +77,7 @@ def render_email(email, official, preview=False):
         "LOCALITY": official.locality.name,
         "FIRST": official.first_name,
         "LAST": official.last_name,
-        "NAME": ' '.join((official.first_name, official.last_name)),
+        "NAME": " ".join((official.first_name, official.last_name)),
         "TITLE": official.title,
     }
 
@@ -100,8 +101,12 @@ def preview(request, id):
         preview_body = email.body_template
         messages.error(request, f"Error in template: {e}")
 
-    return render(request, 'contact/preview_email.html', {
-        'email': email,
-        'preview_subject': mark_safe(preview_subject),
-        'preview_body': mark_safe(preview_body),
-    })
+    return render(
+        request,
+        "contact/preview_email.html",
+        {
+            "email": email,
+            "preview_subject": mark_safe(preview_subject),
+            "preview_body": mark_safe(preview_body),
+        },
+    )
