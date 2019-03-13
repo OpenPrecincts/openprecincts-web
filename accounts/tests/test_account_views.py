@@ -6,18 +6,19 @@ from django.contrib.auth.models import User
 
 @pytest.mark.django_db
 def test_signup_good(client, mailoutbox):
-    resp = client.post("/accounts/signup/",
-                       {"email": "test@example.com", "display_name": "test",
-                        "state": "NC"})
+    resp = client.post(
+        "/accounts/signup/",
+        {"email": "test@example.com", "display_name": "test", "state": "NC"},
+    )
     assert resp.status_code == 200
     u = User.objects.filter(email="test@example.com")
 
     # ensure email comes through
     assert len(mailoutbox) == 1
     m = mailoutbox[0]
-    url = re.findall(r'https?://\S+', m.body)
+    url = re.findall(r"https?://\S+", m.body)
     assert url
-    assert list(m.to) == ['test@example.com']
+    assert list(m.to) == ["test@example.com"]
 
     assert u.count()
     assert u[0].password == ""
@@ -29,10 +30,11 @@ def test_signup_duplicate(client):
     User.objects.create(email="test@example.com")
 
     # reject duplicate email
-    resp = client.post("/accounts/signup/",
-                       {"email": "test@example.com", "display_name": "test",
-                        "state": "DC"})
-    assert resp.status_code == 200       # show form again with error
+    resp = client.post(
+        "/accounts/signup/",
+        {"email": "test@example.com", "display_name": "test", "state": "DC"},
+    )
+    assert resp.status_code == 200  # show form again with error
     assert not resp.context["form"].is_valid()
     assert User.objects.count() == 1
 
@@ -46,9 +48,9 @@ def test_login(client, mailoutbox):
     # ensure email comes through
     assert len(mailoutbox) == 1
     m = mailoutbox[0]
-    url = re.findall(r'https?://\S+', m.body)
+    url = re.findall(r"https?://\S+", m.body)
     assert url
-    assert list(m.to) == ['test@example.com']
+    assert list(m.to) == ["test@example.com"]
 
     # hit magic URL and we should be logged in
     client.get(url[0])
