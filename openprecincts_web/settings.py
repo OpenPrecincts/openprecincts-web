@@ -43,6 +43,8 @@ DATABASE_URL = os.environ.get(
 DATABASES = {"default": dj_database_url.parse(DATABASE_URL)}
 CONN_MAX_AGE = 60
 
+CONTACT_SQS_QUEUE = os.environ.get("CONTACT_SQS_QUEUE", "incoming-collect-email")
+
 
 # non-dynamic configuration
 
