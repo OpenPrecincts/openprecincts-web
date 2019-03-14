@@ -8,6 +8,7 @@ name = "pypi"
 pytest = "*"
 pytest-django = "*"
 moto = {git = "https://github.com/spulec/moto", ref = "master"}
+ipdb = "*"
 
 [packages]
 django = "*"
