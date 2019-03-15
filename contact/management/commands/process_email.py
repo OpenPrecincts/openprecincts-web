@@ -50,7 +50,16 @@ def parse_message(message_bytes):
             "filename": re.findall('name="(.*)"', attachment['Content-Type'])[0],
         })
 
-    return body_text, attachments
+    return {
+        "from": re.findall("<(.*)>", em["From"])[0],
+        "date": em["Date"],
+        "body_text": body_text,
+        "attachments": attachments,
+    }
+
+
+def save_reply(from_email, body_text, attachments):
+    pass
 
 
 class Command(BaseCommand):
@@ -62,6 +71,3 @@ class Command(BaseCommand):
             print(message)
             obj = s3.get_object(Key=message['key'], Bucket=message['bucket'])
             parse_message(obj['Body'].read())
-
-        parse_message({'key': '873ms3qntcqj8h4krrbc1d2p7fd8uucpf3lniho1',
-                        'bucket': 'openprecincts-incoming-email'})

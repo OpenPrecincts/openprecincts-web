@@ -29,8 +29,9 @@ Content-Type: text/html; charset="UTF-8"
 --0000000000005d52140584015332--
 """
    
-    text, attachments = parse_message(body)
-    assert "This is the plain text." == text.strip()
+    msg = parse_message(body)
+    assert msg["from"] == "james@example.com"
+    assert msg["body_text"].strip() == "This is the plain text."
 
 
 def test_no_plaintext_extraction():
@@ -56,8 +57,8 @@ Content-Type: text/html; charset="UTF-8"
 --0000000000005d52140584015332--
 """
    
-    text, attachments = parse_message(body)
-    assert text.strip() == "<div>This is the HTML.</div>"
+    msg = parse_message(body)
+    assert msg["body_text"].strip() == "<div>This is the HTML.</div>"
 
 
 def test_attachment_extraction():
@@ -110,7 +111,8 @@ RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CsbTytkAAAAMSURBVAgdY/j/
 /z8ABf4C/p/KLRMAAAAASUVORK5CYII=
 --000000000000425cb3058415633d--"""
 
-    text, attachments = parse_message(body)
+    msg = parse_message(body)
+    attachments = msg["attachments"]
     assert len(attachments) == 1
     assert attachments[0]["content_type"] == "image/png"
     assert attachments[0]["filename"] == "white-pixel.png"
