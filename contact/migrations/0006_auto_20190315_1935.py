@@ -5,19 +5,17 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('contact', '0005_auto_20190315_1804'),
-    ]
+    dependencies = [("contact", "0005_auto_20190315_1804")]
 
     operations = [
         migrations.AddField(
-            model_name='official',
-            name='fax_number',
+            model_name="official",
+            name="fax_number",
             field=models.CharField(blank=True, max_length=10),
         ),
         migrations.AddField(
-            model_name='official',
-            name='mailing_address',
+            model_name="official",
+            name="mailing_address",
             field=models.CharField(blank=True, max_length=300),
         ),
     ]

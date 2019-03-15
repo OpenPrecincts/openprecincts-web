@@ -70,6 +70,12 @@ class EmailMessage(models.Model):
 
     sent_at = models.DateTimeField(null=True)
 
+    # approval
+    approved_by = models.ForeignKey(
+        User, on_delete=models.PROTECT, related_name="approved_emails", null=True
+    )
+    approved_at = models.DateTimeField(null=True)
+
     # change tracking
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -78,8 +84,10 @@ class EmailMessage(models.Model):
     )
 
     def status(self):
-        if self.sent_at is None:
-            return "unsent"
+        if self.approved_at is None and self.sent_at is None:
+            return "draft"
+        elif self.sent_at is None:
+            return "approved"
         else:
             return "sent"
 

@@ -20,11 +20,21 @@ class Command(BaseCommand):
             with open(options["filename"]) as f:
                 for line in csv.DictReader(f):
                     print(line)
-                    locality = Locality.objects.get(state_id=options["state"],
-                                                    name__iexact=line["locality"] + " County")
+                    locality = Locality.objects.get(
+                        state_id=options["state"],
+                        name__iexact=line["locality"] + " County",
+                    )
                     od = {}
-                    for field in ("first_name", "last_name", "title", "mailing_address",
-                                  "phone_number", "fax_number", "email", "job_title"):
+                    for field in (
+                        "first_name",
+                        "last_name",
+                        "title",
+                        "mailing_address",
+                        "phone_number",
+                        "fax_number",
+                        "email",
+                        "job_title",
+                    ):
                         if field in line:
                             od[field] = line[field]
                     Official.objects.create(locality=locality, created_by=bot, **od)

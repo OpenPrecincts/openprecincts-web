@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Official, ContactLog, EmailMessage
+from .models import Official, ContactLog, EmailMessage, EmailMessageInstance
 
 
 class OfficialAdmin(admin.ModelAdmin):
@@ -45,17 +45,35 @@ class ContactAdmin(admin.ModelAdmin):
 admin.site.register(ContactLog, ContactAdmin)
 
 
+class EmailMessageInstanceAdmin(admin.TabularInline):
+    model = EmailMessageInstance
+    readonly_fields = ("sent_at",)
+    extra = 1
+
+
 class EmailMessageAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {"fields": ("subject_template", "body_template")}),
         (
             "Administrative",
-            {"fields": ("sent_at", "created_at", "updated_at", "created_by")},
+            {
+                "fields": (
+                    "approved_at",
+                    "approved_by",
+                    "sent_at",
+                    "created_at",
+                    "updated_at",
+                    "created_by",
+                )
+            },
         ),
     )
 
-    list_display = ("subject_template", "sent_at", "created_by")
+    readonly_fields = ("sent_at", "created_at", "updated_at", "created_by")
+    list_display = ("subject_template", "status", "created_by", "state")
+    list_filter = ("state",)
     date_hierarchy = "created_at"
+    inlines = (EmailMessageInstanceAdmin,)
 
 
 admin.site.register(EmailMessage, EmailMessageAdmin)
