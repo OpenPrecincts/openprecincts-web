@@ -47,7 +47,7 @@ admin.site.register(ContactLog, ContactAdmin)
 
 class EmailMessageAdmin(admin.ModelAdmin):
     fieldsets = (
-        (None, {"fields": ("subject_template", "body_template", "officials")}),
+        (None, {"fields": ("subject_template", "body_template")}),
         (
             "Administrative",
             {"fields": ("sent_at", "created_at", "updated_at", "created_by")},
