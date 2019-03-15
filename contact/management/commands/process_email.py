@@ -24,7 +24,7 @@ def get_messages():
             body = json.loads(msg.body)
             if body.get("Records", [{}])[0].get("eventName", "") != "ObjectCreated:Put":
                 # TODO: log this somewhere useful
-                print("bad", body)
+                print("bad message", body)
                 msg.delete()
                 bad += 1
                 continue
@@ -74,9 +74,10 @@ def save_reply(msg):
         except EmailMessageInstance.DoesNotExist:
             pass
 
-    # TODO: handle case where we can't attach this to an EMI
+    if not emi:
+        raise ValueError("could not find parent message for " + msg["to"])
 
-    reply = EmailReply.objects.create(
+    EmailReply.objects.create(
         reply_to=emi,
         from_email=msg["from"],
         timestamp=msg["date"],
@@ -103,6 +104,10 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         s3 = boto3.client("s3")
         for message in get_messages():
-            print(message)
             obj = s3.get_object(Key=message["key"], Bucket=message["bucket"])
-            parse_message(obj["Body"].read())
+            msg = parse_message(obj["Body"].read())
+            try:
+                save_reply(msg)
+                message.delete()
+            except ValueError as e:
+                print(e)
