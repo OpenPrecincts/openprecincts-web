@@ -8,7 +8,7 @@ import boto3
 
 
 def get_messages():
-    sqs = boto3.resource('sqs')
+    sqs = boto3.resource("sqs")
     q = sqs.get_queue_by_name(QueueName=settings.CONTACT_SQS_QUEUE)
 
     bad = 0
@@ -20,9 +20,9 @@ def get_messages():
             break
         for msg in messages:
             body = json.loads(msg.body)
-            if body.get('Records', [{}])[0].get('eventName', '') != 'ObjectCreated:Put':
+            if body.get("Records", [{}])[0].get("eventName", "") != "ObjectCreated:Put":
                 # TODO: log this somewhere useful
-                print('bad', body)
+                print("bad", body)
                 msg.delete()
                 bad += 1
                 continue
@@ -40,16 +40,18 @@ def get_messages():
 def parse_message(message_bytes):
     em = email.message_from_bytes(message_bytes, policy=email.policy.default)
 
-    body = em.get_body(preferencelist=('plain', 'html'))
+    body = em.get_body(preferencelist=("plain", "html"))
     body_text = body.get_content()
 
     attachments = []
     for attachment in em.iter_attachments():
-        attachments.append({
-            "content_type": attachment.get_content_type(),
-            "body": attachment.get_content(),
-            "filename": re.findall('name="(.*)"', attachment['Content-Type'])[0],
-        })
+        attachments.append(
+            {
+                "content_type": attachment.get_content_type(),
+                "body": attachment.get_content(),
+                "filename": re.findall('name="(.*)"', attachment["Content-Type"])[0],
+            }
+        )
 
     return {
         "from": re.findall("<(.*)>", em["From"])[0],
@@ -69,13 +71,17 @@ def save_reply(msg):
             emi = EmailMessageInstance.objects.get(pk=msg_id[0])
         except EmailMessageInstance.DoesNotExist:
             pass
-    
+
     # TODO: handle case where we can't attach this to an EMI
 
-    reply = EmailReply.objects.create(reply_to=emi, from_email=msg["from"], timestamp=msg["date"], body_text=msg["body_text"])
+    reply = EmailReply.objects.create(
+        reply_to=emi,
+        from_email=msg["from"],
+        timestamp=msg["date"],
+        body_text=msg["body_text"],
+    )
 
     # save the attachments
-
 
 
 class Command(BaseCommand):
@@ -85,5 +91,5 @@ class Command(BaseCommand):
         s3 = boto3.client("s3")
         for message in get_messages():
             print(message)
-            obj = s3.get_object(Key=message['key'], Bucket=message['bucket'])
-            parse_message(obj['Body'].read())
+            obj = s3.get_object(Key=message["key"], Bucket=message["bucket"])
+            parse_message(obj["Body"].read())

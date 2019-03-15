@@ -30,7 +30,9 @@ def bulk_email(request, state):
                 created_by=request.user,
             )
             for recipient in recipients:
-                EmailMessageInstance.objects.create(message=email, official_id=recipient)
+                EmailMessageInstance.objects.create(
+                    message=email, official_id=recipient
+                )
             return redirect("preview_email", email.id)
         elif not recipients:
             messages.error(request, "Must specify at least one recipient.")

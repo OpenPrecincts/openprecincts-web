@@ -1,4 +1,8 @@
-from contact.management.commands.process_email import parse_message
+import pytest
+from django.contrib.auth.models import User
+from core.models import Locality, State
+from contact.models import Official, EmailMessage, EmailMessageInstance, EmailReply
+from contact.management.commands.process_email import parse_message, save_reply
 
 
 def test_simple_message_body_extraction():
@@ -28,7 +32,7 @@ Content-Type: text/html; charset="UTF-8"
 
 --0000000000005d52140584015332--
 """
-   
+
     msg = parse_message(body)
     assert msg["from"] == "james@example.com"
     assert msg["body_text"].strip() == "This is the plain text."
@@ -56,7 +60,7 @@ Content-Type: text/html; charset="UTF-8"
 
 --0000000000005d52140584015332--
 """
-   
+
     msg = parse_message(body)
     assert msg["body_text"].strip() == "<div>This is the HTML.</div>"
 
@@ -117,3 +121,33 @@ RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CsbTytkAAAAMSURBVAgdY/j/
     assert attachments[0]["content_type"] == "image/png"
     assert attachments[0]["filename"] == "white-pixel.png"
     assert len(attachments[0]["body"]) == 1049
+
+
+@pytest.mark.django_db
+def test_save_reply_simple():
+    user = User.objects.create(username="testuser")
+    loc = Locality.objects.get(name="Wake County", state__abbreviation="NC")
+    anne = Official.objects.create(
+        first_name="Anne", email="anne@example.com", locality=loc, created_by=user
+    )
+    em = EmailMessage.objects.create(
+        subject_template="Subj",
+        body_template="Body",
+        created_by=user,
+        sent_at="2019-01-01T12:00Z",
+        state=State.objects.get(abbreviation="NC"),
+    )
+    emi = EmailMessageInstance.objects.create(official=anne, message=em)
+
+    message = {
+        "to": f"collect+{emi.id}@example.com",
+        "from": "anne@example.com",
+        "date": "2019-02-15T12:00:00",
+        "body_text": "this is the body",
+    }
+
+    save_reply(message)
+
+    # reply is now attached to EMI
+    reply = emi.replies.get()
+    assert reply.from_email == "anne@example.com"

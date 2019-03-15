@@ -47,8 +47,7 @@ def test_bulk_email_form(client, user):
         state=state,
     )
     EmailMessageInstance.objects.create(
-        official=Official.objects.get(first_name="Anne"),
-        message=em,
+        official=Official.objects.get(first_name="Anne"), message=em
     )
 
     resp = client.get("/contact/nc/")

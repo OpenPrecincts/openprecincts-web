@@ -6,45 +6,70 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('contact', '0003_emailmessage_state'),
-    ]
+    dependencies = [("contact", "0003_emailmessage_state")]
 
     operations = [
         migrations.CreateModel(
-            name='EmailMessageInstance',
+            name="EmailMessageInstance",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sent_at', models.DateTimeField(null=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("sent_at", models.DateTimeField(null=True)),
             ],
         ),
         migrations.CreateModel(
-            name='EmailReply',
+            name="EmailReply",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('from_email', models.CharField(max_length=100)),
-                ('timestamp', models.DateTimeField()),
-                ('body_text', models.TextField()),
-                ('reply_to', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='contact.EmailMessageInstance')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("from_email", models.CharField(max_length=100)),
+                ("timestamp", models.DateTimeField()),
+                ("body_text", models.TextField()),
+                (
+                    "reply_to",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="contact.EmailMessageInstance",
+                    ),
+                ),
             ],
         ),
-        migrations.RemoveField(
-            model_name='emailmessage',
-            name='officials',
+        migrations.RemoveField(model_name="emailmessage", name="officials"),
+        migrations.AddField(
+            model_name="emailmessage",
+            name="officials",
+            field=models.ManyToManyField(
+                related_name="messages",
+                through="contact.EmailMessageInstance",
+                to="contact.Official",
+            ),
         ),
         migrations.AddField(
-            model_name='emailmessage',
-            name='officials',
-            field=models.ManyToManyField(related_name='messages', through='contact.EmailMessageInstance', to='contact.Official'),
+            model_name="emailmessageinstance",
+            name="message",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="contact.EmailMessage"
+            ),
         ),
         migrations.AddField(
-            model_name='emailmessageinstance',
-            name='message',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='contact.EmailMessage'),
-        ),
-        migrations.AddField(
-            model_name='emailmessageinstance',
-            name='official',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='contact.Official'),
+            model_name="emailmessageinstance",
+            name="official",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="contact.Official"
+            ),
         ),
     ]

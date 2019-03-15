@@ -58,8 +58,9 @@ class EmailMessage(models.Model):
     state = models.ForeignKey(
         State, on_delete=models.PROTECT, related_name="email_messages"
     )
-    officials = models.ManyToManyField(Official, related_name="messages",
-                                       through='EmailMessageInstance')
+    officials = models.ManyToManyField(
+        Official, related_name="messages", through="EmailMessageInstance"
+    )
 
     subject_template = models.CharField(max_length=100)
     body_template = models.TextField()
@@ -87,7 +88,9 @@ class EmailMessageInstance(models.Model):
 
 
 class EmailReply(models.Model):
-    reply_to = models.ForeignKey(EmailMessageInstance, on_delete=models.CASCADE)
+    reply_to = models.ForeignKey(
+        EmailMessageInstance, on_delete=models.CASCADE, related_name="replies"
+    )
 
     from_email = models.CharField(max_length=100)
     timestamp = models.DateTimeField()
