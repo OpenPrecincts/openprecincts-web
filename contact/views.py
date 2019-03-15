@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.utils.html import mark_safe
 from core.models import State
 from core.permissions import Permissions, ensure_permission
-from contact.models import Official, EmailMessage
+from contact.models import Official, EmailMessage, EmailMessageInstance
 
 
 class EmailForm(forms.Form):
@@ -29,7 +29,8 @@ def bulk_email(request, state):
                 body_template=form.cleaned_data["body_template"],
                 created_by=request.user,
             )
-            email.officials.set(recipients)
+            for recipient in recipients:
+                EmailMessageInstance.objects.create(message=email, official_id=recipient)
             return redirect("preview_email", email.id)
         elif not recipients:
             messages.error(request, "Must specify at least one recipient.")

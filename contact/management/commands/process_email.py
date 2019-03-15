@@ -3,6 +3,7 @@ import json
 import email
 from django.core.management.base import BaseCommand
 from django.conf import settings
+from contact.models import EmailMessageInstance, EmailReply
 import boto3
 
 
@@ -52,14 +53,29 @@ def parse_message(message_bytes):
 
     return {
         "from": re.findall("<(.*)>", em["From"])[0],
+        "to": em["To"],
         "date": em["Date"],
         "body_text": body_text,
         "attachments": attachments,
     }
 
 
-def save_reply(from_email, body_text, attachments):
-    pass
+def save_reply(msg):
+    # use the +msgid part of the To: address to figure out what this is a reply to
+    msg_id = re.findall(r"\+(\d+)@", msg["to"])
+    emi = None
+    if msg_id:
+        try:
+            emi = EmailMessageInstance.objects.get(pk=msg_id[0])
+        except EmailMessageInstance.DoesNotExist:
+            pass
+    
+    # TODO: handle case where we can't attach this to an EMI
+
+    reply = EmailReply.objects.create(reply_to=emi, from_email=msg["from"], timestamp=msg["date"], body_text=msg["body_text"])
+
+    # save the attachments
+
 
 
 class Command(BaseCommand):

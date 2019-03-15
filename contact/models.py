@@ -82,7 +82,7 @@ class EmailMessage(models.Model):
 
 class EmailMessageInstance(models.Model):
     official = models.ForeignKey(Official, on_delete=models.CASCADE)
-    email_message = models.ForeignKey(EmailMessage, on_delete=models.CASCADE)
+    message = models.ForeignKey(EmailMessage, on_delete=models.CASCADE)
     sent_at = models.DateTimeField(null=True)
 
 

@@ -28,14 +28,18 @@ class Migration(migrations.Migration):
                 ('reply_to', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='contact.EmailMessageInstance')),
             ],
         ),
-        migrations.AlterField(
+        migrations.RemoveField(
+            model_name='emailmessage',
+            name='officials',
+        ),
+        migrations.AddField(
             model_name='emailmessage',
             name='officials',
             field=models.ManyToManyField(related_name='messages', through='contact.EmailMessageInstance', to='contact.Official'),
         ),
         migrations.AddField(
             model_name='emailmessageinstance',
-            name='email_message',
+            name='message',
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='contact.EmailMessage'),
         ),
         migrations.AddField(

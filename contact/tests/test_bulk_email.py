@@ -1,7 +1,7 @@
 import pytest
 from django.contrib.auth.models import User, Group
 from core.models import Locality, State
-from contact.models import Official, EmailMessage
+from contact.models import Official, EmailMessage, EmailMessageInstance
 from contact.views import render_email
 
 
@@ -46,7 +46,10 @@ def test_bulk_email_form(client, user):
         sent_at="2019-01-01T12:00Z",
         state=state,
     )
-    em.officials.add(Official.objects.get(first_name="Anne"))
+    EmailMessageInstance.objects.create(
+        official=Official.objects.get(first_name="Anne"),
+        message=em,
+    )
 
     resp = client.get("/contact/nc/")
     assert resp.status_code == 200
@@ -113,7 +116,7 @@ def test_preview_good(client, user):
         state=state,
         created_by=user,
     )
-    msg.officials.add(anne)
+    EmailMessageInstance.objects.create(official=anne, message=msg)
 
     resp = client.get("/contact/preview/1/")
     assert resp.status_code == 200
@@ -130,7 +133,7 @@ def test_preview_error(client, user):
         state=state,
         created_by=user,
     )
-    msg.officials.add(anne)
+    EmailMessageInstance.objects.create(official=anne, message=msg)
 
     resp = client.get("/contact/preview/1/")
     assert resp.status_code == 200
