@@ -5,7 +5,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from core.models import Locality, State
 from files.models import File
-from contact.models import Official, EmailMessage, EmailMessageInstance, EmailReply
+from contact.models import Official, EmailMessage, EmailMessageInstance
 from contact.management.commands.process_email import parse_message, save_reply
 
 
