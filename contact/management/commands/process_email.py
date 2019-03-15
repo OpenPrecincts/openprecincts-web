@@ -1,3 +1,4 @@
+import re
 import json
 import email
 from django.core.management.base import BaseCommand
@@ -35,14 +36,19 @@ def get_messages():
             }
 
 
-def handle_message(message_bytes):
+def parse_message(message_bytes):
     em = email.message_from_bytes(message_bytes, policy=email.policy.default)
 
     body = em.get_body(preferencelist=('plain', 'html'))
     body_text = body.get_content()
 
-    attachments = list(em.iter_attachments())
-    print(attachments)
+    attachments = []
+    for attachment in em.iter_attachments():
+        attachments.append({
+            "content_type": attachment.get_content_type(),
+            "body": attachment.get_content(),
+            "filename": re.findall('name="(.*)"', attachment['Content-Type'])[0],
+        })
 
     return body_text, attachments
 
@@ -55,7 +61,7 @@ class Command(BaseCommand):
         for message in get_messages():
             print(message)
             obj = s3.get_object(Key=message['key'], Bucket=message['bucket'])
-            handle_message(obj['Body'].read())
+            parse_message(obj['Body'].read())
 
-        handle_message({'key': '873ms3qntcqj8h4krrbc1d2p7fd8uucpf3lniho1',
+        parse_message({'key': '873ms3qntcqj8h4krrbc1d2p7fd8uucpf3lniho1',
                         'bucket': 'openprecincts-incoming-email'})

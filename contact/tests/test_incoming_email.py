@@ -1,4 +1,4 @@
-from contact.management.commands.process_email import handle_message
+from contact.management.commands.process_email import parse_message
 
 
 def test_simple_message_body_extraction():
@@ -29,7 +29,7 @@ Content-Type: text/html; charset="UTF-8"
 --0000000000005d52140584015332--
 """
    
-    text, attachments = handle_message(body)
+    text, attachments = parse_message(body)
     assert "This is the plain text." == text.strip()
 
 
@@ -56,7 +56,7 @@ Content-Type: text/html; charset="UTF-8"
 --0000000000005d52140584015332--
 """
    
-    text, attachments = handle_message(body)
+    text, attachments = parse_message(body)
     assert text.strip() == "<div>This is the HTML.</div>"
 
 
@@ -110,6 +110,8 @@ RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CsbTytkAAAAMSURBVAgdY/j/
 /z8ABf4C/p/KLRMAAAAASUVORK5CYII=
 --000000000000425cb3058415633d--"""
 
-
-    text, attachments = handle_message(body)
+    text, attachments = parse_message(body)
     assert len(attachments) == 1
+    assert attachments[0]["content_type"] == "image/png"
+    assert attachments[0]["filename"] == "white-pixel.png"
+    assert len(attachments[0]["body"]) == 1049
