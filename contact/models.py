@@ -24,6 +24,9 @@ class Official(models.Model):
     # we won't worry about multiple poc for a person
     phone_number = models.CharField(max_length=10, blank=True)
     email = models.EmailField(blank=True)
+    fax_number = models.CharField(max_length=10, blank=True)
+    mailing_address = models.CharField(max_length=300, blank=True)
+
     job_title = models.CharField(max_length=300, blank=True)
     notes = models.TextField(blank=True)
     active = models.BooleanField(default=True)
