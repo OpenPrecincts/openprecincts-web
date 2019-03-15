@@ -1,8 +1,21 @@
 import pytest
+import boto3
+from moto import mock_s3
+from django.conf import settings
 from django.contrib.auth.models import User
 from core.models import Locality, State
+from files.models import File
 from contact.models import Official, EmailMessage, EmailMessageInstance, EmailReply
 from contact.management.commands.process_email import parse_message, save_reply
+
+
+@pytest.fixture
+def s3():
+    with mock_s3():
+        s3 = boto3.resource("s3", region_name="us-east-1")
+        s3.create_bucket(Bucket=settings.RAW_FILE_S3_BUCKET)
+        # yield to keep context manager active
+        yield s3
 
 
 def test_simple_message_body_extraction():
@@ -123,8 +136,9 @@ RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CsbTytkAAAAMSURBVAgdY/j/
     assert len(attachments[0]["body"]) == 1049
 
 
-@pytest.mark.django_db
-def test_save_reply_simple():
+@pytest.fixture
+def emi():
+    """ fixture for an EmailMessageInstance """
     user = User.objects.create(username="testuser")
     loc = Locality.objects.get(name="Wake County", state__abbreviation="NC")
     anne = Official.objects.create(
@@ -137,13 +151,17 @@ def test_save_reply_simple():
         sent_at="2019-01-01T12:00Z",
         state=State.objects.get(abbreviation="NC"),
     )
-    emi = EmailMessageInstance.objects.create(official=anne, message=em)
+    return EmailMessageInstance.objects.create(official=anne, message=em)
 
+
+@pytest.mark.django_db
+def test_save_reply_simple(emi):
     message = {
         "to": f"collect+{emi.id}@example.com",
         "from": "anne@example.com",
-        "date": "2019-02-15T12:00:00",
+        "date": "2019-02-15T12:00:00Z",
         "body_text": "this is the body",
+        "attachments": [],
     }
 
     save_reply(message)
@@ -151,3 +169,29 @@ def test_save_reply_simple():
     # reply is now attached to EMI
     reply = emi.replies.get()
     assert reply.from_email == "anne@example.com"
+
+
+@pytest.mark.django_db
+def test_save_reply_attachments(emi, s3):
+    message = {
+        "to": f"collect+{emi.id}@example.com",
+        "from": "anne@example.com",
+        "date": "2019-02-15T12:00:00Z",
+        "body_text": "this is the body",
+        "attachments": [
+            {
+                "content_type": "text/plain",
+                "body": b"this is the attachment",
+                "filename": "a.txt",
+            }
+        ],
+    }
+    save_reply(message)
+
+    # reply is now attached to EMI
+    reply = emi.replies.get()
+    assert reply.from_email == "anne@example.com"
+
+    f = File.objects.get()
+    assert f.source_filename == "a.txt"
+    assert f.official is not None

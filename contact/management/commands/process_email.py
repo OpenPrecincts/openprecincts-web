@@ -1,9 +1,11 @@
 import re
+import io
 import json
 import email
 from django.core.management.base import BaseCommand
 from django.conf import settings
 from contact.models import EmailMessageInstance, EmailReply
+from files.utils import upload_file
 import boto3
 
 
@@ -82,6 +84,17 @@ def save_reply(msg):
     )
 
     # save the attachments
+    for attachment in msg["attachments"]:
+        upload_file(
+            stage="S",
+            locality=emi.official.locality,
+            official=emi.official,
+            mime_type=attachment["content_type"],
+            size=len(attachment["body"]),
+            source_filename=attachment["filename"],
+            created_by=emi.message.created_by,
+            file_obj=io.BytesIO(attachment["body"]),
+        )
 
 
 class Command(BaseCommand):

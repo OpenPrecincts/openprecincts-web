@@ -18,7 +18,7 @@ def get_from_s3(key):
     return s3.get_object(Bucket=bucket, Key=key.s3_path)["Body"]
 
 
-def _upload_file(
+def upload_file(
     *,
     stage,
     locality,
@@ -26,6 +26,7 @@ def _upload_file(
     size,
     source_filename,
     created_by,
+    official=None,
     file_path=None,
     file_obj=None,
 ):
@@ -48,6 +49,7 @@ def _upload_file(
             size=size,
             s3_path=s3_path,
             locality=locality,
+            official=official,
             source_filename=source_filename,
             created_by=created_by,
         )
@@ -60,7 +62,7 @@ def _upload_file(
 
 
 def upload_local_file(filename, *, stage, locality, created_by):
-    _upload_file(
+    upload_file(
         stage=stage,
         locality=locality,
         mime_type=magic.from_file(filename, mime=True),
@@ -78,7 +80,7 @@ def upload_django_file(file, *, stage, locality, created_by):
     else:
         kwarg = {"file_obj": file}
 
-    _upload_file(
+    upload_file(
         stage=stage,
         locality=locality,
         mime_type=file.content_type,
