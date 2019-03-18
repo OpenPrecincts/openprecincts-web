@@ -1,5 +1,7 @@
+from io import StringIO
 import pytest
 from django.contrib.auth.models import User, Group
+from django.core.management import call_command
 from core.models import Locality, State
 from contact.models import Official, EmailMessage, EmailMessageInstance
 from contact.views import render_email
@@ -138,3 +140,35 @@ def test_preview_error(client, user):
     assert resp.status_code == 200
     messages = list(resp.context["messages"])
     assert "BAD-VAR" in str(messages[0])
+
+
+@pytest.mark.django_db
+def test_send_emails_basic(user, mailoutbox):
+    anne = Official.objects.get(first_name="Anne")
+    state = State.objects.get(abbreviation="NC")
+    msg = EmailMessage.objects.create(
+        subject_template="{LOCALITY} Boundaries",
+        body_template="{NAME}, Please Help",
+        state=state,
+        created_by=user,
+    )
+    EmailMessageInstance.objects.create(official=anne, message=msg)
+
+    # nothing approved
+    out = StringIO()
+    call_command("send_emails", stdout=out)
+    assert "No messages" in out.getvalue()
+
+    # approve then send
+    msg.approved_by = user
+    msg.approved_at = '2019-02-15T00:00:00Z'
+    msg.save()
+
+    out = StringIO()
+    call_command("send_emails", stdout=out)
+    assert len(mailoutbox) == 1
+
+    # nothing approved & unsent
+    out = StringIO()
+    call_command("send_emails", stdout=out)
+    assert "No messages" in out.getvalue()
