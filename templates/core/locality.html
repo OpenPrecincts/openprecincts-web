@@ -39,6 +39,21 @@
                     </span>
                     <a href="mailto:{{ official.email }}">{{ official.email }}</a>
                     {% endif %}
+
+                    {% if official.fax_number %}
+                    <span class="icon has-text-info">
+                      <i class="fas fa-fax"></i>
+                    </span>
+                    {{ official.fax_number }}
+                    {% endif %}
+
+                    {% if official.mailing_address %}
+                    <br>
+                    <span class="icon has-text-info">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    {{ official.mailing_address }}
+                    {% endif %}
                 </div>
                 {% else %}
                 <p>Contact details hidden for privacy.</p>

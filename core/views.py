@@ -19,6 +19,8 @@ class OfficialForm(ModelForm):
             "last_name",
             "phone_number",
             "email",
+            "mailing_address",
+            "fax_number",
             "job_title",
         ]
 
