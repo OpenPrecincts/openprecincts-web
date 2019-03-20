@@ -9,10 +9,9 @@ class Command(BaseCommand):
     help = "send outgoing emails"
 
     def handle(self, *args, **options):
-        to_send = EmailMessage.objects.filter(approved_by__isnull=False,
-                                              approved_at__isnull=False,
-                                              sent_at__isnull=True
-                                              )
+        to_send = EmailMessage.objects.filter(
+            approved_by__isnull=False, approved_at__isnull=False, sent_at__isnull=True
+        )
         to_send = list(to_send)
 
         if not to_send:

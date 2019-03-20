@@ -5,7 +5,10 @@ from .models import Official, ContactLog, EmailMessage, EmailMessageInstance
 class OfficialAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {"fields": ("locality", "title", "first_name", "last_name")}),
-        ("Contact Details", {"fields": ("phone_number", "email", "mailing_address", "fax_number")}),
+        (
+            "Contact Details",
+            {"fields": ("phone_number", "email", "mailing_address", "fax_number")},
+        ),
         ("Additional Info", {"fields": ("job_title", "notes")}),
         (
             "Administrative",

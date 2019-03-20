@@ -161,7 +161,7 @@ def test_send_emails_basic(user, mailoutbox):
 
     # approve then send
     msg.approved_by = user
-    msg.approved_at = '2019-02-15T00:00:00Z'
+    msg.approved_at = "2019-02-15T00:00:00Z"
     msg.save()
 
     out = StringIO()

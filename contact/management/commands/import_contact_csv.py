@@ -36,7 +36,7 @@ class Command(BaseCommand):
                         "job_title",
                     ):
                         if field in line:
-                            if field in ('phone_number', 'fax_number'):
-                                line[field] = line[field].replace('-', '')
+                            if field in ("phone_number", "fax_number"):
+                                line[field] = line[field].replace("-", "")
                             od[field] = line[field]
                     Official.objects.create(locality=locality, created_by=bot, **od)
