@@ -61,6 +61,8 @@ def import_sourcefiles(state, path):
 
     all_files = glob.glob(path)
     for file in all_files:
+        if not os.path.isfile(file):
+            continue
         dir, fname = os.path.split(file)
         dir, county = os.path.split(dir)
         print(county, fname)
@@ -76,8 +78,9 @@ class Command(BaseCommand):
         # File.objects.all().delete()
         # ContactLog.objects.all().delete()
         # Official.objects.all().delete()
-        import_sourcefiles("VA", "/Users/james/Downloads/Virginia p*/*/source*")
+        # import_sourcefiles("VA", "/Users/james/Downloads/Virginia p*/*/source*")
+        import_sourcefiles("OH", "/Users/jpturk/Downloads/OH*/*/*/source*")
 
-        import_contact_csv("VA", "/Users/james/Desktop/va-contact.csv")
-        import_contact_csv("PA", "/Users/james/Desktop/pa-contact.csv")
-        import_contact_csv("MI", "/Users/james/Desktop/mi-contact.csv")
+        # import_contact_csv("VA", "/Users/james/Desktop/va-contact.csv")
+        # import_contact_csv("PA", "/Users/james/Desktop/pa-contact.csv")
+        # import_contact_csv("MI", "/Users/james/Desktop/mi-contact.csv")
