@@ -26,6 +26,7 @@ class File(models.Model):
 
     # source files
     source_filename = models.CharField(max_length=300, blank=True)
+    source_url = models.URLField(blank=True)
     official = models.ForeignKey(
         Official, on_delete=models.PROTECT, related_name="files", null=True
     )
