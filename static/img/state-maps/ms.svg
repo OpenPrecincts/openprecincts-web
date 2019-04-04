@@ -1,5 +1,5 @@
 <svg width="500" height="800" version="1.0" xmlns="http://www.w3.org/2000/svg">
- <g id="county-group" class="counties" transform="scale(6), translate(-605 -372)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
+ <g id="county-group" class="counties" transform="scale(6), translate(-605 -366)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
   <path id="Harrison__MS" class="28047" d="m663.79 476.24 1.2373 6.18-1.4958 0.378-3.1503 0.816-3.8653 1.113-1.2373-0.852-0.45819-6.301 2.0004-0.137 0.0909-0.69 6.8783-0.507"/>
   <path id="Jackson__MS" class="28059" d="m663.68 474.91 9.2994-0.72 1.0198 8.363-0.016 0.337-1.4156 0.909-0.15868 0.06-4.9671-0.176-0.37084-0.08-1.3407-0.756-0.70601-0.417-1.2373-6.18-0.10697-1.335"/>
   <path id="Grenada__MS" class="28043" d="m638.5 403.58 2.972-0.165 0.0481 0.681 4.9653-0.328 0.30487 4.371-5.3183 0.376-6.4932 0.41-0.21573-1.019-0.12123-2.026 2.0503-0.146 1.9202-0.44-0.0481-0.667-0.0642-1.047"/>
@@ -84,4 +84,333 @@
   <path id="George__MS" class="28039" d="m664.22 468.82 8.0211-0.628 0.73811 5.996-9.2994 0.72-0.312-4.017 1.0018-0.11583-0.14955-1.9552"/>
  
  </g>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Harrison
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Harrison__MS.mouseover" end="Harrison__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Jackson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Jackson__MS.mouseover" end="Jackson__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Grenada
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Grenada__MS.mouseover" end="Grenada__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Yalobusha
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Yalobusha__MS.mouseover" end="Yalobusha__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Clay
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Clay__MS.mouseover" end="Clay__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Webster
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Webster__MS.mouseover" end="Webster__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Chickasaw
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Chickasaw__MS.mouseover" end="Chickasaw__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Calhoun
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Calhoun__MS.mouseover" end="Calhoun__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Pontotoc
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Pontotoc__MS.mouseover" end="Pontotoc__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lee
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lee__MS.mouseover" end="Lee__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Union
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Union__MS.mouseover" end="Union__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lafayette
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lafayette__MS.mouseover" end="Lafayette__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Tate
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Tate__MS.mouseover" end="Tate__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Panola
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Panola__MS.mouseover" end="Panola__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Quitman
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Quitman__MS.mouseover" end="Quitman__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Tallahatchie
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Tallahatchie__MS.mouseover" end="Tallahatchie__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Leflore
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Leflore__MS.mouseover" end="Leflore__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Sunflower
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Sunflower__MS.mouseover" end="Sunflower__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Humphreys
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Humphreys__MS.mouseover" end="Humphreys__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Holmes
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Holmes__MS.mouseover" end="Holmes__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Carroll
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Carroll__MS.mouseover" end="Carroll__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Montgomery
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Montgomery__MS.mouseover" end="Montgomery__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Choctaw
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Choctaw__MS.mouseover" end="Choctaw__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Oktibbeha
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Oktibbeha__MS.mouseover" end="Oktibbeha__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lowndes
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lowndes__MS.mouseover" end="Lowndes__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Monroe
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Monroe__MS.mouseover" end="Monroe__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Itawamba
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Itawamba__MS.mouseover" end="Itawamba__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Prentiss
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Prentiss__MS.mouseover" end="Prentiss__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Tishomingo
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Tishomingo__MS.mouseover" end="Tishomingo__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Alcorn
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Alcorn__MS.mouseover" end="Alcorn__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Tippah
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Tippah__MS.mouseover" end="Tippah__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Benton
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Benton__MS.mouseover" end="Benton__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Marshall
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Marshall__MS.mouseover" end="Marshall__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">DeSoto
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="DeSoto__MS.mouseover" end="DeSoto__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Tunica
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Tunica__MS.mouseover" end="Tunica__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Coahoma
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Coahoma__MS.mouseover" end="Coahoma__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Bolivar
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Bolivar__MS.mouseover" end="Bolivar__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Washington
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Washington__MS.mouseover" end="Washington__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Sharkey
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Sharkey__MS.mouseover" end="Sharkey__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Issaquena
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Issaquena__MS.mouseover" end="Issaquena__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Yazoo
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Yazoo__MS.mouseover" end="Yazoo__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Attala
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Attala__MS.mouseover" end="Attala__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Winston
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Winston__MS.mouseover" end="Winston__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Noxubee
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Noxubee__MS.mouseover" end="Noxubee__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Kemper
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Kemper__MS.mouseover" end="Kemper__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Neshoba
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Neshoba__MS.mouseover" end="Neshoba__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Leake
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Leake__MS.mouseover" end="Leake__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Madison
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Madison__MS.mouseover" end="Madison__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Rankin
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Rankin__MS.mouseover" end="Rankin__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Hinds
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Hinds__MS.mouseover" end="Hinds__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Warren
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Warren__MS.mouseover" end="Warren__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Jefferson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Jefferson__MS.mouseover" end="Jefferson__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Claiborne
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Claiborne__MS.mouseover" end="Claiborne__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Copiah
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Copiah__MS.mouseover" end="Copiah__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Simpson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Simpson__MS.mouseover" end="Simpson__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Smith
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Smith__MS.mouseover" end="Smith__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Scott
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Scott__MS.mouseover" end="Scott__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Newton
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Newton__MS.mouseover" end="Newton__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lauderdale
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lauderdale__MS.mouseover" end="Lauderdale__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Clarke
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Clarke__MS.mouseover" end="Clarke__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Jasper
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Jasper__MS.mouseover" end="Jasper__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Jones
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Jones__MS.mouseover" end="Jones__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Covington
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Covington__MS.mouseover" end="Covington__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Jefferson Davis
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Jefferson_Davis__MS.mouseover" end="Jefferson_Davis__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lawrence
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lawrence__MS.mouseover" end="Lawrence__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lincoln
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lincoln__MS.mouseover" end="Lincoln__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Franklin
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Franklin__MS.mouseover" end="Franklin__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Adams
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Adams__MS.mouseover" end="Adams__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Wilkinson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Wilkinson__MS.mouseover" end="Wilkinson__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Amite
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Amite__MS.mouseover" end="Amite__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Pike
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Pike__MS.mouseover" end="Pike__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Walthall
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Walthall__MS.mouseover" end="Walthall__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Marion
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Marion__MS.mouseover" end="Marion__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lamar
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lamar__MS.mouseover" end="Lamar__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Forrest
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Forrest__MS.mouseover" end="Forrest__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Wayne
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Wayne__MS.mouseover" end="Wayne__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Greene
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Greene__MS.mouseover" end="Greene__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Perry
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Perry__MS.mouseover" end="Perry__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Stone
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Stone__MS.mouseover" end="Stone__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Pearl River
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Pearl_River__MS.mouseover" end="Pearl_River__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Hancock
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Hancock__MS.mouseover" end="Hancock__MS.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">George
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="George__MS.mouseover" end="George__MS.mouseout"/>
+  </text>
+
 </svg>

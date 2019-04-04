@@ -1,5 +1,5 @@
 <svg width="900" height="400" version="1.0" xmlns="http://www.w3.org/2000/svg">
- <g id="county-group" class="counties" transform="scale(5), translate(-740 -305)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
+ <g id="county_group" class="counties" transform="scale(5), translate(-740 -305)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
 <path id="Clay__NC" class="37043" d="m751.68 363.42 1.6824-0.0555 3.5254 3.1565-1.2159 0.194-7.1725 1.045-1.2801 0.167 1.7338-3.0481 2.727-1.4589"/>
   <path id="Macon__NC" class="37113" d="m758.53 358.43 5.2951 7-6.9336 1.091-3.5254-3.1565-1.6824 0.0555 0.3851-2.209 0.32091-0.765 0.13015-0.09 3.9758-1.228 2.0343-0.699"/>
   <path id="Transylvania__NC" class="37175" d="m769.21 354.82 2.4087 2.145 0.51346 0.589 0.2086 0.657 0.12123 0.844 0.44394 1.342 0.1355 0.227 0.24068 0.126-3.2947 2.25-2.4176 0.619-1.9612 0.947-0.42428-0.96678 1.2034-5.3232 2.0087-0.99465 0.81359-2.4614"/>
@@ -102,4 +102,405 @@
   <path id="Hyde__NC" class="37095" d="m891.14 327.5 1.941-0.54879 1.3538 1.8838-0.42611 0.321-0.79694 1.173-0.0553 0.114-0.49742 1.318 0.0713 0.264-9e-3 0.241-0.10162 0.739-0.025 0.154-0.0892 0.167-0.68284 1.086-1.141 1.246-0.11232 0.07-4.6604 0.451h-0.16937l-1.5119-0.188-1.2124-0.183-0.31201-0.362-0.63648-0.842-0.58657-1.087-0.0731-0.273v-0.1l0.0571-0.1 0.20859-0.121 1.5048-1.48-2.4073-0.90922-0.88919-1.5418 4.4447-0.745 1.7035-0.19125 0.15171 1.738 1.7261-0.0268 0.0484-2.1239 0.50976-0.65596 0.76141 0.5184 1.9132-0.0235m7.2634 9.556 0.15154 0.305-0.34409 0.193-0.33162 0.265-0.82547 0.667-1.166 1.004-0.51347 0.451-0.57943 0.683-0.27278 0.401-0.18542 0.169-0.0553-0.07 0.0178-0.09 0.28704-0.818 0.32983-0.473 1.166-1.021 1.7668-1.416 0.55448-0.248"/>
   
  </g>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Clay
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Clay__NC.mouseover" end="Clay__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Macon
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Macon__NC.mouseover" end="Macon__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Transylvania
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Transylvania__NC.mouseover" end="Transylvania__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Jackson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Jackson__NC.mouseover" end="Jackson__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Haywood
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Haywood__NC.mouseover" end="Haywood__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Swain
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Swain__NC.mouseover" end="Swain__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Graham
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Graham__NC.mouseover" end="Graham__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Cherokee
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Cherokee__NC.mouseover" end="Cherokee__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Mitchell
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Mitchell__NC.mouseover" end="Mitchell__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Yancey
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Yancey__NC.mouseover" end="Yancey__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Madison
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Madison__NC.mouseover" end="Madison__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Buncombe
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Buncombe__NC.mouseover" end="Buncombe__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Henderson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Henderson__NC.mouseover" end="Henderson__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Polk
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Polk__NC.mouseover" end="Polk__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Rutherford
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Rutherford__NC.mouseover" end="Rutherford__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">McDowell
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="McDowell__NC.mouseover" end="McDowell__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Avery
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Avery__NC.mouseover" end="Avery__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Watauga
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Watauga__NC.mouseover" end="Watauga__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Alexander
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Alexander__NC.mouseover" end="Alexander__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Ashe
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Ashe__NC.mouseover" end="Ashe__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Alleghany
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Alleghany__NC.mouseover" end="Alleghany__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Wilkes
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Wilkes__NC.mouseover" end="Wilkes__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Caldwell
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Caldwell__NC.mouseover" end="Caldwell__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Burke
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Burke__NC.mouseover" end="Burke__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Cleveland
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Cleveland__NC.mouseover" end="Cleveland__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Gaston
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Gaston__NC.mouseover" end="Gaston__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lincoln
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lincoln__NC.mouseover" end="Lincoln__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Catawba
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Catawba__NC.mouseover" end="Catawba__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Iredell
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Iredell__NC.mouseover" end="Iredell__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Mecklenburg
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Mecklenburg__NC.mouseover" end="Mecklenburg__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Rowan
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Rowan__NC.mouseover" end="Rowan__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Davie
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Davie__NC.mouseover" end="Davie__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Yadkin
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Yadkin__NC.mouseover" end="Yadkin__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Surry
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Surry__NC.mouseover" end="Surry__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Stokes
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Stokes__NC.mouseover" end="Stokes__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Forsyth
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Forsyth__NC.mouseover" end="Forsyth__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Davidson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Davidson__NC.mouseover" end="Davidson__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Stanly
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Stanly__NC.mouseover" end="Stanly__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Cabarrus
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Cabarrus__NC.mouseover" end="Cabarrus__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Union
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Union__NC.mouseover" end="Union__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Anson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Anson__NC.mouseover" end="Anson__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Rockingham
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Rockingham__NC.mouseover" end="Rockingham__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Guilford
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Guilford__NC.mouseover" end="Guilford__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Randolph
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Randolph__NC.mouseover" end="Randolph__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Montgomery
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Montgomery__NC.mouseover" end="Montgomery__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Richmond
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Richmond__NC.mouseover" end="Richmond__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Scotland
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Scotland__NC.mouseover" end="Scotland__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Caswell
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Caswell__NC.mouseover" end="Caswell__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Alamance
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Alamance__NC.mouseover" end="Alamance__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Moore
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Moore__NC.mouseover" end="Moore__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Hoke
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Hoke__NC.mouseover" end="Hoke__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Robeson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Robeson__NC.mouseover" end="Robeson__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Columbus
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Columbus__NC.mouseover" end="Columbus__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Brunswick
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Brunswick__NC.mouseover" end="Brunswick__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">New Hanover
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="New_Hanover__NC.mouseover" end="New_Hanover__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Bladen
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Bladen__NC.mouseover" end="Bladen__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Cumberland
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Cumberland__NC.mouseover" end="Cumberland__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Chatham
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Chatham__NC.mouseover" end="Chatham__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Harnett
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Harnett__NC.mouseover" end="Harnett__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lee
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lee__NC.mouseover" end="Lee__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Orange
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Orange__NC.mouseover" end="Orange__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Person
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Person__NC.mouseover" end="Person__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Durham
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Durham__NC.mouseover" end="Durham__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Pender
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Pender__NC.mouseover" end="Pender__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Sampson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Sampson__NC.mouseover" end="Sampson__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Wayne
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Wayne__NC.mouseover" end="Wayne__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Johnston
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Johnston__NC.mouseover" end="Johnston__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Wake
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Wake__NC.mouseover" end="Wake__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Granville
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Granville__NC.mouseover" end="Granville__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Vance
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Vance__NC.mouseover" end="Vance__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Warren
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Warren__NC.mouseover" end="Warren__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Franklin
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Franklin__NC.mouseover" end="Franklin__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Nash
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Nash__NC.mouseover" end="Nash__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Northampton
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Northampton__NC.mouseover" end="Northampton__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Halifax
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Halifax__NC.mouseover" end="Halifax__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Edgecombe
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Edgecombe__NC.mouseover" end="Edgecombe__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Wilson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Wilson__NC.mouseover" end="Wilson__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Greene
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Greene__NC.mouseover" end="Greene__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lenoir
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lenoir__NC.mouseover" end="Lenoir__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Jones
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Jones__NC.mouseover" end="Jones__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Duplin
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Duplin__NC.mouseover" end="Duplin__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Onslow
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Onslow__NC.mouseover" end="Onslow__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Carteret
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Carteret__NC.mouseover" end="Carteret__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Pamlico
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Pamlico__NC.mouseover" end="Pamlico__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Craven
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Craven__NC.mouseover" end="Craven__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Pitt
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Pitt__NC.mouseover" end="Pitt__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Martin
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Martin__NC.mouseover" end="Martin__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Chowan
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Chowan__NC.mouseover" end="Chowan__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Hertford
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Hertford__NC.mouseover" end="Hertford__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Bertie
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Bertie__NC.mouseover" end="Bertie__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Gates
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Gates__NC.mouseover" end="Gates__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Camden
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Camden__NC.mouseover" end="Camden__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Pasquotank
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Pasquotank__NC.mouseover" end="Pasquotank__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Perquimans
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Perquimans__NC.mouseover" end="Perquimans__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Beaufort
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Beaufort__NC.mouseover" end="Beaufort__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Washington
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Washington__NC.mouseover" end="Washington__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Tyrrell
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Tyrrell__NC.mouseover" end="Tyrrell__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Currituck
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Currituck__NC.mouseover" end="Currituck__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Dare
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Dare__NC.mouseover" end="Dare__NC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Hyde
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Hyde__NC.mouseover" end="Hyde__NC.mouseout"/>
+  </text>
+
 </svg>

@@ -1,5 +1,5 @@
-<svg width="700" height="700" version="1.0" xmlns="http://www.w3.org/2000/svg">
- <g id="county-group" class="counties" transform="scale(5), translate(-265 -315)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
+<svg width="700" height="730" version="1.0" xmlns="http://www.w3.org/2000/svg">
+ <g id="county_group" class="counties" transform="scale(5), translate(-265 -307)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
 <path id="Lea__NM" class="35025" d="m388.92 409.84-0.39402 4.195-0.8843 9.868-1.4869 20.056-0.15154 1.993-0.47603-0.03-1.0911-0.09-1.3675-0.106-1.0038-0.07-1.141-0.09-7.6913-0.603 0.98236-12.004-1.7526-0.135 0.82012-10.182 0.92353 0.07 0.81121-9.902 0.8319-0.028 0.36618-3.909 4.0008 0.307 8.704 0.658"/>
   <path id="Eddy__NM" class="35015" d="m352.48 431.11 0.18541 0.01 0.96454-10.168 19.647 1.689-0.82012 10.182 1.7526 0.135-0.98236 12.004-4.9813-0.408-0.85934-0.07-15.95-1.43 0.54556-5.794h-0.0731l0.57052-6.14"/>
   <path id="Los_Alamos__NM" class="35028" d="m334.21 349.21-0.0392 0.822-0.24247 1.727-0.52951-0.05 0.45106 0.369 0.0392 0.06-0.2086 1.929-0.26565-0.588-0.27278-0.321-0.74702-0.433-0.56339-0.273-0.11232 0.103-0.37797 0.03-0.33696-0.02-0.18542-0.1-0.12123-0.224 0.62044-2.363 0.312-0.625 1.6242-0.17 0.6668 0.02 0.28882 0.102"/>
@@ -35,4 +35,137 @@
   <path id="Sandoval__NM" class="35043" d="m309.66 340.47 7.062 0.931 6.4522 0.747-0.27991 2.268-0.29774 2.74 11.724 1.251-0.0642 0.644-0.041 0.159-0.28882-0.102-0.6668-0.02-1.6242 0.17-0.312 0.625-0.62044 2.363 0.12123 0.224 0.18542 0.1 0.33696 0.02 0.37797-0.03 0.11232-0.103 0.56339 0.273 0.74702 0.433 0.27278 0.321 0.26565 0.588-1.2854 12.446-2.1216-0.29-4.4358-0.498-3.0451-0.353-3.7048-0.435-4.3235-0.52-0.5232-2.0767-1.3488-0.15028 1.9362-15.935-5.8336-0.747 0.65966-5.037m24.235 11.667-0.0392-0.06-0.45106-0.369 0.52951 0.05-0.0392 0.378"/>
 
  </g>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lea
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lea__NM.mouseover" end="Lea__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Eddy
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Eddy__NM.mouseover" end="Eddy__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Los Alamos
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Los_Alamos__NM.mouseover" end="Los_Alamos__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Rio Arriba
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Rio_Arriba__NM.mouseover" end="Rio_Arriba__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">San Juan
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="San_Juan__NM.mouseover" end="San_Juan__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">McKinley
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="McKinley__NM.mouseover" end="McKinley__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Bernalillo
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Bernalillo__NM.mouseover" end="Bernalillo__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Valencia
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Valencia__NM.mouseover" end="Valencia__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Cibola
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Cibola__NM.mouseover" end="Cibola__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Sierra
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Sierra__NM.mouseover" end="Sierra__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Socorro
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Socorro__NM.mouseover" end="Socorro__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Catron
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Catron__NM.mouseover" end="Catron__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Grant
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Grant__NM.mouseover" end="Grant__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Hidalgo
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Hidalgo__NM.mouseover" end="Hidalgo__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Luna
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Luna__NM.mouseover" end="Luna__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Dona Ana
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Dona_Ana__NM.mouseover" end="Dona_Ana__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Taos
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Taos__NM.mouseover" end="Taos__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Santa Fe
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Santa_Fe__NM.mouseover" end="Santa_Fe__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Otero
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Otero__NM.mouseover" end="Otero__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Torrance
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Torrance__NM.mouseover" end="Torrance__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lincoln
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lincoln__NM.mouseover" end="Lincoln__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Colfax
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Colfax__NM.mouseover" end="Colfax__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Mora
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Mora__NM.mouseover" end="Mora__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Union
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Union__NM.mouseover" end="Union__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Harding
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Harding__NM.mouseover" end="Harding__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">San Miguel
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="San_Miguel__NM.mouseover" end="San_Miguel__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Quay
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Quay__NM.mouseover" end="Quay__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Guadalupe
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Guadalupe__NM.mouseover" end="Guadalupe__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">De Baca
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="De_Baca__NM.mouseover" end="De_Baca__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Curry
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Curry__NM.mouseover" end="Curry__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Roosevelt
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Roosevelt__NM.mouseover" end="Roosevelt__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Chaves
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Chaves__NM.mouseover" end="Chaves__NM.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Sandoval
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Sandoval__NM.mouseover" end="Sandoval__NM.mouseout"/>
+  </text>
+
 </svg>

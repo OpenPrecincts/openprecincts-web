@@ -1,5 +1,5 @@
-<svg width="300" height="500" version="1.0" xmlns="http://www.w3.org/2000/svg">
- <g id="county-group" class="counties" transform="scale(7), translate(-910 -90)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
+<svg width="300" height="550" version="1.0" xmlns="http://www.w3.org/2000/svg">
+ <g id="county_group" class="counties" transform="scale(7), translate(-910 -80)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
 <path id="Coos__NH" class="33007" d="m922.53 90.736 0.61865 1.767 3.3999 10.253 0.24068 0.772 3.0148 9.586-0.23534 1.181-3.1554 0.6777-0.34945 2.4208 0.20206 1.2258-0.42315 0.24557-0.59353-1.5541-0.47862-0.26719-0.54756-0.74977-0.44689 0.15617-0.65075-0.708-0.48315-0.128-1.6195 0.50533-0.51642-1.0113-1.765-0.298-1.6509-1.23 0.34409 0.03 0.51525-0.378 0.041-0.06 0.22464-0.29 0.0945-0.137 0.066-0.104 0.79516-1.398 0.0802-0.137 0.18542-0.515-0.32106-1.0665 0.53678-0.93451-0.41719-0.673-0.0713-0.115-0.40293-0.499-0.73811-0.907-0.60439-0.596-0.1355-0.383 1.155-4.1131-1.1318-1.5299 0.38688-0.795-0.1355-1.366 0.3851-4.154 1.2926-1.688 0.17829-0.127 0.34409 0.177 0.14442 0.287 0.0731 0.08 0.51525 0.257 0.8433 0.06 0.70602-0.147 0.10519-0.09 0.3851-1.526"/>
   <path id="Grafton__NH" class="33009" d="m916.01 114.98 1.0768-1.398 1.6509 1.23 1.765 0.298 0.51642 1.0113 1.6195-0.50533 0.48315 0.128 0.65075 0.708 0.78981 1.139 1.1553 1.76 0.6668 3.487-3.1093 1.35 0.9057 2.074 0.36192 0.65 0.62303 1.2126-1.8673 0.95167 0.20478 1.5779-0.91985 1.5779-1.2235 0.37752-1.0104-0.93852-0.47424 1.003-0.42611 1.213-1.0555 0.08-1.8453 0.07-1.872-0.289-1.9932 0.161-0.36612-0.42147 0.28888-1.2862-0.22848-0.58191 0.4165-0.84518 0.33092-0.18948 0.57805-1.0067 0.0553-1.1591-0.26783-1.1591 0.62544-1.2732 0.11229-1.1971-0.40087-0.47492 0.32135-1.6913 0.29371-0.84564-0.35248-0.31348 0.0553-1.1591-0.27277-0.217-0.29953-0.403-0.52773-1.84v-0.144l0.0553-0.234 0.53843-0.972 0.0499-0.04 0.0838-0.08 1.1125-0.692 1.125-0.707"/>
   <path id="Strafford__NH" class="33017" d="m931.8 130.37 0.4557-1.068 0.63087 1.2678 0.44305-0.0229 0.38859-0.59269 0.42836 6e-3 0.23707 0.82303 0.35382-0.63656 0.37154-0.88595 0.27991 3.135 0.12302 0.513 0.15154 0.323 0.46712 0.649 0.29595 0.153 0.80586 0.401 1.9433 1.159 0.0499 0.06 0.624 2.507-0.62065 0.0834 0.11432 0.90658-1.0673 0.0234-2.2537 0.72355 0.41006-1.456-4.4006-1.791 0.12123-0.289 0.79516-1.913-0.79516-1.784-0.65074-1.568 0.29774-0.722"/>
@@ -12,4 +12,45 @@
   <path id="Carroll__NH" class="33003" d="m929.8 113.11 3.284 10.872 2.0253 5.279-0.37154 0.88595-0.35382 0.63666-0.23707-0.82293-0.42835-6e-3 -0.3886 0.59269-0.44305 0.0229-0.63087-1.2678-0.4557 1.068-1.7615-0.313-4.0828-2.266-1.4138-0.885-0.36192-0.65-0.9057-2.074 3.1093-1.35-0.6668-3.487-1.1553-1.76-0.78981-1.139 0.44689-0.15617 0.54756 0.74977 0.47862 0.26719 0.59353 1.5541 0.42315-0.24557-0.20206-1.2258 0.34945-2.4208 3.1554-0.6777 0.23534-1.181"/>
   
  </g>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Coos
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Coos__NH.mouseover" end="Coos__NH.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Grafton
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Grafton__NH.mouseover" end="Grafton__NH.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Strafford
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Strafford__NH.mouseover" end="Strafford__NH.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Rockingham
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Rockingham__NH.mouseover" end="Rockingham__NH.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Cheshire
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Cheshire__NH.mouseover" end="Cheshire__NH.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Sullivan
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Sullivan__NH.mouseover" end="Sullivan__NH.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Hillsborough
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Hillsborough__NH.mouseover" end="Hillsborough__NH.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Belknap
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Belknap__NH.mouseover" end="Belknap__NH.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Merrimack
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Merrimack__NH.mouseover" end="Merrimack__NH.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Carroll
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Carroll__NH.mouseover" end="Carroll__NH.mouseout"/>
+  </text>
+
 </svg>

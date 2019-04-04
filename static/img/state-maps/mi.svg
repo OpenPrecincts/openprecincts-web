@@ -1,12 +1,12 @@
 <svg width="800" height="800" version="1.0" xmlns="http://www.w3.org/2000/svg">
- <g id="county-group" class="counties" transform="scale(5), translate(-610 -70)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
-<path id="Gogebic__MI" class="26053" d="m620.09 106.76 0.41897-0.03 0.23356 3.945 1.9504-0.1086 0.13198 1.9896 5.969-0.417 0.28169 3.945 5.9637-0.433 0.39223 5.399-1.1321-0.555-1.0929-0.369-0.67749-0.144-0.86647-0.177-11.524-2.364-1.6224-0.337-1.478-0.312-3.2306-3.97-1.815-0.988 1.0608-0.861 0.31379-0.177 2.5477-1.021 0.98771-0.28 0.85934-0.362 0.25852-0.153 0.4885-0.466 1.1571-1.15 0.42432-0.601"/>
+ <g id="county_group" class="counties" transform="scale(5), translate(-610 -70)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
+  <path id="Gogebic__MI" class="26053" d="m620.09 106.76 0.41897-0.03 0.23356 3.945 1.9504-0.1086 0.13198 1.9896 5.969-0.417 0.28169 3.945 5.9637-0.433 0.39223 5.399-1.1321-0.555-1.0929-0.369-0.67749-0.144-0.86647-0.177-11.524-2.364-1.6224-0.337-1.478-0.312-3.2306-3.97-1.815-0.988 1.0608-0.861 0.31379-0.177 2.5477-1.021 0.98771-0.28 0.85934-0.362 0.25852-0.153 0.4885-0.466 1.1571-1.15 0.42432-0.601"/>
   <path id="Ontonagon__MI" class="26131" d="m634.77 99.615 0.46533 6.099 1.084-0.08 0.13906 1.952-1.9754 0.128 0.15867 2.596 0.24961 3.359 0.15332 1.977-5.9637 0.433-0.28169-3.945-5.969 0.417-0.13198-1.9896-1.9504 0.1086-0.23356-3.945-0.41897 0.03 0.59726-0.74 0.25673-0.209 0.62579-0.369 1.1-0.346 0.73098-0.114 0.21038 0.03 0.29595 0.112 3.2234-0.545 0.33875-0.12 0.65788-0.354 5.6713-3.577 0.96631-0.914"/>
   <path id="Monroe__MI" class="26115" d="m734.38 203.8 1.9719-0.442 2.1127-0.305 0.14441 0.06 1.9041 1.18-1.913 2.437-0.91462 1.637-0.72384 1.318-0.0713 0.139-0.025 0.103 0.0303 1.776-5.2131 0.884-1.2462-8.205 3.9437-0.586"/>
   <path id="Lenawee__MI" class="26091" d="m730.44 204.38 1.2462 8.205-1.9772 0.346-8.1014 1.326-1.0733-8.413 3.9116-0.46 5.994-1.004"/>
   <path id="Hillsdale__MI" class="26059" d="m720.53 205.85 1.0733 8.413-0.64897 0.104-6.8712 1.052-0.49742-1.428-0.86826-7.18 1.9754-0.182 5.8371-0.779"/>
   <path id="Branch__MI" class="26023" d="m704.83 207.74 7.891-0.936 0.86826 7.18-6.3007 0.74-1.6224 0.174-0.83617-7.158"/>
-  <path id="St._Joseph__MI" class="26149" d="m696.91 208.67 7.9142-0.931 0.83617 7.158-6.2365 0.717-2.2339 0.239-0.27991-7.183"/>
+  <path id="St_Joseph__MI" class="26149" d="m696.91 208.67 7.9142-0.931 0.83617 7.158-6.2365 0.717-2.2339 0.239-0.27991-7.183"/>
   <path id="Cass__MI" class="26027" d="m689.13 209.45 7.7858-0.772 0.27991 7.183-4.6034 0.467-2.7724 0.296-0.68997-7.174"/>
   <path id="Berrien__MI" class="26021" d="m686.32 205.75 2.427-0.2475 0.37925 3.9455 0.68997 7.174-5.0634 0.522-5.1097 0.491 7e-3 -0.01 0.74881-0.627 0.93779-0.901 0.58656-0.65 0.90214-1.229 0.312-0.595 0.20859-0.58 0.30666-1.374 0.87539-2.532 0.33874-0.713 1.453-2.669"/>
   <path id="Wayne__MI" class="26163" d="m740.92 194.48 3.5604-0.571-0.13728 1.236-0.0624 0.217-0.38689 0.926-0.55269 0.369-0.46711 0.233-0.4261 0.114-0.0642 0.01-0.73276 0.378-0.23177 0.249-0.22643 0.459-0.36905 1.253 7e-3 0.08v0.08l0.0981 1.327-0.12124 2.096-0.29773 1.357-1.9041-1.18-0.14441-0.06-2.1127 0.305-1.9719 0.442-1.2658-7.982 7.809-1.33"/>
@@ -22,7 +22,7 @@
   <path id="Livingston__MI" class="26093" d="m729.82 188.14 1.4227 7.994-7.8125 1.173-0.16046 0.02-1.3033-8.034 3.917-0.596 3.9366-0.552"/>
   <path id="Oakland__MI" class="26125" d="m739.25 184.41 1.6706 10.07-7.809 1.33-1.872 0.317-1.4227-7.994-0.31378-2.02 1.9612-0.303 1.9505-0.419 5.8353-0.981"/>
   <path id="Macomb__MI" class="26099" d="m741.18 184.03 4.0649-0.649 0.78803 4.354 0.0891 0.545-1.6384 5.634-3.5604 0.571-1.6706-10.07 1.9273-0.385"/>
-  <path id="St._Clair__MI" class="26147" d="m740.15 178.1 8.1299-1.471 0.041 0.145 0.32983 0.971 0.13015 0.346 1.3568 2.01-0.11232 6.427-0.12123 2.259-0.0731 0.561-0.0571 0.154-0.8433 1.365-0.0785 0.1-0.28347 0.08-0.95562 0.19-0.92174-0.907-0.0606-0.161 0.29952-0.722 0.31379-0.281 0.41006 0.09 0.20859-0.293 0.0642-0.126 0.025-0.2-0.041-0.217-0.14441-0.17-0.0802-0.04-0.69176-0.169-0.19255-0.04-0.25673 0.05-0.40115 0.219-0.025 0.01-0.0891-0.545-0.78803-4.354-4.0649 0.649-1.0269-5.93"/>
+  <path id="St_Clair__MI" class="26147" d="m740.15 178.1 8.1299-1.471 0.041 0.145 0.32983 0.971 0.13015 0.346 1.3568 2.01-0.11232 6.427-0.12123 2.259-0.0731 0.561-0.0571 0.154-0.8433 1.365-0.0785 0.1-0.28347 0.08-0.95562 0.19-0.92174-0.907-0.0606-0.161 0.29952-0.722 0.31379-0.281 0.41006 0.09 0.20859-0.293 0.0642-0.126 0.025-0.2-0.041-0.217-0.14441-0.17-0.0802-0.04-0.69176-0.169-0.19255-0.04-0.25673 0.05-0.40115 0.219-0.025 0.01-0.0891-0.545-0.78803-4.354-4.0649 0.649-1.0269-5.93"/>
   <path id="Lapeer__MI" class="26087" d="m732.25 177.56-0.0321-0.227 1.8064-0.32895-0.31947-1.953 3.8564-0.625 0.15154 0.98 1.9612-0.291 0.48316 2.983 1.0269 5.93-1.9273 0.385-5.8353 0.981-1.1713-7.834"/>
   <path id="Genesee__MI" class="26049" d="m728.35 178.11 3.892-0.545 1.1713 7.834-1.9505 0.419-1.9612 0.303 0.31378 2.02-3.9366 0.552-1.1339-8.051-0.21136-2.1252 3.8163-0.40676"/>
   <path id="Shiawassee__MI" class="26155" d="m724.75 180.64 1.1339 8.051-3.917 0.596-3.4285 0.44-1.0376-7.834-0.025-0.231 7.2741-1.022"/>
@@ -85,4 +85,337 @@
   <path id="Baraga__MI" class="26013" d="m648.99 101.24 0.27457 3.352 0.80407-0.06 0.0392 0.02 0.16225 1.936-1.9629 0.185 0.47424 5.914-8.9429 0.708-0.7488-9.859 1.9-0.22972-0.0583-1.9083 1.6224-0.33-0.31913 1.43-0.0267 1.246 0.0267 0.129 0.18185 0.442 0.21038 0.433 0.37619-0.03 0.0571-0.161 0.26565-0.442 0.77198-1.077 1.7044-1.823 1.3407-0.924 0.17651-0.06 0.1765 0.09 1.494 1.02"/>
   
  </g>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Gogebic
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Gogebic__MI.mouseover" end="Gogebic__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Ontonagon
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Ontonagon__MI.mouseover" end="Ontonagon__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Monroe
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Monroe__MI.mouseover" end="Monroe__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Lenawee
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lenawee__MI.mouseover" end="Lenawee__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Hillsdale
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Hillsdale__MI.mouseover" end="Hillsdale__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Branch
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Branch__MI.mouseover" end="Branch__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">St. Joseph
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="St_Joseph__MI.mouseover" end="St_Joseph__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Cass
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Cass__MI.mouseover" end="Cass__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Berrien
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Berrien__MI.mouseover" end="Berrien__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Wayne
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Wayne__MI.mouseover" end="Wayne__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Washtenaw
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Washtenaw__MI.mouseover" end="Washtenaw__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Jackson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Jackson__MI.mouseover" end="Jackson__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Calhoun
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Calhoun__MI.mouseover" end="Calhoun__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Kalamazoo
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Kalamazoo__MI.mouseover" end="Kalamazoo__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Van Buren
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Van_Buren__MI.mouseover" end="Van_Buren__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Allegan
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Allegan__MI.mouseover" end="Allegan__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Barry
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Barry__MI.mouseover" end="Barry__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Eaton
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Eaton__MI.mouseover" end="Eaton__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Ingham
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Ingham__MI.mouseover" end="Ingham__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Livingston
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Livingston__MI.mouseover" end="Livingston__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Oakland
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Oakland__MI.mouseover" end="Oakland__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Macomb
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Macomb__MI.mouseover" end="Macomb__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">St. Clair
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="St_Clair__MI.mouseover" end="St_Clair__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Lapeer
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lapeer__MI.mouseover" end="Lapeer__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Genesee
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Genesee__MI.mouseover" end="Genesee__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Shiawassee
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Shiawassee__MI.mouseover" end="Shiawassee__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Clinton
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Clinton__MI.mouseover" end="Clinton__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Ionia
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Ionia__MI.mouseover" end="Ionia__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Ottawa
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Ottawa__MI.mouseover" end="Ottawa__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Muskegon
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Muskegon__MI.mouseover" end="Muskegon__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Kent
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Kent__MI.mouseover" end="Kent__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Montcalm
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Montcalm__MI.mouseover" end="Montcalm__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Gratiot
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Gratiot__MI.mouseover" end="Gratiot__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Saginaw
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Saginaw__MI.mouseover" end="Saginaw__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Sanilac
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Sanilac__MI.mouseover" end="Sanilac__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Tuscola
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Tuscola__MI.mouseover" end="Tuscola__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Huron
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Huron__MI.mouseover" end="Huron__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Bay
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Bay__MI.mouseover" end="Bay__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Midland
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Midland__MI.mouseover" end="Midland__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Isabella
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Isabella__MI.mouseover" end="Isabella__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Mecosta
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Mecosta__MI.mouseover" end="Mecosta__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Newaygo
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Newaygo__MI.mouseover" end="Newaygo__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Oceana
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Oceana__MI.mouseover" end="Oceana__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Arenac
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Arenac__MI.mouseover" end="Arenac__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Gladwin
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Gladwin__MI.mouseover" end="Gladwin__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Clare
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Clare__MI.mouseover" end="Clare__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Osceola
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Osceola__MI.mouseover" end="Osceola__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Lake
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lake__MI.mouseover" end="Lake__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Mason
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Mason__MI.mouseover" end="Mason__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Iosco
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Iosco__MI.mouseover" end="Iosco__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Ogemaw
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Ogemaw__MI.mouseover" end="Ogemaw__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Roscommon
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Roscommon__MI.mouseover" end="Roscommon__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Missaukee
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Missaukee__MI.mouseover" end="Missaukee__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Wexford
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Wexford__MI.mouseover" end="Wexford__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Manistee
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Manistee__MI.mouseover" end="Manistee__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Alcona
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Alcona__MI.mouseover" end="Alcona__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Oscoda
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Oscoda__MI.mouseover" end="Oscoda__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Crawford
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Crawford__MI.mouseover" end="Crawford__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Kalkaska
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Kalkaska__MI.mouseover" end="Kalkaska__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Grand Traverse
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Grand_Traverse__MI.mouseover" end="Grand_Traverse__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Benzie
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Benzie__MI.mouseover" end="Benzie__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Leelanau
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Leelanau__MI.mouseover" end="Leelanau__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Alpena
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Alpena__MI.mouseover" end="Alpena__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Montmorency
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Montmorency__MI.mouseover" end="Montmorency__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Otsego
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Otsego__MI.mouseover" end="Otsego__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Antrim
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Antrim__MI.mouseover" end="Antrim__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Charlevoix
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Charlevoix__MI.mouseover" end="Charlevoix__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Presque Isle
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Presque_Isle__MI.mouseover" end="Presque_Isle__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Cheboygan
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Cheboygan__MI.mouseover" end="Cheboygan__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Emmet
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Emmet__MI.mouseover" end="Emmet__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Mackinac
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Mackinac__MI.mouseover" end="Mackinac__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Chippewa
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Chippewa__MI.mouseover" end="Chippewa__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Luce
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Luce__MI.mouseover" end="Luce__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Schoolcraft
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Schoolcraft__MI.mouseover" end="Schoolcraft__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Alger
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Alger__MI.mouseover" end="Alger__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Delta
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Delta__MI.mouseover" end="Delta__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Menominee
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Menominee__MI.mouseover" end="Menominee__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Dickinson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Dickinson__MI.mouseover" end="Dickinson__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Marquette
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Marquette__MI.mouseover" end="Marquette__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Iron
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Iron__MI.mouseover" end="Iron__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Keweenaw
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Keweenaw__MI.mouseover" end="Keweenaw__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Houghton
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Houghton__MI.mouseover" end="Houghton__MI.mouseout"/>
+  </text>
+  <text x="170" y="50" font-size="50" fill="black" visibility="hidden">Baraga
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Baraga__MI.mouseover" end="Baraga__MI.mouseout"/>
+  </text>
+
 </svg>

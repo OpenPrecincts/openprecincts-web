@@ -1,6 +1,6 @@
 <svg width="700" height="600" version="1.0" xmlns="http://www.w3.org/2000/svg">
- <g id="county-group" class="counties" transform="scale(7), translate(-758 -355)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
-<path id="Pickens__SC" class="45077" d="m769.99 363 0.59609 0.32756 2.9571-0.86182-0.0186 1.2867 0.83347-0.13345 1.33 2.917 0.20147 0.538 0.15332 0.779-0.0909 0.113-4.8518 3.7149-1.0851 1.7101-2.4201-7.8335-0.66779-0.25052 0.32448-1.182 0.32092-0.506 2.4176-0.619"/>
+ <g id="county_group" class="counties" transform="scale(7), translate(-758 -348)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
+  <path id="Pickens__SC" class="45077" d="m769.99 363 0.59609 0.32756 2.9571-0.86182-0.0186 1.2867 0.83347-0.13345 1.33 2.917 0.20147 0.538 0.15332 0.779-0.0909 0.113-4.8518 3.7149-1.0851 1.7101-2.4201-7.8335-0.66779-0.25052 0.32448-1.182 0.32092-0.506 2.4176-0.619"/>
   <path id="Oconee__SC" class="45073" d="m767.57 363.62-0.32092 0.506-0.32448 1.182 0.66779 0.25052 2.4201 7.8335-2.3784 3.689-1.166-0.163-1.1517-0.802-4.771-2.933-0.37084-0.618 0.30666-1.737 1.2355-2.243 1.7044-1.324 0.40293-1.831 1.7846-0.863 1.9612-0.947"/>
   <path id="Beaufort__SC" class="45013" d="m814.52 411.53 2.6134 0.2156 1.1226 1.7064 1.3902 0.23471 2.3458 1.6873 0.39951 1.1696 0.45478 0.0738 0.25465 0.37063 0.0981 0.192 0.0553 0.273-0.041 0.346-0.21751 1.18-0.18363 0.202-3.5019 2.1581-0.0562 0.64539-1.1914 2.1476-1.1 0.891-0.53942-0.0453-0.59448 0.90428-0.48138-0.385-2.307-1.848-0.30309-0.489-0.16224-0.522 0.0232-0.123 0.24068-1.011-0.33924-0.39945 1.359-0.48655-0.12864-0.99473 1.1342-0.0803 0.5313-0.699 0.0677-0.3185 0.0678-0.3185-0.59137-0.259 0.58437-1.217-0.79738-1.362 0.0735-1.362-0.0963-0.219-0.33696-0.496-0.51346-0.644 0.66679-1.118"/>
   <path id="Hampton__SC" class="45049" d="m814.52 411.53-0.66679 1.118-0.48316 0.997-0.34588-0.08-0.5723-0.209-0.15868-0.433 0.0642-0.33-0.0642-0.332-0.69888-0.65-0.79516-0.516-0.39401 0.355-4.2183 5.055-2.0093-0.804-0.82903-3.359 0.3637-0.175 0.82725-0.556 0.80229-1.357 0.15333-1.095 0.0553-0.848 0.32983-0.919 0.25673-0.353 0.21573-0.201 2.1234-1.87 3.3118 2.967 2.7321 3.595"/>
@@ -48,4 +48,189 @@
   <path id="Greenville__SC" class="45045" d="m777.11 358.74 2.5994-0.119 0.5313 4.114 0.41897 3.6 0.0713 0.184 1.6474 1.31-0.46533 2.122-0.57052 2.667 0.2086 1.166-1.2765 1.398-2.2428-1.48-0.25955-0.73786-0.5677-0.63514-0.3227-0.74-0.18571-2.4793-0.12943-0.75212-0.61732-0.39262 0.0909-0.113-0.15332-0.779-0.20147-0.538-1.33-2.917-0.83347 0.13345 0.0186-1.2867-2.9571 0.86182-0.59609-0.32756 3.2947-2.25 3.8278-2.009"/>
   
  </g>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Pickens
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Pickens__SC.mouseover" end="Pickens__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Oconee
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Oconee__SC.mouseover" end="Oconee__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Beaufort
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Beaufort__SC.mouseover" end="Beaufort__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Hampton
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Hampton__SC.mouseover" end="Hampton__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Jasper
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Jasper__SC.mouseover" end="Jasper__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Marion
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Marion__SC.mouseover" end="Marion__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Dillon
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Dillon__SC.mouseover" end="Dillon__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Horry
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Horry__SC.mouseover" end="Horry__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Charleston
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Charleston__SC.mouseover" end="Charleston__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Dorchester
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Dorchester__SC.mouseover" end="Dorchester__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Berkeley
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Berkeley__SC.mouseover" end="Berkeley__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Georgetown
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Georgetown__SC.mouseover" end="Georgetown__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Clarendon
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Clarendon__SC.mouseover" end="Clarendon__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Williamsburg
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Williamsburg__SC.mouseover" end="Williamsburg__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Florence
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Florence__SC.mouseover" end="Florence__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Marlboro
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Marlboro__SC.mouseover" end="Marlboro__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Darlington
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Darlington__SC.mouseover" end="Darlington__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lee
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lee__SC.mouseover" end="Lee__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Kershaw
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Kershaw__SC.mouseover" end="Kershaw__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Sumter
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Sumter__SC.mouseover" end="Sumter__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Calhoun
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Calhoun__SC.mouseover" end="Calhoun__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Colleton
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Colleton__SC.mouseover" end="Colleton__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Allendale
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Allendale__SC.mouseover" end="Allendale__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Bamberg
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Bamberg__SC.mouseover" end="Bamberg__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Orangeburg
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Orangeburg__SC.mouseover" end="Orangeburg__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Barnwell
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Barnwell__SC.mouseover" end="Barnwell__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Aiken
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Aiken__SC.mouseover" end="Aiken__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lexington
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lexington__SC.mouseover" end="Lexington__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Richland
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Richland__SC.mouseover" end="Richland__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Fairfield
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Fairfield__SC.mouseover" end="Fairfield__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Newberry
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Newberry__SC.mouseover" end="Newberry__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Saluda
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Saluda__SC.mouseover" end="Saluda__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Edgefield
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Edgefield__SC.mouseover" end="Edgefield__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">McCormick
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="McCormick__SC.mouseover" end="McCormick__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Greenwood
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Greenwood__SC.mouseover" end="Greenwood__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Laurens
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Laurens__SC.mouseover" end="Laurens__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Abbeville
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Abbeville__SC.mouseover" end="Abbeville__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Anderson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Anderson__SC.mouseover" end="Anderson__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Union
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Union__SC.mouseover" end="Union__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Chesterfield
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Chesterfield__SC.mouseover" end="Chesterfield__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lancaster
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lancaster__SC.mouseover" end="Lancaster__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Chester
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Chester__SC.mouseover" end="Chester__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">York
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="York__SC.mouseover" end="York__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Cherokee
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Cherokee__SC.mouseover" end="Cherokee__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Spartanburg
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Spartanburg__SC.mouseover" end="Spartanburg__SC.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Greenville
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Greenville__SC.mouseover" end="Greenville__SC.mouseout"/>
+  </text>
+
 </svg>

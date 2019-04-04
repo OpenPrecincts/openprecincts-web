@@ -187,7 +187,7 @@ def state_overview(request, state):
 
     contributors = _get_contributors(state)
 
-    # compute totals
+    # compute total
     localities_with_officials = 0
     total_officials = 0
     localities_with_contacts = 0
@@ -205,6 +205,21 @@ def state_overview(request, state):
             total_files += l.total_files
             localities_with_files += 1
 
+    # Get progress
+    progress = {}
+    for l in localities:
+        geoid = l.census_geoid
+        # Files have been uploaded
+        if l.total_files:
+            progress[geoid] = 3
+        # Local officials haveb een contacted
+        elif l.total_contacts:
+            progress[geoid] = 2
+        elif l.total_officials:
+            progress[geoid] = 1
+        else:
+            progress[geoid] = 0
+
     context.update({
         "localities": localities,
         "localities_with_officials": localities_with_officials,
@@ -213,7 +228,8 @@ def state_overview(request, state):
         "total_contacts": total_contacts,
         "localities_with_files": localities_with_files,
         "total_files": total_files,
-        #"contributors": contributors,
+        "contributors": contributors,
+        "progress": progress,
     })
     return render(request, "core/state_overview.html", context)
 
@@ -252,7 +268,7 @@ def locality_overview(request, id):
         "official_form": official_form,
     })
 
-def state_overview_internal_map(request, state):
+def state_overview_internal(request, state):
     state = get_object_or_404(State, pk=state.upper())
     context = {"state": state}
     state_status = {s.abbreviation: s.status().value
@@ -352,139 +368,5 @@ def state_overview_internal_map(request, state):
         "geoid": geoid,
         "state_status": state_status,
     })
-    return render(request, "core/state_overview_internal_map.html", context)
-
-def state_overview_internal(request, state):
-    state = get_object_or_404(State, pk=state.upper())
-
-    context = {"state": state}
-
-    ############################################################################################
-    state_status = {s.abbreviation: s.status().value
-                    for s in State.objects.all()}
-    #################################################################################################
-
-    # Convert querysets for Officials, ContactLog, and Files into dictionaries
-    localities = Locality.objects.filter(state=state)
-    localities_values = Locality.objects.filter(state=state).values()
-
-    # Get Officials in the state
-    off = {}
-    official_ix = 0
-    # Loop through each official in each loaclity
-    for i, l in enumerate(localities_values):
-        officials = Official.objects.filter(locality=localities[i])
-
-        # Create dictionary for officials in a given county
-        off[l['name']] = {}
-
-        for o in officials.values():
-            # Give each official an index to access in dictionary 
-            off[l['name']][official_ix] = {}
-
-            # add all fields
-            for name in o.keys():
-                off[l['name']][official_ix][name] = o[name]
-
-            # Increment index
-            official_ix += 1
-
-        # Reset official index for locality
-        official_ix = 0
-
-    # Get ContactLog in the state
-    con = {}
-    contact_ix = 0
-    # Loop through each contnact for each official in each loaclity
-    for i, l in enumerate(localities_values):
-
-        officials = Official.objects.filter(locality=localities[i])
-
-        # Create dictionary for each contact log in a given county
-        con[l['name']] = {}
-
-        for o in officials:
-            contact = ContactLog.objects.filter(official=o)
-
-            for c in contact.values():
-                # Give each contact log entry an index to access in dictionary 
-                con[l['name']][contact_ix] = {}
-
-                # add all fields
-                for name in c.keys():
-                    con[l['name']][contact_ix][name] = c[name]
-
-                # Increment index
-                contact_ix += 1
-
-        # Reset official index for locality
-        contact_ix = 0
-
-    # Match user id's to info
-    user = {}
-    for u in User.objects.all().values():
-        user[u['id']] = u['username']
-
-    localities = Locality.objects.filter(state=state)
-    localities = localities.annotate(
-        total_officials=RawSQL(
-            "SELECT COUNT(*) FROM core_official WHERE core_official.locality_id=core_locality.id",
-            ()),
-        total_contacts=RawSQL(
-            "SELECT COUNT(*) FROM core_contactlog JOIN core_official "
-            " ON core_contactlog.official_id=core_official.id "
-            " WHERE core_official.locality_id=core_locality.id",
-            ()),
-        total_files=RawSQL(
-            "SELECT COUNT(*) FROM files_file WHERE files_file.locality_id=core_locality.id",
-            ()),
-    )
-
-    # compute totals
-    localities_with_officials = 0
-    total_officials = 0
-    localities_with_contacts = 0
-    total_contacts = 0
-    localities_with_files = 0
-    total_files = 0
-    for l in localities:
-        if l.total_officials:
-            total_officials += l.total_officials
-            localities_with_officials += 1
-        if l.total_contacts:
-            total_contacts += l.total_contacts
-            localities_with_contacts += 1
-        if l.total_files:
-            total_files += l.total_files
-            localities_with_files += 1
-
-
-    context.update({
-        "localities": localities,
-        "localities_with_officials": localities_with_officials,
-        "total_officials": total_officials,
-        "localities_with_contacts": localities_with_contacts,
-        "total_contacts": total_contacts,
-        "localities_with_files": localities_with_files,
-        "total_files": total_files,
-        # Pass in data about officials, contact log, and user ids
-        "officials": off,
-        "contact_log": con,
-        "username_mapping": user,
-        ############################################################################################
-        "state_status": state_status,
-        #################################################################################################
-    })
     return render(request, "core/state_overview_internal.html", context)
 
-def default_map(request):
-    mapbox_access_token = 'pk.eyJ1IjoiY29ubm9ybW9mZmF0dCIsImEiOiJjanNubjllcnowNXRtNDVxbXJycGk2bGphIn0.tIVxZ6bTWPunc1fe1Xpmdw'
-    return render(request, 'core/default_map.html', 
-        {'mapbox_access_token':mapbox_access_token})
-
-def alabama_map(request):
-    path = os.path.join(settings.STATICFILES_DIRS[0], 'geodata', 'AL-01-alabama-counties.json')
-    al = open(path)
-    al = json.load(al)
-    al = json.dumps(al)
-    return render(request, 'core/alabama_map.html', {'alabama': al})

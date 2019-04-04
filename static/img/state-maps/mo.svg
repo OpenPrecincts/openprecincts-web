@@ -1,5 +1,5 @@
 <svg width="800" height="700" version="1.0" xmlns="http://www.w3.org/2000/svg">
- <g id="county-group" class="counties" transform="scale(6), translate(-520 -245)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
+ <g id="county_group" class="counties" transform="scale(6), translate(-520 -240)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
 <path id="New_Madrid__MO" class="29143" d="m638.4 334.91 3.1182-0.442 3.8884 5.238-1.4227 3.19-0.1955 0.86287-0.63404 0.32741-0.47196-0.35741 0.0571-0.70977 0.18007-0.339 0.0285-0.06 0.0232-0.09 0.0571-0.227 0.016-0.06v-0.1l-7e-3 -0.04-0.0571-0.25-0.11232-0.266-0.0107-0.02-0.11767-0.183-0.025-0.02-0.0392-0.03-0.0481-0.03-0.28169-0.08-0.51347-0.08-0.33696 0.05-0.1141 0.07-0.21038 0.281-0.0303 0.04-0.0232 0.09-0.025 0.105-0.0178 0.08 0.0178 0.07 0.0178 0.1 7e-3 0.02 0.19968 0.427 0.025 0.03 0.40828 0.584 0.26479 1.26 0.69118 0.94016-3e-3 1.2674-0.80635 0.26951-0.96454-1.485-0.3637-0.153-1.3318 0.24-1.3514 0.521-2.8187 0.178h-0.8843l-0.31557-5.559 4.7264-0.267-0.42433-5.358 0.23178-0.02"/>
   <path id="Pemiscot__MO" class="29155" d="m641.89 346.81-0.87453 0.14623 1.0891 0.80804 0.37303 0.77035-1.0591 0.64787-1.5491-0.10591 0.70839 1.3334 1.1822 0.58179-0.14183 0.83005-1.1969 0.66454-0.14333 1.2012-0.68122 1.0357-4.8115 0.39675-0.60974-9.009h0.8843l2.8187-0.178 1.3514-0.521 1.3318-0.24 0.3637 0.153 0.96454 1.485"/>
   <path id="Atchison__MO" class="29005" d="m527.33 252.39 6.7981 0.07 2.9738 0.02 0.0321 2.296h0.41719l0.0232 2.188-0.0303 2.853-6.4772-0.03 0.0178-0.418v-0.03l5e-3 -0.04-0.0463-0.119-1.2141-1.182-1.1321-2.846-0.0963-0.408 0.19968-0.185 0.37797-0.676-0.65075-0.578-0.22643 0.491-0.97166-1.414"/>
@@ -26,7 +26,7 @@
   <path id="Johnson__MO" class="29101" d="m567.71 290.19-0.025 8.631-9.8753-0.03-1.199-0.0408 0.099-6.0982 0.0481-1.952 4.9403 0.09 0.0107-0.676 6.0011 0.07"/>
   <path id="Henry__MO" class="29083" d="m567.68 298.83v1.011l-7e-3 7.08-9.4403 0.06-0.3958-5.393-0.0321-2.788 9.8753 0.03"/>
   <path id="Cass__MO" class="29037" d="m548.01 292.48 8.6933 0.176-0.099 6.0982 1.199 0.0408 0.0321 2.788-2.5727 0.02-1.0038-0.103-1.0358-0.394-5.181-0.06-0.025-6.044-7e-3 -2.522"/>
-  <path id="St._Clair__MO" class="29185" d="m558.24 306.98 9.4403-0.06 0.43502 3.102-0.0481 3.694h-0.45998l-0.57052 1.006-0.0232 1.014-0.99662-0.01-3.3019-0.05 0.0232-1.34-4.6355-0.09 0.0713-3.151 0.066-4.113"/>
+  <path id="St_Clair__MO" class="29185" d="m558.24 306.98 9.4403-0.06 0.43502 3.102-0.0481 3.694h-0.45998l-0.57052 1.006-0.0232 1.014-0.99662-0.01-3.3019-0.05 0.0232-1.34-4.6355-0.09 0.0713-3.151 0.066-4.113"/>
   <path id="Bates__MO" class="29013" d="m548.05 301.05 5.181 0.06 1.0358 0.394 1.0038 0.103 2.5727-0.02 0.3958 5.393-0.066 4.113-1.3568-0.472-1.2052 0.101-0.71493 0.107-6.7268-0.107-0.0963-7.614-0.0232-2.058"/>
   <path id="Cedar__MO" class="29039" d="m558.1 314.24 4.6355 0.09-0.0232 1.34 3.3019 0.05 0.37084 5.938-8.3082-0.02v-1.349l0.0232-6.051"/>
   <path id="Vernon__MO" class="29217" d="m558.17 311.09-0.0713 3.151-0.0232 6.051-9.8379-0.152-7e-3 -0.451-0.0553-8.429-9e-3 -0.541 6.7268 0.107 0.71493-0.107 1.2052-0.101 1.3568 0.472"/>
@@ -99,12 +99,12 @@
   <path id="Iron__MO" class="29093" d="m619.88 315.72 0.045 2.1274 2.0606-0.12538 0.16937 7.552-0.014 1.2229-3.2968 0.0461-0.72536 0.04-0.11972-3.341-0.1765-4.348-3.4445 0.167-3.514 0.548-0.10162-2.534 0.91282-1.034 8.2048-0.322"/>
   <path id="Washington__MO" class="29221" d="m616.85 304.99 2.6761 2.813 0.35301 7.915-8.2048 0.322-0.47959-10.745 5.6553-0.305"/>
   <path id="Franklin__MO" class="29071" d="m613.13 297.22 4.0186-2.344 0.15154 3.999-0.44928 6.115-5.6553 0.305-4.8708 0.114-0.10519-2.821-0.25673-4.116-0.22464-4.393 0.78803-0.248 0.19968 0.02 1.494 1.215 0.11232 0.217 4.7977 1.936"/>
-  <path id="St._Louis__MO" class="29510" d="m626.55 291.97 0.36727 1.85-1.1785 3.052-0.73989-0.383-0.22643-1.225-0.27991-1.806 0.44215-0.916 0.72385-0.546 0.89143-0.03"/>
-  <path id="St._Charles__MO" class="29183" d="m621.71 287 3.1646 0.77 0.45819 0.139 0.44929 0.216 0.33874 0.2 1.7436 1.053 0.0731 0.129 0.016 0.135-0.0642 0.531-0.0392 0.218-0.16938-0.337-0.2906-0.187-0.30488 0.03-0.43323 0.29-0.30487-0.114-1.1018-0.659-0.1765-0.184-1.2854 0.112-0.0303 0.275-0.13906 0.312-0.11232 0.178-0.19969 0.168-0.26564 0.02-0.63649-0.12h-0.19076l-0.13015 0.06-0.11946 0.134-0.41897 0.765-0.90035 1.945 0.0161 0.264-0.11767 0.225-0.29061 0.162-0.26743 0.03-1.5333-0.09-0.12837 0.04-0.23355 0.176-0.52238 0.819-0.41719 0.187-4.0186 2.344-0.29596-7.488 5.1115-1.745 3.7672-0.995"/>
-  <path id="St._Louis_Co.__MO" class="29189" d="m627.85 290.39-1.2944 1.58-0.89143 0.03-0.72385 0.546-0.44215 0.916 0.27991 1.806 0.22643 1.225 0.73989 0.383-0.0802 0.284-1.2391 3.222-0.13728-0.523-1.1321-2.113-3.3108 0.184-2.3463 0.587-0.20146 0.369-0.15154-3.999 0.41719-0.187 0.52238-0.819 0.23355-0.176 0.12837-0.04 1.5333 0.09 0.26743-0.03 0.29061-0.162 0.11767-0.225-0.0161-0.264 0.90035-1.945 0.41897-0.765 0.11946-0.134 0.13015-0.06h0.19076l0.63649 0.12 0.26564-0.02 0.19969-0.168 0.11232-0.178 0.13906-0.312 0.0303-0.275 1.2854-0.112 0.1765 0.184 1.1018 0.659 0.30487 0.114 0.43323-0.29 0.30488-0.03 0.2906 0.187 0.16938 0.337"/>
+  <path id="St_Louis__MO" class="29510" d="m626.55 291.97 0.36727 1.85-1.1785 3.052-0.73989-0.383-0.22643-1.225-0.27991-1.806 0.44215-0.916 0.72385-0.546 0.89143-0.03"/>
+  <path id="St_Charles__MO" class="29183" d="m621.71 287 3.1646 0.77 0.45819 0.139 0.44929 0.216 0.33874 0.2 1.7436 1.053 0.0731 0.129 0.016 0.135-0.0642 0.531-0.0392 0.218-0.16938-0.337-0.2906-0.187-0.30488 0.03-0.43323 0.29-0.30487-0.114-1.1018-0.659-0.1765-0.184-1.2854 0.112-0.0303 0.275-0.13906 0.312-0.11232 0.178-0.19969 0.168-0.26564 0.02-0.63649-0.12h-0.19076l-0.13015 0.06-0.11946 0.134-0.41897 0.765-0.90035 1.945 0.0161 0.264-0.11767 0.225-0.29061 0.162-0.26743 0.03-1.5333-0.09-0.12837 0.04-0.23355 0.176-0.52238 0.819-0.41719 0.187-4.0186 2.344-0.29596-7.488 5.1115-1.745 3.7672-0.995"/>
+  <path id="St_Louis_Co.__MO" class="29189" d="m627.85 290.39-1.2944 1.58-0.89143 0.03-0.72385 0.546-0.44215 0.916 0.27991 1.806 0.22643 1.225 0.73989 0.383-0.0802 0.284-1.2391 3.222-0.13728-0.523-1.1321-2.113-3.3108 0.184-2.3463 0.587-0.20146 0.369-0.15154-3.999 0.41719-0.187 0.52238-0.819 0.23355-0.176 0.12837-0.04 1.5333 0.09 0.26743-0.03 0.29061-0.162 0.11767-0.225-0.0161-0.264 0.90035-1.945 0.41897-0.765 0.11946-0.134 0.13015-0.06h0.19076l0.63649 0.12 0.26564-0.02 0.19969-0.168 0.11232-0.178 0.13906-0.312 0.0303-0.275 1.2854-0.112 0.1765 0.184 1.1018 0.659 0.30487 0.114 0.43323-0.29 0.30488-0.03 0.2906 0.187 0.16938 0.337"/>
   <path id="Jefferson__MO" class="29099" d="m617.3 298.88 0.20146-0.369 2.3463-0.587 3.3108-0.183 1.1321 2.112 0.13728 0.523-0.0499 0.06-0.0802 0.16-0.26208 0.892-0.0339 0.1-0.016 0.233 0.0339 0.965 0.24068 1.034 0.2086 0.515 0.32983 0.451 0.0571 0.08 0.0464 0.05 1.5119 1.47-2.8205 1.983-3.6349 0.67375-0.43185-1.2358-2.6761-2.813 0.44928-6.115"/>
-  <path id="St._Francois__MO" class="29187" d="m619.52 307.81 0.43185 1.2358 3.6349-0.67375 1.7508 1.301-2.3052 2.527 1.4691 1.419 3.482 3.141 0.78624-0.745 0.82547 0.612-0.60796 0.72-7.0085 0.38-2.0606 0.12538-0.045-2.1274-0.35301-7.915"/>
-  <path id="Ste._Genevieve__MO" class="29186" d="m627.32 307.07 5.0883 4.645-2.8134 4.91-0.82547-0.612-0.78624 0.745-3.482-3.141-1.4691-1.419 2.3052-2.527-1.7508-1.301 2.8205-1.983 0.91283 0.683"/>
+  <path id="St_Francois__MO" class="29187" d="m619.52 307.81 0.43185 1.2358 3.6349-0.67375 1.7508 1.301-2.3052 2.527 1.4691 1.419 3.482 3.141 0.78624-0.745 0.82547 0.612-0.60796 0.72-7.0085 0.38-2.0606 0.12538-0.045-2.1274-0.35301-7.915"/>
+  <path id="Ste_Genevieve__MO" class="29186" d="m627.32 307.07 5.0883 4.645-2.8134 4.91-0.82547-0.612-0.78624 0.745-3.482-3.141-1.4691-1.419 2.3052-2.527-1.7508-1.301 2.8205-1.983 0.91283 0.683"/>
   <path id="Madison__MO" class="29123" d="m628.99 317.34 0.0642 1.03 0.23177 1.286 0.19255 5.313-1.3086 0.01-6.019 0.291-0.16937-7.552 7.0085-0.38"/>
   <path id="Wayne__MO" class="29223" d="m622.15 325.28 6.019-0.291 0.22286 5.29 2.0503-0.112 0.0481 1.037-1.7685 0.88297-0.74712 2.032-7.6574 0.346-0.57273-2.3121-1.4187-0.45091-0.0731-1.576 0.68997-1.157-0.0232-1.405-0.0802-1.015 3.2968-0.0461 0.014-1.2229"/>
   <path id="Butler__MO" class="29023" d="m627.97 334.12 0.89322 2.356 0.63292 1.397 0.12301 0.05 0.16759 0.122 0.5937 1.139 0.22642 0.82-0.0481 0.449-0.16224 0.282-1.1321 3.159-6.5164 0.371-1.9932-7.153-0.44216-2.644 7.6574-0.346"/>
@@ -116,5 +116,466 @@
   <path id="Scott__MO" class="29201" d="m641.45 325.68 0.45998 0.658 1.1161 2.089 0.64183 1.575 1.2141 0.989-3.3661 3.48-3.1182 0.442-0.0642-1.239-0.28169-0.786-0.39401-0.957-0.29061-0.468-0.36906-0.495-0.35122-2.131 0.82953-0.51926 0.3322-1.4522 0.956-0.86509 2.6853-0.32046"/>
   <path id="Mississippi__MO" class="29133" d="m644.88 330.99 3.4962 0.376 0.65075 0.838-0.68819 2.298h-0.0107l-0.50634 0.289h-9e-3v0.53h9e-3l1.0519 0.554-0.70601 3.188-0.50969 0.55868-0.24723 1.0836-0.84441 0.0675-1.1639-1.0898-3.8884-5.238 3.3661-3.48"/>
 
- </g>
+ </g>  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">New Madrid
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="New_Madrid__MO.mouseover" end="New_Madrid__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Pemiscot
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Pemiscot__MO.mouseover" end="Pemiscot__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Atchison
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Atchison__MO.mouseover" end="Atchison__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Holt
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Holt__MO.mouseover" end="Holt__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Platte
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Platte__MO.mouseover" end="Platte__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Buchanan
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Buchanan__MO.mouseover" end="Buchanan__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Andrew
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Andrew__MO.mouseover" end="Andrew__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Nodaway
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Nodaway__MO.mouseover" end="Nodaway__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Worth
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Worth__MO.mouseover" end="Worth__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Gentry
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Gentry__MO.mouseover" end="Gentry__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">DeKalb
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="DeKalb__MO.mouseover" end="DeKalb__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Clinton
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Clinton__MO.mouseover" end="Clinton__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Clay
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Clay__MO.mouseover" end="Clay__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Caldwell
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Caldwell__MO.mouseover" end="Caldwell__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Daviess
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Daviess__MO.mouseover" end="Daviess__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Harrison
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Harrison__MO.mouseover" end="Harrison__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Mercer
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Mercer__MO.mouseover" end="Mercer__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Grundy
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Grundy__MO.mouseover" end="Grundy__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Livingston
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Livingston__MO.mouseover" end="Livingston__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Carroll
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Carroll__MO.mouseover" end="Carroll__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Ray
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Ray__MO.mouseover" end="Ray__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lafayette
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lafayette__MO.mouseover" end="Lafayette__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Jackson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Jackson__MO.mouseover" end="Jackson__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Johnson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Johnson__MO.mouseover" end="Johnson__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Henry
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Henry__MO.mouseover" end="Henry__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Cass
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Cass__MO.mouseover" end="Cass__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">St. Clair
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="St_Clair__MO.mouseover" end="St_Clair__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Bates
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Bates__MO.mouseover" end="Bates__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Cedar
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Cedar__MO.mouseover" end="Cedar__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Vernon
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Vernon__MO.mouseover" end="Vernon__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Dade
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Dade__MO.mouseover" end="Dade__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Barton
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Barton__MO.mouseover" end="Barton__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Jasper
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Jasper__MO.mouseover" end="Jasper__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Newton
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Newton__MO.mouseover" end="Newton__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">McDonald
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="McDonald__MO.mouseover" end="McDonald__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lawrence
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lawrence__MO.mouseover" end="Lawrence__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Barry
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Barry__MO.mouseover" end="Barry__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Polk
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Polk__MO.mouseover" end="Polk__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Stone
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Stone__MO.mouseover" end="Stone__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Greene
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Greene__MO.mouseover" end="Greene__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Taney
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Taney__MO.mouseover" end="Taney__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Christian
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Christian__MO.mouseover" end="Christian__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Webster
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Webster__MO.mouseover" end="Webster__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Dallas
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Dallas__MO.mouseover" end="Dallas__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Hickory
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Hickory__MO.mouseover" end="Hickory__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Benton
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Benton__MO.mouseover" end="Benton__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Pettis
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Pettis__MO.mouseover" end="Pettis__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Saline
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Saline__MO.mouseover" end="Saline__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Chariton
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Chariton__MO.mouseover" end="Chariton__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Linn
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Linn__MO.mouseover" end="Linn__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Sullivan
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Sullivan__MO.mouseover" end="Sullivan__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Putnam
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Putnam__MO.mouseover" end="Putnam__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Schuyler
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Schuyler__MO.mouseover" end="Schuyler__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Adair
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Adair__MO.mouseover" end="Adair__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Macon
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Macon__MO.mouseover" end="Macon__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Randolph
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Randolph__MO.mouseover" end="Randolph__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Howard
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Howard__MO.mouseover" end="Howard__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Cooper
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Cooper__MO.mouseover" end="Cooper__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Boone
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Boone__MO.mouseover" end="Boone__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Cole
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Cole__MO.mouseover" end="Cole__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Moniteau
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Moniteau__MO.mouseover" end="Moniteau__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Morgan
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Morgan__MO.mouseover" end="Morgan__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Miller
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Miller__MO.mouseover" end="Miller__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Camden
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Camden__MO.mouseover" end="Camden__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Pulaski
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Pulaski__MO.mouseover" end="Pulaski__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Laclede
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Laclede__MO.mouseover" end="Laclede__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Wright
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Wright__MO.mouseover" end="Wright__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Douglas
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Douglas__MO.mouseover" end="Douglas__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Ozark
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Ozark__MO.mouseover" end="Ozark__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Howell
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Howell__MO.mouseover" end="Howell__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Texas
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Texas__MO.mouseover" end="Texas__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Phelps
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Phelps__MO.mouseover" end="Phelps__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Maries
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Maries__MO.mouseover" end="Maries__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Osage
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Osage__MO.mouseover" end="Osage__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Callaway
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Callaway__MO.mouseover" end="Callaway__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Monroe
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Monroe__MO.mouseover" end="Monroe__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Shelby
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Shelby__MO.mouseover" end="Shelby__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Knox
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Knox__MO.mouseover" end="Knox__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Scotland
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Scotland__MO.mouseover" end="Scotland__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Clark
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Clark__MO.mouseover" end="Clark__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lewis
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lewis__MO.mouseover" end="Lewis__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Marion
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Marion__MO.mouseover" end="Marion__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Ralls
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Ralls__MO.mouseover" end="Ralls__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Audrain
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Audrain__MO.mouseover" end="Audrain__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Montgomery
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Montgomery__MO.mouseover" end="Montgomery__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Pike
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Pike__MO.mouseover" end="Pike__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lincoln
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lincoln__MO.mouseover" end="Lincoln__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Warren
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Warren__MO.mouseover" end="Warren__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Gasconade
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Gasconade__MO.mouseover" end="Gasconade__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Crawford
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Crawford__MO.mouseover" end="Crawford__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Dent
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Dent__MO.mouseover" end="Dent__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Shannon
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Shannon__MO.mouseover" end="Shannon__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Oregon
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Oregon__MO.mouseover" end="Oregon__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Ripley
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Ripley__MO.mouseover" end="Ripley__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Carter
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Carter__MO.mouseover" end="Carter__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Reynolds
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Reynolds__MO.mouseover" end="Reynolds__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Iron
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Iron__MO.mouseover" end="Iron__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Washington
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Washington__MO.mouseover" end="Washington__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Franklin
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Franklin__MO.mouseover" end="Franklin__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">St. Louis
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="St_Louis__MO.mouseover" end="St_Louis__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">St. Charles
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="St_Charles__MO.mouseover" end="St_Charles__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">St. Louis Co.
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="St_Louis_Co.__MO.mouseover" end="St_Louis_Co.__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Jefferson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Jefferson__MO.mouseover" end="Jefferson__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">St. Francois
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="St_Francois__MO.mouseover" end="St_Francois__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Ste. Genevieve
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Ste_Genevieve__MO.mouseover" end="Ste_Genevieve__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Madison
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Madison__MO.mouseover" end="Madison__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Wayne
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Wayne__MO.mouseover" end="Wayne__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Butler
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Butler__MO.mouseover" end="Butler__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Dunklin
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Dunklin__MO.mouseover" end="Dunklin__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Stoddard
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Stoddard__MO.mouseover" end="Stoddard__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Bollinger
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Bollinger__MO.mouseover" end="Bollinger__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Perry
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Perry__MO.mouseover" end="Perry__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Cape Girardeau
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Cape_Girardeau__MO.mouseover" end="Cape_Girardeau__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Scott
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Scott__MO.mouseover" end="Scott__MO.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Mississippi
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Mississippi__MO.mouseover" end="Mississippi__MO.mouseout"/>
+  </text>
+
+
 </svg>

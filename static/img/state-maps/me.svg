@@ -1,5 +1,5 @@
 <svg width="500" height="700" version="1.0" xmlns="http://www.w3.org/2000/svg">
- <g id="county-group" class="counties" transform="scale(6), translate(-920 -30)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
+ <g id="county-group" class="counties" transform="scale(6), translate(-920 -23)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
   <path id="Aroostook__ME" class="23003" d="m950.81 56.776-1.191-3.873-13.739 3.937-4.6212 1.301-0.34588-2.715-9e-3 -0.07 0.0178-0.06 0.41719-1.238 1.1713-3.439 2.2678-6.589 3.0541-8.84 1.2444-0.103 1.4798-0.03 0.22464 0.06 0.27099 0.369 0.0571 0.1-0.11233 0.152-0.016 0.03-0.0321 0.536 0.80407 2.589 0.23356 0.209 0.12836 0.06 2.4033 0.786 0.61688-0.537 1.6723-1.592 1.847-1.679 2.8455-2.484 0.39402-0.224 0.74702-0.234 0.69888-0.06 0.2817 0.06 1.2854 0.433 3.744 1.599 3.3678 2.122 0.0481 0.112 5.3593 17.125 3.1432 10.157-0.25139 0.376-0.016 0.217 0.50633 2.275 0.27278 0.225-3.4606 2.033-2.9667 1.711-7e-3 0.08 0.0392 0.12-1.0947 0.62-1.1571 0.642-0.36014-0.06-1.084-3.682-0.25852-1.084-0.49742-1.767-0.48316-1.528-2.997-9.568-4.0418 0.882-1.9023 0.546"/>
   <path id="Piscataquis__ME" class="23021" d="m950.81 56.776 0.89857 3.214 1.6064 5.481 2.0093 6.992-1.9362 1.1 0.89144 3.327 1.56-0.813 3.1236 5.955-1.5894 0.7899 0.97073 1.7331-4.3538 2.275-2.9988 1.519-2.209 1.807-1.5422 0.772-1.0929-1.824-4.7335-9.24 0.22142-2.3171-2.4763-1.5817 1.115-1.0686 1.204-2.7236-1.3336-2.427-1.0768-1.221-2.2339-7.658-0.95383-4.027 13.739-3.937 1.191 3.873"/>
   <path id="Knox__ME" class="23013" transform="translate(0 -.10698)" d="m956.88 103.75-1.1172 1.5391-0.71484-0.47852-0.14258 0.38281-0.41016 0.21094-0.16211 0.29492 0.35156 1.1328 0.49219 0.7168 0.5293 0.23242 0.5625-0.0391 0.52148-0.24219 1.0312 1.5352 0.72266 1.6562-0.67383 1.0762-0.10742 1.3262 1.543-0.27343 0.63086 0.47461 0.81445-0.66407-0.18164-0.61328 1.5606-2.2344 0.0312-0.4336 0.33984-0.33789-0.16602-0.48633-0.78515 0.40625-0.0996-0.58593 0.041-0.44141-0.20117-0.6875 0.28321-0.27344-0.22657-1.2578-0.81054-0.42578zm8.1699 1.9004-0.32813 0.17774-0.88086 1.0938-0.16992 0.47265-0.0332 0.43555 0.041 0.0605 0.47657-0.0527 0.87304 1.5059 0.29688 0.0899 0.17578-0.041 0.66016-0.35937 0.15234-0.13672 0.22461-0.5v6e-3l0.0684-0.1211 0.0664-0.30468-0.0859-0.1836-0.57422-0.93164-0.4082-0.10742-0.12305-0.20117 0.65039-0.30469-0.95313-0.49609zm3.9277 0.60157-0.61133 0.83984 0.35718 0.65895 0.0725 0.77269 0.43164-0.32031 0.35547 0.13672 0.0215-1.5801zm-2.8887 6.3438-0.11719 0.2832 0.42969 0.87305 0.26758-0.33985-0.25586-0.21484-0.0937-0.47266z"/>
@@ -18,4 +18,69 @@
   <path id="Somerset__ME" class="23025" d="m935.88 56.84 0.95383 4.027 2.2339 7.658 1.0768 1.221 1.3336 2.427-1.204 2.7236-1.115 1.0686 2.4763 1.5817-0.22142 2.3171 4.7335 9.24 1.0929 1.824 1.5422-0.772 2.209-1.807 3.6406 7.377-0.7595 0.39125-0.76454-0.51898-0.6546 0.06736-0.0999 1.2341-0.7595 0.39125-0.0214-0.353-0.1141-0.208h-0.22465l-2.2179 1.118 0.0802 0.24 0.18542 0.385 0.28169 0.291 0.21573 0.06 0.54556 0.401 0.082 1.006-0.18363 0.216-3.6174 0.297-1.7187 0.41-0.90748-1.431-0.59566 0.2581-1.7683-3.6997-1.4845 0.5162-0.8615-1.7925 0.67763-0.25338-2.222-3.8827-1.6612 0.93775-0.67037-0.94945-1.4766 0.58969-3.0933-6.308-2.1234-4.58 0.13015-0.161 0.89322-1.069 2.0735-5.014 0.0374-0.369-0.0374-0.957-0.24961-0.193-0.25673-0.119h-0.77198l-0.29774-0.983-0.25852-1.075-0.49742-2.884 0.20147-1.56 0.2496-1.872 9e-3 -0.02 0.17472-0.499 0.15511-0.241 0.0214-0.02 0.0428-0.02 0.50455-0.371 0.89143-1.381-0.18363-1.471-0.27278-2.147 4.6212-1.301"/>
   
  </g>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Aroostook
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Aroostook__ME.mouseover" end="Aroostook__ME.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Piscataquis
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Piscataquis__ME.mouseover" end="Piscataquis__ME.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Knox
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Knox__ME.mouseover" end="Knox__ME.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lincoln
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lincoln__ME.mouseover" end="Lincoln__ME.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Sagadahoc
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Sagadahoc__ME.mouseover" end="Sagadahoc__ME.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Cumberland
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Cumberland__ME.mouseover" end="Cumberland__ME.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">York
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="York__ME.mouseover" end="York__ME.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Androscoggin
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Androscoggin__ME.mouseover" end="Androscoggin__ME.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Oxford
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Oxford__ME.mouseover" end="Oxford__ME.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Kennebec
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Kennebec__ME.mouseover" end="Kennebec__ME.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Waldo
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Waldo__ME.mouseover" end="Waldo__ME.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Hancock
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Hancock__ME.mouseover" end="Hancock__ME.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Washington
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Washington__ME.mouseover" end="Washington__ME.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Penobscot
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Penobscot__ME.mouseover" end="Penobscot__ME.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Franklin
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Franklin__ME.mouseover" end="Franklin__ME.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Somerset
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Somerset__ME.mouseover" end="Somerset__ME.mouseout"/>
+  </text>
+
 </svg>

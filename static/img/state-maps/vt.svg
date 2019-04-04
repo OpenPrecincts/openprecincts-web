@@ -1,5 +1,5 @@
-<svg width="400" height="600" version="1.0" xmlns="http://www.w3.org/2000/svg">
- <g id="county-group" class="counties" transform="scale(10), translate(-885 -98)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
+<svg width="400" height="650" version="1.0" xmlns="http://www.w3.org/2000/svg">
+ <g id="county-group" class="counties" transform="scale(10), translate(-885 -93)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
   <path id="Essex__VT" class="50009" d="m911.49 100.69 6.1973-1.72-0.38688 0.795 1.1318 1.5299-1.155 4.1131 0.1355 0.383 0.60439 0.596 0.73811 0.907 0.40293 0.499 0.0713 0.114 0.41719 0.674-0.53678 0.93451 0.32106 1.0665-0.18542 0.515-0.0802 0.137-0.79516 1.398-0.066 0.103-0.0945 0.138-0.22464 0.29-0.041 0.06-0.51525 0.378-0.34409-0.03-1.0768 1.397-1.8078-1.478 0.48613-0.4299 0.51912-1.0568-1.1306-0.9578 0.68409-1.7167-1.3218-0.49885 0.69888-1.881-1.9291-0.738-0.64362-0.25 1.0353-2.3658-1.0103-0.51818-0.0981-2.395"/>
   <path id="Orleans__VT" class="50019" d="m911.59 103.09 1.0103 0.51818-1.0353 2.3658 0.64362 0.25-0.6972 1.8284-1.8322-0.70174 0.74876 1.4311-1.0327-0.28188-1.0109 4.0941-2.0093-0.481 0.0714-0.23833-1.948-0.54659 0.4884-2.1234-2.9513-0.68267 0.51941-1.4018-0.63625-1.9259 0.11627-0.17898-0.78405-1.7109 4.1714-0.9058 0.69562-0.0369 3.4055-1.0217 1.9685-0.64507z"/>
   <path id="Bennington__VT" class="50003" d="m906.71 143.62-0.50812-0.04 0.25673 1.3228-0.16043 0.0192 0.40293 2.09-2.1234 0.385 0.0802 0.481 0.78803 3.801 1.4334-0.273 0.89856 4.251-1.5279 0.321-3.9847 0.861-0.44574 0.13121-0.68757-1.5386 0.34887-1.0319-0.44574-1.9647-1.7187-8.397 6.347-1.238 0.86221-0.1631 0.18433 0.9841"/>
@@ -16,4 +16,61 @@
   <path id="Orange__VT" class="50017" d="m914.15 120.31-0.0553 1.1591 0.35248 0.31348-0.29371 0.84564-0.32135 1.6913 0.40087 0.47492-0.11229 1.1971-0.62544 1.2732 0.26783 1.1591-0.0553 1.1591-2.1466-0.298-4.8209-0.554-1.8863-0.225-1.3104-0.112-0.21751-0.346-0.0963-0.355 0.41897-1.711 1.018 0.137 0.29848-1.9247 0.15317 0.0378 0.18312-1.7853 0.46481 0.0457 0.0423-0.27118 2.0478 0.33484-0.13379-2.1492 0.91639 0.169 1.1232 0.207 2.1056-0.747 2.2821 0.274"/>
   
  </g>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Essex
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Essex__VT.mouseover" end="Essex__VT.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Orleans
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Orleans__VT.mouseover" end="Orleans__VT.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Bennington
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Bennington__VT.mouseover" end="Bennington__VT.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Grand Isle
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Grand_Isle__VT.mouseover" end="Grand_Isle__VT.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Washington
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Washington__VT.mouseover" end="Washington__VT.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Caledonia
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Caledonia__VT.mouseover" end="Caledonia__VT.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lamoille
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lamoille__VT.mouseover" end="Lamoille__VT.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Franklin
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Franklin__VT.mouseover" end="Franklin__VT.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Chittenden
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Chittenden__VT.mouseover" end="Chittenden__VT.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Addison
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Addison__VT.mouseover" end="Addison__VT.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Rutland
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Rutland__VT.mouseover" end="Rutland__VT.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Windham
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Windham__VT.mouseover" end="Windham__VT.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Windsor
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Windsor__VT.mouseover" end="Windsor__VT.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Orange
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Orange__VT.mouseover" end="Orange__VT.mouseout"/>
+  </text>
+
 </svg>

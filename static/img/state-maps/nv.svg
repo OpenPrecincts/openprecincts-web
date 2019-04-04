@@ -1,5 +1,5 @@
 <svg width="500" height="800" version="1.0" xmlns="http://www.w3.org/2000/svg">
- <g id="county-group" class="counties" transform="scale(4), translate(-95 -165)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
+ <g id="county-group" class="counties" transform="scale(4), translate(-95 -152)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
   <path id="Elko__NV" class="32007" d="m201.52 187.4 2.0806 0.328 2.5156 0.506 4.4037 0.997 3.6157 0.715 4.0008 0.788-4.3466 22.589-3.9294 20.07-3.5194-0.674-10.528-2.22-3.8724-0.786-3.9116-0.844-3.391-0.788-5.3522-1.123-2.8383-0.586-0.0553-10.136 9e-3 -2.232 0.0464-0.642 1.5671-7.328-7.2224-1.585-7.2723-1.611 5.0776-22.568 6.4932 1.487 1.9291 0.442 24.5 5.201"/>
   <path id="White_Pine__NV" class="32033" d="m179.29 226.95 5.3522 1.123 3.391 0.788 3.9116 0.844 3.8724 0.786 10.528 2.22 3.5194 0.674-0.93244 4.799-1.5992 8.26-3.8243 19.694-16.634-3.286-13.475-14.263 1.3176-6.212 0.16759-0.497 0.71671-0.53 0.42611-0.411 0.44215-0.523 0.62578-1.276 1.5672-5.836 0.65074-5.792-0.0232-0.562"/>
   <path id="Clark__NV" class="32003" d="m162.45 301.2 2.3391 0.52 0.49742-0.156 13.268 2.738 2.8918 0.587 1.3175 0.49 12.696 2.507-0.72206 3.786-0.0891 0.462-0.73098 4.172-0.44215 2.316-0.77912 4.042-2.3302 3.148-0.2496 0.282-0.0963 0.06h-0.016l-1.1161-0.02-0.36192-0.04-0.0963-0.02-0.23356-0.178-0.16046-0.168-0.4261-0.676-0.12837-0.385-0.0161-0.192-9e-3 -0.05-0.0321-0.176-0.22464-0.563-0.54556-0.772-0.2496-0.234-2.3391-0.69-1.059-0.217h-1.1268l-2.0574 0.483-0.18363 0.1-0.24961 0.225-0.016 0.146-0.23356 2.25-0.49742 6.588-0.22464 4.027 0.24069 2.844 0.16759 1.348 0.025 0.675-0.12837 2.805-0.0232 0.513-0.0981 0.458-0.16758 0.548-1.7205 2.875-2.5138-3.742-6.8159-10.198-0.47246-0.7-1.2712-1.896-3.687-5.537-3.6157-5.383 4.1131-18.996"/>
@@ -19,4 +19,73 @@
   <path id="Humboldt__NV" class="32013" d="m130.4 171.31 9.0231 2.275 9.6186 2.211 19.43 4.418 0.12836 0.05-6.8944 30.632-3.8653-0.86-1.5101 2.427 0.78803-3.391 7e-3 -0.143-0.13728-0.06-5.6481-1.319 0.90748-3.914-19.228-4.53 0.57765-2.364-8.7664-2.161-0.33697-0.08 0.42611-1.799 1.1-4.38 0.41719-0.45 0.42611-1.028 0.61152-2.443 0.60974-4.035 1.503-5.986 0.81299-3.071"/>
   
  </g>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Elko
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Elko__NV.mouseover" end="Elko__NV.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">White Pine
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="White_Pine__NV.mouseover" end="White_Pine__NV.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Clark
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Clark__NV.mouseover" end="Clark__NV.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lincoln
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lincoln__NV.mouseover" end="Lincoln__NV.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Esmeralda
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Esmeralda__NV.mouseover" end="Esmeralda__NV.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Nye
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Nye__NV.mouseover" end="Nye__NV.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Eureka
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Eureka__NV.mouseover" end="Eureka__NV.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lander
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lander__NV.mouseover" end="Lander__NV.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Mineral
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Mineral__NV.mouseover" end="Mineral__NV.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Douglas
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Douglas__NV.mouseover" end="Douglas__NV.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Carson City
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Carson_City__NV.mouseover" end="Carson_City__NV.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lyon
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lyon__NV.mouseover" end="Lyon__NV.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Churchill
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Churchill__NV.mouseover" end="Churchill__NV.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Pershing
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Pershing__NV.mouseover" end="Pershing__NV.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Storey
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Storey__NV.mouseover" end="Storey__NV.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Washoe
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Washoe__NV.mouseover" end="Washoe__NV.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Humboldt
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Humboldt__NV.mouseover" end="Humboldt__NV.mouseout"/>
+  </text>
+
 </svg>

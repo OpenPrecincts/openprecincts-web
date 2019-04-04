@@ -6,8 +6,8 @@
 <div class="container">
     <h2 class="title is-2">National Internal Overview</h2>
     <div data-hook="state-map-internal" id="data-hook"></div>
-</div>
- -->
+</div> -->
+
 
  <svg width="75%" height="75%" viewBox="0 0 959 593" xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -84,6 +84,7 @@ function get_users(off_str, con_str, fil_str, user_str) {
   Args:
     off_str: string to official data
     con_str: string to contact data
+    fil_str: string to file data
     user_str: string to user data
   */
   var off = JSON.parse(document.getElementById(off_str).textContent);
@@ -91,7 +92,7 @@ function get_users(off_str, con_str, fil_str, user_str) {
   var fil = JSON.parse(document.getElementById(fil_str).textContent);
   var user = JSON.parse(document.getElementById(user_str).textContent);
 
-  // Iterate through official data and get usernames in array
+  // Iterate through official data and get unique usernames in array
   var usernames = []
 
   for (var key in off) {
@@ -103,7 +104,7 @@ function get_users(off_str, con_str, fil_str, user_str) {
     }
   }
 
-  // Iterate through contacts data and get usernames in array
+  // Iterate through contacts data and get unique usernames in array
   for (var key in con) {
     for (var contact_log_ix in con[key]) {
       uname = user[con[key][contact_log_ix]['contacted_by_id']];
@@ -113,7 +114,7 @@ function get_users(off_str, con_str, fil_str, user_str) {
     }
   }
 
-  // Iterate through contacts data and get usernames in array
+  // Iterate through files data and get unique usernames in array
   for (var key in fil) {
     for (var file_ix in fil[key]) {
       uname = user[fil[key][fil_ix]['created_by_id']];
@@ -487,7 +488,7 @@ jenks = function(data, n_classes) {
         }
 
         return kclass;
-    };
+};
 
 
 function fill_map(off_str, con_str, fil_str, user_str) {
@@ -656,6 +657,7 @@ function fill_map(off_str, con_str, fil_str, user_str) {
   // Set blue color ramp
   // originally the fourth one 2D4AeB
   var color_ramp = ['999',  'B4ECFD', '87B6F7', '2D4AEB', '0014E5'];
+  var color_ramp = ['999', 'B4ECFD', '87B6F7', '32CD32', '6B8E23'];
 
   // set color index for each element
   var color_index = {}
@@ -816,3 +818,5 @@ Update Date Range</button>
 
 
 {% endblock %}
+
+

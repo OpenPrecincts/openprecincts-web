@@ -1,5 +1,5 @@
 <svg width="700" height="700" version="1.0" xmlns="http://www.w3.org/2000/svg">
- <g id="county-group" class="counties" transform="scale(6), translate(-570 -97)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
+ <g id="county_group" class="counties" transform="scale(6), translate(-570 -90)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
 <path id="Door__WI" class="55029" transform="translate(0 -.10698)" d="m671.47 133.54-0.01 0.25977-0.18359 0.27343-0.28125 0.0195-0.11133-0.1582-0.33398 0.0312-0.11914 0.13672-0.50196 0.0391-0.16797-0.18945-0.17382 4e-3 -0.12305 0.68555 0.0273 0.41211 0.11719 0.0781 0.0176 0.20312-0.0937 0.0176 0.0547 0.40625 0.42968 0.30469 0.54311 0.58649 2e-3 -0.67438 0.4707-0.26172-0.0176-0.69727 0.25977-0.56445 0.29101-0.4082 0.17774-0.0117-6e-3 -0.39844zm-2.084 3.3633-0.3457-0.15039h-0.37695l-0.53125 0.34961-0.19336 4e-3 -0.15625 0.55078-0.50977 0.19531-0.0918 1.5098-0.59571 0.24804-0.4082 0.5918-0.41602-0.0234-0.1289-0.24219-0.33984 0.1836 0.0586 0.86523-0.24609 0.35156 0.0664 1.0215-0.87109 0.91797-0.52344 1.3027-0.45898 1.2754-0.0371 0.66992 0.32812 0.23047 0.0156 0.4375-0.2793 0.26367-0.2207-0.18164-0.0645-0.43945-0.23828-0.16601-0.5625 0.74609-0.71679-0.01-0.56055 0.55274-0.95703 0.22851-0.38672 0.61133-1.1875 2.1621-0.1543 1.1152v0.01l5.916-0.48828 0.40039-1.0527 0.32422-0.7168-0.10743-0.88867 0.56055-0.65821 0.19141-0.38867-0.0488-0.31836 0.91016-0.7207 0.0684-0.30859-0.25976-0.36719 0.4668-0.59961 0.29687-0.0176-0.30469-0.40625 2e-3 -0.65039 0.28125-0.75195 0.39257-0.19727 0.0957-1.082 0.65039-0.0547 0.48242-0.80078 0.0898-0.33984-0.26171-0.39649 0.38867-0.46289-0.3125-0.29492-0.084-1.3496 0.26758-0.29492 0.4082 0.32227 0.23829-0.125 0.0918-0.33008 0.0488-0.44141-0.16406-0.27734 0.14062-0.46094z"/>
   <path id="Kewaunee__WI" class="55061" d="m658.3 151.97 5.9156-0.489-0.37808 1.0978-0.52405 0.60515-0.3851 1.262-0.16937 0.956-0.26296 3.3748-0.33074 0.93217-3.6567 0.328-0.57052-7.286 0.36193-0.781"/>
   <path id="Pierce__WI" class="55093" d="m576.09 152.67 10.2-0.282 0.10572 3.987 0.0464 3.3008-2.805 0.12217-0.0571-0.09-0.15867-0.137-0.18542-0.09-0.28169-0.06-2.209-0.09-0.69889-0.08-0.25851-0.119-1.1892-1.182-0.041-0.225-0.17651-0.225-1.6937-1.438-1.166-0.674 0.56874-2.717"/>
@@ -11,7 +11,7 @@
   <path id="Clark__WI" class="55019" d="m605.85 147.47 9.8896-0.619 0.45998 8.011 0.36014 5.987-1.9754 0.169-5.994 0.337-0.15942-2.006-1.9319 0.11105-0.0963-1.994-0.32092-6.002-0.23177-3.994"/>
   <path id="Chippewa__WI" class="55017" d="m595.52 141.99 9.9787-0.499 0.57765 9.981-11.869 0.618-0.27623-6.0489-0.27624 0.0172-0.0573-2.0423 1.9618-0.0837-0.0398-1.9423"/>
   <path id="Dunn__WI" class="55033" d="m593.6 144.01 0.0573 2.0423 0.27624-0.0172 0.27623 6.0489 0.18541 3.971-8.001 0.321-0.10572-3.987-0.33216-6.0026-0.37623 0.0124-8e-3 -2.0848 8.0284-0.304"/>
-  <path id="St._Croix__WI" class="55109" d="m585.57 144.32 8e-3 2.0848 0.37623-0.0124 0.33216 6.0026-10.2 0.282 0.1248-1.735-0.34945-1.615-0.39936-0.853-0.0499-0.755 0.33875-3.03 9.8181-0.369"/>
+  <path id="St_Croix__WI" class="55109" d="m585.57 144.32 8e-3 2.0848 0.37623-0.0124 0.33216 6.0026-10.2 0.282 0.1248-1.735-0.34945-1.615-0.39936-0.853-0.0499-0.755 0.33875-3.03 9.8181-0.369"/>
   <path id="Polk__WI" class="55095" d="m585.26 134.43 0.31365 9.884-9.8181 0.369 0.24782-2 0.19433-0.176 0.0214-0.02 0.42789-0.53 0.60974-1.558-0.32091-1.624-0.79338-1.501-1.2712-0.685-0.32091 0.05-0.77199-0.13-0.21751-0.168-0.0553-0.451-0.041-0.61-7e-3 -0.151 0.0214-0.364 5.748-0.16-0.0553-1.985 6.0172-0.16 0.0713 1.968"/>
   <path id="Barron__WI" class="55005" d="m587.25 134.35 7.9159-0.298 0.35479 7.932 0.0398 1.9423-1.9618 0.0837-8.0284 0.304-0.31365-9.884 1.9932-0.08"/>
   <path id="Rusk__WI" class="55107" d="m609.04 133.32 0.33875 5.978-4.0131 0.20068 0.13183 1.9853-9.9787 0.499-0.35479-7.932 13.876-0.731"/>
@@ -74,4 +74,294 @@
   <path id="Marinette__WI" class="55075" d="m650.93 127.11 3.7993 1.021 0.30488 0.248 0.025 0.02 0.041 0.04 0.48138 0.594 0.16045 4.147-1.5788 3.4147 2.2901 5e-3 0.8147-0.84765 0.93194 0.82209-1.0353 3.4451 7e-3 0.014 1e-3 3e-3 0.14263 0.472 0.0731 0.122 1.2694 1.342h0.0161l0.41719 0.07 0.73097 0.115-0.37728 0.80767-0.13486 0.41462 0.0939 1.6554-0.71366 0.13723-1.3659 0.30349-0.0337-0.53413-3.016 0.21145-0.0225-0.66944-2.8735 0.1327-0.14458-1.9663-1.1001 0.08-0.19146-1.9415-1.9262 0.15121-0.3016-4.1719-1.9772 0.1-0.59369-7.9435 3.9829-0.224 1.913-0.04-0.11054-1.551"/>
 
  </g>
+
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Door
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Door__WI.mouseover" end="Door__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Kewaunee
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Kewaunee__WI.mouseover" end="Kewaunee__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Pierce
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Pierce__WI.mouseover" end="Pierce__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Pepin
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Pepin__WI.mouseover" end="Pepin__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Buffalo
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Buffalo__WI.mouseover" end="Buffalo__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Trempealeau
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Trempealeau__WI.mouseover" end="Trempealeau__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Jackson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Jackson__WI.mouseover" end="Jackson__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Eau Claire
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Eau_Claire__WI.mouseover" end="Eau_Claire__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Clark
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Clark__WI.mouseover" end="Clark__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Chippewa
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Chippewa__WI.mouseover" end="Chippewa__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Dunn
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Dunn__WI.mouseover" end="Dunn__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">St. Croix
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="St_Croix__WI.mouseover" end="St_Croix__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Polk
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Polk__WI.mouseover" end="Polk__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Barron
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Barron__WI.mouseover" end="Barron__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Rusk
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Rusk__WI.mouseover" end="Rusk__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Taylor
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Taylor__WI.mouseover" end="Taylor__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Price
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Price__WI.mouseover" end="Price__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Sawyer
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Sawyer__WI.mouseover" end="Sawyer__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Washburn
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Washburn__WI.mouseover" end="Washburn__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Burnett
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Burnett__WI.mouseover" end="Burnett__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Douglas
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Douglas__WI.mouseover" end="Douglas__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Bayfield
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Bayfield__WI.mouseover" end="Bayfield__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Ashland
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Ashland__WI.mouseover" end="Ashland__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Iron
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Iron__WI.mouseover" end="Iron__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Vilas
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Vilas__WI.mouseover" end="Vilas__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Oneida
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Oneida__WI.mouseover" end="Oneida__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lincoln
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lincoln__WI.mouseover" end="Lincoln__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Langlade
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Langlade__WI.mouseover" end="Langlade__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Marathon
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Marathon__WI.mouseover" end="Marathon__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Wood
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Wood__WI.mouseover" end="Wood__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Adams
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Adams__WI.mouseover" end="Adams__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Juneau
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Juneau__WI.mouseover" end="Juneau__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Monroe
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Monroe__WI.mouseover" end="Monroe__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">La Crosse
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="La_Crosse__WI.mouseover" end="La_Crosse__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Vernon
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Vernon__WI.mouseover" end="Vernon__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Sauk
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Sauk__WI.mouseover" end="Sauk__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Richland
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Richland__WI.mouseover" end="Richland__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Crawford
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Crawford__WI.mouseover" end="Crawford__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Iowa
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Iowa__WI.mouseover" end="Iowa__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Grant
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Grant__WI.mouseover" end="Grant__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lafayette
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lafayette__WI.mouseover" end="Lafayette__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Green
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Green__WI.mouseover" end="Green__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Marquette
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Marquette__WI.mouseover" end="Marquette__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Portage
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Portage__WI.mouseover" end="Portage__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Waupaca
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Waupaca__WI.mouseover" end="Waupaca__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Waushara
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Waushara__WI.mouseover" end="Waushara__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Green Lake
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Green_Lake__WI.mouseover" end="Green_Lake__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Columbia
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Columbia__WI.mouseover" end="Columbia__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Dane
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Dane__WI.mouseover" end="Dane__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Rock
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Rock__WI.mouseover" end="Rock__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Kenosha
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Kenosha__WI.mouseover" end="Kenosha__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Racine
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Racine__WI.mouseover" end="Racine__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Walworth
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Walworth__WI.mouseover" end="Walworth__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Dodge
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Dodge__WI.mouseover" end="Dodge__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Jefferson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Jefferson__WI.mouseover" end="Jefferson__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Waukesha
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Waukesha__WI.mouseover" end="Waukesha__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Milwaukee
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Milwaukee__WI.mouseover" end="Milwaukee__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Ozaukee
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Ozaukee__WI.mouseover" end="Ozaukee__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Washington
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Washington__WI.mouseover" end="Washington__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Winnebago
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Winnebago__WI.mouseover" end="Winnebago__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Fond du Lac
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Fond_du_Lac__WI.mouseover" end="Fond_du_Lac__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Sheboygan
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Sheboygan__WI.mouseover" end="Sheboygan__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Calumet
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Calumet__WI.mouseover" end="Calumet__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Manitowoc
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Manitowoc__WI.mouseover" end="Manitowoc__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Brown
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Brown__WI.mouseover" end="Brown__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Outagamie
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Outagamie__WI.mouseover" end="Outagamie__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Shawano
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Shawano__WI.mouseover" end="Shawano__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Menominee
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Menominee__WI.mouseover" end="Menominee__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Oconto
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Oconto__WI.mouseover" end="Oconto__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Forest
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Forest__WI.mouseover" end="Forest__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Florence
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Florence__WI.mouseover" end="Florence__WI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Marinette
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Marinette__WI.mouseover" end="Marinette__WI.mouseout"/>
+  </text>
+
 </svg>

@@ -1,5 +1,5 @@
 <svg width="800" height="700" version="1.0" xmlns="http://www.w3.org/2000/svg">
- <g id="county-group" class="counties" transform="scale(5), translate(-45 -55)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
+ <g id="county_group" class="counties" transform="scale(5), translate(-45 -45)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
 <path id="Clatsop__OR" class="41007" d="m91.29 61.438-2.348 8.083-1.9433-0.474-3.5764-1.012-0.04814-0.02 0.01605-0.233-3.8082-1.15 1.2868-2.8678-0.44751-0.98469 1.3055-0.51007 0.31533-1.1099 0.0145-0.69856 0.06418-0.836 0.13168-0.44567-0.21482-2.028 0.27114-0.22896 0.40411 0.11186 0.52521 1.0555 0.56136 0.55025 0.74443-0.44338 1.0756-0.01229 0.53393 0.8014 1.9298 0.21972 0.32925-0.59339 0.71493-0.256 0.08023-0.234 1.0358 0.06 0.08914 0.06 0.04814 0.03 0.06418 0.105 0.23356 0.417 0.16759 0.538-0.35122 1.029 0.67392 1.052 0.12124 0.04"/>
   <path id="Columbia__OR" class="41009" d="m93.772 61.541 0.82012-0.151 0.75594 0.314 2.5941 3.18 0.15333 0.605 0.44928 2.505-0.14441 2.185-0.11945 0.378-0.41897 2.805-2.619-0.619-1.2141-1.719-5.0865-1.503 2.348-8.083 2.4818 0.103"/>
   <path id="Curry__OR" class="41015" d="m62.104 133.42 1.5012 0.585-0.07131 0.03-0.29774 0.225-2.4978 2.539-0.0089 0.112 0.09627 0.249v0.09l-0.07131 0.119-1.519 1.865-0.32983 0.2-0.62579-0.04-0.87717-0.329-0.0731-0.06-0.35556-0.10626-0.45796 1.8189-0.9495 0.59009 0.09502 0.79489 1.4041 0.23034 0.68284 0.41 0.62579 0.915 0.16046 1.92-0.08736 0.588-0.41006 0.642-0.3851 0.547-1.1161 2.354 0.02318 0.627 0.09627 0.61-6.3328-1.993-0.6347-1.334-0.74702-2.266 0.16937-4.91 0.57052-1.895 0.47424-1.269 0.11945-0.275 0.93438-0.87728 0.47627-2.3225-1.1781-2.4616 0.02422-0.58966 0.0089-2.105 1.9612-2.163 3.5586 1.102 0.04814 0.103 0.72384 1.89-0.08023 1.286-0.14441 0.217-0.1765 0.619-0.26565 1.116-0.12124 1.631 0.06418 0.122 2.3231 0.24 1.2444-0.659 0.25138-0.184 0.25673-0.779 1.3175 0.06 0.60261 0.178"/>
@@ -38,4 +38,150 @@
   <path id="Tillamook__OR" class="41057" d="m88.942 69.521-0.46533 1.559-1.8943-0.65773-0.3358 0.50451 0.77361 1.5611 1.4868 1.0328-0.10171 0.5124-2.3998 1.0143-0.89414 1.252-0.26646-0.04434-0.10519 0.314 0.32983 0.09-0.74702 2.66-0.65075 2.146-4.9974-1.487-0.93244 3.069 0.9467 0.29-0.23177 0.706-4.3484-1.333 0.56339-1.013 0.06418-0.12 0.0071-0.02 0.4582-0.868 0.03209-0.06 0.13015-0.298 0.36014-0.893 3.5194-9.995 0.30665-1.037 0.06418-0.418v-0.153l-0.03209-1.205 3.8082 1.15-0.01605 0.233 0.04814 0.02 3.5764 1.012 1.9433 0.474"/>
   
  </g>
+
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Clatsop
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Clatsop__OR.mouseover" end="Clatsop__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Columbia
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Columbia__OR.mouseover" end="Columbia__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Curry
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Curry__OR.mouseover" end="Curry__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Coos
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Coos__OR.mouseover" end="Coos__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Josephine
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Josephine__OR.mouseover" end="Josephine__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Jackson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Jackson__OR.mouseover" end="Jackson__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Douglas
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Douglas__OR.mouseover" end="Douglas__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Klamath
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Klamath__OR.mouseover" end="Klamath__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lake
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lake__OR.mouseover" end="Lake__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Harney
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Harney__OR.mouseover" end="Harney__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Malheur
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Malheur__OR.mouseover" end="Malheur__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Baker
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Baker__OR.mouseover" end="Baker__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Wallowa
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Wallowa__OR.mouseover" end="Wallowa__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Union
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Union__OR.mouseover" end="Union__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Grant
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Grant__OR.mouseover" end="Grant__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Wheeler
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Wheeler__OR.mouseover" end="Wheeler__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Crook
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Crook__OR.mouseover" end="Crook__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Deschutes
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Deschutes__OR.mouseover" end="Deschutes__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Jefferson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Jefferson__OR.mouseover" end="Jefferson__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Linn
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Linn__OR.mouseover" end="Linn__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lane
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lane__OR.mouseover" end="Lane__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Benton
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Benton__OR.mouseover" end="Benton__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lincoln
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lincoln__OR.mouseover" end="Lincoln__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Polk
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Polk__OR.mouseover" end="Polk__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Yamhill
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Yamhill__OR.mouseover" end="Yamhill__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Marion
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Marion__OR.mouseover" end="Marion__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Clackamas
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Clackamas__OR.mouseover" end="Clackamas__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Umatilla
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Umatilla__OR.mouseover" end="Umatilla__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Morrow
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Morrow__OR.mouseover" end="Morrow__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Gilliam
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Gilliam__OR.mouseover" end="Gilliam__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Sherman
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Sherman__OR.mouseover" end="Sherman__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Wasco
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Wasco__OR.mouseover" end="Wasco__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Hood River
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Hood_River__OR.mouseover" end="Hood_River__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Multnomah
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Multnomah__OR.mouseover" end="Multnomah__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Washington
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Washington__OR.mouseover" end="Washington__OR.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Tillamook
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Tillamook__OR.mouseover" end="Tillamook__OR.mouseout"/>
+  </text>
+
 </svg>

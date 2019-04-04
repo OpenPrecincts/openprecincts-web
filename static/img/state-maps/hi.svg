@@ -1,5 +1,5 @@
 <svg width="600" height="400" version="1.0" xmlns="http://www.w3.org/2000/svg">
- <g id="county-group" class="counties" transform="scale(4), translate(-280 -540)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
+ <g id="county_group" class="counties" transform="scale(4), translate(-280 -530)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
 <path id="Kauai__HI" class="15007" d="m309.7 550.02h2.348l1.0109 0.672 0.33162 1.006v0.674l-0.67215 1.676v2.016l-1.3425 1.341-1.0038 0.675-3.3572-0.338-1.3443-1.341-2.0146-0.674-0.67215-0.67v-1.009l1.0091-1.343 3.3589-2.685h2.348m-15.782 10.747-0.33518-0.34 0.33518-2.013 2.0146-1.344 0.33697-1.006h1.0073l-0.33518 2.35-1.6795 0.672-1.0073 1.681h-0.33696"/>
   <path id="Honolulu__HI" class="15003" d="m349.66 568.82-1.3461 1.013v-0.337l-2.0146 0.67-1.6795-1.007-3.3572 0.337-1.3443 0.337-0.67036-1.683-1.0091-0.67-0.3334-1.006-1.0091-1.009v-1.007l-1.0073-0.669 3.3589-0.676 1.6795-2.346 1.0073-0.674 1.0055 0.334 1.6795 3.022h0.33518l0.33518 0.674-0.33518 0.67 0.33518 1.005 1.3443 1.011 0.33518-1.011h0.67214v1.011l0.67215 0.337 0.33517 1.343 1.0109 0.331"/>
   <path id="Maui__HI" class="15009" d="m364.76 571.51h0.33874l0.67215 0.333h0.33339l-0.33339-0.67 3.0184-0.67 1.3443 0.337-0.67214 1.344-2.0146 1.341h-1.0073l-4.0257-0.669-4.7014 0.333h-0.33874l1.0109-2.686h0.33518l4.7014 0.337 1.0073 0.333 0.33161 0.337m8.0586 2.35 1.0073 0.337 1.6795 2.687 3.3571-1.678 2.0146 0.335v0.335l2.6868 1.681 2.3498 0.671 0.33518 0.67v1.341l-1.3425 1.344-1.6795 0.672-3.3572 1.346h-2.3516l-0.67215-0.338-0.67035-4.028-1.0055-0.337-0.67215 0.669-2.0146-1.006-1.3425-1.344-0.33696-1.341 0.67214-1.344 0.33518-0.672h1.0073m-8.7272 3.024h2.348l1.3443 1.007 0.67036 1.007-0.33697 1.341-3.0184 1.011-0.33874-1.344-0.33161-1.008-1.3425-1.341v-0.34l1.0055-0.333m10.071 6.717 0.33517 0.334 0.33518 1.342-2.6868 0.672-1.0055-0.338 0.67036-1.002 2.3516-1.008"/>
@@ -7,4 +7,25 @@
   <path id="Kalawao__HI" class="15005" d="m364.43 571.18-1.0073-0.333 2.3498 0.333 0.33339 0.67h-0.33339l-0.67215-0.333h-0.33874l-0.33161-0.337"/>
  
  </g>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Kauai
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Kauai__HI.mouseover" end="Kauai__HI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Honolulu
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Honolulu__HI.mouseover" end="Honolulu__HI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Maui
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Maui__HI.mouseover" end="Maui__HI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Hawaii
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Hawaii__HI.mouseover" end="Hawaii__HI.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Kalawao
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Kalawao__HI.mouseover" end="Kalawao__HI.mouseout"/>
+  </text>
+
 </svg>

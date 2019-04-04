@@ -1,5 +1,5 @@
 <svg width="700" height="600" version="1.0" xmlns="http://www.w3.org/2000/svg">
- <g id="county-group" class="counties" transform="scale(5), translate(-260 -128)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
+ <g id="county_group" class="counties" transform="scale(5), translate(-260 -118)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
 <path id="Laramie__WY" class="56021" d="m364.82 219.96 10.699 0.97312-0.18363 2.028 10.235 0.921-0.32805 3.948-0.77911 9.033-15.308-1.296-5.7302-0.554 1.3946-15.053"/>
   <path id="Goshen__WY" class="56015" d="m387.62 199.74-1.1892 14.054-0.60261 7.002-0.25852 3.082-10.235-0.921 0.18363-2.028 1.9701-22.03 2.8847 0.253 4.0721 0.308 3.1753 0.28"/>
   <path id="Teton__WY" class="56039" d="m278.08 138.28 6.2579 0.981-0.28882 1.904 4.7335 0.722-0.20752 0.52107 0.64528 0.40262 0.31686-0.13803 0.44524 0.35842-0.11868 0.29831 0.26671 0.35245-0.56984 1.9971 0.14083 0.33883 0.38699 0.1956-0.0394 0.47986 0.37032 0.23058-0.0929 1.0415 0.28614 0.21241-0.0455 0.473 0.26245 0.11765 0.52304 0.30717 0.1677 0.49669-0.18764 0.094 0.13076 1.208 0.20183 0.28407-0.34303 1.0421 0.0535 0.67505 0.95372 0.1065-2.2265 15.332-0.38527 1.9765-4.7335-0.717-0.29596 1.977-3.867-0.602-0.2086 1.285-3.8216-0.64184 0.15305-1.3629-1.8188-0.32719 0.0754-0.40807-1.96-0.36476 2.3097-14.961 1.7686-11.168 0.76106-4.7192"/>
@@ -25,4 +25,97 @@
   <path id="Platte__WY" class="56031" d="m373.23 198.55 4.2634 0.355-1.9701 22.03-10.699-0.97312 0.13648-1.9622 0.11965 8e-3 0.49663-4.8243 0.25039-3.1944-0.14497-0.0465 0.73074-7.9279 0.4806-4.0268 3.2216 0.248 3.1141 0.314"/>
   
  </g>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Laramie
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Laramie__WY.mouseover" end="Laramie__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Goshen
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Goshen__WY.mouseover" end="Goshen__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Teton
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Teton__WY.mouseover" end="Teton__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lincoln
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lincoln__WY.mouseover" end="Lincoln__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Uinta
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Uinta__WY.mouseover" end="Uinta__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Sublette
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Sublette__WY.mouseover" end="Sublette__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Park
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Park__WY.mouseover" end="Park__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Sweetwater
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Sweetwater__WY.mouseover" end="Sweetwater__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Fremont
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Fremont__WY.mouseover" end="Fremont__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Hot Springs
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Hot_Springs__WY.mouseover" end="Hot_Springs__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Washakie
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Washakie__WY.mouseover" end="Washakie__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Big Horn
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Big_Horn__WY.mouseover" end="Big_Horn__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Sheridan
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Sheridan__WY.mouseover" end="Sheridan__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Johnson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Johnson__WY.mouseover" end="Johnson__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Natrona
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Natrona__WY.mouseover" end="Natrona__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Carbon
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Carbon__WY.mouseover" end="Carbon__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Albany
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Albany__WY.mouseover" end="Albany__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Weston
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Weston__WY.mouseover" end="Weston__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Crook
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Crook__WY.mouseover" end="Crook__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Campbell
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Campbell__WY.mouseover" end="Campbell__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Converse
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Converse__WY.mouseover" end="Converse__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Niobrara
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Niobrara__WY.mouseover" end="Niobrara__WY.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Platte
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Platte__WY.mouseover" end="Platte__WY.mouseout"/>
+  </text>
+
 </svg>

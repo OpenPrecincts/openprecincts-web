@@ -1,6 +1,6 @@
 <svg width="800" height="600" version="1.0" xmlns="http://www.w3.org/2000/svg">
- <g id="county-group" class="counties" transform="scale(6), translate(-75 5)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
-<path id="Okanogan__WA" class="53047" d="m146.86 9.3671 17.028 4.475 8.4526 2.122 4.3966 1.086-0.46712 1.984-1.3308 5.5214-0.53463-0.11811-0.87296 3.8237 0.34486 0.11399-0.86563 3.8141-0.12213-0.02233-1.9049 7.7682-0.12123 0.112-1.9202-0.146-0.0321-0.441 0.41006-0.458 0.28169-0.41 0.0945-0.265-0.0562-0.32058-0.40664-0.38628-0.1767-0.63812 0.0642-1.0323-0.21087-0.3157-0.24069-0.376-0.57725-0.12315-0.2816-0.45165-0.43551 0.0738-0.35653 0.30054-0.42222-0.07176-1.151 0.25068-0.35887-0.41015-0.40268 0.19209-0.31507 0.35634-0.26033 0.68483-1.052-0.22147-0.395-0.70326-0.58114-0.13387-0.3512-0.23242-0.47164 0.52312-0.2855 0.06323-0.31834 0.27128-0.27455 0.0085-0.88208 0.58472-0.5317-0.09417-0.37839-0.58691 0.1253-0.49931 0.4699-0.69138-0.14328-0.37384-0.29659 0.08606-0.38418-0.07819-0.14413-0.53777-0.43977-0.17643-0.11865 0.37895-0.44715-0.14664-1.4361 0.42125-0.16514 0.32731 0.27286 0.5682-0.0675 0.45752-0.39345 0.33375-0.0568 0.17622 9e-3 0.08 0.12659 0.257-2.8924-0.78816 0.0966-0.44052-0.19236-0.42376 0.085-0.47418-0.747-0.72629 0.31187-0.37334-0.72179-0.67587-0.36883-0.04559-0.54531-0.9784-0.34362-0.49939-0.50213 0.04686-0.0483-0.38173-0.27523-0.20525 2e-3 -0.60862 0.45588-0.45736 2e-3 -0.63384-0.52734-0.15483 0.10293-0.28088-0.78728-0.64569-0.66122-1.5533-0.45954 0.06022-0.56042-0.51963 0.52369-0.72132 0.0446-0.62048-1.0142-0.57006-6e-3 -1.2255 0.66012-0.30976-0.32311-0.33497 0.48364-0.28454-0.35063-0.33136 0.17879-0.58346-0.79742-0.105 0.29293-0.58999 0.3103-0.15229-0.27398-0.73658-0.59966 0.25959-0.18778-0.20976-0.1381-1.0114 0.58029-0.53252 0.25674-0.07 0.40847 0.0628 0.33184-0.64601 0.54256 0.13943-0.0352-0.49542 0.46286-0.11228-0.32077-0.70135-0.5315-0.8546 0.52214-1.6784-0.30161-0.49062 0.15815-1.142 0.34973-0.24158-0.0909-0.50978-0.35908-0.1458-0.76782 0.36409-0.56768-1.0508 0.49475-0.36378"/>
+ <g id="county_group" class="counties" transform="scale(6), translate(-75 10)" style="fill:#d3d3d3;stroke-width:.17829;stroke:#000">
+  <path id="Okanogan__WA" class="53047" d="m146.86 9.3671 17.028 4.475 8.4526 2.122 4.3966 1.086-0.46712 1.984-1.3308 5.5214-0.53463-0.11811-0.87296 3.8237 0.34486 0.11399-0.86563 3.8141-0.12213-0.02233-1.9049 7.7682-0.12123 0.112-1.9202-0.146-0.0321-0.441 0.41006-0.458 0.28169-0.41 0.0945-0.265-0.0562-0.32058-0.40664-0.38628-0.1767-0.63812 0.0642-1.0323-0.21087-0.3157-0.24069-0.376-0.57725-0.12315-0.2816-0.45165-0.43551 0.0738-0.35653 0.30054-0.42222-0.07176-1.151 0.25068-0.35887-0.41015-0.40268 0.19209-0.31507 0.35634-0.26033 0.68483-1.052-0.22147-0.395-0.70326-0.58114-0.13387-0.3512-0.23242-0.47164 0.52312-0.2855 0.06323-0.31834 0.27128-0.27455 0.0085-0.88208 0.58472-0.5317-0.09417-0.37839-0.58691 0.1253-0.49931 0.4699-0.69138-0.14328-0.37384-0.29659 0.08606-0.38418-0.07819-0.14413-0.53777-0.43977-0.17643-0.11865 0.37895-0.44715-0.14664-1.4361 0.42125-0.16514 0.32731 0.27286 0.5682-0.0675 0.45752-0.39345 0.33375-0.0568 0.17622 9e-3 0.08 0.12659 0.257-2.8924-0.78816 0.0966-0.44052-0.19236-0.42376 0.085-0.47418-0.747-0.72629 0.31187-0.37334-0.72179-0.67587-0.36883-0.04559-0.54531-0.9784-0.34362-0.49939-0.50213 0.04686-0.0483-0.38173-0.27523-0.20525 2e-3 -0.60862 0.45588-0.45736 2e-3 -0.63384-0.52734-0.15483 0.10293-0.28088-0.78728-0.64569-0.66122-1.5533-0.45954 0.06022-0.56042-0.51963 0.52369-0.72132 0.0446-0.62048-1.0142-0.57006-6e-3 -1.2255 0.66012-0.30976-0.32311-0.33497 0.48364-0.28454-0.35063-0.33136 0.17879-0.58346-0.79742-0.105 0.29293-0.58999 0.3103-0.15229-0.27398-0.73658-0.59966 0.25959-0.18778-0.20976-0.1381-1.0114 0.58029-0.53252 0.25674-0.07 0.40847 0.0628 0.33184-0.64601 0.54256 0.13943-0.0352-0.49542 0.46286-0.11228-0.32077-0.70135-0.5315-0.8546 0.52214-1.6784-0.30161-0.49062 0.15815-1.142 0.34973-0.24158-0.0909-0.50978-0.35908-0.1458-0.76782 0.36409-0.56768-1.0508 0.49475-0.36378"/>
   <path id="Whatcom__WA" class="53073" transform="translate(0 -.10698)" d="m113.82 0.19531v0.003906l-0.0645 0.58789 0.80469 0.28906 0.11914-0.039063-0.0469-0.60156-0.71679-0.20898zm4.8945 1.416-0.31445 0.17773-0.43359 0.25-0.41602 0.32617-0.14453 0.22656-0.01 0.080078 0.96409 0.22231-0.0181 0.63774-0.69012 0.32159 0.7463 1.3122-0.28145 1.3206 0.3457-0.29688 0.39649 0.46094-0.05 0.54626-0.52618 0.59632 0.0899 0.875 0.51562 0.37891 0.25977-0.39062-0.13282-0.29492-0.35546-0.023437 0.89062-0.88477h0.80664l0.70899 0.82812-0.64844 0.66016 0.0469 1.6875 0.33789 0.0293 5.1445 1.4375 12.834 3.6719 5.2791 1.4133 0.0661-0.37608 2.1821 0.60534 0.25782-0.07031 0.40836 0.06277 0.33173-0.64604 0.54245 0.13939-0.0353-0.49543 0.4628-0.1123-0.32079-0.7013-0.5315-0.85456 0.52212-1.6783-0.30162-0.49058 0.15814-1.1419 0.34971-0.24154-0.0909-0.50973-0.3591-0.14575-0.76707 0.36384-0.56748-1.0509 0.49338-0.36292v-0.00391l-4.0801-1.1016-9.2559-2.4434-5.0957-1.5352-4.5332-1.293zm-0.86847 5.6923-0.41787 0.70799 0.31071 0.36631 0.0869 0.76846 0.47468 0.75595 0.39808 0.20699 0.0401-0.67355-0.41544-0.52516-0.22048-1.0101z"/>
   <path id="Wahkiakum__WA" class="53069" d="m86.653 56.615 0.65788-2.096 3.416 1.076 2.1929 0.635 2.1537 0.61-1.3015 4.701-2.4818-0.103-0.12124-0.04-0.67392-1.052 0.35122-1.029-0.16759-0.538-0.23356-0.417-0.06418-0.106-0.04814-0.02-0.08914-0.06-1.0358-0.06-2.5549-1.503"/>
   <path id="Asotin__WA" class="53003" d="m187.88 79.197 0.3703 0.4577-0.23488 0.42889 0.25502 0.22716 0.73378-0.0801 0.74818 0.46745 0.46-0.0801 0.41678 0.06399-0.33696 1.004 0.50455 2.034 0.0232 0.08 0.15333 1.27 0.0981 1.975-0.76485 2.108 0.0981 1.59-8.8163-2.058 0.64361-2.77 0.93958 0.216 1.0198-4.548 0.29213-1.2135 0.32284 0.08546 0.10887-0.42397 0.64058 0.16947 0.0904-0.33647 1.9772 0.472 0.25674-1.139"/>
@@ -41,4 +41,161 @@
   <path id="Chelan__WA" class="53007" d="m146.32 20.279 0.79742 0.105-0.17879 0.58346 0.35063 0.33136-0.48364 0.28454 0.32311 0.33497-0.66012 0.30976 6e-3 1.2255 1.0142 0.57006-0.0446 0.62048-0.52365 0.72132 0.56042 0.51963 0.45958-0.06022 0.66126 1.5533 0.78732 0.64569-0.10293 0.28088 0.52734 0.15483-2e-3 0.63384-0.45588 0.45736-2e-3 0.60862 0.27523 0.20525 0.0483 0.38173 0.50213-0.04686 0.34362 0.49939 0.54531 0.9784 0.36883 0.04559 0.72178 0.67587-0.31185 0.37334 0.74699 0.72629-0.085 0.47418 0.19236 0.42376-0.0966 0.44052 2.8924 0.78816 0.0571 0.274v0.177l-0.11299 0.2154-0.88646 0.44911-0.15561 0.86809-0.86736 0.24395-0.19941 0.6053-0.73595 0.63815-1.5012 0.04-0.10519-0.04-0.0802-0.128-0.20146-0.209-0.19255-0.09-0.98058 0.128-0.22464 0.09-0.14441 0.1-0.22465 0.249-0.12222 0.42555 0.16713 0.61084-0.0783 0.46087-0.67993 0.57128-0.29818 0.9803-0.5691 0.69265-0.54487 0.18014-0.38127 0.50736-0.48316 1.004-0.11232 0.328v0.556l0.0481 0.788 0.0642 0.193 0.44215 0.385 0.23178 0.128 1.5529 0.699 0.50633 0.779 0.0143 0.128-0.22464 0.676-0.19968 0.547-0.16046 0.312-4.4928-1.141-0.41719-0.442-0.30487-0.52-0.35537-0.17146-0.35537-0.38258-0.23808-0.57024-0.47266 0.43843-0.3659-0.02904-0.0844-0.82659-1.2807-0.45127-0.17771-0.46786-0.43575-0.23329-0.0135-0.63206-0.27154-0.02217-0.52957-0.53823 0.0334-0.25675-0.9518-0.16292-0.92835-0.46786 0.16946-0.53912-0.48735-0.35146 0.0991-0.44529-0.3466-0.32801-0.1274-0.74434-0.95611-0.86019-0.20873-1.3447 0.15868-1.368-6e-3 -0.49202 1.2262-0.28671 0.0481-0.16844-0.231-0.34682 0.16937-0.353-0.36192-1.036 0.50571-0.33504 0.50571-0.53397-0.65725-0.16672-0.47363-0.54927 0.23756-0.63147-0.26741-0.26422 0.0539-0.49375 0.22225-0.46315 0.27105-0.41823 8e-3 -0.2087 0.43789-0.45195 0.16561 0.01 0.452-0.34149-0.34496-0.95395 1.981-0.40308 0.22122 0.17841 1.2924-0.5561-0.0866-0.77232 1.0917-0.12962-0.23964-0.94064-0.37735-0.38976 0.2331-0.25661-0.33309-0.70038-0.27187-0.68507 0.20249-0.42494-0.79516-0.914 0.22942-0.35643 0.37847 0.05002 0.11086-0.40498-0.14505-0.41545-3e-3 -0.45792 0.67606-0.7269-0.3291-0.55702 0.53448-0.74106 1.483 0.22161 0.0673-0.59949 0.30797 0.05173 0.40868 0.17573 0.45317-0.17346 0.15587 0.25124 0.22666-0.10268 0.0143-0.27256 0.49608 0.11309 0.0572 0.35375-0.0985 0.35375 0.29788 0.3396 0.45361 0.02814 0.45361-0.22668 0.43945 0.01399"/>
   
  </g>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Okanogan
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Okanogan__WA.mouseover" end="Okanogan__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Whatcom
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Whatcom__WA.mouseover" end="Whatcom__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Wahkiakum
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Wahkiakum__WA.mouseover" end="Wahkiakum__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Asotin
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Asotin__WA.mouseover" end="Asotin__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Garfield
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Garfield__WA.mouseover" end="Garfield__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Columbia
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Columbia__WA.mouseover" end="Columbia__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Walla Walla
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Walla_Walla__WA.mouseover" end="Walla_Walla__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Franklin
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Franklin__WA.mouseover" end="Franklin__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Whitman
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Whitman__WA.mouseover" end="Whitman__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Spokane
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Spokane__WA.mouseover" end="Spokane__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Pend Oreille
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Pend_Oreille__WA.mouseover" end="Pend_Oreille__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Stevens
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Stevens__WA.mouseover" end="Stevens__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lincoln
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lincoln__WA.mouseover" end="Lincoln__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Adams
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Adams__WA.mouseover" end="Adams__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Grant
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Grant__WA.mouseover" end="Grant__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Benton
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Benton__WA.mouseover" end="Benton__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Klickitat
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Klickitat__WA.mouseover" end="Klickitat__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Clark
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Clark__WA.mouseover" end="Clark__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Skamania
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Skamania__WA.mouseover" end="Skamania__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Cowlitz
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Cowlitz__WA.mouseover" end="Cowlitz__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Pacific
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Pacific__WA.mouseover" end="Pacific__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Lewis
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Lewis__WA.mouseover" end="Lewis__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Thurston
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Thurston__WA.mouseover" end="Thurston__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Pierce
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Pierce__WA.mouseover" end="Pierce__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Yakima
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Yakima__WA.mouseover" end="Yakima__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Kittitas
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Kittitas__WA.mouseover" end="Kittitas__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Douglas
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Douglas__WA.mouseover" end="Douglas__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Ferry
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Ferry__WA.mouseover" end="Ferry__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">San Juan
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="San_Juan__WA.mouseover" end="San_Juan__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Island
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Island__WA.mouseover" end="Island__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Snohomish
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Snohomish__WA.mouseover" end="Snohomish__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">King
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="King__WA.mouseover" end="King__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Kitsap
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Kitsap__WA.mouseover" end="Kitsap__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Mason
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Mason__WA.mouseover" end="Mason__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Grays Harbor
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Grays_Harbor__WA.mouseover" end="Grays_Harbor__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Jefferson
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Jefferson__WA.mouseover" end="Jefferson__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Clallam
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Clallam__WA.mouseover" end="Clallam__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Skagit
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Skagit__WA.mouseover" end="Skagit__WA.mouseout"/>
+  </text>
+  <text x="10" y="50" font-size="50" fill="black" visibility="hidden">Chelan
+    <set attributeName="visibility" from="visible" to="hidden" begin="county_group.mouseover"/>
+    <set attributeName="visibility" from="hidden" to="visible" begin="Chelan__WA.mouseover" end="Chelan__WA.mouseout"/>
+  </text>
+
 </svg>
