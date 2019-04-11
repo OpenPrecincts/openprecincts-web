@@ -72,6 +72,14 @@ class State(models.Model):
         return self.name
 
 
+class StateCycle(models.Model):
+    year = models.CharField(max_length=4)
+    state = models.ForeignKey(State, related_name="years", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.state} {self.year}"
+
+
 class Locality(models.Model):
     """
     County equivalents, the atomic unit by which we'll collect data.
