@@ -24,7 +24,7 @@ class File(models.Model):
         Locality, on_delete=models.PROTECT, related_name="files"
     )
     cycle = models.ForeignKey(
-        StateCycle, on_delete=models.PROTECT, related_name="files", null=True
+        StateCycle, on_delete=models.PROTECT, related_name="files", null=False
     )
 
     # source files
