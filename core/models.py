@@ -1,5 +1,6 @@
 from django.db import models
 from enum import Enum
+from markupfield.fields import MarkupField
 
 
 class StateStatus(Enum):
@@ -19,6 +20,8 @@ class State(models.Model):
     abbreviation = models.CharField(max_length=2, primary_key=True)
     name = models.CharField(max_length=100)
     census_geoid = models.CharField(max_length=2, unique=True)
+
+    status_text = MarkupField(markup_type="markdown", default="")
 
     # settings
     task_collect = models.BooleanField(null=True, default=None)

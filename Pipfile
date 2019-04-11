@@ -7,7 +7,7 @@ name = "pypi"
 "flake8" = "*"
 pytest = "*"
 pytest-django = "*"
-moto = {git = "https://github.com/spulec/moto", ref = "master"}
+moto = {git = "https://github.com/spulec/moto",ref = "master"}
 ipdb = "*"
 
 [packages]
@@ -16,11 +16,13 @@ us = "*"
 "boto3" = "*"
 django-sesame = "*"
 django-webpack-loader = "*"
-whitenoise = {version = "*", extras=["brotli"]}
+whitenoise = {version = "*",extras = ["brotli"]}
 python-magic = "*"
 dj-database-url = "*"
 "psycopg2-binary" = "*"
 sentry-sdk = "==0.7.4"
+django-markupfield = "*"
+markdown = "*"
 
 [requires]
 python_version = "3.7"
