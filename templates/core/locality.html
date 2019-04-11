@@ -113,8 +113,8 @@
     <h3 class="title is-3">File Management</h3>
 
     {% if user_can_write %}
-        <div class="level">
-
+        <div class="columns">
+          <div class="column">
             <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="hidden" name="locality" value="{{ locality.id }}">
@@ -133,13 +133,14 @@
               <span class="file-name">
               </span>
             </label>
-                </div>
+            </div>
             <div class="level-item">
                 <input type="submit" class="button is-primary">
             </div>
             </div>
             </form>
-
+          </div>
+          <div class="column">
             {% if files %}
                 <form action="{% url 'download_zip' %}" method="POST">
                 {% csrf_token %}
@@ -158,9 +159,8 @@
                   </div>
               </form>
           {% endif %}
-
+          </div>
         </div>
-
     {% endif %}
 
     <table class="table">        
