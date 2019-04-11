@@ -51,6 +51,9 @@ class State(models.Model):
             return "inactive"
         return self._calc_status(self.task_verification, self.task_published)
 
+    def current_cycle(self):
+        return self.cycles.order_by("-year")[0]
+
     def status(self):
         if (
             self.collection_status() == "inactive"
@@ -74,7 +77,7 @@ class State(models.Model):
 
 class StateCycle(models.Model):
     year = models.CharField(max_length=4)
-    state = models.ForeignKey(State, related_name="years", on_delete=models.CASCADE)
+    state = models.ForeignKey(State, related_name="cycles", on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.state} {self.year}"

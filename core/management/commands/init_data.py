@@ -19,3 +19,4 @@ class Command(BaseCommand):
         for s in State.objects.all():
             for p in Permissions:
                 Group.objects.get_or_create(name=f"{s.abbreviation} {p.value}")
+            StateCycle.objects.create(year="2018", state=s)

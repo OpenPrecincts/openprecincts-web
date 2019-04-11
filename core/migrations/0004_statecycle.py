@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('year', models.CharField(max_length=4)),
-                ('state', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='years', to='core.State')),
+                ('state', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='cycles', to='core.State')),
             ],
         ),
     ]
