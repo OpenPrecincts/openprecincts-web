@@ -15,6 +15,13 @@ def user():
 
 
 @pytest.fixture
+def locality():
+    loc =  Locality.objects.get(name="Wake County", state_id="NC")
+    cycle = loc.state.cycles.create(year="2020")
+    return loc
+
+
+@pytest.fixture
 def s3():
     with mock_s3():
         s3 = boto3.resource("s3", region_name="us-east-1")
@@ -24,8 +31,7 @@ def s3():
 
 
 @pytest.mark.django_db
-def test_upload_files(client, user, s3):
-    locality = Locality.objects.get(name="Wake County", state_id="NC")
+def test_upload_files(client, user, locality, s3):
     user.groups.create(name="NC write")
     client.force_login(user)
     faux_file = StringIO("file contents")
@@ -67,8 +73,7 @@ def test_upload_files_unauthorized(client, user, s3):
 
 
 @pytest.mark.django_db
-def test_download(client, user, s3):
-    locality = Locality.objects.get(name="Wake County", state_id="NC")
+def test_download(client, user, locality, s3):
     user.groups.create(name="NC write")
     client.force_login(user)
     faux_file = StringIO("file contents")
@@ -85,8 +90,7 @@ def test_download(client, user, s3):
 
 
 @pytest.mark.django_db
-def test_download_zip(client, user, s3):
-    locality = Locality.objects.get(name="Wake County", state_id="NC")
+def test_download_zip(client, user, locality, s3):
     user.groups.create(name="NC write")
     client.force_login(user)
     faux_file = StringIO("file contents")

@@ -26,6 +26,7 @@ def upload_file(
     size,
     source_filename,
     created_by,
+    cycle=None,
     official=None,
     file_path=None,
     file_obj=None,
@@ -41,6 +42,9 @@ def upload_file(
     assert file_path or file_obj and not (file_path and file_obj)
 
     with transaction.atomic():
+        # default to latest cycle if not specified
+        if not cycle:
+            cycle = locality.state.current_cycle()
         # write the record first so we don't ever lose track of a file
         File.objects.create(
             id=new_uuid,
@@ -49,6 +53,7 @@ def upload_file(
             size=size,
             s3_path=s3_path,
             locality=locality,
+            cycle=cycle,
             official=official,
             source_filename=source_filename,
             created_by=created_by,
