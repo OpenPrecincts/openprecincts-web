@@ -83,12 +83,18 @@ def _get_contributors(state):
     return sorted(contributors_filtered, key=lambda c: c["total"], reverse=True)
 
 
+def _locality_key(loc):
+    if "Statewide" in loc.name:
+        return ""
+    return loc.name
+
+
 def state_overview(request, state):
     state = get_object_or_404(State, pk=state.upper())
 
     context = {"state": state}
 
-    localities = Locality.objects.filter(state=state).order_by("name")
+    localities = Locality.objects.filter(state=state)
     localities = localities.annotate(
         total_officials=RawSQL(
             "SELECT COUNT(*) FROM contact_official "
@@ -106,6 +112,7 @@ def state_overview(request, state):
             (),
         ),
     )
+    localities = sorted(localities, key=_locality_key)
 
     contributors = _get_contributors(state)
 
