@@ -83,7 +83,7 @@ def upload_local_file(filename, *, stage, locality, created_by):
 def upload_django_file(file, *, stage, locality, created_by, source_url):
     kwarg = {}
     if hasattr(file, "temporary_file_path"):
-        kwarg = {"file_name": file.temporary_file_path()}
+        kwarg = {"file_path": file.temporary_file_path()}
     else:
         kwarg = {"file_obj": file}
 
