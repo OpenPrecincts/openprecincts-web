@@ -119,6 +119,9 @@
             {% csrf_token %}
             <input type="hidden" name="locality" value="{{ locality.id }}">
             <div class="level-left">
+            <div class="level-item">
+                <input class="input" placeholder="source URL" name="source_url" />
+            </div>
             <div class="file level-item has-name">
               <label class="file-label">
                 <input class="file-input" type="file" name="files" multiple>

@@ -30,6 +30,7 @@ def upload_file(
     official=None,
     file_path=None,
     file_obj=None,
+    source_url="",
 ):
     new_uuid = uuid.uuid4()
     s3_path = make_s3_path(locality, new_uuid, stage, source_filename)
@@ -56,6 +57,7 @@ def upload_file(
             cycle=cycle,
             official=official,
             source_filename=source_filename,
+            source_url=source_url,
             created_by=created_by,
         )
 
@@ -78,7 +80,7 @@ def upload_local_file(filename, *, stage, locality, created_by):
     )
 
 
-def upload_django_file(file, *, stage, locality, created_by):
+def upload_django_file(file, *, stage, locality, created_by, source_url):
     kwarg = {}
     if hasattr(file, "temporary_file_path"):
         kwarg = {"file_name": file.temporary_file_path()}
@@ -92,5 +94,6 @@ def upload_django_file(file, *, stage, locality, created_by):
         size=file.size,
         source_filename=file.name,
         created_by=created_by,
+        source_url=source_url,
         **kwarg,
     )
