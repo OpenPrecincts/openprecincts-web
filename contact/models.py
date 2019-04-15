@@ -56,6 +56,9 @@ class ContactLog(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return f"{self.official} contacted on {self.contact_date}"
+
 
 class EmailMessage(models.Model):
     state = models.ForeignKey(

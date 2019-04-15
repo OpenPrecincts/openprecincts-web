@@ -49,3 +49,6 @@ class File(models.Model):
     created_by = models.ForeignKey(
         User, on_delete=models.PROTECT, related_name="created_files"
     )
+
+    def __str__(self):
+        return f"{self.s3_path}"

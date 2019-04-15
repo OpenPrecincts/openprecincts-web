@@ -154,6 +154,43 @@ def state_overview(request, state):
     return render(request, "core/state_overview.html", context)
 
 
+def _change_feed(state):
+    contacts = list(ContactLog.objects.filter(official__locality__state=state).select_related("contacted_by"))
+    officials = list(Official.objects.filter(locality__state=state).select_related("created_by"))
+    files = list(File.objects.filter(locality__state=state).select_related("created_by"))
+
+    feed = sorted(contacts + officials + files, key=lambda k: k.created_at, reverse=True)
+    for f in feed:
+        if isinstance(f, ContactLog):
+            f.description = str(f)
+            f.created_by = f.contacted_by
+        elif isinstance(f, Official):
+            f.description = f"added official for {f.locality}: {f}"
+        elif isinstance(f, File):
+            f.description = f"added file {f}"
+    return feed
+
+
+def state_admin(request, state):
+    ensure_permission(request.user, state, Permissions.ADMIN)
+    upper = state.upper()
+    state = get_object_or_404(State, pk=upper)
+    users = User.objects.filter(groups__name__startswith=upper).distinct()
+
+    for perm in Permissions:
+        for user in users:
+            if has_permission(user, upper, perm):
+                setattr(user, perm.value, True)
+
+    context = {
+        "state": state,
+        "users": users,
+        "feed": _change_feed(state)
+    }
+
+    return render(request, "core/state_admin.html", context)
+
+
 def locality_overview(request, id):
     locality = get_object_or_404(Locality, pk=id)
 

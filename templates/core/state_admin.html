@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load common %}
+
+{% block body %}
+<section class="section">
+<div class="container">    
+    <h1 class="title is-1">{{ state }} admin</h1>
+</div>
+</section>
+
+<section class="section">
+<div class="container">    
+    <h2 class="title is-2">Users</h2>
+
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Contact</th>
+            <th>Write</th>
+            <th>GIS</th>
+            <th>Admin</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for u in users %}
+    <tr>
+        <td>{{ u.email }}</td>
+        <td>{{ u.contact|yesno }}</td>
+        <td>{{ u.write|yesno }}</td>
+        <td>{{ u.gis|yesno }}</td>
+        <td>{{ u.admin|yesno }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+</div>
+</section>
+
+<section class="section">
+<div class="container">    
+    <h2 class="title is-2">Feed</h2>
+
+    {% regroup feed by created_at.date as grouped_feed %}
+    {% for day in grouped_feed %}
+    <div class="media">
+        <strong>{{ day.grouper }}</strong>
+    </div>
+        {% for f in day.list %}
+        <div class="media">
+            {{ f.description }}
+            <div class="media-right">
+            <small>{{ f.created_by }}</small> <small>{{ f.created_at. }}</small>
+            </div>
+        </div>
+        {% endfor %}
+    {% endfor %}
+</div>
+</section>
+{% endblock %}
