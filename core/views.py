@@ -175,8 +175,9 @@ def state_admin(request, state):
     ensure_permission(request.user, state, Permissions.ADMIN)
     upper = state.upper()
     state = get_object_or_404(State, pk=upper)
-    users = User.objects.filter(groups__name__startswith=upper).distinct()
+    statewide_locality = state.localities.get(name__endswith="Statewide")
 
+    users = User.objects.filter(groups__name__startswith=upper).distinct()
     for perm in Permissions:
         for user in users:
             if has_permission(user, upper, perm):
@@ -185,7 +186,8 @@ def state_admin(request, state):
     context = {
         "state": state,
         "users": users,
-        "feed": _change_feed(state)
+        "feed": _change_feed(state),
+        "statewide_locality": statewide_locality,
     }
 
     return render(request, "core/state_admin.html", context)

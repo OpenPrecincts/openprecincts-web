@@ -10,6 +10,56 @@
 
 <section class="section">
 <div class="container">    
+    <h2 class="title is-2">File Upload</h2>
+    <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="hidden" name="locality" value="{{ statewide_locality.id }}">
+
+    <div class="field">
+      <label class="label">File Stage</label>
+      <div class="control">
+      <div class="select">
+          <select name="stage">
+              <option value="S">Source</option>
+              <option value="I">Intermediate</option>
+              <option value="F">Final</option>
+          </select>
+      </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Source URL</label>
+      <div class="control">
+        <input class="input" name="source_url" />
+      </div>
+    </div>
+
+    <div class="file has-name field">
+      <label class="file-label">
+        <input class="file-input" type="file" name="files" multiple>
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fas fa-upload"></i>
+          </span>
+          <span class="file-label">
+            Select files to upload…
+          </span>
+      </span>
+      <span class="file-name">
+      </span>
+      </label>
+    </div>
+
+    <div class="control">
+        <input type="submit" class="button is-primary">
+    </div>
+    </form>
+</div>
+</section>
+
+<section class="section">
+<div class="container">    
     <h2 class="title is-2">Users</h2>
 
     <table class="table">
