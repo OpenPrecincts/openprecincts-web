@@ -10,7 +10,6 @@ class FileAdmin(admin.ModelAdmin):
         "s3_path",
         "source_filename",
         "locality",
-        "parent_file",
         "created_by",
     )
     list_display = ("source_filename", "stage", "locality", "active")
