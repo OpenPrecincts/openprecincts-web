@@ -1,13 +1,10 @@
 from . import basic
-
-class Transformations(IntEnum):
-    ZIP = 1
-    TO_GEOJSON = 2
+from ..models import Transformations
 
 
 TRANSFORMATION_FUNCTIONS = {
-    Transformations.ZIP: zip_files,
-    Transformations.TO_GEOJSON: to_geojson,
+    Transformations.ZIP: basic.zip_files,
+    Transformations.TO_GEOJSON: basic.to_geojson,
 }
 
 
@@ -31,7 +28,7 @@ def run_transformation(transformation, *files):
         stage="I",
         locality=files[0].locality,
         mime_type=mime_type,
-        len(output_bytes),
+        file_size=len(output_bytes),
         source_filename="",
         created_by=transformation.created_by,
         cycle=files[0].cycle,

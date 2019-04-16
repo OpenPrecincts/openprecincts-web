@@ -7,6 +7,7 @@ from core.models import Locality
 from core.permissions import ensure_permission
 from .models import File
 from .utils import upload_django_file, get_from_s3
+from .transformations.basic import zip_files
 
 
 @require_POST
@@ -40,13 +41,5 @@ def download_zip(request):
     id_list = request.POST.getlist("id")
     files = File.objects.filter(pk__in=id_list)
     assert len(id_list) == len(files)
-
-    # build zip file
-    buffer = io.BytesIO()
-    zf = zipfile.ZipFile(buffer, "w")
-    for file in files:
-        fileobj = get_from_s3(file)
-        zf.writestr(str(file.id) + file.source_filename, fileobj.read())
-    zf.close()
-    buffer.seek(0)
+    buffer = zip_files(*files)
     return FileResponse(buffer, as_attachment=True, filename="download.zip")
