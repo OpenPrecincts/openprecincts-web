@@ -5,14 +5,10 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('files', '0001_initial'),
-    ]
+    dependencies = [("files", "0001_initial")]
 
     operations = [
         migrations.AddField(
-            model_name='file',
-            name='source_url',
-            field=models.URLField(blank=True),
-        ),
+            model_name="file", name="source_url", field=models.URLField(blank=True)
+        )
     ]

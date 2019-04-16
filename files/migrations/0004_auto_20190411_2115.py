@@ -6,14 +6,16 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('files', '0003_file_cycle'),
-    ]
+    dependencies = [("files", "0003_file_cycle")]
 
     operations = [
         migrations.AlterField(
-            model_name='file',
-            name='cycle',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='files', to='core.StateCycle'),
-        ),
+            model_name="file",
+            name="cycle",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="files",
+                to="core.StateCycle",
+            ),
+        )
     ]

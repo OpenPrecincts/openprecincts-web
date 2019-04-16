@@ -6,24 +6,33 @@ import markupfield.fields
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('core', '0004_statecycle'),
-    ]
+    dependencies = [("core", "0004_statecycle")]
 
     operations = [
         migrations.AddField(
-            model_name='state',
-            name='_status_text_rendered',
-            field=models.TextField(default='', editable=False),
+            model_name="state",
+            name="_status_text_rendered",
+            field=models.TextField(default="", editable=False),
         ),
         migrations.AddField(
-            model_name='state',
-            name='status_text',
-            field=markupfield.fields.MarkupField(default='', rendered_field=True),
+            model_name="state",
+            name="status_text",
+            field=markupfield.fields.MarkupField(default="", rendered_field=True),
         ),
         migrations.AddField(
-            model_name='state',
-            name='status_text_markup_type',
-            field=models.CharField(choices=[('', '--'), ('html', 'HTML'), ('plain', 'Plain'), ('markdown', 'Markdown'), ('restructuredtext', 'Restructured Text')], default='markdown', editable=False, max_length=30),
+            model_name="state",
+            name="status_text_markup_type",
+            field=models.CharField(
+                choices=[
+                    ("", "--"),
+                    ("html", "HTML"),
+                    ("plain", "Plain"),
+                    ("markdown", "Markdown"),
+                    ("restructuredtext", "Restructured Text"),
+                ],
+                default="markdown",
+                editable=False,
+                max_length=30,
+            ),
         ),
     ]

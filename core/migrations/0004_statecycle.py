@@ -6,17 +6,30 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('core', '0003_auto_20190219_0042'),
-    ]
+    dependencies = [("core", "0003_auto_20190219_0042")]
 
     operations = [
         migrations.CreateModel(
-            name='StateCycle',
+            name="StateCycle",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('year', models.CharField(max_length=4)),
-                ('state', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='cycles', to='core.State')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("year", models.CharField(max_length=4)),
+                (
+                    "state",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="cycles",
+                        to="core.State",
+                    ),
+                ),
             ],
-        ),
+        )
     ]

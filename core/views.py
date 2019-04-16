@@ -155,11 +155,21 @@ def state_overview(request, state):
 
 
 def _change_feed(state):
-    contacts = list(ContactLog.objects.filter(official__locality__state=state).select_related("contacted_by"))
-    officials = list(Official.objects.filter(locality__state=state).select_related("created_by"))
-    files = list(File.objects.filter(locality__state=state).select_related("created_by"))
+    contacts = list(
+        ContactLog.objects.filter(official__locality__state=state).select_related(
+            "contacted_by"
+        )
+    )
+    officials = list(
+        Official.objects.filter(locality__state=state).select_related("created_by")
+    )
+    files = list(
+        File.objects.filter(locality__state=state).select_related("created_by")
+    )
 
-    feed = sorted(contacts + officials + files, key=lambda k: k.created_at, reverse=True)
+    feed = sorted(
+        contacts + officials + files, key=lambda k: k.created_at, reverse=True
+    )
     for f in feed:
         if isinstance(f, ContactLog):
             f.description = str(f)

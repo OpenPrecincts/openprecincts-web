@@ -12,18 +12,24 @@ def forwards_func(apps, schema_editor):
         f.cycle = f.locality.state.cycles.order_by("-year")[0]
         f.save()
 
+
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0005_auto_20190411_1927'),
-        ('files', '0002_file_source_url'),
+        ("core", "0005_auto_20190411_1927"),
+        ("files", "0002_file_source_url"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='file',
-            name='cycle',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, related_name='files', to='core.StateCycle'),
+            model_name="file",
+            name="cycle",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="files",
+                to="core.StateCycle",
+            ),
         ),
         migrations.RunPython(forwards_func),
     ]
