@@ -10,7 +10,8 @@
 </div>
 
 <script>
-mapboxgl.accessToken = 'pk.eyJ1Ijoid3RhZGxlciIsImEiOiJjajk3bXB3engwOGY1MzNvN3RndnI0cHlzIn0.mHvtyr2Z3xnFx624vKPqrQ';
+//mapboxgl.accessToken = 'pk.eyJ1Ijoid3RhZGxlciIsImEiOiJjajk3bXB3engwOGY1MzNvN3RndnI0cHlzIn0.mHvtyr2Z3xnFx624vKPqrQ';
+mapboxgl.accessToken = 'pk.eyJ1Ijoib3BlbnByZWNpbmN0cyIsImEiOiJjanVqMHJtM3gwMXdyM3lzNmZkbmpxaXpwIn0.ZU772lvU-NeKNFAkukT6hw';
 
 var bounds = [
   [-84, 36.3], // SW coordinates
@@ -24,7 +25,8 @@ var maxbounds = [ // should find a programmatic way to get these sets of coordin
 
 var map = new mapboxgl.Map({
   container: 'precinct-map', // container id
-  style: 'mapbox://styles/wtadler/cjspnljel33xz1fsb5bfgb9yi?fresh=true', // stylesheet location
+ // style: 'mapbox://styles/wtadler/cjspnljel33xz1fsb5bfgb9yi?fresh=true', // stylesheet location
+    style: 'mapbox://styles/openprecincts/cjuj606800n6l1fpord7d5xy6',
   center: [-79.261, 37], // starting position [lng, lat]
   zoom: 6.5, // starting zoom
   maxBounds: maxbounds
@@ -63,7 +65,8 @@ map.on('load', function() {
     type: 'fill',
     source: {
       type: 'vector',
-      url: 'mapbox://wtadler.boctuyrn'
+      //url: 'mapbox://wtadler.boctuyrn'
+      url: 'mapbox://openprecincts.va-2018'
     },
     'source-layer': 'va',
     paint: {

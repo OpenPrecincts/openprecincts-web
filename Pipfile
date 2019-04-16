@@ -23,6 +23,7 @@ dj-database-url = "*"
 sentry-sdk = "==0.7.4"
 django-markupfield = "*"
 markdown = "*"
+mapbox = "*"
 
 [requires]
 python_version = "3.7"
