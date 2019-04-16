@@ -16,7 +16,7 @@ def upload_files(request):
     ensure_permission(request.user, locality.state, "write")
 
 
-    source_url = request.POST.get("source_url")
+    source_url = request.POST.get("source_url", "")
     stage = request.POST.get("stage", "S")
     for file in request.FILES.getlist("files"):
         upload_django_file(file, stage=stage, locality=locality, created_by=request.user,
