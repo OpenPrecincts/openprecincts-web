@@ -1,5 +1,7 @@
+import io
 from . import basic
 from ..models import Transformations
+from ..utils import upload_file
 
 
 TRANSFORMATION_FUNCTIONS = {
@@ -8,10 +10,12 @@ TRANSFORMATION_FUNCTIONS = {
 }
 
 
-def run_transformation(transformation, *files):
+def run_transformation(transformation):
     tfunc = TRANSFORMATION_FUNCTIONS[transformation.transformation]
-    output_bytes = tfunc(*transformation.input_files.all())
+    files = list(transformation.input_files.all())
+    output_bytes = tfunc(*files)
     # TODO: mime_type
+    mime_type = "unknown"
 
     # ensure locality & cycle are the same
     localities = set()
@@ -24,14 +28,14 @@ def run_transformation(transformation, *files):
     if len(cycles) != 1:
         raise ValueError("files must all be from the same cycles")
 
-    upload_file(
+    return upload_file(
         stage="I",
         locality=files[0].locality,
         mime_type=mime_type,
-        file_size=len(output_bytes),
+        size=len(output_bytes.getvalue()),
         source_filename="",
         created_by=transformation.created_by,
         cycle=files[0].cycle,
-        file_obj=io.BytesIO(output_bytes),
+        file_obj=output_bytes,
         from_transformation=transformation
     )

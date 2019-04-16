@@ -31,6 +31,7 @@ def upload_file(
     file_path=None,
     file_obj=None,
     source_url="",
+    from_transformation=None,
 ):
     new_uuid = uuid.uuid4()
     s3_path = make_s3_path(locality, new_uuid, stage, source_filename)
@@ -47,7 +48,7 @@ def upload_file(
         if not cycle:
             cycle = locality.state.current_cycle()
         # write the record first so we don't ever lose track of a file
-        File.objects.create(
+        new_file = File.objects.create(
             id=new_uuid,
             stage=stage,
             mime_type=mime_type,
@@ -58,6 +59,7 @@ def upload_file(
             official=official,
             source_filename=source_filename,
             source_url=source_url,
+            from_transformation=from_transformation,
             created_by=created_by,
         )
 
@@ -66,6 +68,8 @@ def upload_file(
             s3.upload_file(file_path, bucket, s3_path)
         elif file_obj:
             s3.upload_fileobj(file_obj, bucket, s3_path)
+
+    return new_file
 
 
 def upload_local_file(filename, *, stage, locality, created_by):
