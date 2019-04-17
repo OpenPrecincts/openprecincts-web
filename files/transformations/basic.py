@@ -22,10 +22,17 @@ def zip_files(*files):
 def to_geojson(*files):
     tmpdir = tempfile.mkdtemp()
     for file in files:
-        with open(os.path.join(tmpdir, file.source_filename), 'wb') as f:
+        with open(os.path.join(tmpdir, file.source_filename), "wb") as f:
             f.write(get_from_s3(file).read())
-    subprocess.run(["ogr2ogr", "-f", "GeoJSON", os.path.join(tmpdir, "output.json"),
-                    os.path.join(tmpdir, files[0].source_filename)])
+    subprocess.run(
+        [
+            "ogr2ogr",
+            "-f",
+            "GeoJSON",
+            os.path.join(tmpdir, "output.json"),
+            os.path.join(tmpdir, files[0].source_filename),
+        ]
+    )
     with open(os.path.join(tmpdir, "output.json")) as f:
         data = f.read()
     shutil.rmtree(tmpdir)

@@ -37,5 +37,5 @@ def run_transformation(transformation):
         created_by=transformation.created_by,
         cycle=files[0].cycle,
         file_obj=output_bytes,
-        from_transformation=transformation
+        from_transformation=transformation,
     )

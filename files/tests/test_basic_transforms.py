@@ -39,11 +39,26 @@ def s3():
 def files(locality, user):
     DATA_DIR = os.path.join(os.path.dirname(__file__), "testdata")
     file_data = {
-        "dc.shp": {"data": open(os.path.join(DATA_DIR, "dc.shp"), "rb"), "type": "shapefile"},
-        "dc.shx": {"data": open(os.path.join(DATA_DIR, "dc.shx"), "rb"), "type": "shapefile"},
-        "dc.dbf": {"data": open(os.path.join(DATA_DIR, "dc.dbf"), "rb"), "type": "shapefile"},
-        "dc.cpg": {"data": open(os.path.join(DATA_DIR, "dc.cpg"), "rb"), "type": "shapefile"},
-        "dc.prj": {"data": open(os.path.join(DATA_DIR, "dc.prj"), "rb"), "type": "shapefile"},
+        "dc.shp": {
+            "data": open(os.path.join(DATA_DIR, "dc.shp"), "rb"),
+            "type": "shapefile",
+        },
+        "dc.shx": {
+            "data": open(os.path.join(DATA_DIR, "dc.shx"), "rb"),
+            "type": "shapefile",
+        },
+        "dc.dbf": {
+            "data": open(os.path.join(DATA_DIR, "dc.dbf"), "rb"),
+            "type": "shapefile",
+        },
+        "dc.cpg": {
+            "data": open(os.path.join(DATA_DIR, "dc.cpg"), "rb"),
+            "type": "shapefile",
+        },
+        "dc.prj": {
+            "data": open(os.path.join(DATA_DIR, "dc.prj"), "rb"),
+            "type": "shapefile",
+        },
     }
 
     for filename, contents in file_data.items():
@@ -63,8 +78,7 @@ def files(locality, user):
 def test_zip_transform(user, s3, files):
     inputfiles = [files["dc.shp"]["file"], files["dc.dbf"]["file"]]
     t = Transformation.objects.create(
-        transformation=Transformations.ZIP,
-        created_by=user
+        transformation=Transformations.ZIP, created_by=user
     )
     t.input_files.set(inputfiles)
 
@@ -88,4 +102,4 @@ def test_to_geojson(s3, files):
     data = json.loads(output)
 
     assert len(data["features"][0]["geometry"]["coordinates"][0]) == 7359
-    assert data["features"][0]["properties"]["STATEFP"] == '11'
+    assert data["features"][0]["properties"]["STATEFP"] == "11"
