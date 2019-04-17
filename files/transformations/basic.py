@@ -1,5 +1,10 @@
 import io
+import os
+import json
+import shutil
 import zipfile
+import tempfile
+import subprocess
 from ..utils import get_from_s3
 
 
@@ -15,11 +20,13 @@ def zip_files(*files):
 
 
 def to_geojson(*files):
-    assert len(files) == 1, "to_geojson can only process one file at a time"
-
-    with tempfile.NamedTemporaryFile() as tmp:
-        fileobj = get_from_s3(file[0])
-        tmp.write(fileobj.read())
-        subprocess.run(["ogr2ogr", "-f", "GeoJSON", "output.json", tmp.filename])
-        with open("output.json") as f:
-            return f.read()
+    tmpdir = tempfile.mkdtemp()
+    for file in files:
+        with open(os.path.join(tmpdir, file.source_filename), 'wb') as f:
+            f.write(get_from_s3(file).read())
+    subprocess.run(["ogr2ogr", "-f", "GeoJSON", os.path.join(tmpdir, "output.json"),
+                    os.path.join(tmpdir, files[0].source_filename)])
+    with open(os.path.join(tmpdir, "output.json")) as f:
+        data = f.read()
+    shutil.rmtree(tmpdir)
+    return data
