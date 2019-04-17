@@ -9,6 +9,8 @@ python:
   - "3.7"
 env:
   - BOTO_CONFIG=/dev/null
+before_install:
+  - sudo apt-get install -y gdal-bin
 install:
   - pip install pipenv
   - pipenv install --dev
