@@ -2,13 +2,13 @@ import os
 import zipfile
 import json
 import pytest
-from io import StringIO, BytesIO
+from io import BytesIO
 from moto import mock_s3
 import boto3
 from django.conf import settings
 from django.contrib.auth.models import User
 from core.models import Locality
-from files.models import File, Transformation, Transformations
+from files.models import Transformation, Transformations
 from files.utils import upload_file, get_from_s3
 from files.transformations import run_transformation
 from files.transformations.basic import to_geojson

@@ -1,4 +1,3 @@
-import io
 from . import basic
 from ..models import Transformations
 from ..utils import upload_file
