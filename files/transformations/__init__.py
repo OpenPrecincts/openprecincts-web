@@ -6,14 +6,14 @@ from ..models import Transformations
 from ..utils import upload_file
 
 
-TRANSFORMATION_FUNCTIONS = {
-    Transformations.ZIP: basic.zip_files,
-    Transformations.TO_GEOJSON: basic.to_geojson,
+TRANSFORMATION_CLASSES = {
+    Transformations.ZIP: basic.ZipFiles,
+    Transformations.TO_GEOJSON: basic.ToGeoJSON,
 }
 
 
 def run_transformation(transformation):
-    tfunc = TRANSFORMATION_FUNCTIONS[transformation.transformation]
+    TClass = TRANSFORMATION_CLASSES[transformation.transformation]
     files = list(transformation.input_files.all())
 
     # ensure locality & cycle are the same
@@ -29,7 +29,7 @@ def run_transformation(transformation):
 
     if not transformation.error:
         try:
-            output_bytes, mime_type = tfunc(*files)
+            output_bytes, mime_type = TClass(*files).run()
         except Exception as e:
             transformation.error = str(e)
 

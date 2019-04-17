@@ -58,6 +58,7 @@ class File(models.Model):
 class Transformations(IntEnum):
     ZIP = 1
     TO_GEOJSON = 2
+    GEOJSON_TO_MAPBOX = 3
 
 
 class Transformation(models.Model):

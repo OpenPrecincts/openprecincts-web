@@ -11,7 +11,7 @@ from core.models import Locality
 from files.models import Transformation, Transformations
 from files.utils import upload_file, get_from_s3
 from files.transformations import run_transformation
-from files.transformations.basic import to_geojson
+from files.transformations.basic import ToGeoJSON
 from files.transformations.exceptions import CommandError
 
 
@@ -115,7 +115,7 @@ def test_to_geojson(s3, files):
         files["dc.cpg"]["file"],
         files["dc.prj"]["file"],
     ]
-    output, _ = to_geojson(*inputfiles)
+    output, _ = ToGeoJSON(*inputfiles).run()
     data = json.loads(output)
 
     assert len(data["features"][0]["geometry"]["coordinates"][0]) == 7359
@@ -126,4 +126,4 @@ def test_to_geojson(s3, files):
 def test_to_geojson_error(s3, files):
     inputfiles = [files["dc.cpg"]["file"]]
     with pytest.raises(CommandError):
-        output, _ = to_geojson(*inputfiles)
+        output, _ = ToGeoJSON(*inputfiles).run()
