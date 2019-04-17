@@ -12,7 +12,6 @@ TRANSFORMATION_FUNCTIONS = {
 }
 
 
-@transaction.atomic
 def run_transformation(transformation):
     tfunc = TRANSFORMATION_FUNCTIONS[transformation.transformation]
     files = list(transformation.input_files.all())
@@ -34,19 +33,20 @@ def run_transformation(transformation):
         except Exception as e:
             transformation.error = str(e)
 
-    transformation.finished_at = pytz.utc.localize(datetime.datetime.utcnow())
-    transformation.save()
+    with transaction.atomic():
+        transformation.finished_at = pytz.utc.localize(datetime.datetime.utcnow())
+        transformation.save()
 
-    if transformation.error:
-        return None
+        if transformation.error:
+            return None
 
-    return upload_file(
-        stage="I",
-        locality=files[0].locality,
-        mime_type=mime_type,
-        size=len(output_bytes.getvalue()),
-        created_by=transformation.created_by,
-        cycle=files[0].cycle,
-        file_obj=output_bytes,
-        from_transformation=transformation,
-    )
+        return upload_file(
+            stage="I",
+            locality=files[0].locality,
+            mime_type=mime_type,
+            size=len(output_bytes.getvalue()),
+            created_by=transformation.created_by,
+            cycle=files[0].cycle,
+            file_obj=output_bytes,
+            from_transformation=transformation,
+        )
