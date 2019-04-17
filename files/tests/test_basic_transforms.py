@@ -93,13 +93,13 @@ def test_zip_transform(user, s3, files):
     assert t.error == ""
     assert t.finished_at is not None
 
+
 @pytest.mark.django_db
 def test_transform_error_logged(user):
     t = Transformation.objects.create(
         transformation=Transformations.ZIP, created_by=user
     )
-    new = run_transformation(t)
-
+    run_transformation(t)
     t = Transformation.objects.get()
 
     assert t.error != ""
@@ -124,8 +124,6 @@ def test_to_geojson(s3, files):
 
 @pytest.mark.django_db
 def test_to_geojson_error(s3, files):
-    inputfiles = [
-        files["dc.cpg"]["file"],
-    ]
+    inputfiles = [files["dc.cpg"]["file"]]
     with pytest.raises(CommandError):
         output, _ = to_geojson(*inputfiles)

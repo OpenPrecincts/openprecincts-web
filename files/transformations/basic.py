@@ -7,6 +7,7 @@ import subprocess
 from ..utils import get_from_s3
 from .exceptions import CommandError
 
+
 def zip_files(*files):
     buffer = io.BytesIO()
     zf = zipfile.ZipFile(buffer, "w")
