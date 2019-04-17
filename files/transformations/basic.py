@@ -8,26 +8,42 @@ from ..utils import get_from_s3
 from .exceptions import CommandError
 
 
-
 class TransformationCommand:
     def __init__(self, *files):
         self.files = files
         self.tmpdir = None
+        self.input_filenames = []
 
     def reconstitute_files(self):
+        """
+        populate self.tmpdir with all the files that were sent to the transformation
+        also populates input_filenames with fully-resolved versions of these filenames
+        """
         self.tmpdir = tempfile.mkdtemp()
         for file in self.files:
-            with open(os.path.join(self.tmpdir, file.source_filename), "wb") as f:
+            fn = os.path.join(self.tmpdir, file.source_filename)
+            with open(fn, "wb") as f:
                 f.write(get_from_s3(file).read())
+            self.input_filenames.append(fn)
 
     def file_path(self, path):
+        """
+        resolve a file path within the working directory
+        """
         return os.path.join(self.tmpdir, path)
 
     def cleanup(self):
+        """
+        remove everything in the working directory, called at the very end of run
+        """
         if self.tmpdir:
             shutil.rmtree(self.tmpdir)
 
     def run(self):
+        """
+        fully-functional run method that works as long as get_command returns a command
+        that generates output and saves it at output_filename
+        """
         self.reconstitute_files()
 
         cp = subprocess.run(self.get_command(), capture_output=True, text=True)
@@ -40,10 +56,13 @@ class TransformationCommand:
         self.cleanup()
         return data, self.mime_type
 
-    def get_command(self):
-        raise NotImplementedError
-
     def get_result_data(self):
+        """ pull data from output_filename """
+        with open(self.file_path(self.output_filename)) as f:
+            return f.read()
+
+    def get_command(self):
+        """ should return a command to run in list format """
         raise NotImplementedError
 
 
@@ -61,12 +80,31 @@ class ZipFiles(TransformationCommand):
 
 class ToGeoJSON(TransformationCommand):
     mime_type = "application/vnd.geo+json"
+    output_filename = "output.json"
 
     def get_command(self):
-        return ["ogr2ogr", "-f", "GeoJSON",
-                self.file_path("output.json"),
-                self.file_path(self.files[0].source_filename)]
+        return [
+            "ogr2ogr",
+            "-f",
+            "GeoJSON",
+            self.file_path(self.output_filename),
+            self.file_path(self.input_filenames[0]),
+        ]
 
-    def get_result_data(self):
-        with open(self.file_path("output.json")) as f:
-            return f.read()
+
+class GeojsonToMbtile(TransformationCommand):
+    mime_type = "application/vnd.mapbox-vector-tile"
+    output_filename = "output.mbtiles"
+
+    # TODO: add validation of inputs
+
+    def get_command(self):
+        return [
+            "tippecanoe",
+            "-o",
+            self.file_path(self.output_filename),
+            "-z14",
+            "--drop-densest-as-needed",
+            "--generate-ids",
+            self.input_filenames[0],
+        ]
