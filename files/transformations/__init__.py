@@ -12,9 +12,7 @@ TRANSFORMATION_FUNCTIONS = {
 def run_transformation(transformation):
     tfunc = TRANSFORMATION_FUNCTIONS[transformation.transformation]
     files = list(transformation.input_files.all())
-    output_bytes = tfunc(*files)
-    # TODO: mime_type
-    mime_type = "unknown"
+    output_bytes, mime_type = tfunc(*files)
 
     # ensure locality & cycle are the same
     localities = set()
@@ -32,7 +30,6 @@ def run_transformation(transformation):
         locality=files[0].locality,
         mime_type=mime_type,
         size=len(output_bytes.getvalue()),
-        source_filename="",
         created_by=transformation.created_by,
         cycle=files[0].cycle,
         file_obj=output_bytes,

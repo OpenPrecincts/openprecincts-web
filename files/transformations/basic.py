@@ -15,7 +15,7 @@ def zip_files(*files):
         zf.writestr(str(file.id) + file.source_filename, fileobj.read())
     zf.close()
     buffer.seek(0)
-    return buffer
+    return buffer, "application/zip"
 
 
 def to_geojson(*files):
@@ -35,4 +35,4 @@ def to_geojson(*files):
     with open(os.path.join(tmpdir, "output.json")) as f:
         data = f.read()
     shutil.rmtree(tmpdir)
-    return data
+    return data, "application/vnd.geo+json"

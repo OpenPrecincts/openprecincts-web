@@ -98,7 +98,7 @@ def test_to_geojson(s3, files):
         files["dc.cpg"]["file"],
         files["dc.prj"]["file"],
     ]
-    output = to_geojson(*inputfiles)
+    output, _ = to_geojson(*inputfiles)
     data = json.loads(output)
 
     assert len(data["features"][0]["geometry"]["coordinates"][0]) == 7359
