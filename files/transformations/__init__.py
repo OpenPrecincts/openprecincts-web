@@ -1,3 +1,6 @@
+import pytz
+import datetime
+from django.db import transaction
 from . import basic
 from ..models import Transformations
 from ..utils import upload_file
@@ -9,10 +12,10 @@ TRANSFORMATION_FUNCTIONS = {
 }
 
 
+@transaction.atomic
 def run_transformation(transformation):
     tfunc = TRANSFORMATION_FUNCTIONS[transformation.transformation]
     files = list(transformation.input_files.all())
-    output_bytes, mime_type = tfunc(*files)
 
     # ensure locality & cycle are the same
     localities = set()
@@ -21,9 +24,21 @@ def run_transformation(transformation):
         localities.add(f.locality)
         cycles.add(f.cycle)
     if len(localities) != 1:
-        raise ValueError("files must all be from the same locality")
+        transformation.error = "files must all be from the same locality"
     if len(cycles) != 1:
-        raise ValueError("files must all be from the same cycles")
+        transformation.error = "files must all be from the same cycle"
+
+    if not transformation.error:
+        try:
+            output_bytes, mime_type = tfunc(*files)
+        except Exception as e:
+            transformation.error = str(e)
+
+    transformation.finished_at = pytz.utc.localize(datetime.datetime.utcnow())
+    transformation.save()
+
+    if transformation.error:
+        return None
 
     return upload_file(
         stage="I",

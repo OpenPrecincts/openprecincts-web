@@ -12,6 +12,7 @@ from files.models import Transformation, Transformations
 from files.utils import upload_file, get_from_s3
 from files.transformations import run_transformation
 from files.transformations.basic import to_geojson
+from files.transformations.exceptions import CommandError
 
 
 @pytest.fixture
@@ -88,6 +89,22 @@ def test_zip_transform(user, s3, files):
     zip = zipfile.ZipFile(BytesIO(data.read()))
     assert len(zip.namelist()) == 2
 
+    t = Transformation.objects.get()
+    assert t.error == ""
+    assert t.finished_at is not None
+
+@pytest.mark.django_db
+def test_transform_error_logged(user):
+    t = Transformation.objects.create(
+        transformation=Transformations.ZIP, created_by=user
+    )
+    new = run_transformation(t)
+
+    t = Transformation.objects.get()
+
+    assert t.error != ""
+    assert t.finished_at is not None
+
 
 @pytest.mark.django_db
 def test_to_geojson(s3, files):
@@ -103,3 +120,12 @@ def test_to_geojson(s3, files):
 
     assert len(data["features"][0]["geometry"]["coordinates"][0]) == 7359
     assert data["features"][0]["properties"]["STATEFP"] == "11"
+
+
+@pytest.mark.django_db
+def test_to_geojson_error(s3, files):
+    inputfiles = [
+        files["dc.cpg"]["file"],
+    ]
+    with pytest.raises(CommandError):
+        output, _ = to_geojson(*inputfiles)
