@@ -74,3 +74,6 @@ class Transformation(models.Model):
         User, on_delete=models.PROTECT, related_name="created_transformations"
     )
     finished_at = models.DateTimeField(null=True)
+
+    def cycle(self):
+        self.input_files.first().cycle
