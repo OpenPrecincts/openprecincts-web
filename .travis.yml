@@ -14,7 +14,7 @@ before_install:
   - git clone https://github.com/mapbox/tippecanoe.git
   - cd tippecanoe
   - make -j
-  - make install
+  - sudo make install
 install:
   - pip install pipenv
   - pipenv install --dev
