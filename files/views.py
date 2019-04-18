@@ -2,9 +2,10 @@ from django.http import FileResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.views.decorators.http import require_POST, require_GET
 from core.models import Locality
-from core.permissions import ensure_permission
-from .models import File
+from core.permissions import ensure_permission, Permissions
+from .models import File, Transformation
 from .utils import upload_django_file, get_from_s3
+from .transformations import validate_files_for_transformation
 from .transformations.basic import ZipFiles
 
 
@@ -41,3 +42,23 @@ def download_zip(request):
     assert len(id_list) == len(files)
     buffer, _ = ZipFiles(*files).run()
     return FileResponse(buffer, as_attachment=True, filename="download.zip")
+
+
+@require_POST
+def add_transformation(request):
+    file_ids = request.POST.getlist("files")
+    files = File.objects.filter(pk__in=file_ids)
+    assert len(file_ids) == len(files)
+
+    # verify that all files have the same locality and cycle
+    validate_files_for_transformation(files)
+
+    state = files[0].cycle.state
+    ensure_permission(request.user, state, Permissions.ADMIN)
+
+    t = Transformation.objects.create(transformation=request.POST["transformation_id"],
+                                      created_by=request.user
+                                      )
+    t.input_files.set(files)
+
+    return redirect("state_admin", state.abbreviation.lower())

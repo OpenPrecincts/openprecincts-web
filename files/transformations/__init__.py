@@ -11,21 +11,27 @@ TRANSFORMATION_CLASSES = {
     Transformations.TO_GEOJSON: basic.ToGeoJSON,
 }
 
+def validate_files_for_transformation(files):
+    localities = set()
+    cycles = set()
+    for f in files:
+        localities.add(f.locality_id)
+        cycles.add(f.cycle_id)
+    if len(localities) != 1:
+        raise ValueError("files must all be from the same locality")
+    if len(cycles) != 1:
+        raise ValueError("files must all be from the same cycle")
+
 
 def run_transformation(transformation):
     TClass = TRANSFORMATION_CLASSES[transformation.transformation]
     files = list(transformation.input_files.all())
 
     # ensure locality & cycle are the same
-    localities = set()
-    cycles = set()
-    for f in files:
-        localities.add(f.locality)
-        cycles.add(f.cycle)
-    if len(localities) != 1:
-        transformation.error = "files must all be from the same locality"
-    if len(cycles) != 1:
-        transformation.error = "files must all be from the same cycle"
+    try:
+        validate_files_for_transformation(files)
+    except ValueError as e:
+        transformation.error = str(e)
 
     if not transformation.error:
         try:
