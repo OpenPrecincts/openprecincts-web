@@ -11,10 +11,7 @@ env:
   - BOTO_CONFIG=/dev/null
 before_install:
   - sudo apt-get install -y gdal-bin
-  - git clone https://github.com/mapbox/tippecanoe.git
-  - cd tippecanoe
-  - make -j
-  - sudo make install
+  - git clone https://github.com/mapbox/tippecanoe.git; cd tippecanoe; make -j; sudo make install; cd ..
 install:
   - pip install pipenv
   - pipenv install --dev
