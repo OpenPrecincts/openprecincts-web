@@ -44,6 +44,7 @@ class TransformationCommand:
         fully-functional run method that works as long as get_command returns a command
         that generates output and saves it at output_filename
         """
+        self.validate_input_files()
         self.reconstitute_files()
 
         cp = subprocess.run(self.get_command(), capture_output=True, text=True)
@@ -60,6 +61,10 @@ class TransformationCommand:
         """ pull data from output_filename """
         with open(self.file_path(self.output_filename)) as f:
             return f.read()
+
+    def validate_input_files(self):
+        """ raise exception if there are issues in self.files """
+        pass
 
     def get_command(self):
         """ should return a command to run in list format """
@@ -96,7 +101,8 @@ class GeojsonToMbtile(TransformationCommand):
     mime_type = "application/vnd.mapbox-vector-tile"
     output_filename = "output.mbtiles"
 
-    # TODO: add validation of inputs
+    def validate_input_files(self):
+        assert len(self.files) == 1
 
     def get_command(self):
         return [
