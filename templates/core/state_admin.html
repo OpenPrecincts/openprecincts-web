@@ -10,7 +10,12 @@
 
 <section class="section">
 <div class="container">    
-    <h2 class="title is-2">File Upload</h2>
+    <h2 class="title is-2">Files</h2>
+
+    {{ files|json_script:"files-data" }}
+    <div data-hook="file-browser"></div>
+
+
     <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="hidden" name="locality" value="{{ statewide_locality.id }}">

@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import '../styles/main.scss'
 
 import StateMap from './state-map'
-
+import FileBrowser from './file-browser'
 
 function reveal() {
   document.querySelector(`[data-hidden=${this.dataset.reveal}]`).style.display = "block";
@@ -41,6 +41,18 @@ window.addEventListener('load', () => {
         link_template: state => `/${state.toLowerCase()}`
       }),
       sm
+    );
+  }
+
+  const fb = document.querySelector('[data-hook="file-browser"]');
+  if (fb) {
+    const files = JSON.parse(document.getElementById('files-data').textContent);
+    ReactDOM.render(React.createElement(
+      FileBrowser,
+      {
+        files: files
+      }),
+      fb
     );
   }
 

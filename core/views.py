@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.db.models.expressions import RawSQL
@@ -193,8 +193,20 @@ def state_admin(request, state):
             if has_permission(user, upper, perm):
                 setattr(user, perm.value, True)
 
+    files = [
+        {
+            "id": f.id,
+            "stage": f.get_stage_display(),
+            "source_filename": f.source_filename,
+            "download_url": reverse("download", kwargs={"uuid": f.id}),
+            "created_at": f.created_at,
+        }
+        for f in File.objects.filter(cycle__state=state)
+    ]
+
     context = {
         "state": state,
+        "files": files,
         "users": users,
         "feed": _change_feed(state),
         "statewide_locality": statewide_locality,
