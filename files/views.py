@@ -56,9 +56,9 @@ def add_transformation(request):
     state = files[0].cycle.state
     ensure_permission(request.user, state, Permissions.ADMIN)
 
-    t = Transformation.objects.create(transformation=request.POST["transformation_id"],
-                                      created_by=request.user
-                                      )
+    t = Transformation.objects.create(
+        transformation=request.POST["transformation_id"], created_by=request.user
+    )
     t.input_files.set(files)
 
     return redirect("state_admin", state.abbreviation.lower())

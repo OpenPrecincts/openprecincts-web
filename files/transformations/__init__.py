@@ -11,6 +11,7 @@ TRANSFORMATION_CLASSES = {
     Transformations.TO_GEOJSON: basic.ToGeoJSON,
 }
 
+
 def validate_files_for_transformation(files):
     localities = set()
     cycles = set()

@@ -129,8 +129,9 @@ def test_add_transformation(client, user, locality, s3):
 
     file_ids = File.objects.values_list("id", flat=True)
 
-    resp = client.post("/files/add_transformation/",
-                       {"files": file_ids, "transformation_id": 1})
+    resp = client.post(
+        "/files/add_transformation/", {"files": file_ids, "transformation_id": 1}
+    )
     assert resp.status_code == 302
 
     t = Transformation.objects.get()
