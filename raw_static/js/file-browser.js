@@ -7,7 +7,8 @@ const COLUMN_NAMES = {
   "locality": "Locality",
   "cycle": "Cycle",
   "created_at": "Date",
-  "download_url": "Link"
+  "download_url": "Link",
+  "login_to_download": "",
 }
 
 function sortBy(list, key, direction) {
@@ -45,12 +46,19 @@ export default class FileBrowser extends React.Component {
     var tds = [];
     var inner = "";
     for(var col of this.state.columns) {
-      if(col === "download_url") {
-        inner = (<a href={f.download_url}>download</a>);
-      } else if(col == "checkbox") {
-        inner = (<input name="files" value={f.id} type="checkbox" />)
-      } else {
-        inner = f[col];
+      switch(col) {
+        case "download_url":
+          inner = (<a href={f.download_url}>download</a>);
+          break;
+        case "checkbox":
+          inner = (<input name="files" value={f.id} type="checkbox" />)
+          break;
+        case "login_to_download":
+          inner = "login to download";
+          break;
+        default:
+          inner = f[col];
+          break;
       }
       tds.push(<td key={col}>{inner}</td>);
     }

@@ -168,7 +168,11 @@
 
     {{ files|json_script:"files-data" }}
     <script>
-      const files_columns = ["cycle", "source_filename", "created_at", "download_url"];
+        {% if user.is_anonymous %}
+        const files_columns = ["cycle", "source_filename", "created_at", "login_to_download"];
+        {% else %}
+        const files_columns = ["cycle", "source_filename", "created_at", "download_url"];
+        {% endif %}
     </script>
     <div data-hook="file-browser"></div>
 </div>
