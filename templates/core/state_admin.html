@@ -3,16 +3,19 @@
 
 {% block body %}
 <section class="section">
-<div class="container">    
+<div class="container">
     <h1 class="title is-1">{{ state }} admin</h1>
 </div>
 </section>
 
 <section class="section">
-<div class="container">    
+<div class="container">
     <h2 class="title is-2">Files</h2>
 
     {{ files|json_script:"files-data" }}
+    <script>
+      const files_columns = ["cycle", "source_filename", "created_at", "download_url"];
+    </script>
     <div data-hook="file-browser"></div>
 
 
@@ -64,7 +67,7 @@
 </section>
 
 <section class="section">
-<div class="container">    
+<div class="container">
     <h2 class="title is-2">Users</h2>
 
     <table class="table">
@@ -93,7 +96,7 @@
 </section>
 
 <section class="section">
-<div class="container">    
+<div class="container">
     <h2 class="title is-2">Feed</h2>
 
     {% regroup feed by created_at.date as grouped_feed %}

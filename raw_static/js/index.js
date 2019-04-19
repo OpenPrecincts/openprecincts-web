@@ -50,7 +50,8 @@ window.addEventListener('load', () => {
     ReactDOM.render(React.createElement(
       FileBrowser,
       {
-        files: files
+        files: files,
+        columns: files_columns,
       }),
       fb
     );

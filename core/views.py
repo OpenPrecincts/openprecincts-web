@@ -25,6 +25,21 @@ class OfficialForm(ModelForm):
         ]
 
 
+def _files_data(**query):
+    return [
+        {
+            "id": f.id,
+            "stage": f.get_stage_display(),
+            "source_filename": f.source_filename,
+            "locality": str(f.locality),
+            "cycle": str(f.cycle),
+            "download_url": reverse("download", kwargs={"uuid": f.id}),
+            "created_at": f.created_at.strftime("%Y-%m-%d %H:%M"),
+        }
+        for f in File.objects.filter(**query).select_related("locality", "cycle")
+    ]
+
+
 def homepage(request):
     state_status = {s.abbreviation: s.status().value for s in State.objects.all()}
     return render(request, "core/homepage.html", {"state_status": state_status})
@@ -193,18 +208,7 @@ def state_admin(request, state):
             if has_permission(user, upper, perm):
                 setattr(user, perm.value, True)
 
-    files = [
-        {
-            "id": f.id,
-            "stage": f.get_stage_display(),
-            "source_filename": f.source_filename,
-            "locality": str(f.locality),
-            "cycle": str(f.cycle),
-            "download_url": reverse("download", kwargs={"uuid": f.id}),
-            "created_at": f.created_at,
-        }
-        for f in File.objects.filter(cycle__state=state).select_related("locality", "cycle")
-    ]
+    files = _files_data(cycle__state=state)
 
     context = {
         "state": state,
@@ -237,7 +241,7 @@ def locality_overview(request, id):
 
     officials = Official.objects.filter(locality=locality)
     contact_log = ContactLog.objects.filter(official__locality=locality)
-    files = File.objects.filter(locality=locality, active=True)
+    files = _files_data(locality=locality, active=True)
     user_can_contact = has_permission(request.user, locality.state, Permissions.CONTACT)
     user_can_write = has_permission(request.user, locality.state, Permissions.WRITE)
 

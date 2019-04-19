@@ -24,9 +24,8 @@ export default class FileBrowser extends React.Component {
 
   constructor (props) {
     super(props);
-    this.columns = ["checkbox", "stage", "locality", "cycle", "source_filename", "created_at", "download_url"];
     this.state = {
-      columns: this.columns,
+      columns: this.props.columns,
       sort: "locality",
       direction: 1,
     }
@@ -64,7 +63,7 @@ export default class FileBrowser extends React.Component {
     const sortArrow = this.state.direction === 1 ? (<i className="fas fa-arrow-down"></i>) : (<i className="fas fa-arrow-up"></i>);
     return (
       <tr>
-        {this.columns.map(col => <td key={col} onClick={() => this.adjustSort(col)}>
+        {this.state.columns.map(col => <td key={col} onClick={() => this.adjustSort(col)}>
         {COLUMN_NAMES[col]}
         &nbsp;{(this.state.sort === col ? sortArrow : "  ")}
         </td>)}

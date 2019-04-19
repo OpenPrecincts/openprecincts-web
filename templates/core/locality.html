@@ -86,7 +86,7 @@
     {% if not contact_log %}
         <p>This locality has not yet been contacted.</p>
     {% else %}
-        <table class="table">        
+        <table class="table">
         <thead>
             <tr>
                 <th>Official</th>
@@ -166,30 +166,11 @@
         </div>
     {% endif %}
 
-    <table class="table">        
-    <thead>
-        <tr>
-            <th>Status</th>
-            <th>File Name</th>
-            <th>Date</th>
-            <th>Link</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for f in files %}
-        <tr>
-            <td>{{ f.get_stage_display }}</td>
-            <td>{{ f.source_filename }}</td>
-            <td>{{ f.created_at }}</td>
-            {% if user.is_authenticated %}
-            <td><a href="{% url "download" f.id %}">Download</a></td>
-            {% else %}
-            <td><a href="{% url 'login' %}">login</a> to see files</td>
-            {% endif %}
-        </tr>
-    {% endfor %}
-    </tbody>
-    </table>
+    {{ files|json_script:"files-data" }}
+    <script>
+      const files_columns = ["cycle", "source_filename", "created_at", "download_url"];
+    </script>
+    <div data-hook="file-browser"></div>
 </div>
 </section>
 {% endblock %}
