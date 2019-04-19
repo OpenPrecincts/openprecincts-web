@@ -198,10 +198,12 @@ def state_admin(request, state):
             "id": f.id,
             "stage": f.get_stage_display(),
             "source_filename": f.source_filename,
+            "locality": str(f.locality),
+            "cycle": str(f.cycle),
             "download_url": reverse("download", kwargs={"uuid": f.id}),
             "created_at": f.created_at,
         }
-        for f in File.objects.filter(cycle__state=state)
+        for f in File.objects.filter(cycle__state=state).select_related("locality", "cycle")
     ]
 
     context = {
