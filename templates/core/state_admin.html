@@ -14,10 +14,28 @@
 
     {{ files|json_script:"files-data" }}
     <script>
-      const files_columns = ["cycle", "source_filename", "created_at", "download_url"];
+      const files_columns = ["checkbox", "cycle", "source_filename", "created_at", "download_url"];
     </script>
-    <div data-hook="file-browser"></div>
 
+    <form action="{% url 'add_transformation' %}" method="POST">
+      {% csrf_token %}
+      <div class="field">
+        <label class="label">Add Transformation</label>
+        <div class="control">
+        <div class="select">
+            <select name="transformation_id">
+              {% for id, name in transformations.items %}
+                <option value="{{ id }}">{{ name }}</option>
+              {% endfor %}
+            </select>
+        </div>
+        </div>
+      </div>
+      <div class="control">
+          <input type="submit" class="button is-primary">
+      </div>
+      <div data-hook="file-browser"></div>
+    </form>
 
     <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
