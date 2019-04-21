@@ -6,7 +6,7 @@ import boto3
 from django.contrib.auth.models import User
 from django.conf import settings
 from core.models import Locality
-from files.models import File
+from files.models import File, Transformation
 
 
 @pytest.fixture
@@ -113,3 +113,27 @@ def test_download_zip(client, user, locality, s3):
     zip_content = BytesIO(b"".join(resp.streaming_content))
     zip = zipfile.ZipFile(zip_content)
     assert len(zip.namelist()) == 2
+
+
+@pytest.mark.django_db
+def test_add_transformation(client, user, locality, s3):
+    user.groups.create(name="NC admin")
+    client.force_login(user)
+    faux_file = StringIO("file contents")
+    faux_file.name = "fake.txt"
+    faux_file2 = StringIO("different file")
+    faux_file2.name = "other.txt"
+    resp = client.post(
+        "/files/upload/", {"locality": locality.id, "files": [faux_file, faux_file2]}
+    )
+
+    file_ids = File.objects.values_list("id", flat=True)
+
+    resp = client.post(
+        "/files/add_transformation/", {"files": file_ids, "transformation_id": 1}
+    )
+    assert resp.status_code == 302
+
+    t = Transformation.objects.get()
+    assert t.input_files.count() == 2
+    assert t.transformation == 1
