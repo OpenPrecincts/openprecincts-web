@@ -27,7 +27,7 @@ class File(models.Model):
     cycle = models.ForeignKey(
         StateCycle, on_delete=models.PROTECT, related_name="files", null=False
     )
-    filename = models.CharField(max_length=300, blank=True)
+    filename = models.CharField(max_length=300, blank=False)
 
     # source files
     source_url = models.URLField(blank=True)
