@@ -59,8 +59,10 @@ class TransformationCommand:
 
     def get_result_data(self):
         """ pull data from output_filename """
-        with open(self.file_path(self.output_filename)) as f:
-            return f.read()
+        with open(self.file_path(self.output_filename), 'rb') as f:
+            val = io.BytesIO(f.read())
+            val.seek(0)
+        return val
 
     def validate_input_files(self):
         """ raise exception if there are issues in self.files """
