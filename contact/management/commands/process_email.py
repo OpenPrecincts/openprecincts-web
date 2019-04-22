@@ -92,7 +92,7 @@ def save_reply(msg):
             official=emi.official,
             mime_type=attachment["content_type"],
             size=len(attachment["body"]),
-            source_filename=attachment["filename"],
+            filename=attachment["filename"],
             created_by=emi.message.created_by,
             file_obj=io.BytesIO(attachment["body"]),
         )

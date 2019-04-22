@@ -194,5 +194,5 @@ def test_save_reply_attachments(emi, s3):
     assert reply.from_email == "anne@example.com"
 
     f = File.objects.get()
-    assert f.source_filename == "a.txt"
+    assert f.filename == "a.txt"
     assert f.official is not None

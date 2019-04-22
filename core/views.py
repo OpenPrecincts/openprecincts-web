@@ -30,7 +30,7 @@ def _files_data(**query):
         {
             "id": f.id,
             "stage": f.get_stage_display(),
-            "source_filename": f.source_filename,
+            "filename": f.filename,
             "locality": str(f.locality),
             "cycle": str(f.cycle),
             "download_url": reverse("download", kwargs={"uuid": f.id}),

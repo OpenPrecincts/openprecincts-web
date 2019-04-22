@@ -14,7 +14,7 @@
 
     {{ files|json_script:"files-data" }}
     <script>
-      const files_columns = ["checkbox", "cycle", "source_filename", "created_at", "download_url"];
+      const files_columns = ["checkbox", "cycle", "filename", "created_at", "download_url"];
     </script>
 
     <form action="{% url 'add_transformation' %}" method="POST">

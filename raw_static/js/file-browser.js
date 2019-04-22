@@ -3,7 +3,7 @@ import React from 'react'
 const COLUMN_NAMES = {
   "checkbox": "",
   "stage": "Stage",
-  "source_filename": "File Name",
+  "filename": "File Name",
   "locality": "Locality",
   "cycle": "Cycle",
   "created_at": "Date",

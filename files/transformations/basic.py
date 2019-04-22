@@ -21,7 +21,7 @@ class TransformationCommand:
         """
         self.tmpdir = tempfile.mkdtemp()
         for file in self.files:
-            fn = os.path.join(self.tmpdir, file.source_filename)
+            fn = os.path.join(self.tmpdir, file.filename)
             with open(fn, "wb") as f:
                 f.write(get_from_s3(file).read())
             self.input_filenames.append(fn)
@@ -79,7 +79,7 @@ class ZipFiles(TransformationCommand):
         zf = zipfile.ZipFile(buffer, "w")
         for file in self.files:
             fileobj = get_from_s3(file)
-            zf.writestr(str(file.id) + file.source_filename, fileobj.read())
+            zf.writestr(str(file.id) + file.filename, fileobj.read())
         zf.close()
         buffer.seek(0)
         return buffer, "application/zip"

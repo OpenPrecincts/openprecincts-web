@@ -49,7 +49,7 @@ def test_upload_files(client, user, locality, s3):
     assert f.stage == "S"
     assert f.size == 13
     assert f.locality == locality
-    assert f.source_filename == "fake.txt"
+    assert f.filename == "fake.txt"
     assert f.created_by == user
 
     # check s3 for the file

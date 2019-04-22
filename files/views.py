@@ -32,7 +32,7 @@ def upload_files(request):
 def download_file(request, uuid):
     df = get_object_or_404(File, pk=uuid)
     fileobj = get_from_s3(df)
-    return FileResponse(fileobj, as_attachment=True, filename=df.source_filename)
+    return FileResponse(fileobj, as_attachment=True, filename=df.filename)
 
 
 @require_POST

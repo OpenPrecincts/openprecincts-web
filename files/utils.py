@@ -25,7 +25,7 @@ def upload_file(
     mime_type,
     size,
     created_by,
-    source_filename="",
+    filename="",
     cycle=None,
     official=None,
     file_path=None,
@@ -34,7 +34,7 @@ def upload_file(
     from_transformation=None,
 ):
     new_uuid = uuid.uuid4()
-    s3_path = make_s3_path(locality, new_uuid, stage, source_filename)
+    s3_path = make_s3_path(locality, new_uuid, stage, filename)
 
     # do the s3 upload
     s3 = boto3.client("s3")
@@ -57,7 +57,7 @@ def upload_file(
             locality=locality,
             cycle=cycle,
             official=official,
-            source_filename=source_filename,
+            filename=filename,
             source_url=source_url,
             from_transformation=from_transformation,
             created_by=created_by,
@@ -78,7 +78,7 @@ def upload_local_file(filename, *, stage, locality, created_by):
         locality=locality,
         mime_type=magic.from_file(filename, mime=True),
         size=os.path.getsize(filename),
-        source_filename=os.path.basename(filename),
+        filename=os.path.basename(filename),
         created_by=created_by,
         file_path=filename,
     )
@@ -96,7 +96,7 @@ def upload_django_file(file, *, stage, locality, created_by, source_url):
         locality=locality,
         mime_type=file.content_type,
         size=file.size,
-        source_filename=file.name,
+        filename=file.name,
         created_by=created_by,
         source_url=source_url,
         **kwarg,

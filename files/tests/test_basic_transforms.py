@@ -68,7 +68,7 @@ def files(locality, user):
             locality=locality,
             mime_type=contents["type"],
             size=10,
-            source_filename=filename,
+            filename=filename,
             created_by=user,
             file_obj=contents["data"],
         )
