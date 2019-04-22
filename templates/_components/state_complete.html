@@ -10,9 +10,8 @@
 </div>
 
 <script>
-//mapboxgl.accessToken = 'pk.eyJ1Ijoid3RhZGxlciIsImEiOiJjajk3bXB3engwOGY1MzNvN3RndnI0cHlzIn0.mHvtyr2Z3xnFx624vKPqrQ';
-mapboxgl.accessToken = 'pk.eyJ1Ijoib3BlbnByZWNpbmN0cyIsImEiOiJjanVqMHJtM3gwMXdyM3lzNmZkbmpxaXpwIn0.ZU772lvU-NeKNFAkukT6hw';
 
+mapboxgl.accessToken = 'pk.eyJ1Ijoib3BlbnByZWNpbmN0cyIsImEiOiJjanVqMHJtM3gwMXdyM3lzNmZkbmpxaXpwIn0.ZU772lvU-NeKNFAkukT6hw';
 var bounds = [
   [-84, 36.3], // SW coordinates
   [-74.7, 39.7] // NE coordinates
@@ -41,8 +40,8 @@ var map = new mapboxgl.Map({
 //     // e.lngLat is the longitude, latitude geographical position of the event
 //     JSON.stringify(e.lngLat);
 // });
-// 
-// 
+//
+//
 
 
 map.on('load', function() {
@@ -65,7 +64,6 @@ map.on('load', function() {
     type: 'fill',
     source: {
       type: 'vector',
-      //url: 'mapbox://wtadler.boctuyrn'
       url: 'mapbox://openprecincts.va-2018'
     },
     'source-layer': 'va',
@@ -96,7 +94,7 @@ map.on('load', function() {
     type: 'line',
     source: {
       type: 'vector',
-      url: 'mapbox://wtadler.1y2uxtv2'
+      url: 'mapbox://openprecincts.us-counties'
     },
     'source-layer': 'us_counties',
     paint: {
@@ -110,9 +108,9 @@ map.on('load', function() {
     type: 'symbol',
     source: {
       type: 'vector',
-      url: 'mapbox://wtadler.5eil0ga9'
+      url: 'mapbox://openprecincts.3ow64t0q'
     },
-    'source-layer': 'us_county_labels-7jb5xa',
+    'source-layer': 'us_county_labels-1d656t',
     layout: {
       'text-field': '{NAME}',
       'text-size': 11,
@@ -174,7 +172,7 @@ map.on('load', function() {
           <td>${toFixed((100*e.features[0].properties.G16RPRS / (e.features[0].properties.G16DPRS + e.features[0].properties.G16RPRS)), 1)}</td>
         </tr>
       </tbody>
-    </table>        
+    </table>
     `
 
 
