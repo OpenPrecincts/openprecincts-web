@@ -89,7 +89,10 @@ class ZipFiles(TransformationCommand):
 
 class ToGeoJSON(TransformationCommand):
     mime_type = "application/vnd.geo+json"
-    output_filename = "output.json"
+
+    @property
+    def output_filename(self):
+        return self.files[0].filename.rsplit(".", 1)[0] + ".geojson"
 
     def get_command(self):
         return [
@@ -103,7 +106,10 @@ class ToGeoJSON(TransformationCommand):
 
 class GeojsonToMbtile(TransformationCommand):
     mime_type = "application/vnd.mapbox-vector-tile"
-    output_filename = "output.mbtiles"
+
+    @property
+    def output_filename(self):
+        return self.files[0].filename.replace(".geojson", "").replace(".json", "") + ".mbtiles"
 
     def validate_input_files(self):
         assert len(self.files) == 1

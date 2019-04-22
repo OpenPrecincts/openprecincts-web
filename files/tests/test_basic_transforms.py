@@ -118,7 +118,7 @@ def test_to_geojson(s3, files):
     output, filename, _ = ToGeoJSON(*inputfiles).run()
     data = json.loads(output.read())
 
-    # TODO: filename check
+    assert filename == "dc.geojson"
     assert len(data["features"][0]["geometry"]["coordinates"][0]) == 7359
     assert data["features"][0]["properties"]["STATEFP"] == "11"
 
