@@ -55,7 +55,7 @@ class TransformationCommand:
         data = self.get_result_data()
 
         self.cleanup()
-        return data, self.mime_type
+        return data, self.output_filename, self.mime_type
 
     def get_result_data(self):
         """ pull data from output_filename """
@@ -74,6 +74,8 @@ class TransformationCommand:
 
 
 class ZipFiles(TransformationCommand):
+    output_filename = "output.zip"
+
     def run(self):
         buffer = io.BytesIO()
         zf = zipfile.ZipFile(buffer, "w")
@@ -82,7 +84,7 @@ class ZipFiles(TransformationCommand):
             zf.writestr(str(file.id) + file.filename, fileobj.read())
         zf.close()
         buffer.seek(0)
-        return buffer, "application/zip"
+        return buffer, self.output_filename, "application/zip"
 
 
 class ToGeoJSON(TransformationCommand):

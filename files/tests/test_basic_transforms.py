@@ -115,9 +115,10 @@ def test_to_geojson(s3, files):
         files["dc.cpg"]["file"],
         files["dc.prj"]["file"],
     ]
-    output, _ = ToGeoJSON(*inputfiles).run()
+    output, filename, _ = ToGeoJSON(*inputfiles).run()
     data = json.loads(output.read())
 
+    # TODO: filename check
     assert len(data["features"][0]["geometry"]["coordinates"][0]) == 7359
     assert data["features"][0]["properties"]["STATEFP"] == "11"
 
@@ -126,4 +127,4 @@ def test_to_geojson(s3, files):
 def test_to_geojson_error(s3, files):
     inputfiles = [files["dc.cpg"]["file"]]
     with pytest.raises(CommandError):
-        output, _ = ToGeoJSON(*inputfiles).run()
+        ToGeoJSON(*inputfiles).run()

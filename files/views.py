@@ -40,7 +40,7 @@ def download_zip(request):
     id_list = request.POST.getlist("id")
     files = File.objects.filter(pk__in=id_list)
     assert len(id_list) == len(files)
-    buffer, _ = ZipFiles(*files).run()
+    buffer, _, _ = ZipFiles(*files).run()
     return FileResponse(buffer, as_attachment=True, filename="download.zip")
 
 

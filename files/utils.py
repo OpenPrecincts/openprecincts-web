@@ -25,7 +25,7 @@ def upload_file(
     mime_type,
     size,
     created_by,
-    filename="",
+    filename,
     cycle=None,
     official=None,
     file_path=None,

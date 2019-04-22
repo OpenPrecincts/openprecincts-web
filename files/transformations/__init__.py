@@ -36,7 +36,7 @@ def run_transformation(transformation):
 
     if not transformation.error:
         try:
-            output_bytes, mime_type = TClass(*files).run()
+            output_bytes, filename, mime_type = TClass(*files).run()
         except Exception as e:
             transformation.error = str(e)
 
@@ -56,4 +56,5 @@ def run_transformation(transformation):
             cycle=files[0].cycle,
             file_obj=output_bytes,
             from_transformation=transformation,
+            filename=filename,
         )
