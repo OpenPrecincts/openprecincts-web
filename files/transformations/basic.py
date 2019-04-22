@@ -122,5 +122,7 @@ class GeojsonToMbtile(TransformationCommand):
             "-z14",
             "--drop-densest-as-needed",
             "--generate-ids",
+            "-l",
+            "precincts",
             self.input_filenames[0],
         ]

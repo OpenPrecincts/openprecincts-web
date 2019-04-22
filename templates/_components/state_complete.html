@@ -64,9 +64,9 @@ map.on('load', function() {
     type: 'fill',
     source: {
       type: 'vector',
-      url: 'mapbox://openprecincts.va-2018'
+      url: 'mapbox://openprecincts.va-precincts'
     },
-    'source-layer': 'va',
+    'source-layer': 'precincts',
     paint: {
       'fill-outline-color': ["case",
         ["boolean", ["feature-state", "hover"], false],
@@ -76,9 +76,9 @@ map.on('load', function() {
       'fill-color': [
         "interpolate-lab", // perceptual color space interpolation
         ['linear'],
-        ['/', ["get", "G16DPRS"],
-          ['+', ["get", "G16DPRS"],
-            ["get", "G16RPRS"]
+        ['/', ["to-number", ["get", "G16DPRS"]],
+          ['+', ["to-number", ["get", "G16DPRS"]],
+            ["to-number", ["get", "G16RPRS"]]
           ]
         ], // if haven't coerced to a number in tippecanoe, use this ["to-number", ["get", "G16DPRS"]]
         0, "red",
@@ -164,12 +164,12 @@ map.on('load', function() {
         <tr>
           <td class='cand'><span class="party-dem">&#9679;</span> Clinton (2016)</td>
           <td>${numberWithCommas(e.features[0].properties.G16DPRS)}</td>
-          <td>${toFixed((100*e.features[0].properties.G16DPRS / (e.features[0].properties.G16DPRS + e.features[0].properties.G16RPRS)), 1)}</td>
+          <td>${toFixed((100*parseInt(e.features[0].properties.G16DPRS) / (parseInt(e.features[0].properties.G16DPRS) + parseInt(e.features[0].properties.G16RPRS))), 1)}</td>
         </tr>
         <tr>
           <td class='cand'><span class="party-rep">&#9679;</span> Trump (2016)</td>
           <td>${numberWithCommas(e.features[0].properties.G16RPRS)}</td>
-          <td>${toFixed((100*e.features[0].properties.G16RPRS / (e.features[0].properties.G16DPRS + e.features[0].properties.G16RPRS)), 1)}</td>
+          <td>${toFixed((100*parseInt(e.features[0].properties.G16RPRS) / (parseInt(e.features[0].properties.G16DPRS) + parseInt(e.features[0].properties.G16RPRS))), 1)}</td>
         </tr>
       </tbody>
     </table>
