@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.db.models.expressions import RawSQL
@@ -7,7 +7,7 @@ from django.forms import ModelForm
 from .models import Locality, State
 from .permissions import ensure_permission, has_permission, Permissions
 from contact.models import Official, ContactLog
-from files.models import File
+from files.models import File, Transformations
 
 
 class OfficialForm(ModelForm):
@@ -23,6 +23,21 @@ class OfficialForm(ModelForm):
             "fax_number",
             "job_title",
         ]
+
+
+def _files_data(**query):
+    return [
+        {
+            "id": f.id,
+            "stage": f.get_stage_display(),
+            "source_filename": f.source_filename,
+            "locality": str(f.locality),
+            "cycle": str(f.cycle),
+            "download_url": reverse("download", kwargs={"uuid": f.id}),
+            "created_at": f.created_at.strftime("%Y-%m-%d %H:%M"),
+        }
+        for f in File.objects.filter(**query).select_related("locality", "cycle")
+    ]
 
 
 def homepage(request):
@@ -193,11 +208,15 @@ def state_admin(request, state):
             if has_permission(user, upper, perm):
                 setattr(user, perm.value, True)
 
+    files = _files_data(cycle__state=state)
+
     context = {
         "state": state,
+        "files": files,
         "users": users,
         "feed": _change_feed(state),
         "statewide_locality": statewide_locality,
+        "transformations": {t.value: t.name for t in Transformations}
     }
 
     return render(request, "core/state_admin.html", context)
@@ -223,7 +242,7 @@ def locality_overview(request, id):
 
     officials = Official.objects.filter(locality=locality)
     contact_log = ContactLog.objects.filter(official__locality=locality)
-    files = File.objects.filter(locality=locality, active=True)
+    files = _files_data(locality=locality, active=True)
     user_can_contact = has_permission(request.user, locality.state, Permissions.CONTACT)
     user_can_write = has_permission(request.user, locality.state, Permissions.WRITE)
 

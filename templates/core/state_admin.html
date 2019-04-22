@@ -3,14 +3,40 @@
 
 {% block body %}
 <section class="section">
-<div class="container">    
+<div class="container">
     <h1 class="title is-1">{{ state }} admin</h1>
 </div>
 </section>
 
 <section class="section">
-<div class="container">    
-    <h2 class="title is-2">File Upload</h2>
+<div class="container">
+    <h2 class="title is-2">Files</h2>
+
+    {{ files|json_script:"files-data" }}
+    <script>
+      const files_columns = ["checkbox", "cycle", "source_filename", "created_at", "download_url"];
+    </script>
+
+    <form action="{% url 'add_transformation' %}" method="POST">
+      {% csrf_token %}
+      <div class="field">
+        <label class="label">Add Transformation</label>
+        <div class="control">
+        <div class="select">
+            <select name="transformation_id">
+              {% for id, name in transformations.items %}
+                <option value="{{ id }}">{{ name }}</option>
+              {% endfor %}
+            </select>
+        </div>
+        </div>
+      </div>
+      <div class="control">
+          <input type="submit" class="button is-primary">
+      </div>
+      <div data-hook="file-browser"></div>
+    </form>
+
     <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="hidden" name="locality" value="{{ statewide_locality.id }}">
@@ -59,7 +85,7 @@
 </section>
 
 <section class="section">
-<div class="container">    
+<div class="container">
     <h2 class="title is-2">Users</h2>
 
     <table class="table">
@@ -88,7 +114,7 @@
 </section>
 
 <section class="section">
-<div class="container">    
+<div class="container">
     <h2 class="title is-2">Feed</h2>
 
     {% regroup feed by created_at.date as grouped_feed %}
