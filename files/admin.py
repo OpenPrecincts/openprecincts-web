@@ -8,13 +8,13 @@ class FileAdmin(admin.ModelAdmin):
         "mime_type",
         "size",
         "s3_path",
-        "source_filename",
+        "filename",
         "from_transformation",
         "locality",
         "cycle",
         "created_by",
     )
-    list_display = ("source_filename", "stage", "locality", "active")
+    list_display = ("filename", "stage", "locality", "active")
     list_filter = ("mime_type", "locality__state")
 
 
