@@ -9,6 +9,7 @@ from ..utils import upload_file
 TRANSFORMATION_CLASSES = {
     Transformations.ZIP: basic.ZipFiles,
     Transformations.TO_GEOJSON: basic.ToGeoJSON,
+    Transformations.GEOJSON_TO_MAPBOX: basic.GeojsonToMbtile,
 }
 
 
