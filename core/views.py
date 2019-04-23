@@ -152,6 +152,14 @@ def state_overview(request, state):
     user_can_contact = has_permission(request.user, state, Permissions.CONTACT)
     user_can_write = has_permission(request.user, state, Permissions.WRITE)
 
+    final_zip_file = None
+    final_geojson_file = None
+    for f in File.objects.filter(cycle__state=state, stage="F"):
+        if f.mime_type == "application/zip":
+            final_zip_file = f
+        elif f.mime_type == "application/vnd.geo+json":
+            final_geojson_file = f
+
     context.update(
         {
             "localities": localities,
@@ -164,6 +172,8 @@ def state_overview(request, state):
             "user_can_contact": user_can_contact,
             "user_can_write": user_can_write,
             "contributors": contributors,
+            "final_zip_file": final_zip_file,
+            "final_geojson_file": final_geojson_file,
         }
     )
     return render(request, "core/state_overview.html", context)

@@ -6,6 +6,26 @@
   <nav id="precinct-menu"></nav>
   <div id='precinct-map'></div>
   <!-- <pre id='precinct-info'></pre> show coordinates -->
+
+    <div class="center">
+      {% if final_zip_file %}
+      <a href="{% url 'download' final_zip_file.id %}" class="button is-large is-primary final-download">
+      <span class="file-icon">
+        <i class="fas fa-download"></i>
+      </span>
+      Download {{ state }} Shapefile
+      </a>
+      {% endif %}
+
+      {% if final_geojson_file %}
+      <a href="{% url 'download' final_geojson_file.id %}" class="button is-large is-primary final-download">
+      <span class="file-icon">
+        <i class="fas fa-download"></i>
+      </span>
+      Download {{ state }} GeoJSON
+      </a>
+      {% endif %}
+    </div>
 </div>
 </div>
 
@@ -40,7 +60,7 @@ map.on('load', function() {
     map.fitBounds(STATE_BOUNDS["{{ state.abbreviation.lower }}"], {
     duration: 0
   });
-  
+
 
   var layers = map.getStyle().layers;
   // Find the index of the first symbol layer in the map style
@@ -73,7 +93,7 @@ map.on('load', function() {
           ['+', ["to-number", ["get", "G16DPRS"]],
             ["to-number", ["get", "G16RPRS"]]
           ]
-        ], 
+        ],
         0, "red",
         .5, "white", // note that, unlike functions, the "stops" are flat, not wrapped in two-element arrays
         1, "blue"

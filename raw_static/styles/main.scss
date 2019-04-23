@@ -19,7 +19,7 @@ dd { margin-left: 1em; }
 .hero-body .title,.hero-body .subtitle {
     color: white;
 }
-.homepage-columns .column { 
+.homepage-columns .column {
     padding-left: 2em;
     padding-right: 2em;
     display: flex;
@@ -60,7 +60,7 @@ dd { margin-left: 1em; }
 .footer {
     background-color: $color-gray-dark;
 }
-.footer-cc-license { 
+.footer-cc-license {
     color: $color-gray-light;
 }
 ul.footer-links {
@@ -100,13 +100,13 @@ ul.footer-links {
     text-align: center;
 }
 
-.process-step .column h2 { 
+.process-step .column h2 {
     margin-top: 1em;
 }
 
 /* utilities */
 
-.allow-wide { 
+.allow-wide {
     width: 80%;
 }
 .allow-wide .progress {
@@ -134,4 +134,8 @@ ul.footer-links {
 .state-stage-inactive {
     border: 3px solid $color-gray-dark;
     background-color: $color-gray-light;
+}
+.final-download {
+    margin-left: 1em;
+    margin-top: 1em;
 }
