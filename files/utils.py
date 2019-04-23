@@ -8,8 +8,8 @@ from .models import File
 
 
 def make_s3_path(locality, id, stage, filename):
-    stage = {"S": "source", "I": "intermediate", "F": "final"}[stage]
-    return f"{locality.state_id}/{stage}/{locality.census_geoid}/{id}-{filename}"
+    stage_prefix = "source/" if stage == "S" else ""
+    return f"{locality.state_id}/{stage_prefix}{locality.census_geoid}/{id}-{filename}"
 
 
 def get_from_s3(key):

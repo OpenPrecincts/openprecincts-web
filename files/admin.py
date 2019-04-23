@@ -2,6 +2,19 @@ from django.contrib import admin
 from .models import File, Transformation
 
 
+def make_active(modeladmin, request, queryset):
+    queryset.update(active=True)
+
+
+def make_inactive(modeladmin, request, queryset):
+    queryset.update(active=False)
+
+
+def make_final(modeladmin, request, queryset):
+    # don't allow updating source to final
+    queryset.filter(stage="I").update(stage="F")
+
+
 class FileAdmin(admin.ModelAdmin):
     readonly_fields = (
         "stage",
@@ -15,7 +28,8 @@ class FileAdmin(admin.ModelAdmin):
         "created_by",
     )
     list_display = ("filename", "stage", "locality", "active")
-    list_filter = ("mime_type", "locality__state")
+    list_filter = ("stage", "mime_type", "locality__state")
+    actions = [make_active, make_inactive, make_final]
 
 
 admin.site.register(File, FileAdmin)
