@@ -32,7 +32,7 @@ class Command(BaseCommand):
         parser.add_argument("state", help="State to upload mbtiles for.")
 
     def handle(self, *args, **options):
-        f = File.objects.get(cycle__state=options['state'].upper(),
-                             mime_type="application/vnd.mapbox-vector-tile")
+        f = File.active_files.get(cycle__state=options['state'].upper(),
+                                  mime_type="application/vnd.mapbox-vector-tile")
         data = get_from_s3(f)
         upload_shapefile(data, f"{options['state']}-precincts")

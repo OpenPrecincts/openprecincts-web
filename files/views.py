@@ -30,7 +30,7 @@ def upload_files(request):
 
 @require_GET
 def download_file(request, uuid):
-    df = get_object_or_404(File, pk=uuid)
+    df = get_object_or_404(File.active_files, pk=uuid)
     fileobj = get_from_s3(df)
     return FileResponse(fileobj, as_attachment=True, filename=df.filename)
 
@@ -38,7 +38,7 @@ def download_file(request, uuid):
 @require_POST
 def download_zip(request):
     id_list = request.POST.getlist("id")
-    files = File.objects.filter(pk__in=id_list)
+    files = File.active_files.filter(pk__in=id_list)
     assert len(id_list) == len(files)
     buffer, _, _ = ZipFiles(*files).run()
     return FileResponse(buffer, as_attachment=True, filename="download.zip")
@@ -47,7 +47,7 @@ def download_zip(request):
 @require_POST
 def add_transformation(request):
     file_ids = request.POST.getlist("files")
-    files = File.objects.filter(pk__in=file_ids)
+    files = File.active_files.filter(pk__in=file_ids)
     assert len(file_ids) == len(files)
 
     # verify that all files have the same locality and cycle

@@ -36,7 +36,7 @@ def _files_data(**query):
             "download_url": reverse("download", kwargs={"uuid": f.id}),
             "created_at": f.created_at.strftime("%Y-%m-%d %H:%M"),
         }
-        for f in File.objects.filter(**query).select_related("locality", "cycle")
+        for f in File.active_files.filter(**query).select_related("locality", "cycle")
     ]
 
 
@@ -154,7 +154,7 @@ def state_overview(request, state):
 
     final_zip_file = None
     final_geojson_file = None
-    for f in File.objects.filter(cycle__state=state, stage="F"):
+    for f in File.active_files.filter(cycle__state=state, stage="F"):
         if f.mime_type == "application/zip":
             final_zip_file = f
         elif f.mime_type == "application/vnd.geo+json":
@@ -189,7 +189,7 @@ def _change_feed(state):
         Official.objects.filter(locality__state=state).select_related("created_by")
     )
     files = list(
-        File.objects.filter(locality__state=state).select_related("created_by")
+        File.active_files.filter(locality__state=state).select_related("created_by")
     )
 
     feed = sorted(
@@ -252,7 +252,7 @@ def locality_overview(request, id):
 
     officials = Official.objects.filter(locality=locality)
     contact_log = ContactLog.objects.filter(official__locality=locality)
-    files = _files_data(locality=locality, active=True)
+    files = _files_data(locality=locality)
     user_can_contact = has_permission(request.user, locality.state, Permissions.CONTACT)
     user_can_write = has_permission(request.user, locality.state, Permissions.WRITE)
 

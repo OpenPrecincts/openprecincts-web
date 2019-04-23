@@ -6,7 +6,15 @@ from core.models import Locality, StateCycle
 from contact.models import Official
 
 
+class ActiveFileManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(active=True)
+
+
 class File(models.Model):
+    objects = models.Manager()
+    active_files = ActiveFileManager()
+
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     stage = models.CharField(
