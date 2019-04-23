@@ -5,19 +5,17 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('files', '0005_auto_20190416_2152'),
-    ]
+    dependencies = [("files", "0005_auto_20190416_2152")]
 
     operations = [
         migrations.RenameField(
-            model_name='file',
-            old_name='source_filename',
-            new_name='filename',
+            model_name="file", old_name="source_filename", new_name="filename"
         ),
         migrations.AlterField(
-            model_name='transformation',
-            name='transformation',
-            field=models.PositiveIntegerField(choices=[(1, 'ZIP'), (2, 'TO_GEOJSON'), (3, 'GEOJSON_TO_MAPBOX')]),
+            model_name="transformation",
+            name="transformation",
+            field=models.PositiveIntegerField(
+                choices=[(1, "ZIP"), (2, "TO_GEOJSON"), (3, "GEOJSON_TO_MAPBOX")]
+            ),
         ),
     ]

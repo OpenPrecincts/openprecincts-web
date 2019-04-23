@@ -226,7 +226,7 @@ def state_admin(request, state):
         "users": users,
         "feed": _change_feed(state),
         "statewide_locality": statewide_locality,
-        "transformations": {t.value: t.name for t in Transformations}
+        "transformations": {t.value: t.name for t in Transformations},
     }
 
     return render(request, "core/state_admin.html", context)

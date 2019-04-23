@@ -25,6 +25,7 @@ django-markupfield = "*"
 markdown = "*"
 mapbox = "*"
 urllib3 = ">=1.24.2"
+django-silk = "*"
 
 [requires]
 python_version = "3.7"

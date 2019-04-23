@@ -59,7 +59,7 @@ class TransformationCommand:
 
     def get_result_data(self):
         """ pull data from output_filename """
-        with open(self.file_path(self.output_filename), 'rb') as f:
+        with open(self.file_path(self.output_filename), "rb") as f:
             val = io.BytesIO(f.read())
             val.seek(0)
         return val
@@ -109,7 +109,10 @@ class GeojsonToMbtile(TransformationCommand):
 
     @property
     def output_filename(self):
-        return self.files[0].filename.replace(".geojson", "").replace(".json", "") + ".mbtiles"
+        return (
+            self.files[0].filename.replace(".geojson", "").replace(".json", "")
+            + ".mbtiles"
+        )
 
     def validate_input_files(self):
         assert len(self.files) == 1
