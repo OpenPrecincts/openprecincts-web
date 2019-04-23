@@ -5,6 +5,9 @@ import '../styles/main.scss'
 
 import StateMap from './state-map'
 import FileBrowser from './file-browser'
+import StateBounds from './state-bounds'
+
+window.STATE_BOUNDS = StateBounds;
 
 function reveal() {
   document.querySelector(`[data-hidden=${this.dataset.reveal}]`).style.display = "block";

@@ -17,18 +17,10 @@ var bounds = [
   [-74.7, 39.7] // NE coordinates
 ]
 
-var maxbounds = [ // should find a programmatic way to get these sets of coordinates
-  [-86, 32.3], // SW coordinates
-  [-72.7, 43.7] // NE coordinates
-]
-
 var map = new mapboxgl.Map({
-  container: 'precinct-map', // container id
- // style: 'mapbox://styles/wtadler/cjspnljel33xz1fsb5bfgb9yi?fresh=true', // stylesheet location
-    style: 'mapbox://styles/openprecincts/cjuj606800n6l1fpord7d5xy6',
-  center: [-79.261, 37], // starting position [lng, lat]
-  zoom: 6.5, // starting zoom
-  maxBounds: maxbounds
+  container: 'precinct-map',
+  style: 'mapbox://styles/openprecincts/cjuj606800n6l1fpord7d5xy6',
+  zoom: 6.5,
 });
 
 // show coordinates of mouse
@@ -45,9 +37,10 @@ var map = new mapboxgl.Map({
 
 
 map.on('load', function() {
-  map.fitBounds(bounds, {
+    map.fitBounds(STATE_BOUNDS["{{ state.abbreviation.lower }}"], {
     duration: 0
   });
+  
 
   var layers = map.getStyle().layers;
   // Find the index of the first symbol layer in the map style
@@ -80,7 +73,7 @@ map.on('load', function() {
           ['+', ["to-number", ["get", "G16DPRS"]],
             ["to-number", ["get", "G16RPRS"]]
           ]
-        ], // if haven't coerced to a number in tippecanoe, use this ["to-number", ["get", "G16DPRS"]]
+        ], 
         0, "red",
         .5, "white", // note that, unlike functions, the "stops" are flat, not wrapped in two-element arrays
         1, "blue"
@@ -122,8 +115,8 @@ map.on('load', function() {
 
   });
 
-  map.setFilter('counties', ['==', 'STATEFP', '51']); // only show counties for VA
-  map.setFilter('counties_label', ['==', 'STATEFP', '51']);
+    map.setFilter('counties', ['==', 'STATEFP', '{{ state.census_geoid }}']);
+    map.setFilter('counties_label', ['==', 'STATEFP', '{{ state.census_geoid }}']);
 
   function toFixed(value, precision) { //https://stackoverflow.com/questions/661562/how-to-format-a-float-in-javascript
     var power = Math.pow(10, precision || 0);
@@ -238,9 +231,6 @@ function toggleLayer(ids, name) {
   var layers = document.getElementById('precinct-menu');
   layers.appendChild(link);
 }
-
-
-// make precinct boundaries and county boundaries match better—is this about the resolution of the files i've downloaded or processed in tippecanoe?
 
 // right now, using point labels for counties. at some point, it will be better to do dynamic labeling like: https://medium.com/@yixu0215/dynamic-label-placement-with-mapbox-gl-js-turf-polylabel-1f84f1d4bf6b
 </script>
