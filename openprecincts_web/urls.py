@@ -15,5 +15,5 @@ urlpatterns = [
     path("about/", TemplateView.as_view(template_name="flat/about.html"), name="about"),
 ]
 
-if settings.DEBUG:
+if 'silk' in settings.INSTALLED_APPS:
     urlpatterns += [path("silk/", include("silk.urls", namespace="silk"))]
