@@ -81,7 +81,7 @@ class ZipFiles(TransformationCommand):
         zf = zipfile.ZipFile(buffer, "w")
         for file in self.files:
             fileobj = get_from_s3(file)
-            zf.writestr(str(file.id) + file.filename, fileobj.read())
+            zf.writestr(file.filename, fileobj.read())
         zf.close()
         buffer.seek(0)
         return buffer, self.output_filename, "application/zip"
