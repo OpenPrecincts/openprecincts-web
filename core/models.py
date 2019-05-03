@@ -105,3 +105,27 @@ class Locality(models.Model):
 
     class Meta:
         verbose_name_plural = "localities"
+
+
+class Election(models.Model):
+    cycle = models.ForeignKey(
+        StateCycle, related_name="elections", on_delete=models.CASCADE
+    )
+    is_general = models.BooleanField(default=True)
+    office_type = models.CharField(
+        max_length=1, choices=(("G", "Governor"), ("P", "President"), ("S", "Senate"))
+    )
+
+    def __str__(self):
+        x = self.get_office_type_display()
+        return f"{x} {self.cycle}"
+
+
+class ElectionResult(models.Model):
+    election = models.ForeignKey(
+        Election, related_name="results", on_delete=models.CASCADE
+    )
+    party = models.CharField(max_length=10)
+    county_name = models.CharField(max_length=100)
+    precinct_name = models.CharField(max_length=100)
+    votes = models.PositiveIntegerField()
