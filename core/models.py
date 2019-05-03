@@ -117,11 +117,13 @@ class Election(models.Model):
     ))
 
     def __str__(self):
-        return f"{self.office_type} {self.cycle}"
+        x = self.get_office_type_display()
+        return f"{x} {self.cycle}"
 
 
 class ElectionResult(models.Model):
     election = models.ForeignKey(Election, related_name="results", on_delete=models.CASCADE)
     party = models.CharField(max_length=10)
+    county_name = models.CharField(max_length=100)
     precinct_name = models.CharField(max_length=100)
     votes = models.PositiveIntegerField()

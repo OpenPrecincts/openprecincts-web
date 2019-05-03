@@ -118,6 +118,7 @@ def save_results(df, state, year):
             ElectionResult.objects.create(
                 election=election,
                 party=party,
+                county_name=county,
                 precinct_name=precinct,
                 votes=val,
             )
