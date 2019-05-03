@@ -5,15 +5,13 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('core', '0006_election_electionresult'),
-    ]
+    dependencies = [("core", "0006_election_electionresult")]
 
     operations = [
         migrations.AddField(
-            model_name='electionresult',
-            name='county_name',
-            field=models.CharField(default='', max_length=100),
+            model_name="electionresult",
+            name="county_name",
+            field=models.CharField(default="", max_length=100),
             preserve_default=False,
-        ),
+        )
     ]

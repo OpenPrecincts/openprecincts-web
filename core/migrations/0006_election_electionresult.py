@@ -6,28 +6,66 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('core', '0005_auto_20190411_1927'),
-    ]
+    dependencies = [("core", "0005_auto_20190411_1927")]
 
     operations = [
         migrations.CreateModel(
-            name='Election',
+            name="Election",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('is_general', models.BooleanField(default=True)),
-                ('office_type', models.CharField(choices=[('G', 'Governor'), ('P', 'President'), ('S', 'Senate')], max_length=1)),
-                ('cycle', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='elections', to='core.StateCycle')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("is_general", models.BooleanField(default=True)),
+                (
+                    "office_type",
+                    models.CharField(
+                        choices=[
+                            ("G", "Governor"),
+                            ("P", "President"),
+                            ("S", "Senate"),
+                        ],
+                        max_length=1,
+                    ),
+                ),
+                (
+                    "cycle",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="elections",
+                        to="core.StateCycle",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='ElectionResult',
+            name="ElectionResult",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('party', models.CharField(max_length=10)),
-                ('precinct_name', models.CharField(max_length=100)),
-                ('votes', models.PositiveIntegerField()),
-                ('election', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='results', to='core.Election')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("party", models.CharField(max_length=10)),
+                ("precinct_name", models.CharField(max_length=100)),
+                ("votes", models.PositiveIntegerField()),
+                (
+                    "election",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="results",
+                        to="core.Election",
+                    ),
+                ),
             ],
         ),
     ]
