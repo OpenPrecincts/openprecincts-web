@@ -47,8 +47,8 @@ def upload_file(
         # default to latest cycle if not specified
         if not cycle:
             cycle = locality.state.current_cycle()
-        elif isinstance(cycle, int):
-            cycle = Cycle.objects.filter(pk=cycle)
+        elif isinstance(cycle, (int, str)):
+            cycle = StateCycle.objects.get(pk=cycle)
         # write the record first so we don't ever lose track of a file
         new_file = File.objects.create(
             id=new_uuid,
