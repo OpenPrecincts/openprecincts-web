@@ -129,7 +129,9 @@ def state_overview(request, state):
     )
     localities = sorted(localities, key=_locality_key)
 
-    contributors = _get_contributors(state)
+    # disabling contributors tables for now until we sort out how credit of prior files works
+    # contributors = _get_contributors(state)
+    contributors = None
 
     # compute totals
     localities_with_officials = 0
