@@ -55,6 +55,19 @@
     </div>
 
     <div class="field">
+      <label class="label">Cycle</label>
+      <div class="control">
+      <div class="select">
+          <select name="cycle">
+              {% for c in cycles %}
+                  <option value="{{ c.id }}">{{ c }}</option>
+              {% endfor %} 
+          </select>
+      </div>
+      </div>
+    </div>
+
+    <div class="field">
       <label class="label">Source URL</label>
       <div class="control">
         <input class="input" name="source_url" />

@@ -213,6 +213,7 @@ def state_admin(request, state):
     upper = state.upper()
     state = get_object_or_404(State, pk=upper)
     statewide_locality = state.localities.get(name__endswith="Statewide")
+    cycles = state.cycles.all()
 
     users = User.objects.filter(groups__name__startswith=upper).distinct()
     for perm in Permissions:
@@ -229,6 +230,7 @@ def state_admin(request, state):
         "feed": _change_feed(state),
         "statewide_locality": statewide_locality,
         "transformations": {t.value: t.name for t in Transformations},
+        "cycles": cycles,
     }
 
     return render(request, "core/state_admin.html", context)

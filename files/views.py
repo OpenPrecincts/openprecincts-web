@@ -17,10 +17,12 @@ def upload_files(request):
 
     source_url = request.POST.get("source_url", "")
     stage = request.POST.get("stage", "S")
+    cycle = request.POST.get("cycle", None)
     for file in request.FILES.getlist("files"):
         upload_django_file(
             file,
             stage=stage,
+            cycle=cycle,
             locality=locality,
             created_by=request.user,
             source_url=source_url,

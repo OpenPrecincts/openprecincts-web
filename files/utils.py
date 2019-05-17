@@ -4,7 +4,7 @@ import boto3
 import magic
 from django.conf import settings
 from django.db import transaction
-from .models import File
+from .models import File, StateCycle
 
 
 def make_s3_path(locality, id, stage, filename):
@@ -47,6 +47,8 @@ def upload_file(
         # default to latest cycle if not specified
         if not cycle:
             cycle = locality.state.current_cycle()
+        elif isinstance(cycle, int):
+            cycle = Cycle.objects.filter(pk=cycle)
         # write the record first so we don't ever lose track of a file
         new_file = File.objects.create(
             id=new_uuid,
@@ -84,7 +86,7 @@ def upload_local_file(filename, *, stage, locality, created_by):
     )
 
 
-def upload_django_file(file, *, stage, locality, created_by, source_url):
+def upload_django_file(file, *, stage, locality, created_by, source_url, cycle=None):
     kwarg = {}
     if hasattr(file, "temporary_file_path"):
         kwarg = {"file_path": file.temporary_file_path()}
@@ -99,5 +101,6 @@ def upload_django_file(file, *, stage, locality, created_by, source_url):
         filename=file.name,
         created_by=created_by,
         source_url=source_url,
+        cycle=cycle,
         **kwarg,
     )
