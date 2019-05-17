@@ -36,10 +36,10 @@ window.addEventListener('load', () => {
         states: states,
         statuses: {
           'unknown': {'name': 'Unknown', 'fill': '#999'},
-          // 'waiting': {'name': 'External Partner', 'fill': 'orange'},
-          'collection': {'name': 'Collection In Progress', 'fill': 'lightblue'},
-          'cleaning': {'name': 'Cleaning Data', 'fill': 'lightgreen'},
-          'available': {'name': 'Data Available', 'fill': 'darkgreen'},
+          'collection': {'name': 'Collecting', 'fill': '#6b94ae'},
+          'cleaning': {'name': 'Cleaning', 'fill': '#14374e'},
+          'prior-year': {'name': 'Prior Year(s)', 'fill': '#87d67f'},
+          'available': {'name': 'Data Available', 'fill': '#1c6414'},
         },
         link_template: state => `/${state.toLowerCase()}`
       }),

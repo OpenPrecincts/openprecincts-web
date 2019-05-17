@@ -120,21 +120,27 @@ ul.footer-links {
     font-size: 70%;
     color: $color-gray-light;
 }
-.state-stage-complete, .state-stage-wip, .state-stage-inactive {
-    margin-left: 1em;
+
+%state-status {
+    padding: 1em;
 }
-.state-stage-complete {
-    border: 3px solid $color-green-2;
-    background-color: $color-green-1;
-}
-.state-stage-wip {
-    border: 3px solid $color-yellow-2;
-    background-color: $color-yellow-1;
-}
-.state-stage-inactive {
-    border: 3px solid $color-gray-dark;
+
+.state-status-unknown {
+    @extend %state-status;
+    border: 1px solid $color-gray-dark;
     background-color: $color-gray-light;
 }
+.state-status-available, .state-status-prior-year {
+    @extend %state-status;
+    border: 1px solid $color-green-2;
+    background-color: $color-green-1;
+}
+.state-status-collecting, .state-status-cleaning {
+    @extend %state-status;
+    border: 1px solid $color-blue-2;
+    background-color: $color-blue-1;
+}
+
 .final-download {
     margin-left: 1em;
     margin-top: 1em;
