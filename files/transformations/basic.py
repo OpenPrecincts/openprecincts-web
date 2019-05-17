@@ -95,12 +95,16 @@ class ToGeoJSON(TransformationCommand):
         return self.files[0].filename.rsplit(".", 1)[0] + ".geojson"
 
     def get_command(self):
+        shp = None
+        for fn in self.input_filenames:
+            if fn.endswith('shp'):
+                shp = fn
         return [
             "ogr2ogr",
             "-f",
             "GeoJSON",
             self.file_path(self.output_filename),
-            self.file_path(self.input_filenames[0]),
+            self.file_path(shp),
         ]
 
 
