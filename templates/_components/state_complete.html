@@ -77,7 +77,7 @@ map.on('load', function() {
     type: 'fill',
     source: {
       type: 'vector',
-      url: 'mapbox://openprecincts.va-precincts'
+      url: 'mapbox://openprecincts.{{ state.abbreviation.lower }}-precincts'
     },
     'source-layer': 'precincts',
     paint: {
