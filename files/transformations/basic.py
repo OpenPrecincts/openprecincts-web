@@ -97,8 +97,12 @@ class ToGeoJSON(TransformationCommand):
     def get_command(self):
         shp = None
         for fn in self.input_filenames:
+            print(fn)
             if fn.endswith('shp'):
                 shp = fn
+                break
+        else:
+            shp = self.input_filenames[0]
         return [
             "ogr2ogr",
             "-f",
