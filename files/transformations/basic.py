@@ -107,6 +107,8 @@ class ToGeoJSON(TransformationCommand):
             "ogr2ogr",
             "-f",
             "GeoJSON",
+            "-t_srs",
+            "EPSG:4326",
             self.file_path(self.output_filename),
             self.file_path(shp),
         ]
