@@ -75,7 +75,9 @@ def alter_files(request):
         for f in files:
             ensure_permission(request.user, f.cycle.state, Permissions.ADMIN)
             if alter_files == "make_final":
-                f.stage = "F"
+                # can only move from intermediate to final
+                if f.stage == "I":
+                    f.stage = "F"
             elif alter_files == "deactivate":
                 f.active = False
             f.save()

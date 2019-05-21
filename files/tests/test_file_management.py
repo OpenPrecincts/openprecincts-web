@@ -153,11 +153,18 @@ def test_alter_files_in_place(client, user, locality, s3):
 
     file_ids = File.objects.values_list("id", flat=True)
 
+    # update one file to intermediate (shouldn't actually happen, but for testing is OK)
+    f = File.objects.all().first()
+    f.stage = "I"
+    f.save()
+
     resp = client.post(
         "/files/alter_files/", {"files": file_ids, "alter_files": "make_final"}
     )
-    assert resp.status_code == 302
-    assert File.objects.filter(stage="F").count() == 2
+    # only the intermediate file will be updated to final
+    assert File.objects.filter(stage="F").count() == 1
+
+
 
     # deactivate
     resp = client.post(
