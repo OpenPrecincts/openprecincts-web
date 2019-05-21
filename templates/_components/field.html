@@ -1,16 +1,23 @@
 <div class="field">
-  <label class="label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+   {% if field.field.widget.input_type != "checkbox" %}
+     <label class="label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+   {% endif %}
   <div class="control">
 
     {% if field.field.widget.input_type == "text" or field.field.widget.input_type == "email" %} 
     <input id="{{ field.id_for_label }}" class="input {% if field.errors %}is-danger{% endif %}" type="{{ field.field.widget.input_type }}" name="{{ field.html_name }}" {% if field.value %}value="{{ field.value }}" {% endif %}>
     {% elif field.field.widget.input_type == "select" %}
         <div class="select"> {{ field }} </div> 
+    {% elif field.field.widget.input_type == "checkbox" %}
+        <label class="checkbox" id="{{ field.id_for_label }}">
+          {{ field }}
+          {{ field.label }}
+        </label>
     {% elif not field.field.widget.input_type %}
         <textarea class="textarea" name="{{ field.html_name }}" cols="40" rows="10" id="{{ field.id_for_label }}">{% if field.value %}{{ field.value }}{% endif %}</textarea>
     {% else %}
         {# handle these better #}
-        Need to add suppport for {{ field.field.widget }}
+        Need to add support for {{ field.field.widget }}
     {% endif %}
 
       {% if field.errors %}

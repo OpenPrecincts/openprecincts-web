@@ -43,6 +43,8 @@ class SignupForm(forms.Form):
         + [("PR", "Puerto Rico")],
         label="Your state",
     )
+    about = forms.CharField(widget=forms.Textarea, label="About You")
+    slack = forms.BooleanField(label="Invite me to Slack!", initial=True)
 
     def clean_email(self):
         email = self.cleaned_data["email"]
@@ -73,7 +75,12 @@ class Signup(FormView):
             email=form.cleaned_data["email"],
             first_name=form.cleaned_data["display_name"],
         )
-        UserProfile.objects.create(user=u, state=form.cleaned_data["state"])
+        UserProfile.objects.create(
+            user=u,
+            state=form.cleaned_data["state"],
+            about=form.cleaned_data["about"],
+            slack=form.cleaned_data["slack"],
+        )
 
         send_login_email(u, domain=self.request.build_absolute_uri("/"), is_signup=True)
 
