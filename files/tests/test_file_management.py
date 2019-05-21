@@ -164,8 +164,6 @@ def test_alter_files_in_place(client, user, locality, s3):
     # only the intermediate file will be updated to final
     assert File.objects.filter(stage="F").count() == 1
 
-
-
     # deactivate
     resp = client.post(
         "/files/alter_files/", {"files": file_ids, "alter_files": "deactivate"}
