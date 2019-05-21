@@ -1,6 +1,7 @@
 from django.http import FileResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.views.decorators.http import require_POST, require_GET
+from django.contrib import messages
 from core.models import Locality
 from core.permissions import ensure_permission, Permissions
 from .models import File, Transformation
@@ -59,7 +60,7 @@ def add_transformation(request):
     state = files[0].cycle.state
 
     if transformation_id and alter_files:
-        messages.error(request, "Cannot set transformation adn file alteration.")
+        messages.error(request, "Cannot set transformation and file alteration.")
     elif not transformation_id and not alter_files:
         messages.error(request, "Must set transformation or file alteration.")
     elif transformation_id:

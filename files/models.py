@@ -40,7 +40,7 @@ class File(models.Model):
     # source files
     source_url = models.URLField(blank=True)
     official = models.ForeignKey(
-        Official, on_delete=models.PROTECT, related_name="files", null=True, blank=True,
+        Official, on_delete=models.PROTECT, related_name="files", null=True, blank=True
     )
 
     # intermediate files

@@ -5,22 +5,23 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('core', '0007_electionresult_county_name'),
-    ]
+    dependencies = [("core", "0007_electionresult_county_name")]
 
     operations = [
-        migrations.RemoveField(
-            model_name='state',
-            name='task_digitization',
-        ),
-        migrations.RemoveField(
-            model_name='state',
-            name='task_verification',
-        ),
+        migrations.RemoveField(model_name="state", name="task_digitization"),
+        migrations.RemoveField(model_name="state", name="task_verification"),
         migrations.AddField(
-            model_name='state',
-            name='status',
-            field=models.CharField(choices=[('unknown', 'unknown'), ('collection', 'collection'), ('cleaning', 'cleaning'), ('available', 'available')], default='unknown', max_length=10),
+            model_name="state",
+            name="status",
+            field=models.CharField(
+                choices=[
+                    ("unknown", "unknown"),
+                    ("collection", "collection"),
+                    ("cleaning", "cleaning"),
+                    ("available", "available"),
+                ],
+                default="unknown",
+                max_length=10,
+            ),
         ),
     ]

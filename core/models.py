@@ -21,9 +21,11 @@ class State(models.Model):
     census_geoid = models.CharField(max_length=2, unique=True)
 
     status_text = MarkupField(markup_type="markdown", default="")
-    status = models.CharField(max_length=10, default=StateStatus.UNKNOWN.value,
-                              choices=((c.value, c.value) for c in StateStatus)
-                              )
+    status = models.CharField(
+        max_length=10,
+        default=StateStatus.UNKNOWN.value,
+        choices=((c.value, c.value) for c in StateStatus),
+    )
 
     def current_cycle(self):
         return self.cycles.order_by("-year")[0]

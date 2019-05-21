@@ -98,7 +98,7 @@ class ToGeoJSON(TransformationCommand):
         shp = None
         for fn in self.input_filenames:
             print(fn)
-            if fn.endswith('shp'):
+            if fn.endswith("shp"):
                 shp = fn
                 break
         else:
