@@ -48,9 +48,9 @@ def download_zip(request):
 
 
 @require_POST
-def add_transformation(request):
-    transformation_id = request.POST["transformation_id"]
-    alter_files = request.POST["alter_files"]
+def alter_files(request):
+    transformation_id = request.POST.get("transformation_id")
+    alter_files = request.POST.get("alter_files")
 
     file_ids = request.POST.getlist("files")
     files = File.active_files.filter(pk__in=file_ids)

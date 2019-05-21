@@ -24,7 +24,7 @@
       const files_columns = ["checkbox", "cycle", "stage", "filename", "created_at", "download_url"];
     </script>
 
-    <form action="{% url 'add_transformation' %}" method="POST">
+    <form action="{% url 'alter_files' %}" method="POST">
       {% csrf_token %}
       <div class="level">
       <div class="level-left">
