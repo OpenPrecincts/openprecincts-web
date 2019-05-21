@@ -18,6 +18,9 @@ def upload_shapefile(data, dataset_name):
             status = status.json()
             if status["complete"]:
                 break
+            if status["error"]:
+                print("mapbox error:", status["error"])
+                break
             else:
                 print(status)
             time.sleep(10)
