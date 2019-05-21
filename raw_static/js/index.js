@@ -46,8 +46,10 @@ function initTabs() {
     });
   }
   const tabs = document.querySelectorAll("[data-tab]");
-  tabs.forEach(t => t.onclick = tabClick);
-  tabs[0].click();
+  if(tabs.length) {
+    tabs.forEach(t => t.onclick = tabClick);
+    tabs[0].click();
+  }
 }
 
 window.addEventListener('load', () => {
