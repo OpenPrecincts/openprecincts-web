@@ -23,10 +23,36 @@ function onFileChange() {
   } else {
     document.querySelector(".file-name").innerHTML = `${this.files.length} files`;
   }
-};
+}
 
+
+function initTabs() {
+  function tabClick() {
+    const clicked = this.dataset.tab;
+    document.querySelectorAll("[data-tabbody]").forEach(function (t) {
+      if(t.dataset.tabbody === clicked) {
+        t.style.display = "block";
+      } else {
+        t.style.display = "none"
+      }
+    });
+    document.querySelectorAll("[data-tab]").forEach(function (t) {
+      if(t.dataset.tab === clicked) {
+        console.log(t.parentNode);
+        t.parentNode.className = "is-active";
+      } else {
+        t.parentNode.className = "";
+      }
+    });
+  }
+  const tabs = document.querySelectorAll("[data-tab]");
+  tabs.forEach(t => t.onclick = tabClick);
+  tabs[0].click();
+}
 
 window.addEventListener('load', () => {
+  initTabs();
+
   const sm = document.querySelector('[data-hook="state-map"]');
   if (sm) {
     const states = JSON.parse(document.getElementById('state-status').textContent);

@@ -112,6 +112,13 @@ ul.footer-links {
 .allow-wide .progress {
     margin-bottom: 0.1em;
 }
+.is-tabsection {
+    padding-bottom: 0;
+}
+[data-tabbody] { 
+    padding-top: 1rem;
+    padding-left: 3rem;
+}
 
 
 /* state page */

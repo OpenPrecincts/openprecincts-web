@@ -2,16 +2,22 @@
 {% load common %}
 
 {% block body %}
-<section class="section">
+<section class="section is-tabsection">
 <div class="container">
     <h1 class="title is-1">{{ state }} admin</h1>
+
+    <div class="tabs is-medium">
+      <ul>
+        <li class="is-active"><a data-tab="files">Files</a></li>
+        <li><a data-tab="users">Users</a></li>
+        <li><a data-tab="feed">Feed</a></li>
+      </ul>
+    </div>
 </div>
 </section>
 
-<section class="section">
+<section class="section" data-tabbody="files">
 <div class="container">
-    <h2 class="title is-2">Files</h2>
-
     {{ files|json_script:"files-data" }}
     <script>
       const files_columns = ["checkbox", "cycle", "filename", "created_at", "download_url"];
@@ -97,10 +103,8 @@
 </div>
 </section>
 
-<section class="section">
+<section class="section" data-tabbody="users">
 <div class="container">
-    <h2 class="title is-2">Users</h2>
-
     <table class="table">
     <thead>
         <tr>
@@ -126,10 +130,8 @@
 </div>
 </section>
 
-<section class="section">
+<section class="section" data-tabbody="feed">
 <div class="container">
-    <h2 class="title is-2">Feed</h2>
-
     {% regroup feed by created_at.date as grouped_feed %}
     {% for day in grouped_feed %}
     <div class="media">
