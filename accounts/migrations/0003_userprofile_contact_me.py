@@ -5,14 +5,12 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('accounts', '0002_auto_20190521_1843'),
-    ]
+    dependencies = [("accounts", "0002_auto_20190521_1843")]
 
     operations = [
         migrations.AddField(
-            model_name='userprofile',
-            name='contact_me',
+            model_name="userprofile",
+            name="contact_me",
             field=models.BooleanField(default=False),
-        ),
+        )
     ]
