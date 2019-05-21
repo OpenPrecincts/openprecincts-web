@@ -48,19 +48,35 @@ def download_zip(request):
 
 @require_POST
 def add_transformation(request):
+    transformation_id = request.POST["transformation_id"]
+    alter_files = request.POST["alter_files"]
+
     file_ids = request.POST.getlist("files")
     files = File.active_files.filter(pk__in=file_ids)
     assert len(file_ids) == len(files)
 
-    # verify that all files have the same locality and cycle
-    validate_files_for_transformation(files)
-
+    # ensure permission for state
     state = files[0].cycle.state
-    ensure_permission(request.user, state, Permissions.ADMIN)
 
-    t = Transformation.objects.create(
-        transformation=request.POST["transformation_id"], created_by=request.user
-    )
-    t.input_files.set(files)
+    if transformation_id and alter_files:
+        messages.error(request, "Cannot set transformation adn file alteration.")
+    elif not transformation_id and not alter_files:
+        messages.error(request, "Must set transformation or file alteration.")
+    elif transformation_id:
+        # verify that all files have the same locality and cycle
+        validate_files_for_transformation(files)
+        ensure_permission(request.user, state, Permissions.ADMIN)
+        t = Transformation.objects.create(
+            transformation=request.POST["transformation_id"], created_by=request.user
+        )
+        t.input_files.set(files)
+    elif alter_files:
+        for f in files:
+            ensure_permission(request.user, f.cycle.state, Permissions.ADMIN)
+            if alter_files == "make_final":
+                f.stage = "F"
+            elif alter_files == "deactivate":
+                f.active = False
+            f.save()
 
     return redirect("state_admin", state.abbreviation.lower())

@@ -16,33 +16,64 @@
 </div>
 </section>
 
-<section class="section" data-tabbody="files">
+<div data-tabbody="files">
+<section class="section">
 <div class="container">
     {{ files|json_script:"files-data" }}
     <script>
-      const files_columns = ["checkbox", "cycle", "filename", "created_at", "download_url"];
+      const files_columns = ["checkbox", "cycle", "stage", "filename", "created_at", "download_url"];
     </script>
 
     <form action="{% url 'add_transformation' %}" method="POST">
       {% csrf_token %}
-      <div class="field">
-        <label class="label">Add Transformation</label>
-        <div class="control">
-        <div class="select">
-            <select name="transformation_id">
-              {% for id, name in transformations.items %}
-                <option value="{{ id }}">{{ name }}</option>
-              {% endfor %}
-            </select>
-        </div>
-        </div>
+      <div class="level">
+      <div class="level-left">
+          <div class="level-item">
+          <div class="field">
+            <label class="label">Add Transformation</label>
+            <div class="control">
+            <div class="select">
+                <select name="transformation_id">
+                    <option value="">-----</option>
+                  {% for id, name in transformations.items %}
+                    <option value="{{ id }}">{{ name }}</option>
+                  {% endfor %}
+                </select>
+            </div>
+            </div>
+          </div>
+          </div>
+          <div class="level-item">
+          <div class="field">
+            <label class="label">Alter Files</label>
+            <div class="control">
+            <div class="select">
+                <select name="alter_files">
+                    <option value="">-----</option>
+                    <option value="make_final">Make Final</option>
+                    <option value="deactivate">Deactivate</option>
+                </select>
+            </div>
+            </div>
+          </div>
+          </div>
       </div>
-      <div class="control">
-          <input type="submit" class="button is-primary">
+      <div class="level-right">
+          <div class="level-item">
+          <div class="control">
+              <input type="submit" class="button is-primary">
+          </div>
+          </div>
+      </div>
       </div>
       <div data-hook="file-browser"></div>
     </form>
+</div>
+</section>
 
+<section class="section">
+<div class="container">
+    <h3 class="title is-3">Upload Files</h3>
     <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="hidden" name="locality" value="{{ statewide_locality.id }}">
@@ -102,6 +133,7 @@
     </form>
 </div>
 </section>
+</div>
 
 <section class="section" data-tabbody="users">
 <div class="container">
