@@ -28,13 +28,15 @@
 <tr>
     <td><a href="{% url "state_overview" state.abbreviation.lower %}">{{ state.name }}</a></td>
     <td>
-        {% if state.status.value == "unknown" %}
+        {% if state.status == "unknown" %}
         TBD
-        {% elif state.status.value == "collection" %}
+        {% elif state.status == "collection" %}
         Collection In Progress
-        {% elif state.status.value == "cleaning" %}
+        {% elif state.status == "cleaning" %}
         Cleaning Data
-        {% elif state.status.value == "available" %}
+        {% elif state.status == "prior-year" %}
+        Prior Year(s) Available
+        {% elif state.status == "available" %}
         Data Available
         {% endif %}
     </td>
