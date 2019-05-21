@@ -7,4 +7,5 @@ class UserProfile(models.Model):
     state = models.CharField(max_length=2)
     about = models.TextField(blank=True)
     slack = models.BooleanField(default=False)
+    contact_me = models.BooleanField(default=False)
     private_notes = models.TextField(blank=True)
