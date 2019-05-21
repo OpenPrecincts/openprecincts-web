@@ -43,8 +43,8 @@ class SignupForm(forms.Form):
         + [("PR", "Puerto Rico")],
         label="Your state",
     )
-    about = forms.CharField(widget=forms.Textarea, label="About You")
-    slack = forms.BooleanField(label="Invite me to Slack!", initial=True)
+    about = forms.CharField(widget=forms.Textarea, label="About You", required=False)
+    slack = forms.BooleanField(label="Invite me to Slack!", initial=True, required=False)
 
     def clean_email(self):
         email = self.cleaned_data["email"]
