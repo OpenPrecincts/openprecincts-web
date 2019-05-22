@@ -17,7 +17,7 @@ services:
       POSTGRES_DB: openprecincts
   webpack:
     build: .
-    command: npm run start
+    command: ./docker/webpack-start.sh
     volumes:
       - .:/code
   django:
@@ -27,3 +27,6 @@ services:
       - .:/code
     ports:
       - "8000:8000"
+    environment:
+      - DATABASE_URL
+      - RAW_FILE_S3_BUCKET
