@@ -19,7 +19,7 @@ RUN BUILD_DEPS=" \
     && apt-get update && apt-get install -y --no-install-recommends $BUILD_DEPS
 
 RUN wget https://deb.nodesource.com/setup_10.x -O nodesource.sh \
-    && sh nodesource.sh \
+    && bash nodesource.sh \
     && apt install -y nodejs \
     && npm ci
     # && npm run build

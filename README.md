@@ -6,8 +6,18 @@ OpenPrecincts web application
 Docker Usage
 ------------
 
-* ``docker-compose up``
-* Initialize database by running ``./docker/docker-db.sh`` or set appropriate environment variables.
+Running the project:
+
+    docker-compose up
+    # Initialize database by running ./docker/docker-db.sh or set appropriate environment variables.
+
+Updating an image:
+
+    docker-compose build django
+
+Running a management command:
+
+    docker-compose run django /venv/bin/pipenv run ./manage.py migrate
 
 
 Local Installation (not recommended)
@@ -21,10 +31,5 @@ Local Installation (not recommended)
 * ``npm run build``
 * ``pipenv run ./manage.py migrate``
 * ``pipenv run ./manage.py init_data``
-
-
-Running The Server
--------------------
-
 * ``pipenv run ./manage.py runserver``
 * ``npm run start``
