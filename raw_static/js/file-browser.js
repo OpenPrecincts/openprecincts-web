@@ -25,10 +25,19 @@ export default class FileBrowser extends React.Component {
 
   constructor (props) {
     super(props);
+    var years = [];
+    for(var c of this.props.files) {
+      if(!years.includes(c.cycle)) {
+        years.push(c.cycle);
+      }
+    }
     this.state = {
       columns: this.props.columns,
+      years: years,
       sort: "locality",
       direction: 1,
+      yearFilter: "",
+      stageFilter: "",
     }
     this.renderRow = this.renderRow.bind(this);
     this.adjustSort = this.adjustSort.bind(this);
@@ -45,6 +54,15 @@ export default class FileBrowser extends React.Component {
   renderRow(f) {
     var tds = [];
     var inner = "";
+
+    // remove filtered rows
+    if(this.state.yearFilter && this.state.yearFilter !== f.cycle) {
+      return null;
+    }
+    if(this.state.stageFilter && this.state.stageFilter != f.stage) {
+      return null;
+    }
+
     for(var col of this.state.columns) {
       switch(col) {
         case "download_url":
@@ -79,8 +97,39 @@ export default class FileBrowser extends React.Component {
     );
   }
 
+  renderFilterWidget() {
+    return (
+      <div className="level">
+        <div className="level-left">
+          <div className="level-item">
+            <div className="select">
+              <select name="filebrowser-year"
+                onChange={(e) => this.setState({yearFilter: event.target.value})}>  
+                <option value="">-- All Cycles --</option>
+                { this.state.years.map(y => <option key={y} value={y}>{y}</option>) }
+              </select>
+            </div>
+          </div>
+          <div className="level-item">
+            <div className="select">
+              <select name="filebrowser-stage"
+                onChange={(e) => this.setState({stageFilter: event.target.value})}>  
+                <option value="">-- All Stages --</option>
+                <option value="Source">Source</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Final">Final</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     return (
+      <div>
+        { this.renderFilterWidget() }
       <table className="table">
         <thead>
           { this.renderHeader() }
@@ -89,6 +138,7 @@ export default class FileBrowser extends React.Component {
           { sortBy(this.props.files, this.state.sort, this.state.direction).map(this.renderRow) }
         </tbody>
       </table>
+      </div>
     );
   }
 }

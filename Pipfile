@@ -29,6 +29,7 @@ django-silk = "*"
 ipython = "*"
 pandas = "*"
 chardet = "*"
+celery = "*"
 
 [requires]
 python_version = "3.7"
