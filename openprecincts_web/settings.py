@@ -38,7 +38,7 @@ else:
     RAW_FILE_S3_BUCKET = os.environ.get("RAW_FILE_S3_BUCKET", "openprecincts-dev")
 
 DATABASE_URL = os.environ.get(
-    "DATABASE_URL", "postgres://openprecincts:testpassword@localhost:5432/openprecincts"
+    "DATABASE_URL", "postgres://openprecincts:testpassword@db:5432/openprecincts"
 )
 DATABASES = {"default": dj_database_url.parse(DATABASE_URL)}
 CONN_MAX_AGE = 60

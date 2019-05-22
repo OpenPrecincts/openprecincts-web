@@ -6,12 +6,27 @@ services:
     hostname: "rabbitmq"
     ports:
       - "5672:5672"
-  postgres:
+  db:
     image: "postgres:10"
-    hostname: "postgres"
+    hostname: "db"
     ports:
       - "5432:5432"
     environment:
       POSTGRES_PASSWORD: testpassword
       POSTGRES_USER: openprecincts
       POSTGRES_DB: openprecincts
+  webpack:
+    build: .
+    command: ./docker/webpack-start.sh
+    volumes:
+      - .:/code
+  django:
+    build: .
+    command: /venv/bin/pipenv run ./manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL
+      - RAW_FILE_S3_BUCKET
