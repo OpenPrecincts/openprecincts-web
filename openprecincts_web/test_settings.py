@@ -1,4 +1,5 @@
 from .settings import *  # noqa
+import dj_database_url
 
 DATABASE_URL = "sqlite://openprecincts.db"
 DATABASES = {"default": dj_database_url.parse(DATABASE_URL)}
