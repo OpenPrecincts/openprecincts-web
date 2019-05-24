@@ -6,7 +6,7 @@ from core.models import Locality
 from core.permissions import ensure_permission, Permissions
 from .models import File, Transformation
 from .utils import upload_django_file, get_from_s3
-from .transformations import validate_files_for_transformation
+# from .transformations import validate_files_for_transformation
 from .transformations.basic import ZipFiles
 
 
@@ -65,7 +65,7 @@ def alter_files(request):
         messages.error(request, "Must set transformation or file alteration.")
     elif transformation_id:
         # verify that all files have the same locality and cycle
-        validate_files_for_transformation(files)
+        # validate_files_for_transformation(files)
         ensure_permission(request.user, state, Permissions.ADMIN)
         t = Transformation.objects.create(
             transformation=request.POST["transformation_id"], created_by=request.user
