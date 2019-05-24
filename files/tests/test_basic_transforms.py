@@ -8,7 +8,7 @@ import boto3
 from django.conf import settings
 from django.contrib.auth.models import User
 from core.models import Locality
-from files.models import File, Transformation, Transformations
+from files.models import File, Transformations
 from files.utils import upload_file, get_from_s3
 from files.transformations.basic import ZipFiles, ToGeoJSON
 from files.transformations.exceptions import CommandError
@@ -104,4 +104,4 @@ def test_to_geojson(s3, files):
 def test_to_geojson_error(s3, files):
     inputfiles = [files["dc.cpg"]["file"].id]
     with pytest.raises(CommandError):
-        ToGeoJSON(None, inputfiles).run()
+        ToGeoJSON(None, inputfiles).do_transform()

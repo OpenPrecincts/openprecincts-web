@@ -43,11 +43,6 @@ class File(models.Model):
         Official, on_delete=models.PROTECT, related_name="files", null=True, blank=True
     )
 
-    # intermediate files
-    from_transformation = models.ForeignKey(
-        "Transformation", on_delete=models.PROTECT, related_name="outputs", null=True
-    )
-
     # other metadata
     notes = models.TextField(blank=True)
     active = models.BooleanField(default=True)
@@ -67,21 +62,3 @@ class Transformations(IntEnum):
     ZIP = 1
     TO_GEOJSON = 2
     GEOJSON_TO_MAPBOX = 3
-
-
-class Transformation(models.Model):
-    input_files = models.ManyToManyField(File, related_name="transformations")
-    transformation = models.PositiveIntegerField(
-        choices=[(c.value, c.name) for c in Transformations]
-    )
-
-    error = models.TextField(blank=True)
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    created_by = models.ForeignKey(
-        User, on_delete=models.PROTECT, related_name="created_transformations"
-    )
-    finished_at = models.DateTimeField(null=True)
-
-    def cycle(self):
-        self.input_files.first().cycle

@@ -31,7 +31,7 @@ def upload_file(
     file_path=None,
     file_obj=None,
     source_url="",
-    from_transformation=None,
+    # from_transformation=None,
 ):
     new_uuid = uuid.uuid4()
     s3_path = make_s3_path(locality, new_uuid, stage, filename)
@@ -61,7 +61,7 @@ def upload_file(
             official=official,
             filename=filename,
             source_url=source_url,
-            from_transformation=from_transformation,
+            # from_transformation=from_transformation,
             created_by=created_by,
         )
 

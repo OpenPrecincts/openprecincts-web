@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import File, Transformation
+from .models import File
 
 
 def make_active(modeladmin, request, queryset):
@@ -22,7 +22,6 @@ class FileAdmin(admin.ModelAdmin):
         "size",
         "s3_path",
         "filename",
-        "from_transformation",
         "locality",
         "created_by",
         "created_at",
@@ -33,19 +32,3 @@ class FileAdmin(admin.ModelAdmin):
 
 
 admin.site.register(File, FileAdmin)
-
-
-class TransformationAdmin(admin.ModelAdmin):
-    readonly_fields = (
-        "transformation",
-        "input_files",
-        "error",
-        "created_at",
-        "created_by",
-        "finished_at",
-    )
-
-    list_display = ("transformation", "cycle", "created_at", "finished_at")
-
-
-admin.site.register(Transformation, TransformationAdmin)
