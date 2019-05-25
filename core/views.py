@@ -230,7 +230,7 @@ def state_admin(request, state):
         "users": users,
         "feed": _change_feed(state),
         "statewide_locality": statewide_locality,
-        "transformations": {name: name for name in TASK_NAMES},
+        "transformations": TASK_NAMES,
         "cycles": cycles,
     }
 
