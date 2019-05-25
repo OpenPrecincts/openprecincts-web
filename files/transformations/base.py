@@ -36,6 +36,7 @@ class Transformation:
     def run(self, user):
         self.validate_input_files()
         data, filename = self.do_transform()
+        user = User.objects.get(pk=user)
         return self.save_output(data, filename, user)
 
     def save_output(self, output_bytes, filename, user):
