@@ -5,14 +5,12 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('files', '0009_auto_20190524_1850'),
-    ]
+    dependencies = [("files", "0009_auto_20190524_1850")]
 
     operations = [
         migrations.AddField(
-            model_name='file',
-            name='from_transformation',
+            model_name="file",
+            name="from_transformation",
             field=models.CharField(blank=True, max_length=100),
-        ),
+        )
     ]

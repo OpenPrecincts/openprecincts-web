@@ -17,8 +17,4 @@ def geojson_to_mbtile(user, files):
     GeojsonToMbtile(files).run(user)
 
 
-TASK_NAMES = [
-    "zip_files",
-    "to_geojson",
-    "geojson_to_mbtile",
-]
+TASK_NAMES = ["zip_files", "to_geojson", "geojson_to_mbtile"]
