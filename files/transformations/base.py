@@ -77,7 +77,6 @@ class ShellCommandTransformation(Transformation):
             self.input_filenames.append(fn)
 
         cp = subprocess.run(self.get_command(), capture_output=True, text=True)
-        print(cp.args)
         if cp.returncode != 0:
             command = " ".join(cp.args)
             raise CommandError(f"'{command}' returned {cp.returncode}: {cp.stderr}")

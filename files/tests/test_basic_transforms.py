@@ -8,7 +8,7 @@ import boto3
 from django.conf import settings
 from django.contrib.auth.models import User
 from core.models import Locality
-from files.models import File, Transformations
+from files.models import File
 from files.utils import upload_file, get_from_s3
 from files.transformations.basic import ZipFiles, ToGeoJSON
 from files.transformations.exceptions import CommandError

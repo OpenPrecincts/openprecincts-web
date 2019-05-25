@@ -1,4 +1,6 @@
 from io import StringIO, BytesIO
+from unittest.mock import patch
+import time
 import zipfile
 import pytest
 from moto import mock_s3
@@ -7,6 +9,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from core.models import Locality
 from files.models import File
+from django_celery_results.models import TaskResult
 
 
 @pytest.fixture
@@ -129,14 +132,12 @@ def test_alter_files_add_transformation(client, user, locality, s3):
 
     file_ids = File.objects.values_list("id", flat=True)
 
-    resp = client.post(
-        "/files/alter_files/", {"files": file_ids, "transformation_id": 1}
-    )
-    assert resp.status_code == 302
-
-    # t = Transformation.objects.get()
-    # assert t.input_files.count() == 2
-    # assert t.transformation == 1
+    with patch("files.tasks.zip_files.delay") as zfd:
+        resp = client.post(
+            "/files/alter_files/", {"files": file_ids, "transformation_id": 1}
+        )
+        assert resp.status_code == 302
+        zfd.assert_called_with(1, [str(f) for f in file_ids])
 
 
 @pytest.mark.django_db

@@ -1,13 +1,23 @@
+import pytest
 from django.http import FileResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.views.decorators.http import require_POST, require_GET
 from django.contrib import messages
 from core.models import Locality
 from core.permissions import ensure_permission, Permissions
-from .models import File
+from .models import File, Transformations
 from .utils import upload_django_file, get_from_s3
+
 # from .transformations import validate_files_for_transformation
 from .transformations.basic import ZipFiles
+from . import tasks
+
+
+TRANSFORMATION_FUNCTIONS = {
+    Transformations.ZIP: tasks.zip_files,
+    Transformations.TO_GEOJSON: tasks.to_geojson,
+    Transformations.GEOJSON_TO_MAPBOX: tasks.geojson_to_mbtile,
+}
 
 
 @require_POST
@@ -65,10 +75,8 @@ def alter_files(request):
         # verify that all files have the same locality and cycle
         # validate_files_for_transformation(files)
         ensure_permission(request.user, state, Permissions.ADMIN)
-        # t = Transformation.objects.create(
-        #     transformation=request.POST["transformation_id"], created_by=request.user
-        # )
-        # t.input_files.set(files)
+        transformation_func = TRANSFORMATION_FUNCTIONS[int(transformation_id)]
+        transformation_func.delay(request.user.id, file_ids)
     elif alter_files:
         for f in files:
             ensure_permission(request.user, f.cycle.state, Permissions.ADMIN)
