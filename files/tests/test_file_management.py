@@ -134,7 +134,7 @@ def test_alter_files_add_transformation(client, user, locality, s3):
 
     with patch("files.tasks.zip_files.delay") as zfd:
         resp = client.post(
-            "/files/alter_files/", {"files": file_ids, "transformation_id": 1}
+            "/files/alter_files/", {"files": file_ids, "transformation": "zip_files"}
         )
         assert resp.status_code == 302
         zfd.assert_called_with(1, [str(f) for f in file_ids])

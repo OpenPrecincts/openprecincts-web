@@ -7,7 +7,8 @@ from django.forms import ModelForm
 from .models import Locality, State
 from .permissions import ensure_permission, has_permission, Permissions
 from contact.models import Official, ContactLog
-from files.models import File, Transformations
+from files.models import File
+from files.tasks import TASK_NAMES
 
 
 class OfficialForm(ModelForm):
@@ -229,7 +230,7 @@ def state_admin(request, state):
         "users": users,
         "feed": _change_feed(state),
         "statewide_locality": statewide_locality,
-        "transformations": {t.value: t.name for t in Transformations},
+        "transformations": {name: name for name in TASK_NAMES},
         "cycles": cycles,
     }
 

@@ -10,8 +10,8 @@ from django.contrib.auth.models import User
 from core.models import Locality
 from files.models import File
 from files.utils import upload_file, get_from_s3
+from files.transformations.base import CommandError
 from files.transformations.basic import ZipFiles, ToGeoJSON
-from files.transformations.exceptions import CommandError
 
 
 @pytest.fixture
@@ -76,8 +76,9 @@ def files(locality, user):
 
 @pytest.mark.django_db
 def test_zip_transform_end_to_end(user, s3, files):
-    ZipFiles(user, [f["file"].id for f in files.values()]).run()
+    ZipFiles([f["file"].id for f in files.values()]).run(user)
     new = File.objects.get(stage="I")
+    assert new.from_transformation == "ZipFiles"
     data = get_from_s3(new)
     zip = zipfile.ZipFile(BytesIO(data.read()))
     assert len(zip.namelist()) == 5
@@ -92,7 +93,7 @@ def test_to_geojson(s3, files):
         files["dc.cpg"]["file"].id,
         files["dc.prj"]["file"].id,
     ]
-    output, filename = ToGeoJSON(None, inputfiles).do_transform()
+    output, filename = ToGeoJSON(inputfiles).do_transform()
     data = json.loads(output.read())
 
     assert filename == "dc.geojson"
@@ -104,4 +105,4 @@ def test_to_geojson(s3, files):
 def test_to_geojson_error(s3, files):
     inputfiles = [files["dc.cpg"]["file"].id]
     with pytest.raises(CommandError):
-        ToGeoJSON(None, inputfiles).do_transform()
+        ToGeoJSON(inputfiles).do_transform()

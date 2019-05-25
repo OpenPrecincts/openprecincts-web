@@ -43,6 +43,9 @@ class File(models.Model):
         Official, on_delete=models.PROTECT, related_name="files", null=True, blank=True
     )
 
+    # intermediate files
+    from_transformation = models.CharField(blank=True, max_length=100)
+
     # other metadata
     notes = models.TextField(blank=True)
     active = models.BooleanField(default=True)
@@ -56,9 +59,3 @@ class File(models.Model):
 
     def __str__(self):
         return f"{self.s3_path}"
-
-
-class Transformations(IntEnum):
-    ZIP = 1
-    TO_GEOJSON = 2
-    GEOJSON_TO_MAPBOX = 3

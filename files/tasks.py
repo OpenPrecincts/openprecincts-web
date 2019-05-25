@@ -3,15 +3,22 @@ from .transformations.basic import ZipFiles, ToGeoJSON, GeojsonToMbtile
 
 
 @shared_task
-def zip_files(created_by, files):
-    ZipFiles(created_by, files).run()
+def zip_files(user, files):
+    ZipFiles(files).run(user)
 
 
 @shared_task
-def to_geojson(created_by, files):
-    ToGeoJSON(created_by, files).run()
+def to_geojson(user, files):
+    ToGeoJSON(files).run(user)
 
 
 @shared_task
-def geojson_to_mbtile(created_by, files):
-    GeojsonToMbtile(created_by, files).run()
+def geojson_to_mbtile(user, files):
+    GeojsonToMbtile(files).run(user)
+
+
+TASK_NAMES = [
+    "zip_files",
+    "to_geojson",
+    "geojson_to_mbtile",
+]

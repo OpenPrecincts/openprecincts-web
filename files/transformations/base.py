@@ -4,46 +4,50 @@ import shutil
 import tempfile
 import subprocess
 from ..utils import get_from_s3, upload_file
-from .exceptions import CommandError
 from ..models import File
 
 
-class Transformation:
-    def __init__(self, created_by, file_ids):
-        self.files = File.objects.filter(id__in=file_ids)
-        self.created_by = created_by
-        self.input_filenames = []
+def validate_files_for_transformation(files):
+    localities = set()
+    cycles = set()
+    for f in files:
+        localities.add(f.locality_id)
+        cycles.add(f.cycle_id)
+    if len(localities) != 1:
+        raise ValueError("files must all be from the same locality")
+    if len(cycles) != 1:
+        raise ValueError("files must all be from the same cycle")
 
-        # validate files for transformation
-        localities = set()
-        cycles = set()
-        for f in self.files:
-            localities.add(f.locality_id)
-            cycles.add(f.cycle_id)
-        if len(localities) != 1:
-            raise ValueError("files must all be from the same locality")
-        if len(cycles) != 1:
-            raise ValueError("files must all be from the same cycle")
+
+class CommandError(Exception):
+    pass
+
+
+class Transformation:
+    def __init__(self, file_ids):
+        self.files = File.objects.filter(id__in=file_ids)
+        self.input_filenames = []
+        validate_files_for_transformation(self.files)
 
     def validate_input_files(self):
         """ raise exception if there are issues in self.files """
         pass
 
-    def run(self):
+    def run(self, user):
         self.validate_input_files()
         data, filename = self.do_transform()
-        return self.save_output(data, filename)
+        return self.save_output(data, filename, user)
 
-    def save_output(self, output_bytes, filename):
+    def save_output(self, output_bytes, filename, user):
         return upload_file(
             stage="I",
             locality=self.files[0].locality,
             mime_type=self.mime_type,
             size=len(output_bytes.getvalue()),
-            created_by=self.created_by,
+            created_by=user,
             cycle=self.files[0].cycle,
             file_obj=output_bytes,
-            # from_transformation=transformation,
+            from_transformation=self.__class__.__name__,
             filename=filename,
         )
 
