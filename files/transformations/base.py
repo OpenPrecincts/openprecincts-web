@@ -3,6 +3,7 @@ import os
 import shutil
 import tempfile
 import subprocess
+from django.contrib.auth.models import User
 from ..utils import get_from_s3, upload_file
 from ..models import File
 
