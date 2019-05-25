@@ -1,5 +1,4 @@
 import uuid
-from enum import IntEnum
 from django.db import models
 from django.contrib.auth.models import User
 from core.models import Locality, StateCycle

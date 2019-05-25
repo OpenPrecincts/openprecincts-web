@@ -1,6 +1,5 @@
 from io import StringIO, BytesIO
 from unittest.mock import patch
-import time
 import zipfile
 import pytest
 from moto import mock_s3
@@ -9,7 +8,6 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from core.models import Locality
 from files.models import File
-from django_celery_results.models import TaskResult
 
 
 @pytest.fixture
