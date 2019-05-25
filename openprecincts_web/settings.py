@@ -141,4 +141,4 @@ WEBPACK_LOADER = {
 SESAME_MAX_AGE = 30 * 60  # 30 minutes
 
 CELERY_RESULT_BACKEND = "django-db"
-CELERY_BROKER_URL = "pyamqp://rabbitmq"  # TODO: make configurable for deployment
+CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "pyamqp://rabbitmq")
