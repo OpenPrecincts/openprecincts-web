@@ -8,11 +8,10 @@ import boto3
 from django.conf import settings
 from django.contrib.auth.models import User
 from core.models import Locality
-from files.models import Transformation, Transformations
+from files.models import File
 from files.utils import upload_file, get_from_s3
-from files.transformations import run_transformation
-from files.transformations.basic import ToGeoJSON
-from files.transformations.exceptions import CommandError
+from files.transformations.base import CommandError
+from files.transformations.basic import ZipFiles, ToGeoJSON
 
 
 @pytest.fixture
@@ -76,46 +75,25 @@ def files(locality, user):
 
 
 @pytest.mark.django_db
-def test_zip_transform(user, s3, files):
-    inputfiles = [files["dc.shp"]["file"], files["dc.dbf"]["file"]]
-    t = Transformation.objects.create(
-        transformation=Transformations.ZIP, created_by=user
-    )
-    t.input_files.set(inputfiles)
-
-    new = run_transformation(t)
-
+def test_zip_transform_end_to_end(user, s3, files):
+    ZipFiles([f["file"].id for f in files.values()]).run(user)
+    new = File.objects.get(stage="I")
+    assert new.from_transformation == "ZipFiles"
     data = get_from_s3(new)
     zip = zipfile.ZipFile(BytesIO(data.read()))
-    assert len(zip.namelist()) == 2
-
-    t = Transformation.objects.get()
-    assert t.error == ""
-    assert t.finished_at is not None
-
-
-@pytest.mark.django_db
-def test_transform_error_logged(user):
-    t = Transformation.objects.create(
-        transformation=Transformations.ZIP, created_by=user
-    )
-    run_transformation(t)
-    t = Transformation.objects.get()
-
-    assert t.error != ""
-    assert t.finished_at is not None
+    assert len(zip.namelist()) == 5
 
 
 @pytest.mark.django_db
 def test_to_geojson(s3, files):
     inputfiles = [
-        files["dc.shp"]["file"],
-        files["dc.shx"]["file"],
-        files["dc.dbf"]["file"],
-        files["dc.cpg"]["file"],
-        files["dc.prj"]["file"],
+        files["dc.shp"]["file"].id,
+        files["dc.shx"]["file"].id,
+        files["dc.dbf"]["file"].id,
+        files["dc.cpg"]["file"].id,
+        files["dc.prj"]["file"].id,
     ]
-    output, filename, _ = ToGeoJSON(*inputfiles).run()
+    output, filename = ToGeoJSON(inputfiles).do_transform()
     data = json.loads(output.read())
 
     assert filename == "dc.geojson"
@@ -125,6 +103,6 @@ def test_to_geojson(s3, files):
 
 @pytest.mark.django_db
 def test_to_geojson_error(s3, files):
-    inputfiles = [files["dc.cpg"]["file"]]
+    inputfiles = [files["dc.cpg"]["file"].id]
     with pytest.raises(CommandError):
-        ToGeoJSON(*inputfiles).run()
+        ToGeoJSON(inputfiles).do_transform()

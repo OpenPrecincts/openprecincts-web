@@ -4,10 +4,11 @@ from django.views.decorators.http import require_POST, require_GET
 from django.contrib import messages
 from core.models import Locality
 from core.permissions import ensure_permission, Permissions
-from .models import File, Transformation
+from .models import File
 from .utils import upload_django_file, get_from_s3
-from .transformations import validate_files_for_transformation
+from .transformations.base import validate_files_for_transformation
 from .transformations.basic import ZipFiles
+from . import tasks
 
 
 @require_POST
@@ -41,15 +42,13 @@ def download_file(request, uuid):
 @require_POST
 def download_zip(request):
     id_list = request.POST.getlist("id")
-    files = File.active_files.filter(pk__in=id_list)
-    assert len(id_list) == len(files)
-    buffer, _, _ = ZipFiles(*files).run()
+    buffer, _ = ZipFiles(id_list).do_transform()
     return FileResponse(buffer, as_attachment=True, filename="download.zip")
 
 
 @require_POST
 def alter_files(request):
-    transformation_id = request.POST.get("transformation_id")
+    transformation = request.POST.get("transformation")
     alter_files = request.POST.get("alter_files")
 
     file_ids = request.POST.getlist("files")
@@ -59,18 +58,16 @@ def alter_files(request):
     # ensure permission for state
     state = files[0].cycle.state
 
-    if transformation_id and alter_files:
+    if transformation and alter_files:
         messages.error(request, "Cannot set transformation and file alteration.")
-    elif not transformation_id and not alter_files:
+    elif not transformation and not alter_files:
         messages.error(request, "Must set transformation or file alteration.")
-    elif transformation_id:
+    elif transformation:
         # verify that all files have the same locality and cycle
         validate_files_for_transformation(files)
         ensure_permission(request.user, state, Permissions.ADMIN)
-        t = Transformation.objects.create(
-            transformation=request.POST["transformation_id"], created_by=request.user
-        )
-        t.input_files.set(files)
+        transformation_func = getattr(tasks, transformation)
+        transformation_func.delay(request.user.id, file_ids)
     elif alter_files:
         for f in files:
             ensure_permission(request.user, f.cycle.state, Permissions.ADMIN)

@@ -33,10 +33,10 @@
             <label class="label">Add Transformation</label>
             <div class="control">
             <div class="select">
-                <select name="transformation_id">
+                <select name="transformation">
                     <option value="">-----</option>
-                  {% for id, name in transformations.items %}
-                    <option value="{{ id }}">{{ name }}</option>
+                  {% for name in transformations %}
+                    <option value="{{ name }}">{{ name }}</option>
                   {% endfor %}
                 </select>
             </div>

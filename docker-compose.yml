@@ -30,3 +30,11 @@ services:
     environment:
       - DATABASE_URL
       - RAW_FILE_S3_BUCKET
+  celery:
+    build: .
+    command: /venv/bin/pipenv run celery -A openprecincts_web worker -l info
+    volumes:
+      - .:/code
+    environment:
+      - DATABASE_URL
+      - RAW_FILE_S3_BUCKET

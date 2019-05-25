@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a9a235955f2345711e0805eac02d5d2f6d177ff8cf84524a00c110a2a0c22e7a"
+            "sha256": "19215edbc4cf6e69e8179564c8de81ad785736b2500e84bd99662ef28e86040a"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -52,18 +52,18 @@
         },
         "boto3": {
             "hashes": [
-                "sha256:000e266d8dfe8950972c62a4a129944d45ea5719912b197e796360064f2115e5",
-                "sha256:df865952fd3e1b8a5e4c6f94cf03ef4238a16140a77811a187497c4c664b9753"
+                "sha256:7ea6c74631da553999594e83fd42ed14d7512f425ae082cbbf180911537d609a",
+                "sha256:9f65209b176b4559667a9691f96be6c8bd2dafc30e0c211ce5a7e031bb3b9737"
             ],
             "index": "pypi",
-            "version": "==1.9.153"
+            "version": "==1.9.154"
         },
         "botocore": {
             "hashes": [
-                "sha256:6c3273c9881b412d665f7cab0216a5f3284bedd72937ee4d5702b265ea6e702e",
-                "sha256:6d03ec48f297fc429262603345d1e264f50064719dca7aadcff998014d935f9a"
+                "sha256:8b0367dc5af8182fe82b55cf93425f99bff577c473a37468a46bf3717fcbb117",
+                "sha256:8bfa2a5f7c6ceae85907cbba2024c8b6caf918b1fc575ee9a18a6a1c22010c7e"
             ],
-            "version": "==1.12.153"
+            "version": "==1.12.154"
         },
         "brotli": {
             "hashes": [
@@ -149,6 +149,14 @@
             ],
             "index": "pypi",
             "version": "==2.2.1"
+        },
+        "django-celery-results": {
+            "hashes": [
+                "sha256:0a01b449f2c98d552c837bbcf9127775c1043ac77d9f94d2e44c5afc4556c7f0",
+                "sha256:1c4473de897d4e2ea2aa813771d2424c7d183ea2e9c8aa04c58234113a381e84"
+            ],
+            "index": "pypi",
+            "version": "==1.1.0"
         },
         "django-markupfield": {
             "hashes": [
@@ -690,7 +698,7 @@
         },
         "moto": {
             "git": "https://github.com/spulec/moto",
-            "ref": "8f4c273095fc730b603a997939ba6331afec7f17"
+            "ref": "1088c421d2a9a5bd0d953df58f02ffca6dd0a09f"
         },
         "parso": {
             "hashes": [

@@ -30,6 +30,7 @@ ipython = "*"
 pandas = "*"
 chardet = "*"
 celery = "*"
+django-celery-results = "*"
 
 [requires]
 python_version = "3.7"

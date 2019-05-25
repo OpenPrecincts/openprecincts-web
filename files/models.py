@@ -1,5 +1,4 @@
 import uuid
-from enum import IntEnum
 from django.db import models
 from django.contrib.auth.models import User
 from core.models import Locality, StateCycle
@@ -44,9 +43,7 @@ class File(models.Model):
     )
 
     # intermediate files
-    from_transformation = models.ForeignKey(
-        "Transformation", on_delete=models.PROTECT, related_name="outputs", null=True
-    )
+    from_transformation = models.CharField(blank=True, max_length=100)
 
     # other metadata
     notes = models.TextField(blank=True)
@@ -61,27 +58,3 @@ class File(models.Model):
 
     def __str__(self):
         return f"{self.s3_path}"
-
-
-class Transformations(IntEnum):
-    ZIP = 1
-    TO_GEOJSON = 2
-    GEOJSON_TO_MAPBOX = 3
-
-
-class Transformation(models.Model):
-    input_files = models.ManyToManyField(File, related_name="transformations")
-    transformation = models.PositiveIntegerField(
-        choices=[(c.value, c.name) for c in Transformations]
-    )
-
-    error = models.TextField(blank=True)
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    created_by = models.ForeignKey(
-        User, on_delete=models.PROTECT, related_name="created_transformations"
-    )
-    finished_at = models.DateTimeField(null=True)
-
-    def cycle(self):
-        self.input_files.first().cycle
