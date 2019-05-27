@@ -1,5 +1,6 @@
 import io
 import zipfile
+from django.template.loader import render_to_string
 from ..utils import get_from_s3
 from .base import Transformation, ShellCommandTransformation
 
@@ -8,8 +9,10 @@ class ZipFiles(Transformation):
     mime_type = "application/zip"
 
     def do_transform(self):
+        readme_text = render_to_string("zip_readme.txt", {"files": self.files})
         buffer = io.BytesIO()
         zf = zipfile.ZipFile(buffer, "w")
+        zf.writestr("README.txt", readme_text)
         for file in self.files:
             fileobj = get_from_s3(file)
             zf.writestr(file.filename, fileobj.read())

@@ -76,12 +76,13 @@ def files(locality, user):
 
 @pytest.mark.django_db
 def test_zip_transform_end_to_end(user, s3, files):
-    ZipFiles([f["file"].id for f in files.values()]).run(user)
+    ZipFiles([f["file"].id for f in files.values()]).run(user.id)
     new = File.objects.get(stage="I")
     assert new.from_transformation == "ZipFiles"
     data = get_from_s3(new)
-    zip = zipfile.ZipFile(BytesIO(data.read()))
-    assert len(zip.namelist()) == 5
+    zf = zipfile.ZipFile(BytesIO(data.read()))
+    assert len(zf.namelist()) == 6
+    assert b"OpenPrecincts" in zf.read("README.txt")
 
 
 @pytest.mark.django_db

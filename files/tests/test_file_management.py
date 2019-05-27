@@ -113,7 +113,7 @@ def test_download_zip(client, user, locality, s3):
 
     zip_content = BytesIO(b"".join(resp.streaming_content))
     zip = zipfile.ZipFile(zip_content)
-    assert len(zip.namelist()) == 2
+    assert len(zip.namelist()) == 3
 
 
 @pytest.mark.django_db
