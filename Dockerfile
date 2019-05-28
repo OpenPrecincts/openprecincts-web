@@ -5,7 +5,6 @@ ENV PYTHONUNBUFFERED 1
 
 RUN mkdir /code/
 WORKDIR /code/
-ADD . /code/
 
 EXPOSE 8000
 
@@ -18,6 +17,8 @@ RUN BUILD_DEPS=" \
         git \
     " \
     && apt-get update && apt-get install -y --no-install-recommends $BUILD_DEPS
+
+ADD . /code/
 
 RUN wget https://deb.nodesource.com/setup_10.x -O nodesource.sh \
     && bash nodesource.sh \
