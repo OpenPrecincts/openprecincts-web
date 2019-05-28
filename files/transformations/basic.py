@@ -43,6 +43,8 @@ class ToGeoJSON(ShellCommandTransformation):
             "GeoJSON",
             "-t_srs",
             "EPSG:4326",
+            "-nln",
+            "precincts"
             self.file_path(self.output_filename),
             self.file_path(shp),
         ]
