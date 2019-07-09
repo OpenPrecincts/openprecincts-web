@@ -1,0 +1,3 @@
+openprecincts_staging ansible_ssh_host=staging.openprecincts.org ansible_ssh_user=ubuntu ansible_ssh_private_key_file=~/.ssh/opmaster.pem
+
+openprecincts_production ansible_ssh_host=openprecincts.org ansible_ssh_user=ubuntu ansible_ssh_private_key_file=~/.ssh/opmaster.pem

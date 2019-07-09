@@ -1,0 +1,13 @@
+---
+domain_name: openprecincts.org
+django_environment:
+  DEBUG: false
+  ADMINS: James Turk jpturk@princeton.edu
+  SECRET_KEY: "{{ lookup('aws_ssm', '/op/production/SECRET_KEY') }}"
+  DATABASE_URL: "{{ lookup('aws_ssm', '/op/production/DATABASE_URL') }}"
+  RAW_FILE_S3_BUCKET: openprecincts-data-production
+  EMAIL_HOST: email-smtp.us-east-1.amazonaws.com
+  EMAIL_HOST_USER: "{{ lookup('aws_ssm', '/op/SMTP_USER') }}"
+  EMAIL_HOST_PASSWORD: "{{ lookup('aws_ssm', '/op/SMTP_PASSWORD') }}"
+  SENTRY_DSN: https://48a59c8a92934c0890ed27f6c810023c@sentry.io/1406134
+  CELERY_BROKER_URL: pyamqp://localhost

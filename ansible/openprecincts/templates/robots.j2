@@ -1,0 +1,7 @@
+{% if domain_name == "staging.openprecincts.org" %}
+User-agent: *
+Disallow: /
+{% else %}
+User-agent: *
+Disallow: /admin
+{% endif %}

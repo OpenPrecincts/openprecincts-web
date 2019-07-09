@@ -1,0 +1,14 @@
+---
+- name: add celery.service
+  template: src=celery.service.j2 dest=/etc/systemd/system/celery.service mode=644
+- name: make log dir
+  file: path=/var/run/celery state=directory group=openprecincts owner=openprecincts
+- name: make run dir
+  file: path=/var/log/celery state=directory group=openprecincts owner=openprecincts mode=0755
+- name: make working dir
+  file: path=/opt/celery state=directory group=openprecincts owner=openprecincts mode=0755
+- name: restart celery service
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: celery

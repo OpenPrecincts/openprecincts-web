@@ -1,0 +1,57 @@
+---
+- name: install specific packages
+  apt:
+    pkg:
+      - gdal-bin
+
+
+- name: checkout tippecanoe
+  git: repo=https://github.com/mapbox/tippecanoe.git dest=/opt/tippecanoe accept_hostkey=yes version=master
+- name: build tippecanoe
+  command: make install
+  args:
+    chdir: /opt/tippecanoe
+    creates: /usr/local/bin/tippecanoe
+
+- name: add robots.txt
+  template: src=robots.j2 dest=/home/{{ user }}/robots.txt mode=644
+  become_user: "{{ user }}"
+
+# node installation
+- name: download nodesource script
+  get_url:
+    url: https://deb.nodesource.com/setup_10.x
+    dest: /tmp/nodesource-setup.sh
+    mode: 0770
+- name: run nodesource script
+  command: /tmp/nodesource-setup.sh
+- name: install nodejs
+  apt:
+    pkg: nodejs
+- name: npm install
+  command: npm ci   # use this to ensure we only build from package-lock
+  become_user: "{{ user }}"
+  args:
+    chdir: /home/{{ user }}/src/openprecincts-web
+
+# npm & django build step
+- name: npm run build
+  command: npm run build
+  become_user: "{{ user }}"
+  args:
+    chdir: /home/{{ user }}/src/openprecincts-web
+  notify: 
+    - restart django-application
+    - restart nginx
+- name: collectstatic
+  command: /home/{{ user }}/virt/bin/python manage.py collectstatic --settings=openprecincts_web.settings --noinput chdir=/home/{{ user }}/src/openprecincts-web
+  environment: '{{django_environment}}'
+  notify: 
+    - restart django-application
+    - restart nginx
+- name: migrate
+  command: /home/{{ user }}/virt/bin/python manage.py migrate --settings=openprecincts_web.settings --noinput chdir=/home/{{ user }}/src/openprecincts-web
+  environment: '{{django_environment}}'
+  notify: 
+    - restart django-application
+    - restart nginx

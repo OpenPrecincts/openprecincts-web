@@ -2,6 +2,7 @@
 .DS_Store
 db.sqlite3
 .vscode/
+*.retry
 
 node_modules
 static/bundles/

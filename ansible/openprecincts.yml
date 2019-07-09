@@ -1,0 +1,15 @@
+---
+- name: Install openprecincts
+  hosts: openprecincts_staging openprecincts_production
+  user: ubuntu
+  become: yes
+  roles:
+    - role: rabbitmq
+    - role: base
+      vars:
+        - git_repository: https://github.com/openprecincts/openprecincts-web.git
+          user: openprecincts
+          directory: openprecincts-web
+          wsgi_module: openprecincts_web.wsgi
+    - role: openprecincts
+    - role: celery
