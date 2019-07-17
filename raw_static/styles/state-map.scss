@@ -1,79 +1,183 @@
 /* state grid */
 $state-grid-size: 50px;
 .state-grid {
-    display: grid;
-    align-items: center;
-    grid-template-columns: repeat(12, $state-grid-size);
-    grid-template-rows: repeat(8, $state-grid-size);
-    grid-gap: 1px;
-    padding: 1px;
-    background-color: white;
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(12, $state-grid-size);
+  grid-template-rows: repeat(8, $state-grid-size);
+  grid-gap: 1px;
+  padding: 1px;
+  background-color: white;
 }
 .state-grid-box {
-    text-align: center;
-    background-color: $color-gray-light;
-    height: 100%;
-    line-height: $state-grid-size;
-    font-weight: bold;
-    color: white;
-    cursor: pointer;
+  text-align: center;
+  background-color: $color-gray-light;
+  height: 100%;
+  line-height: $state-grid-size;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
 }
-.state-grid-box.ME { grid-area: 1 / 12 / span 1 / span 1; }
+.state-grid-box.ME {
+  grid-area: 1 / 12 / span 1 / span 1;
+}
 
-.state-grid-box.AK { grid-area: 2 / 1 / span 1 / span 1; }
-.state-grid-box.VT { grid-area: 2 / 11 / span 1 / span 1; }
-.state-grid-box.NH { grid-area: 2 / 12 / span 1 / span 1; }
+.state-grid-box.AK {
+  grid-area: 2 / 1 / span 1 / span 1;
+}
+.state-grid-box.VT {
+  grid-area: 2 / 11 / span 1 / span 1;
+}
+.state-grid-box.NH {
+  grid-area: 2 / 12 / span 1 / span 1;
+}
 
-.state-grid-box.WA { grid-area: 3 / 2 / span 1 / span 1; }
-.state-grid-box.ID { grid-area: 3 / 3 / span 1 / span 1; }
-.state-grid-box.MT { grid-area: 3 / 4 / span 1 / span 1; }
-.state-grid-box.ND { grid-area: 3 / 5 / span 1 / span 1; }
-.state-grid-box.MN { grid-area: 3 / 6 / span 1 / span 1; }
-.state-grid-box.WI { grid-area: 3 / 7 / span 1 / span 1; }
-.state-grid-box.MI { grid-area: 3 / 8 / span 1 / span 1; }
-.state-grid-box.NY { grid-area: 3 / 10 / span 1 / span 1; }
-.state-grid-box.MA { grid-area: 3 / 11 / span 1 / span 1; }
-.state-grid-box.RI { grid-area: 3 / 12 / span 1 / span 1; }
+.state-grid-box.WA {
+  grid-area: 3 / 2 / span 1 / span 1;
+}
+.state-grid-box.ID {
+  grid-area: 3 / 3 / span 1 / span 1;
+}
+.state-grid-box.MT {
+  grid-area: 3 / 4 / span 1 / span 1;
+}
+.state-grid-box.ND {
+  grid-area: 3 / 5 / span 1 / span 1;
+}
+.state-grid-box.MN {
+  grid-area: 3 / 6 / span 1 / span 1;
+}
+.state-grid-box.WI {
+  grid-area: 3 / 7 / span 1 / span 1;
+}
+.state-grid-box.MI {
+  grid-area: 3 / 8 / span 1 / span 1;
+}
+.state-grid-box.NY {
+  grid-area: 3 / 10 / span 1 / span 1;
+}
+.state-grid-box.MA {
+  grid-area: 3 / 11 / span 1 / span 1;
+}
+.state-grid-box.RI {
+  grid-area: 3 / 12 / span 1 / span 1;
+}
 
-.state-grid-box.OR { grid-area: 4 / 2 / span 1 / span 1; }
-.state-grid-box.UT { grid-area: 4 / 3 / span 1 / span 1; }
-.state-grid-box.WY { grid-area: 4 / 4 / span 1 / span 1; }
-.state-grid-box.SD { grid-area: 4 / 5 / span 1 / span 1; }
-.state-grid-box.IA { grid-area: 4 / 6 / span 1 / span 1; }
-.state-grid-box.IL { grid-area: 4 / 7 / span 1 / span 1; }
-.state-grid-box.OH { grid-area: 4 / 8 / span 1 / span 1; }
-.state-grid-box.PA { grid-area: 4 / 9 / span 1 / span 1; }
-.state-grid-box.NJ { grid-area: 4 / 10 / span 1 / span 1; }
-.state-grid-box.CT { grid-area: 4 / 11 / span 1 / span 1; }
+.state-grid-box.OR {
+  grid-area: 4 / 2 / span 1 / span 1;
+}
+.state-grid-box.UT {
+  grid-area: 4 / 3 / span 1 / span 1;
+}
+.state-grid-box.WY {
+  grid-area: 4 / 4 / span 1 / span 1;
+}
+.state-grid-box.SD {
+  grid-area: 4 / 5 / span 1 / span 1;
+}
+.state-grid-box.IA {
+  grid-area: 4 / 6 / span 1 / span 1;
+}
+.state-grid-box.IL {
+  grid-area: 4 / 7 / span 1 / span 1;
+}
+.state-grid-box.OH {
+  grid-area: 4 / 8 / span 1 / span 1;
+}
+.state-grid-box.PA {
+  grid-area: 4 / 9 / span 1 / span 1;
+}
+.state-grid-box.NJ {
+  grid-area: 4 / 10 / span 1 / span 1;
+}
+.state-grid-box.CT {
+  grid-area: 4 / 11 / span 1 / span 1;
+}
 
-.state-grid-box.CA { grid-area: 5 / 2 / span 1 / span 1; }
-.state-grid-box.NV { grid-area: 5 / 3 / span 1 / span 1; }
-.state-grid-box.CO { grid-area: 5 / 4 / span 1 / span 1; }
-.state-grid-box.NE { grid-area: 5 / 5 / span 1 / span 1; }
-.state-grid-box.MO { grid-area: 5 / 6 / span 1 / span 1; }
-.state-grid-box.IN { grid-area: 5 / 7 / span 1 / span 1; }
-.state-grid-box.WV { grid-area: 5 / 8 / span 1 / span 1; }
-.state-grid-box.VA { grid-area: 5 / 9 / span 1 / span 1; }
-.state-grid-box.MD { grid-area: 5 / 10 / span 1 / span 1; }
-.state-grid-box.DE { grid-area: 5 / 11 / span 1 / span 1; }
+.state-grid-box.CA {
+  grid-area: 5 / 2 / span 1 / span 1;
+}
+.state-grid-box.NV {
+  grid-area: 5 / 3 / span 1 / span 1;
+}
+.state-grid-box.CO {
+  grid-area: 5 / 4 / span 1 / span 1;
+}
+.state-grid-box.NE {
+  grid-area: 5 / 5 / span 1 / span 1;
+}
+.state-grid-box.MO {
+  grid-area: 5 / 6 / span 1 / span 1;
+}
+.state-grid-box.IN {
+  grid-area: 5 / 7 / span 1 / span 1;
+}
+.state-grid-box.WV {
+  grid-area: 5 / 8 / span 1 / span 1;
+}
+.state-grid-box.VA {
+  grid-area: 5 / 9 / span 1 / span 1;
+}
+.state-grid-box.MD {
+  grid-area: 5 / 10 / span 1 / span 1;
+}
+.state-grid-box.DE {
+  grid-area: 5 / 11 / span 1 / span 1;
+}
 
-.state-grid-box.AZ { grid-area: 6 / 3 / span 1 / span 1; }
-.state-grid-box.NM { grid-area: 6 / 4 / span 1 / span 1; }
-.state-grid-box.KS { grid-area: 6 / 5 / span 1 / span 1; }
-.state-grid-box.AR { grid-area: 6 / 6 / span 1 / span 1; }
-.state-grid-box.KY { grid-area: 6 / 7 / span 1 / span 1; }
-.state-grid-box.TN { grid-area: 6 / 8 / span 1 / span 1; }
-.state-grid-box.NC { grid-area: 6 / 9 / span 1 / span 1; }
-.state-grid-box.DC { grid-area: 6 / 10 / span 1 / span 1; }
+.state-grid-box.AZ {
+  grid-area: 6 / 3 / span 1 / span 1;
+}
+.state-grid-box.NM {
+  grid-area: 6 / 4 / span 1 / span 1;
+}
+.state-grid-box.KS {
+  grid-area: 6 / 5 / span 1 / span 1;
+}
+.state-grid-box.AR {
+  grid-area: 6 / 6 / span 1 / span 1;
+}
+.state-grid-box.KY {
+  grid-area: 6 / 7 / span 1 / span 1;
+}
+.state-grid-box.TN {
+  grid-area: 6 / 8 / span 1 / span 1;
+}
+.state-grid-box.NC {
+  grid-area: 6 / 9 / span 1 / span 1;
+}
+.state-grid-box.DC {
+  grid-area: 6 / 10 / span 1 / span 1;
+}
 
-.state-grid-box.OK { grid-area: 7 / 5 / span 1 / span 1; }
-.state-grid-box.LA { grid-area: 7 / 6 / span 1 / span 1; }
-.state-grid-box.MS { grid-area: 7 / 7 / span 1 / span 1; }
-.state-grid-box.AL { grid-area: 7 / 8 / span 1 / span 1; }
-.state-grid-box.SC { grid-area: 7 / 9 / span 1 / span 1; }
-.state-grid-box.GA { grid-area: 7 / 10 / span 1 / span 1; }
+.state-grid-box.OK {
+  grid-area: 7 / 5 / span 1 / span 1;
+}
+.state-grid-box.LA {
+  grid-area: 7 / 6 / span 1 / span 1;
+}
+.state-grid-box.MS {
+  grid-area: 7 / 7 / span 1 / span 1;
+}
+.state-grid-box.AL {
+  grid-area: 7 / 8 / span 1 / span 1;
+}
+.state-grid-box.SC {
+  grid-area: 7 / 9 / span 1 / span 1;
+}
+.state-grid-box.GA {
+  grid-area: 7 / 10 / span 1 / span 1;
+}
 
-.state-grid-box.HI { grid-area: 8 / 1 / span 1 / span 1; }
-.state-grid-box.TX { grid-area: 8 / 6 / span 1 / span 1; }
-.state-grid-box.FL { grid-area: 8 / 10 / span 1 / span 1; }
-.state-grid-box.PR { grid-area: 8 / 12 / span 1 / span 1; }
+.state-grid-box.HI {
+  grid-area: 8 / 1 / span 1 / span 1;
+}
+.state-grid-box.TX {
+  grid-area: 8 / 6 / span 1 / span 1;
+}
+.state-grid-box.FL {
+  grid-area: 8 / 10 / span 1 / span 1;
+}
+.state-grid-box.PR {
+  grid-area: 8 / 12 / span 1 / span 1;
+}

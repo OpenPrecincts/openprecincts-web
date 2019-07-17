@@ -26,7 +26,7 @@
   "scripts": {
     "start": "webpack --watch --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "prettier": "prettier --write raw_static/js/*.js"
+    "prettier": "prettier --write raw_static/js/* raw_static/styles/*"
   },
   "babel": {
     "presets": [

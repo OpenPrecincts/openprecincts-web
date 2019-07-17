@@ -1,154 +1,157 @@
-@import 'colors';
-@import 'state-map';
-@import 'precinct-map';
+@import "colors";
+@import "state-map";
+@import "precinct-map";
 
 /* generic */
-dt { font-weight: bold; }
-dd { margin-left: 1em; }
-
+dt {
+  font-weight: bold;
+}
+dd {
+  margin-left: 1em;
+}
 
 /* homepage  */
 .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .hero-body {
-    background-image: url("/static/img/precincts.png");
+  background-image: url("/static/img/precincts.png");
 }
-.hero-body .title,.hero-body .subtitle {
-    color: white;
+.hero-body .title,
+.hero-body .subtitle {
+  color: white;
 }
 .homepage-columns .column {
-    padding-left: 2em;
-    padding-right: 2em;
-    display: flex;
-    flex-direction: column;
+  padding-left: 2em;
+  padding-right: 2em;
+  display: flex;
+  flex-direction: column;
 }
 .homepage-columns .column i {
-    font-size: 2em;
-    text-align: center;
+  font-size: 2em;
+  text-align: center;
 }
 .homepage-columns .column h2 {
-    text-align: center;
-    margin-top: 0.2em;
+  text-align: center;
+  margin-top: 0.2em;
 }
 .homepage-columns .column p {
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 .homepage-columns .column .button {
-    margin-top: auto;
+  margin-top: auto;
 }
 .divider-l {
-    border-left: 1px solid $color-gray-dark;
+  border-left: 1px solid $color-gray-dark;
 }
 #what-we-do {
-    font-size: 130%;
-    margin-bottom: 2em;
+  font-size: 130%;
+  margin-bottom: 2em;
 }
 #homepage-call-to-action {
-    font-size: 130%;
-    margin: auto;
+  font-size: 130%;
+  margin: auto;
 }
 
 /* header */
 #welcome-back {
-    padding-right: 1em;
+  padding-right: 1em;
 }
 
 /* footer */
 .footer {
-    background-color: $color-gray-dark;
+  background-color: $color-gray-dark;
 }
 .footer-cc-license {
-    color: $color-gray-light;
+  color: $color-gray-light;
 }
 ul.footer-links {
-    list-style: none;
+  list-style: none;
 }
 .footer a:hover {
-    color: white;
+  color: white;
 }
 
-
 /* signup - login */
-.signup, .login {
-    width: 40%;
-    margin-top: 1em;
+.signup,
+.login {
+  width: 40%;
+  margin-top: 1em;
 }
 .simpleform {
 }
 
-
 /* flat pages */
 .process-step .column:first-child {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex: none;
-    width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: none;
+  width: 20%;
 }
 
-
 .process-step .column:first-child div {
-    font-size: 200%;
-    border: 8px solid $color-green-0;
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    line-height: 60px;
-    text-align: center;
+  font-size: 200%;
+  border: 8px solid $color-green-0;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  line-height: 60px;
+  text-align: center;
 }
 
 .process-step .column h2 {
-    margin-top: 1em;
+  margin-top: 1em;
 }
 
 /* utilities */
 
 .allow-wide {
-    width: 80%;
+  width: 80%;
 }
 .allow-wide .progress {
-    margin-bottom: 0.1em;
+  margin-bottom: 0.1em;
 }
 .is-tabsection {
-    padding-bottom: 0;
+  padding-bottom: 0;
 }
-[data-tabbody] { 
-    padding-top: 1rem;
-    padding-left: 3rem;
+[data-tabbody] {
+  padding-top: 1rem;
+  padding-left: 3rem;
 }
-
 
 /* state page */
 
 .fraction {
-    font-size: 70%;
-    color: $color-gray-light;
+  font-size: 70%;
+  color: $color-gray-light;
 }
 
 %state-status {
-    padding: 1em;
+  padding: 1em;
 }
 
 .state-status-unknown {
-    @extend %state-status;
-    border: 1px solid $color-gray-dark;
-    background-color: $color-gray-light;
+  @extend %state-status;
+  border: 1px solid $color-gray-dark;
+  background-color: $color-gray-light;
 }
-.state-status-available, .state-status-prior-year {
-    @extend %state-status;
-    border: 1px solid $color-green-2;
-    background-color: $color-green-1;
+.state-status-available,
+.state-status-prior-year {
+  @extend %state-status;
+  border: 1px solid $color-green-2;
+  background-color: $color-green-1;
 }
-.state-status-collecting, .state-status-cleaning {
-    @extend %state-status;
-    border: 1px solid $color-blue-2;
-    background-color: $color-blue-1;
+.state-status-collecting,
+.state-status-cleaning {
+  @extend %state-status;
+  border: 1px solid $color-blue-2;
+  background-color: $color-blue-1;
 }
 
 .final-download {
-    margin-left: 1em;
-    margin-top: 1em;
+  margin-left: 1em;
+  margin-top: 1em;
 }
