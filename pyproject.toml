@@ -25,6 +25,8 @@ pandas = "^0.25.0"
 chardet = "^3.0"
 celery = "^4.3"
 django-celery-results = "^1.1"
+moto = {git = "https://github.com/spulec/moto"}
+dj-database-url = "^0.5.0"
 
 
 [tool.poetry.dev-dependencies]
