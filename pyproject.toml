@@ -1,3 +1,39 @@
+[tool.poetry]
+name = "openprecincts-web"
+version = "3.4"
+description = ""
+authors = ["James Turk <jpturk@princeton.edu>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+django = "^2.2"
+us = "^1.0"
+boto3 = "^1.9"
+django-sesame = "^1.7"
+django-webpack-loader = "^0.6.0"
+whitenoise = "^4.1"
+brotli = "^1.0"
+python-magic = "^0.4.15"
+psycopg2-binary = "^2.8"
+sentry-sdk = "^0.10.2"
+django-markupfield = "^1.5"
+markdown = "^3.1"
+mapbox = "^0.18.0"
+urllib3 = "^1.25"
+django-silk = "^3.0"
+pandas = "^0.25.0"
+chardet = "^3.0"
+celery = "^4.3"
+django-celery-results = "^1.1"
+moto = {git = "https://github.com/spulec/moto"}
+dj-database-url = "^0.5.0"
+
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.7"
+pytest = "^5.0"
+pytest-django = "^3.5"
+ipdb = "^0.12.2"
 [tool.black]
 line-length = 88
 target_version = ['py37']
