@@ -17,19 +17,4 @@ Updating an image:
 
 Running a management command:
 
-    docker-compose run django /venv/bin/pipenv run ./manage.py migrate
-
-
-Local Installation (not recommended)
--------------------------------------
-
-* Install libmagic ``brew install libmagic``
-* Install [pipenv](https://pipenv.readthedocs.io/en/latest/)
-* ``pipenv install``
-* Install [npm](https://www.npmjs.com/)
-* ``npm install``
-* ``npm run build``
-* ``pipenv run ./manage.py migrate``
-* ``pipenv run ./manage.py init_data``
-* ``pipenv run ./manage.py runserver``
-* ``npm run start``
+    docker-compose run django /venv/bin/poetry run ./manage.py migrate
