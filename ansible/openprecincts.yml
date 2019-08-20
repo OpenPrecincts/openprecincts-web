@@ -5,11 +5,12 @@
   become: yes
   roles:
     - role: rabbitmq
-    - role: base
+    - role: django-uwsgi-nginx
       vars:
         - git_repository: https://github.com/openprecincts/openprecincts-web.git
           user: openprecincts
           directory: openprecincts-web
           wsgi_module: openprecincts_web.wsgi
+          celery: true
     - role: openprecincts
     - role: celery
