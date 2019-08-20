@@ -30,6 +30,15 @@ class State(models.Model):
     def current_cycle(self):
         return self.cycles.order_by("-year")[0]
 
+    def display_status(self):
+        return {
+            StateStatus.NEED_TO_COLLECT.value: "Need to Collect Data",
+            StateStatus.GEOGRAPHY.value: "Geography Collected",
+            StateStatus.ELECTION_DATA_LINKED.value: "Election Data Linked",
+            StateStatus.CENSUS_DATA_LINKED.value: "Census Data Linked",
+            StateStatus.VALIDATED.value: "Validated",
+        }[self.status]
+
     def __str__(self):
         return self.name
 
