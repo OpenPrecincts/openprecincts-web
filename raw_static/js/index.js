@@ -65,11 +65,11 @@ window.addEventListener("load", () => {
       React.createElement(StateMap, {
         states: states,
         statuses: {
-          unknown: { name: "Unknown", fill: "#999" },
-          collection: { name: "Collecting", fill: "#6b94ae" },
-          cleaning: { name: "Cleaning", fill: "#14374e" },
-          "prior-year": { name: "Prior Year(s)", fill: "#87d67f" },
-          available: { name: "Data Available", fill: "#1c6414" },
+          "need-to-collect": { name: "Need to Collect", fill: "#999" },
+          geography: { name: "Geography Collected", fill: "#6b94ae" },
+          "election-data-linked": { name: "Election Data Linked", fill: "#87d67f" },
+          "census-data-linked": { name: "Census Data Linked", fill: "#5cb253" },
+          "validated": { name: "Validated", fill: "#1c6414" },
         },
         link_template: state => `/${state.toLowerCase()}`,
       }),
