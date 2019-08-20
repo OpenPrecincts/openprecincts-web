@@ -4,11 +4,11 @@ from markupfield.fields import MarkupField
 
 
 class StateStatus(Enum):
-    UNKNOWN = "unknown"
-    COLLECTION = "collection"
-    CLEANING = "cleaning"
-    PRIOR_YEAR = "prior-year"
-    AVAILABLE = "available"
+    NEED_TO_COLLECT = "need-to-collect"
+    GEOGRAPHY = "geography"
+    ELECTION_DATA_LINKED = "election-data-linked"
+    CENSUS_DATA_LINKED = "census-data-linked"
+    VALIDATED = "validated"
 
 
 class State(models.Model):
@@ -22,8 +22,8 @@ class State(models.Model):
 
     status_text = MarkupField(markup_type="markdown", default="")
     status = models.CharField(
-        max_length=10,
-        default=StateStatus.UNKNOWN.value,
+        max_length=30,
+        default=StateStatus.NEED_TO_COLLECT.value,
         choices=((c.value, c.value) for c in StateStatus),
     )
 
