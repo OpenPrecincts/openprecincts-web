@@ -55,7 +55,7 @@
 </div>
 </section>
 
-{% if state.status == "available" or state.status == "prior-year" %}
+{% if state.status == "election-data-linked" or state.status == "validated" or state.status == "census-data-linked" %}
 {% include "_components/state_complete.html" %}
 {% endif %}
 
