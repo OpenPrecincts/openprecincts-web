@@ -133,11 +133,6 @@ ul.footer-links {
   padding: 1em;
 }
 
-.state-status-unknown {
-  @extend %state-status;
-  border: 1px solid $color-gray-dark;
-  background-color: $color-gray-light;
-}
 .state-status-available,
 .state-status-prior-year {
   @extend %state-status;

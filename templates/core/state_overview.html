@@ -10,26 +10,22 @@
 
     <div class="columns">
     <div class="column">
-    {% if state.status == "unknown" %}
-        <div class="state-status-unknown">
-            <h4 class="title is-4">Status: Pending</h4>
-            <p>We haven't yet determined the best course of action for {{ state }}.  If you're interested in helping us get started <a href="mailto:openprecincts@gmail.com">contact us</a> and we'd be glad to work with you to get things started here!</p>
-    {% elif state.status == "collection" %}
+    {% if state.status == "need-to-collect" %}
         <div class="state-status-collecting">
             <h4 class="title is-4">Status: Collection In Progress</h4>
             <p>We are in the process of collecting &amp; cleaning data for {{ state }}, you can help us by collecting contact information or individual files below.</p>
-    {% elif state.status == "cleaning" %}
+    {% elif state.status == "geography" %}
         <div class="state-status-cleaning">
             <h4 class="title is-4">Status: Cleaning In Progress</h4>
             <p>We are in the process of cleaning data for {{ state }}, stay tuned for more info on how you can help!</p>
-    {% elif state.status == "prior-year" %}
-        <div class="state-status-prior-year">
-            <h4 class="title is-4">Status: Available for Prior Years</h4>
-            <p>{{ state }} data is available for prior years below, stay tuned for updates on more recent data.</p>
-    {% elif state.status == "available" %}
+    {% elif state.status == "election-data-linked" or state.status == "census-data-linked" %}
         <div class="state-status-available">
-            <h4 class="title is-4">Status: Available</h4>
+            <h4 class="title is-4">Status: Data Available</h4>
             <p>{{ state }} data is currently up-to-date and available below.</p>
+    {% elif state.status == "validated" %}
+        <div class="state-status-available">
+            <h4 class="title is-4">Status: Validated</h4>
+            <p>{{ state }} data is currently up-to-date, validated, and available below.</p>
     {% endif %}
             <br>
             <p> {{ state.status_text }} </p>
