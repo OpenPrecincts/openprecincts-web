@@ -11,6 +11,7 @@ urlpatterns = [
     path("contact/", include("contact.urls")),
     path("files/", include("files.urls")),
     path("accounts/", include("accounts.urls")),
+    path("merge/", TemplateView.as_view(template_name="merge/mergetool.html"), name="mergetool"),
     # flat pages
     path("about/", TemplateView.as_view(template_name="flat/about.html"), name="about"),
 ]

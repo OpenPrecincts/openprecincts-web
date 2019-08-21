@@ -5,6 +5,7 @@ import "../styles/main.scss";
 
 import StateMap from "./state-map";
 import FileBrowser from "./file-browser";
+import MergeTool from "./mergetool";
 import StateBounds from "./state-bounds";
 
 window.STATE_BOUNDS = StateBounds;
@@ -86,6 +87,15 @@ window.addEventListener("load", () => {
         columns: files_columns,
       }),
       fb
+    );
+  }
+
+  const mt = document.querySelector('[data-hook="mergetool"]');
+  if (mt) {
+    ReactDOM.render(
+      React.createElement(MergeTool, {
+      }),
+      mt
     );
   }
 
