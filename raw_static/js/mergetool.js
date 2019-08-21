@@ -166,12 +166,19 @@ export default class MergeTool extends React.Component {
   }
 
   acceptProposed() {
-    // var sideA = [...this.state.sideA];
-    // var sideB = [...this.state.sideB];
-    console.log(this.state.proposedMatches);
+    var sideA = {...this.state.sideA};
+    var sideB = {...this.state.sideB};
+    var matched = [...this.state.matched];
     for(var [aId, bId] of Object.entries(this.state.proposedMatches)) {
-      console.log(aId, bId);
+      matched.push({
+        sideA: sideA[aId].name,
+        sideB: sideB[bId].name,
+        reason: this.state.activeTransforms,
+      });
+      delete sideA[aId];
+      delete sideB[bId];
     }
+    this.setState({matched, sideA, sideB});
   }
 
   refreshTransforms(transforms) {
