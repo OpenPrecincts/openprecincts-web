@@ -157,9 +157,10 @@ export default class MergeTool extends React.Component {
 
   addTransform() {
     var transforms = [...this.state.activeTransforms];
-    // TODO: enforce uniqueness
-    transforms.push(this.transformSelectRef.current.value);
-    this.refreshTransforms(transforms);
+    if(!transforms.includes(this.transformSelectRef.current.value)) {
+      transforms.push(this.transformSelectRef.current.value);
+      this.refreshTransforms(transforms);
+    }
   }
 
   refreshTransforms(transforms) {
@@ -198,7 +199,9 @@ export default class MergeTool extends React.Component {
 
         <div>
           <select className="select" ref={this.transformSelectRef}>
-            {Object.entries(TRANSFORMS).map(([k, v]) => (<option key={k} value={k}>{v.name}</option>))}
+            {Object.entries(TRANSFORMS).map(([k, v]) => (
+              this.state.activeTransforms.includes(k) ? "" : <option key={k} value={k}>{v.name}</option>)
+            )}
           </select>
           <button className="button" onClick={this.addTransform}>
             Add Transform
