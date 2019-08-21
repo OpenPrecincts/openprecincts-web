@@ -41,7 +41,7 @@ class MergeTable extends React.Component {
     return (
       <tr key={p.id}>
         <td>{p.name}</td>
-        <td style={{"background-color": color}}>{p.transformed}</td>
+        <td style={{backgroundColor: color}}>{p.transformed}</td>
       </tr>
     )
   }
@@ -137,6 +137,10 @@ export default class MergeTool extends React.Component {
     this.addTransform = this.addTransform.bind(this);
   }
 
+  componentDidMount() {
+    this.refreshTransforms([]);
+  }
+
   checkMatches(sideA, sideB) {
     var proposedMatches = {}
     for(var a of sideA) {
@@ -153,10 +157,14 @@ export default class MergeTool extends React.Component {
 
   addTransform() {
     var transforms = [...this.state.activeTransforms];
-    var sideA = [...this.state.sideA];
-    var sideB = [...this.state.sideB];
     // TODO: enforce uniqueness
     transforms.push(this.transformSelectRef.current.value);
+    this.refreshTransforms(transforms);
+  }
+
+  refreshTransforms(transforms) {
+    var sideA = [...this.state.sideA];
+    var sideB = [...this.state.sideB];
 
     for(var e of sideA) {
       e.transformed = applyTransforms(e.name, transforms);
@@ -194,6 +202,9 @@ export default class MergeTool extends React.Component {
           </select>
           <button className="button" onClick={this.addTransform}>
             Add Transform
+          </button>
+          <button className="button" onClick={() => this.refreshTransforms([])}>
+            Reset Transforms
           </button>
           <ul>
             {this.state.activeTransforms.map((t) => <li key={t}>{t}</li>)}
