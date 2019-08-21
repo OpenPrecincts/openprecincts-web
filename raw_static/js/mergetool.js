@@ -32,10 +32,16 @@ class MergeTable extends React.Component {
   }
 
   renderRow(p) {
+    var color = "white";
+    if (p.matched === 1) {
+      color = "lightgreen";
+    } else if (p.matched > 1) {
+      color = "red";
+    }
     return (
       <tr key={p.id}>
         <td>{p.name}</td>
-        <td>{applyTransforms(p.name, this.props.transforms)}</td>
+        <td style={{"background-color": color}}>{p.transformed}</td>
       </tr>
     )
   }
@@ -103,26 +109,27 @@ export default class MergeTool extends React.Component {
     super(props);
     this.state = {
       sideA: [
-        {id: 1, name: "Goucho 1"},
-        {id: 2, name: "Goucho 2"},
-        {id: 3, name: "Goucho 3"},
-        {id: 4, name: "Chal"},
-        {id: 5, name: "Sochi"},
-        {id: 6, name: "Zagin"},
+        {id: 1, name: "Sloppy 1"},
+        {id: 2, name: "Sloppy 2"},
+        {id: 3, name: "Sloppy 3"},
+        {id: 4, name: "Cheeseboy"},
+        {id: 5, name: "Hurricane Puffy"},
+        {id: 6, name: "Zagnut"},
       ],
       sideB: [
-        {id: 1, name: "Goucho 01"},
-        {id: 2, name: "Goucho 02"},
-        {id: 3, name: "Goucho 03"},
+        {id: 1, name: "SLOPPY 01"},
+        {id: 2, name: "SLOPPY 02"},
+        {id: 3, name: "SLOPPY 03"},
         {id: 4, name: "C001"},
         {id: 5, name: "S001"},
         {id: 6, name: "Z001"},
       ],
       merged: [
-        {"sideA": "Ableson", "sideB": "Ableson", "reason": "equal"},
-        {"sideA": "Zoron", "sideB": "Zoron", "reason": "equal"},
+        {"sideA": "Pistachiotown", "sideB": "PISTACHIO TOWN", "reason": "equal"},
+        {"sideA": "THE FREAKING MOON", "sideB": ":moon:", "reason": "equal"},
       ],
       activeTransforms: [],
+      proposedMatches: [],
     };
 
     this.transformSelectRef = React.createRef();
@@ -130,11 +137,43 @@ export default class MergeTool extends React.Component {
     this.addTransform = this.addTransform.bind(this);
   }
 
+  checkMatches(sideA, sideB) {
+    var proposedMatches = {}
+    for(var a of sideA) {
+      for(var b of sideB) {
+        if (a.transformed === b.transformed) {
+          proposedMatches[a.id] = b.id;
+          a.matched += 1;
+          b.matched += 1;
+        }
+      }
+    }
+    return proposedMatches;
+  }
+
   addTransform() {
     var transforms = [...this.state.activeTransforms];
+    var sideA = [...this.state.sideA];
+    var sideB = [...this.state.sideB];
     // TODO: enforce uniqueness
     transforms.push(this.transformSelectRef.current.value);
-    this.setState({activeTransforms: transforms});
+
+    for(var e of sideA) {
+      e.transformed = applyTransforms(e.name, transforms);
+      e.matched = 0;
+    }
+    for(var e of sideB) {
+      e.transformed = applyTransforms(e.name, transforms);
+      e.matched = 0;
+    }
+    const proposedMatches = this.checkMatches(sideA, sideB)
+
+    this.setState({
+      activeTransforms: transforms,
+      sideA: sideA,
+      sideB: sideB,
+      proposedMatches: proposedMatches,
+    });
   }
 
   render() {
