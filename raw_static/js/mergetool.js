@@ -31,17 +31,18 @@ class MergeTable extends React.Component {
     this.renderRow = this.renderRow.bind(this);
   }
 
-  renderRow(p) {
+  renderRow(item) {
+    const [k, e] = item;
     var color = "white";
-    if (p.matched === 1) {
+    if (e.matched === 1) {
       color = "lightgreen";
-    } else if (p.matched > 1) {
+    } else if (e.matched > 1) {
       color = "red";
     }
     return (
-      <tr key={p.id}>
-        <td>{p.name}</td>
-        <td style={{backgroundColor: color}}>{p.transformed}</td>
+      <tr key={k}>
+        <td>{e.name}</td>
+        <td style={{backgroundColor: color}}>{e.transformed}</td>
       </tr>
     )
   }
@@ -58,7 +59,7 @@ class MergeTable extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.precincts.map(this.renderRow)}
+            {Object.entries(this.props.items).map(this.renderRow)}
           </tbody>
         </table>
       </div>
@@ -67,7 +68,7 @@ class MergeTable extends React.Component {
 }
 
 
-class Merged extends React.Component {
+class Matched extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -85,13 +86,13 @@ class Merged extends React.Component {
   render() {
     return (
       <div>
-        <h2 className="title is-3">Merged</h2>
+        <h2 className="title is-3">Matched</h2>
         <table className="table">
           <thead>
             <tr>
               <th>Side A</th>
               <th>Side B</th>
-              <th>Merged Via</th>
+              <th>Matched Via</th>
             </tr>
           </thead>
           <tbody>
@@ -108,23 +109,23 @@ export default class MergeTool extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sideA: [
-        {id: 1, name: "Sloppy 1"},
-        {id: 2, name: "Sloppy 2"},
-        {id: 3, name: "Sloppy 3"},
-        {id: 4, name: "Cheeseboy"},
-        {id: 5, name: "Hurricane Puffy"},
-        {id: 6, name: "Zagnut"},
-      ],
-      sideB: [
-        {id: 1, name: "SLOPPY 01"},
-        {id: 2, name: "SLOPPY 02"},
-        {id: 3, name: "SLOPPY 03"},
-        {id: 4, name: "C001"},
-        {id: 5, name: "S001"},
-        {id: 6, name: "Z001"},
-      ],
-      merged: [
+      sideA: {
+        1: {name: "Sloppy 1"},
+        2: {name: "Sloppy 2"},
+        3: {name: "Sloppy 3"},
+        4: {name: "Cheeseboy"},
+        5: {name: "Hurricane Puffy"},
+        6: {name: "Zagnut"},
+      },
+      sideB: {
+        1: {name: "SLOPPY 01"},
+        2: {name: "SLOPPY 02"},
+        3: {name: "SLOPPY 03"},
+        4: {name: "C001"},
+        5: {name: "S001"},
+        6: {name: "Z001"},
+      },
+      matched: [
         {"sideA": "Pistachiotown", "sideB": "PISTACHIO TOWN", "reason": "equal"},
         {"sideA": "THE FREAKING MOON", "sideB": ":moon:", "reason": "equal"},
       ],
@@ -135,6 +136,7 @@ export default class MergeTool extends React.Component {
     this.transformSelectRef = React.createRef();
 
     this.addTransform = this.addTransform.bind(this);
+    this.acceptProposed = this.acceptProposed.bind(this);
   }
 
   componentDidMount() {
@@ -143,10 +145,10 @@ export default class MergeTool extends React.Component {
 
   checkMatches(sideA, sideB) {
     var proposedMatches = {}
-    for(var a of sideA) {
-      for(var b of sideB) {
+    for(var [aId, a] of Object.entries(sideA)) {
+      for(var [bId, b] of Object.entries(sideB)) {
         if (a.transformed === b.transformed) {
-          proposedMatches[a.id] = b.id;
+          proposedMatches[aId] = bId;
           a.matched += 1;
           b.matched += 1;
         }
@@ -163,15 +165,24 @@ export default class MergeTool extends React.Component {
     }
   }
 
-  refreshTransforms(transforms) {
-    var sideA = [...this.state.sideA];
-    var sideB = [...this.state.sideB];
+  acceptProposed() {
+    // var sideA = [...this.state.sideA];
+    // var sideB = [...this.state.sideB];
+    console.log(this.state.proposedMatches);
+    for(var [aId, bId] of Object.entries(this.state.proposedMatches)) {
+      console.log(aId, bId);
+    }
+  }
 
-    for(var e of sideA) {
+  refreshTransforms(transforms) {
+    var sideA = {...this.state.sideA};
+    var sideB = {...this.state.sideB};
+
+    for(var e of Object.values(sideA)) {
       e.transformed = applyTransforms(e.name, transforms);
       e.matched = 0;
     }
-    for(var e of sideB) {
+    for(var e of Object.values(sideB)) {
       e.transformed = applyTransforms(e.name, transforms);
       e.matched = 0;
     }
@@ -190,10 +201,10 @@ export default class MergeTool extends React.Component {
       <div>
         <div className="columns">
           <div className="column">
-            <MergeTable title="Election Precincts" precincts={this.state.sideA} transforms={this.state.activeTransforms} />
+            <MergeTable title="Election Precincts" items={this.state.sideA} transforms={this.state.activeTransforms} />
           </div>
           <div className="column">
-            <MergeTable title="Shapefile Precincts" precincts={this.state.sideB} transforms={this.state.activeTransforms} />
+            <MergeTable title="Shapefile Precincts" items={this.state.sideB} transforms={this.state.activeTransforms} />
           </div>
         </div>
 
@@ -213,7 +224,25 @@ export default class MergeTool extends React.Component {
             {this.state.activeTransforms.map((t) => <li key={t}>{t}</li>)}
           </ul>
         </div>
-        <Merged matches={this.state.merged} />
+
+        <div>
+          <h4 className="title is-4">Stats</h4>
+          <dl>
+            <dt>Side A Unmatched</dt>
+            <dd>{Object.keys(this.state.sideA).length}</dd>
+            <dt>Side B Unmatched</dt>
+            <dd>{Object.keys(this.state.sideB).length}</dd>
+            <dt>Proposed Matches</dt>
+            <dd>{Object.keys(this.state.proposedMatches).length}</dd>
+            <dt>Matched</dt>
+            <dd>{this.state.matched.length}</dd>
+          </dl>
+          <button className="button" onClick={this.acceptProposed}>
+            Accept Proposed Matches
+          </button>
+        </div>
+
+        <Matched matches={this.state.matched} />
       </div>
     );
   }
