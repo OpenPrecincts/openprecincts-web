@@ -75,10 +75,10 @@ class Matched extends React.Component {
 
   renderRow(m) {
     return (
-      <tr key={m.sideA + m.sideB}>
-        <td>{m.sideA}</td>
-        <td>{m.sideB}</td>
-        <td>{m.reason}</td>
+      <tr key={m.sideA.name + m.sideB.name}>
+        <td>{m.sideA.name}</td>
+        <td>{m.sideB.name}</td>
+        <td>{m.reason.join(", ")}</td>
       </tr>
     )
   }
@@ -110,25 +110,22 @@ export default class MergeTool extends React.Component {
     super(props);
     this.state = {
       sideA: {
-        1: {name: "Sloppy 1"},
-        2: {name: "Sloppy 2"},
-        3: {name: "Sloppy 3"},
-        4: {name: "Cheeseboy"},
-        5: {name: "Hurricane Puffy"},
-        6: {name: "Zagnut"},
+        101: {name: "Sloppy 1"},
+        102: {name: "Sloppy 2"},
+        103: {name: "Sloppy 3"},
+        104: {name: "Cheeseboy"},
+        105: {name: "Hurricane Puffy"},
+        106: {name: "Zagnut"},
       },
       sideB: {
-        1: {name: "SLOPPY 01"},
-        2: {name: "SLOPPY 02"},
-        3: {name: "SLOPPY 03"},
-        4: {name: "C001"},
-        5: {name: "S001"},
-        6: {name: "Z001"},
+        201: {name: "SLOPPY 01"},
+        202: {name: "SLOPPY 02"},
+        203: {name: "SLOPPY 03"},
+        204: {name: "C001"},
+        205: {name: "S001"},
+        206: {name: "Z001"},
       },
-      matched: [
-        {"sideA": "Pistachiotown", "sideB": "PISTACHIO TOWN", "reason": "equal"},
-        {"sideA": "THE FREAKING MOON", "sideB": ":moon:", "reason": "equal"},
-      ],
+      matched: [],
       activeTransforms: [],
       proposedMatches: [],
     };
@@ -171,8 +168,8 @@ export default class MergeTool extends React.Component {
     var matched = [...this.state.matched];
     for(var [aId, bId] of Object.entries(this.state.proposedMatches)) {
       matched.push({
-        sideA: sideA[aId].name,
-        sideB: sideB[bId].name,
+        sideA: sideA[aId],
+        sideB: sideB[bId],
         reason: this.state.activeTransforms,
       });
       delete sideA[aId];
