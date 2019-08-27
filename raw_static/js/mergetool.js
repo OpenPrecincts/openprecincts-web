@@ -104,27 +104,64 @@ class Matched extends React.Component {
   }
 }
 
+/* temporary random data functions */
+
+const words = [
+  "Sandy", "Bethel", "Tucker", "Capps", "Forrest", "Forset",
+  "Aberdeen", "Thomas", "Armstrong", "Phenix", "Wythe", "Phoebus",
+  "Smith", "McCoughtan", "Bryan", "Asbury", "Phillips", "Langley",
+  "Booker", "Burbank", "Machen", "Mallory"
+];
+
+function choose(choices) {
+  var index = Math.floor(Math.random() * choices.length);
+  return choices[index];
+}
+
+function loadElectionPrecincts(n) {
+  var sideA = {};
+  var sideB = {};
+
+  for(var i=1; i < n; ++i) {
+    var name = choose(words);
+    var r = Math.random();
+
+    if (r < 0.5) {
+      name = name + " " + Math.floor(Math.random() * 20);
+    } else {
+      name = name + choose([" ", "-", "/", "--", "+"]) + choose(words);
+    }
+
+    sideA[i] = {name: name};
+
+    if (Math.random() < 0.4) {
+      name = name.toUpperCase();
+    }
+    if (Math.random() < 0.3) {
+      // add a typo
+      var pos = Math.floor(Math.random() * 6);
+      name = name.slice(0, pos) + name.slice(pos+1);
+    }
+    if (Math.random() < 0.3) {
+      name = name.replace(" ", "      ");
+    }
+    if (Math.random() < 0.1) {
+      name = name[0] + Math.floor(Math.random() * 100000);
+    }
+    sideB[200 + i] = {name: name};
+  }
+
+  return {sideA: sideA, sideB: sideB};
+}
+
 
 export default class MergeTool extends React.Component {
   constructor(props) {
     super(props);
+    const d = loadElectionPrecincts(80);
     this.state = {
-      sideA: {
-        101: {name: "Sloppy 1"},
-        102: {name: "Sloppy 2"},
-        103: {name: "Sloppy 3"},
-        104: {name: "Cheeseboy"},
-        105: {name: "Hurricane Puffy"},
-        106: {name: "Zagnut"},
-      },
-      sideB: {
-        201: {name: "SLOPPY 01"},
-        202: {name: "SLOPPY 02"},
-        203: {name: "SLOPPY 03"},
-        204: {name: "C001"},
-        205: {name: "S001"},
-        206: {name: "Z001"},
-      },
+      sideA: d.sideA,
+      sideB: d.sideB,
       matched: [],
       activeTransforms: [],
       proposedMatches: [],
