@@ -11,19 +11,18 @@ function stripZeroes(s) {
 }
 
 const TRANSFORMS = {
-  "normalize": {name: "Normalize Case", func: normalizeCase},
-  "strip-zeroes": {name: "Strip Zeroes", func: stripZeroes},
-}
+  normalize: { name: "Normalize Case", func: normalizeCase },
+  "strip-zeroes": { name: "Strip Zeroes", func: stripZeroes },
+};
 
 function applyTransforms(s, transforms) {
   var result = s;
-  for(var t of transforms) {
+  for (var t of transforms) {
     var tfunc = TRANSFORMS[t].func;
     result = tfunc(result);
   }
   return result;
 }
-
 
 class MergeTable extends React.Component {
   constructor(props) {
@@ -42,11 +41,15 @@ class MergeTable extends React.Component {
       color = "red";
     }
     return (
-      <tr key={k} onClick={() => this.props.rowClick(k)} style={{backgroundColor: color}}>
+      <tr
+        key={k}
+        onClick={() => this.props.rowClick(k)}
+        style={{ backgroundColor: color }}
+      >
         <td>{e.name}</td>
         <td>{e.transformed}</td>
       </tr>
-    )
+    );
   }
 
   render() {
@@ -60,15 +63,12 @@ class MergeTable extends React.Component {
               <th>Transformed</th>
             </tr>
           </thead>
-          <tbody>
-            {Object.entries(this.props.items).map(this.renderRow)}
-          </tbody>
+          <tbody>{Object.entries(this.props.items).map(this.renderRow)}</tbody>
         </table>
       </div>
     );
   }
 }
-
 
 class Proposed extends React.Component {
   renderRow(m) {
@@ -77,7 +77,7 @@ class Proposed extends React.Component {
         <td>{m.sideA.name}</td>
         <td>{m.sideB.name}</td>
       </tr>
-    )
+    );
   }
 
   render() {
@@ -91,15 +91,12 @@ class Proposed extends React.Component {
               <th>Side B</th>
             </tr>
           </thead>
-          <tbody>
-            {this.props.proposed.map(this.renderRow)}
-          </tbody>
+          <tbody>{this.props.proposed.map(this.renderRow)}</tbody>
         </table>
       </div>
     );
   }
 }
-
 
 class Matched extends React.Component {
   constructor(props) {
@@ -113,7 +110,7 @@ class Matched extends React.Component {
         <td>{m.sideB.name}</td>
         <td>{m.reason.join(", ")}</td>
       </tr>
-    )
+    );
   }
 
   render() {
@@ -128,9 +125,7 @@ class Matched extends React.Component {
               <th>Matched Via</th>
             </tr>
           </thead>
-          <tbody>
-            {this.props.matches.map(this.renderRow)}
-          </tbody>
+          <tbody>{this.props.matches.map(this.renderRow)}</tbody>
         </table>
       </div>
     );
@@ -140,10 +135,28 @@ class Matched extends React.Component {
 /* temporary random data functions */
 
 const words = [
-  "Sandy", "Bethel", "Tucker", "Capps", "Forrest", "Forset",
-  "Aberdeen", "Thomas", "Armstrong", "Phenix", "Wythe", "Phoebus",
-  "Smith", "McCoughtan", "Bryan", "Asbury", "Phillips", "Langley",
-  "Booker", "Burbank", "Machen", "Mallory"
+  "Sandy",
+  "Bethel",
+  "Tucker",
+  "Capps",
+  "Forrest",
+  "Forset",
+  "Aberdeen",
+  "Thomas",
+  "Armstrong",
+  "Phenix",
+  "Wythe",
+  "Phoebus",
+  "Smith",
+  "McCoughtan",
+  "Bryan",
+  "Asbury",
+  "Phillips",
+  "Langley",
+  "Booker",
+  "Burbank",
+  "Machen",
+  "Mallory",
 ];
 
 function choose(choices) {
@@ -155,7 +168,7 @@ function loadElectionPrecincts(n) {
   var sideA = {};
   var sideB = {};
 
-  for(var i=1; i < n; ++i) {
+  for (var i = 1; i < n; ++i) {
     var name = choose(words);
     var r = Math.random();
 
@@ -165,7 +178,7 @@ function loadElectionPrecincts(n) {
       name = name + choose([" ", "-", "/", "--", "+"]) + choose(words);
     }
 
-    sideA[i] = {id: i, name: name};
+    sideA[i] = { id: i, name: name };
 
     if (Math.random() < 0.4) {
       name = name.toUpperCase();
@@ -173,7 +186,7 @@ function loadElectionPrecincts(n) {
     if (Math.random() < 0.3) {
       // add a typo
       var pos = Math.floor(Math.random() * 6);
-      name = name.slice(0, pos) + name.slice(pos+1);
+      name = name.slice(0, pos) + name.slice(pos + 1);
     }
     if (Math.random() < 0.3) {
       name = name.replace(" ", "      ");
@@ -181,12 +194,11 @@ function loadElectionPrecincts(n) {
     if (Math.random() < 0.1) {
       name = name[0] + Math.floor(Math.random() * 100000);
     }
-    sideB[200 + i] = {id: 200+i, name: name};
+    sideB[200 + i] = { id: 200 + i, name: name };
   }
 
-  return {sideA: sideA, sideB: sideB};
+  return { sideA: sideA, sideB: sideB };
 }
-
 
 export default class MergeTool extends React.Component {
   constructor(props) {
@@ -214,8 +226,8 @@ export default class MergeTool extends React.Component {
 
   checkMatches(sideA, sideB) {
     var proposedMatches = [];
-    for(var [aId, a] of Object.entries(sideA)) {
-      for(var [bId, b] of Object.entries(sideB)) {
+    for (var [aId, a] of Object.entries(sideA)) {
+      for (var [bId, b] of Object.entries(sideB)) {
         if (a.transformed === b.transformed) {
           proposedMatches.push({
             sideA: a,
@@ -232,60 +244,60 @@ export default class MergeTool extends React.Component {
 
   addTransform() {
     var transforms = [...this.state.activeTransforms];
-    if(!transforms.includes(this.transformSelectRef.current.value)) {
+    if (!transforms.includes(this.transformSelectRef.current.value)) {
       transforms.push(this.transformSelectRef.current.value);
       this.refreshTransforms(transforms);
     }
   }
 
   acceptProposed() {
-    var sideA = {...this.state.sideA};
-    var sideB = {...this.state.sideB};
+    var sideA = { ...this.state.sideA };
+    var sideB = { ...this.state.sideB };
     var matched = [...this.state.matched];
-    for(var match of this.state.proposedMatches) {
+    for (var match of this.state.proposedMatches) {
       matched.push(match);
       delete sideA[match.sideA.id];
       delete sideB[match.sideB.id];
     }
-    this.setState({matched, sideA, sideB, proposedMatches: []});
+    this.setState({ matched, sideA, sideB, proposedMatches: [] });
   }
 
   mergeRowClick(clickedId) {
-    var sideA = {...this.state.sideA};
-    var sideB = {...this.state.sideB};
+    var sideA = { ...this.state.sideA };
+    var sideB = { ...this.state.sideB };
     var side;
 
-    if(clickedId in sideA) {
+    if (clickedId in sideA) {
       side = sideA;
       name = "sideA";
-    } else if(clickedId in sideB) {
+    } else if (clickedId in sideB) {
       side = sideB;
       name = "sideB";
     }
 
-    for(var id in side) {
-      if(id === clickedId) {
+    for (var id in side) {
+      if (id === clickedId) {
         side[id].clicked = !side[id].clicked;
       } else {
         side[id].clicked = false;
       }
     }
-    this.setState({name: side});
+    this.setState({ name: side });
   }
 
   refreshTransforms(transforms) {
-    var sideA = {...this.state.sideA};
-    var sideB = {...this.state.sideB};
+    var sideA = { ...this.state.sideA };
+    var sideB = { ...this.state.sideB };
 
-    for(var e of Object.values(sideA)) {
+    for (var e of Object.values(sideA)) {
       e.transformed = applyTransforms(e.name, transforms);
       e.matched = 0;
     }
-    for(var e of Object.values(sideB)) {
+    for (var e of Object.values(sideB)) {
       e.transformed = applyTransforms(e.name, transforms);
       e.matched = 0;
     }
-    const proposedMatches = this.checkMatches(sideA, sideB)
+    const proposedMatches = this.checkMatches(sideA, sideB);
 
     this.setState({
       activeTransforms: transforms,
@@ -297,54 +309,74 @@ export default class MergeTool extends React.Component {
 
   acceptManual(e) {
     // if they hit enter, accept clicked
-    if(e.keyCode === 13) {
+    if (e.keyCode === 13) {
       var aSelected, bSelected;
-      for(var aId in this.state.sideA) {
-        if(this.state.sideA[aId].clicked) {
+      for (var aId in this.state.sideA) {
+        if (this.state.sideA[aId].clicked) {
           aSelected = aId;
           break;
         }
       }
-      for(var bId in this.state.sideB) {
-        if(this.state.sideB[bId].clicked) {
+      for (var bId in this.state.sideB) {
+        if (this.state.sideB[bId].clicked) {
           bSelected = bId;
           break;
         }
       }
 
       // two are selected
-      if(aSelected && bSelected) {
-        var sideA = {...this.state.sideA};
-        var sideB = {...this.state.sideB};
+      if (aSelected && bSelected) {
+        var sideA = { ...this.state.sideA };
+        var sideB = { ...this.state.sideB };
         var matched = [...this.state.matched];
         matched.push({
           sideA: sideA[aSelected],
           sideB: sideB[bSelected],
-          reason: ["manual"]
+          reason: ["manual"],
         });
         delete sideA[aSelected];
         delete sideB[bSelected];
-        this.setState({matched, sideA, sideB});
+        this.setState({ matched, sideA, sideB });
       }
     }
   }
 
   render() {
     return (
-      <div onKeyDown={this.acceptManual} tabIndex="0" style={{outline: "none"}}>
+      <div
+        onKeyDown={this.acceptManual}
+        tabIndex="0"
+        style={{ outline: "none" }}
+      >
         <div className="columns">
           <div className="column">
-            <MergeTable title="Election Precincts" items={this.state.sideA} transforms={this.state.activeTransforms} rowClick={this.mergeRowClick} />
+            <MergeTable
+              title="Election Precincts"
+              items={this.state.sideA}
+              transforms={this.state.activeTransforms}
+              rowClick={this.mergeRowClick}
+            />
           </div>
           <div className="column">
-            <MergeTable title="Shapefile Precincts" items={this.state.sideB} transforms={this.state.activeTransforms} rowClick={this.mergeRowClick} />
+            <MergeTable
+              title="Shapefile Precincts"
+              items={this.state.sideB}
+              transforms={this.state.activeTransforms}
+              rowClick={this.mergeRowClick}
+            />
           </div>
         </div>
 
         <div>
           <select className="select" ref={this.transformSelectRef}>
-            {Object.entries(TRANSFORMS).map(([k, v]) => (
-              this.state.activeTransforms.includes(k) ? "" : <option key={k} value={k}>{v.name}</option>)
+            {Object.entries(TRANSFORMS).map(([k, v]) =>
+              this.state.activeTransforms.includes(k) ? (
+                ""
+              ) : (
+                <option key={k} value={k}>
+                  {v.name}
+                </option>
+              )
             )}
           </select>
           <button className="button" onClick={this.addTransform}>
@@ -354,7 +386,9 @@ export default class MergeTool extends React.Component {
             Reset Transforms
           </button>
           <ul>
-            {this.state.activeTransforms.map((t) => <li key={t}>{t}</li>)}
+            {this.state.activeTransforms.map(t => (
+              <li key={t}>{t}</li>
+            ))}
           </ul>
         </div>
 

@@ -68,9 +68,12 @@ window.addEventListener("load", () => {
         statuses: {
           "need-to-collect": { name: "Need to Collect", fill: "#999" },
           geography: { name: "Geography Collected", fill: "#6b94ae" },
-          "election-data-linked": { name: "Election Data Linked", fill: "#87d67f" },
+          "election-data-linked": {
+            name: "Election Data Linked",
+            fill: "#87d67f",
+          },
           "census-data-linked": { name: "Census Data Linked", fill: "#5cb253" },
-          "validated": { name: "Validated", fill: "#1c6414" },
+          validated: { name: "Validated", fill: "#1c6414" },
         },
         link_template: state => `/${state.toLowerCase()}`,
       }),
@@ -92,11 +95,7 @@ window.addEventListener("load", () => {
 
   const mt = document.querySelector('[data-hook="mergetool"]');
   if (mt) {
-    ReactDOM.render(
-      React.createElement(MergeTool, {
-      }),
-      mt
-    );
+    ReactDOM.render(React.createElement(MergeTool, {}), mt);
   }
 
   // bind hidden/reveal hooks
