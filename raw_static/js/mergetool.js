@@ -34,15 +34,17 @@ class MergeTable extends React.Component {
   renderRow(item) {
     const [k, e] = item;
     var color = "white";
-    if (e.matched === 1) {
+    if (e.clicked) {
+      color = "lightgray";
+    } else if (e.matched === 1) {
       color = "lightgreen";
     } else if (e.matched > 1) {
       color = "red";
     }
     return (
-      <tr key={k}>
+      <tr key={k} onClick={() => this.props.rowClick(k)} style={{backgroundColor: color}}>
         <td>{e.name}</td>
-        <td style={{backgroundColor: color}}>{e.transformed}</td>
+        <td>{e.transformed}</td>
       </tr>
     )
   }
@@ -202,6 +204,8 @@ export default class MergeTool extends React.Component {
 
     this.addTransform = this.addTransform.bind(this);
     this.acceptProposed = this.acceptProposed.bind(this);
+    this.mergeRowClick = this.mergeRowClick.bind(this);
+    this.acceptManual = this.acceptManual.bind(this);
   }
 
   componentDidMount() {
@@ -246,6 +250,29 @@ export default class MergeTool extends React.Component {
     this.setState({matched, sideA, sideB, proposedMatches: []});
   }
 
+  mergeRowClick(clickedId) {
+    var sideA = {...this.state.sideA};
+    var sideB = {...this.state.sideB};
+    var side;
+
+    if(clickedId in sideA) {
+      side = sideA;
+      name = "sideA";
+    } else if(clickedId in sideB) {
+      side = sideB;
+      name = "sideB";
+    }
+
+    for(var id in side) {
+      if(id === clickedId) {
+        side[id].clicked = !side[id].clicked;
+      } else {
+        side[id].clicked = false;
+      }
+    }
+    this.setState({name: side});
+  }
+
   refreshTransforms(transforms) {
     var sideA = {...this.state.sideA};
     var sideB = {...this.state.sideB};
@@ -268,15 +295,49 @@ export default class MergeTool extends React.Component {
     });
   }
 
+  acceptManual(e) {
+    // if they hit enter, accept clicked
+    if(e.keyCode === 13) {
+      var aSelected, bSelected;
+      for(var aId in this.state.sideA) {
+        if(this.state.sideA[aId].clicked) {
+          aSelected = aId;
+          break;
+        }
+      }
+      for(var bId in this.state.sideB) {
+        if(this.state.sideB[bId].clicked) {
+          bSelected = bId;
+          break;
+        }
+      }
+
+      // two are selected
+      if(aSelected && bSelected) {
+        var sideA = {...this.state.sideA};
+        var sideB = {...this.state.sideB};
+        var matched = [...this.state.matched];
+        matched.push({
+          sideA: sideA[aSelected],
+          sideB: sideB[bSelected],
+          reason: ["manual"]
+        });
+        delete sideA[aSelected];
+        delete sideB[bSelected];
+        this.setState({matched, sideA, sideB});
+      }
+    }
+  }
+
   render() {
     return (
-      <div>
+      <div onKeyDown={this.acceptManual} tabIndex="0" style={{outline: "none"}}>
         <div className="columns">
           <div className="column">
-            <MergeTable title="Election Precincts" items={this.state.sideA} transforms={this.state.activeTransforms} />
+            <MergeTable title="Election Precincts" items={this.state.sideA} transforms={this.state.activeTransforms} rowClick={this.mergeRowClick} />
           </div>
           <div className="column">
-            <MergeTable title="Shapefile Precincts" items={this.state.sideB} transforms={this.state.activeTransforms} />
+            <MergeTable title="Shapefile Precincts" items={this.state.sideB} transforms={this.state.activeTransforms} rowClick={this.mergeRowClick} />
           </div>
         </div>
 
