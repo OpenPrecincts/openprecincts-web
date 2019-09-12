@@ -2,7 +2,7 @@
 domain_name: staging.openprecincts.org
 django_environment:
   DEBUG: false
-  ADMINS: James Turk jpturk@princeton.edu
+  ADMINS: PGP openprecincts@gmail.com
   SECRET_KEY: "{{ lookup('aws_ssm', '/op/staging/SECRET_KEY') }}"
   DATABASE_URL: "{{ lookup('aws_ssm', '/op/staging/DATABASE_URL') }}"
   RAW_FILE_S3_BUCKET: openprecincts-data-staging
