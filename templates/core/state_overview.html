@@ -31,8 +31,8 @@
             <p> {{ state.status_text }} </p>
         </div>
 
-{# user permission status, only showing if logged in #}
-{% if not request.user.is_anonymous %}
+{# user permission status, only showing if logged in and crowdsourcing is enabled #}
+{% if not request.user.is_anonymous and state.show_crowdsourcing_tools %}
     <br>
     {% if user_can_contact or user_can_write %}
     <p class="has-text-success has-text-weight-semibold">
@@ -50,6 +50,8 @@
     </p>
     {% endif %}
 {% endif %}
+
+
     </div>
     </div>
 </div>
@@ -59,7 +61,7 @@
 {% include "_components/state_complete.html" %}
 {% endif %}
 
-{% if state.status != "unknown"  %}
+{% if state.status != "unknown" and state.show_crowdsourcing_tools %}
 
 <section class="section">
 <div class="container">    
