@@ -27,6 +27,8 @@ class State(models.Model):
         choices=((c.value, c.value) for c in StateStatus),
     )
 
+    show_crowdsourcing_tools = models.BooleanField(default=False)
+
     def current_cycle(self):
         return self.cycles.order_by("-year")[0]
 
