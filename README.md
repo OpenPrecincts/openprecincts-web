@@ -17,4 +17,4 @@ Updating an image:
 
 Running a management command:
 
-    docker-compose run django /venv/bin/poetry run ./manage.py migrate
+    docker-compose run --rm django /venv/bin/poetry run ./manage.py migrate
