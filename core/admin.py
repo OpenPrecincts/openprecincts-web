@@ -1,15 +1,19 @@
 from django.contrib import admin
-from .models import State, Locality, StateCycle, Election, ElectionResult
+from .models import State, Locality, StateCycle, Election, ElectionResult, StatewideElection
 
 
 class CycleAdmin(admin.TabularInline):
     model = StateCycle
 
 
+class StatewideElectionAdmin(admin.TabularInline):
+    model = StatewideElection
+
+
 class StateAdmin(admin.ModelAdmin):
     list_display = ("name", "status")
     readonly_fields = ("name", "abbreviation", "census_geoid")
-    inlines = [CycleAdmin]
+    inlines = [CycleAdmin, StatewideElectionAdmin]
 
 
 admin.site.register(State, StateAdmin)

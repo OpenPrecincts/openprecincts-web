@@ -107,6 +107,8 @@ def _locality_key(loc):
 
 def state_overview(request, state):
     state = get_object_or_404(State, pk=state.upper())
+    elections = list(state.elections.all())
+    print(elections)
 
     context = {"state": state}
 
@@ -177,6 +179,7 @@ def state_overview(request, state):
             "contributors": contributors,
             "final_zip_file": final_zip_file,
             "final_geojson_file": final_geojson_file,
+            "elections": elections,
         }
     )
     return render(request, "core/state_overview.html", context)

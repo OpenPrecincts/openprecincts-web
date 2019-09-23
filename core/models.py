@@ -53,6 +53,15 @@ class StateCycle(models.Model):
         return f"{self.state} {self.year}"
 
 
+class StatewideElection(models.Model):
+    state = models.ForeignKey(State, related_name="elections", on_delete=models.CASCADE)
+    election_name = models.CharField(max_length=100, default="")
+    dem_name = models.CharField(max_length=50, default="Democrat")
+    rep_name = models.CharField(max_length=50, default="Republican")
+    dem_property = models.CharField(max_length=20, default="")
+    rep_property = models.CharField(max_length=20, default="")
+
+
 class Locality(models.Model):
     """
     County equivalents, the atomic unit by which we'll collect data.
