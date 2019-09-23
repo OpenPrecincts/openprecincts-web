@@ -58,8 +58,10 @@ export default class PrecinctMap extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      demProperty: "G18DStSEN",
-      repProperty: "G18RStSEN",
+      demProperty: this.props.demProperty,
+      repProperty: this.props.repProperty,
+      demName: this.props.demName,
+      repName: this.props.repName,
       showCounties: true,
       popupCoordinates: null,
       demValue: 0,
@@ -179,8 +181,8 @@ export default class PrecinctMap extends React.Component {
         coordinates={this.state.popupCoordinates}
         precinctName="" // features[0].properties.precinct
         countyName="" // features[0].properties.locality
-        demName="Democrat"
-        repName="Republican"
+        demName={this.state.demName}
+        repName={this.state.repName}
         demValue={this.state.demValue}
         repValue={this.state.repValue}
       />

@@ -60,7 +60,14 @@
 {% if state.status == "election-data-linked" or state.status == "validated" or state.status == "census-data-linked" %}
 <div class="section">
 <div class="container">
-  <div data-hook="precinct-map">
+  <div data-hook="precinct-map"
+    data-state="{{ state.abbreviation.lower }}"
+    data-fips="{{ state.census_geoid }}"
+    data-dem-property="{{ elections.0.dem_property }}"
+    data-rep-property="{{ elections.0.rep_property }}"
+    data-dem-name="{{ elections.0.dem_name }}"
+    data-rep-name="{{ elections.0.rep_name }}"
+    >
   </div>
 
     <div class="center">

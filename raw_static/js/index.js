@@ -91,8 +91,12 @@ window.addEventListener("load", () => {
   if (pm) {
     ReactDOM.render(
       React.createElement(PrecinctMap, {
-        state: "nc",
-        fips: "37",
+        state: pm.dataset.state,
+        fips: pm.dataset.fips,
+        demProperty: pm.dataset.demProperty,
+        repProperty: pm.dataset.repProperty,
+        demName: pm.dataset.demName,
+        repName: pm.dataset.repName,
       }),
       pm
     );
