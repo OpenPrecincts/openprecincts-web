@@ -3,9 +3,8 @@
 
 <div class="section">
 <div class="container">
-  <nav id="precinct-menu"></nav>
-  <div id='precinct-map'></div>
-  <!-- <pre id='precinct-info'></pre> show coordinates -->
+  <div data-hook="precinct-map">
+  </div>
 
     <div class="center">
       {% if final_zip_file %}
@@ -29,125 +28,21 @@
 </div>
 </div>
 
-<script>
-
-mapboxgl.accessToken = 'pk.eyJ1Ijoib3BlbnByZWNpbmN0cyIsImEiOiJjanVqMHJtM3gwMXdyM3lzNmZkbmpxaXpwIn0.ZU772lvU-NeKNFAkukT6hw';
-
-var map = new mapboxgl.Map({
-  container: 'precinct-map',
-  style: 'mapbox://styles/openprecincts/cjuj606800n6l1fpord7d5xy6',
-  zoom: 6.5,
-});
-
-// show coordinates of mouse
-// map.on('mousemove', function(e) {
-//   document.getElementById('info').innerHTML =
-//     // e.point is the x, y coordinates of the mousemove event relative
-//     // to the top-left corner of the map
-//     JSON.stringify(e.point) + '<br />' +
-//     // e.lngLat is the longitude, latitude geographical position of the event
-//     JSON.stringify(e.lngLat);
-// });
-//
-//
+<!--
 
 //const demProperty = "G16DPRS";
 //const repProperty = "G16RPRS";
 
 const demName = "Democrat";
 const repName = "Republican";
-const demProperty = "G18DStSEN";
-const repProperty = "G18RStSEN";
-
 
 map.on('load', function() {
-    map.fitBounds(STATE_BOUNDS["{{ state.abbreviation.lower }}"], {
-    duration: 0
-  });
-
-
-  var layers = map.getStyle().layers;
-  // Find the index of the first symbol layer in the map style
-  var firstSymbolId;
-  for (var i = 0; i < layers.length; i++) {
-    if (layers[i].type === 'symbol') {
-      firstSymbolId = layers[i].id;
-      break;
-    }
-  }
-
-  map.addLayer({
-    id: 'precincts',
-    type: 'fill',
-    source: {
-      type: 'vector',
-      url: 'mapbox://openprecincts.{{ state.abbreviation.lower }}-precincts'
-    },
-    'source-layer': 'precincts',
-    paint: {
-      'fill-outline-color': ["case",
-        ["boolean", ["feature-state", "hover"], false],
-        "rgba(0,0,0,1)",
-        "rgba(0,0,0,0.0)"
-      ], // if we want to change the width of the outline on hover, we will unfortunately have to make a separate type: 'line' layer
-      'fill-color': [
-        "interpolate-lab", // perceptual color space interpolation
-        ['linear'],
-        ['/', ["to-number", ["get", demProperty]],
-          ['+', ["to-number", ["get", demProperty]],
-            ["to-number", ["get", repProperty]]
-          ]
-        ],
-        0, "red",
-        .5, "white", // note that, unlike functions, the "stops" are flat, not wrapped in two-element arrays
-        1, "blue"
-      ],
-      'fill-opacity': .5,
-    }
-  }, firstSymbolId);
-
-  map.addLayer({
-    id: 'counties',
-    type: 'line',
-    source: {
-      type: 'vector',
-      url: 'mapbox://openprecincts.us-counties'
-    },
-    'source-layer': 'us_counties',
-    paint: {
-      'line-color': "#777",
-      'line-width': 1,
-    }
-  });
-
-  map.addLayer({
-    id: 'counties_label',
-    type: 'symbol',
-    source: {
-      type: 'vector',
-      url: 'mapbox://openprecincts.3ow64t0q'
-    },
-    'source-layer': 'us_county_labels-1d656t',
-    layout: {
-      'text-field': '{NAME}',
-      'text-size': 11,
-    },
-    paint: {
-      'text-halo-width': 2,
-      'text-halo-color': 'rgba(255,255,255,0.7)'
-    }
-
-  });
-
-    map.setFilter('counties', ['==', 'STATEFP', '{{ state.census_geoid }}']);
-    map.setFilter('counties_label', ['==', 'STATEFP', '{{ state.census_geoid }}']);
-
-  function toFixed(value, precision) { //https://stackoverflow.com/questions/661562/how-to-format-a-float-in-javascript
+  function toFixed(value, precision) {
     var power = Math.pow(10, precision || 0);
     return String(Math.round(value * power) / power);
   }
 
-  function numberWithCommas(x) { // add thousands separators
+  function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
@@ -191,10 +86,7 @@ map.on('load', function() {
       </tbody>
     </table>
     `
-
-
-    // Populate the popup and set its coordinates
-    // based on the feature found.
+    // Populate the popup and set its coordinates based on the feature found.
     popup.setLngLat(coordinates)
       .setHTML(description)
       .addTo(map);
@@ -225,36 +117,4 @@ map.on('load', function() {
   });
 
 });
-
-toggleLayer(['counties_label', 'counties'], 'Counties'); // group county and county label into one button
-// toggleLayer(['precincts'], 'Precincts');
-
-
-function toggleLayer(ids, name) {
-  var link = document.createElement('a');
-  link.href = '#';
-  link.className = 'active';
-  link.textContent = name;
-
-  link.onclick = function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    for (layers in ids) {
-      var visibility = map.getLayoutProperty(ids[layers], 'visibility');
-      if (visibility === 'visible') {
-        map.setLayoutProperty(ids[layers], 'visibility', 'none');
-        this.className = '';
-      } else {
-        this.className = 'active';
-        map.setLayoutProperty(ids[layers], 'visibility', 'visible');
-      }
-    }
-
-  };
-
-  var layers = document.getElementById('precinct-menu');
-  layers.appendChild(link);
-}
-
-// right now, using point labels for counties. at some point, it will be better to do dynamic labeling like: https://medium.com/@yixu0215/dynamic-label-placement-with-mapbox-gl-js-turf-polylabel-1f84f1d4bf6b
-</script>
+-->

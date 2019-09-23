@@ -4,11 +4,13 @@
   "description": "OpenPrecincts web application",
   "dependencies": {
     "css-loader": "^2.1.0",
+    "mapbox-gl": "^1.3.1",
     "node-sass": "^4.12.0",
     "prettier": "^1.18.2",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-inlinesvg": "^0.8.4",
+    "react-mapbox-gl": "^4.6.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.29.3"

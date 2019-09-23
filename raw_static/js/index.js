@@ -5,9 +5,7 @@ import "../styles/main.scss";
 
 import StateMap from "./state-map";
 import FileBrowser from "./file-browser";
-import StateBounds from "./state-bounds";
-
-window.STATE_BOUNDS = StateBounds;
+import PrecinctMap from "./precinct-map";
 
 function reveal() {
   document.querySelector(`[data-hidden=${this.dataset.reveal}]`).style.display =
@@ -86,6 +84,17 @@ window.addEventListener("load", () => {
         columns: files_columns,
       }),
       fb
+    );
+  }
+
+  const pm = document.querySelector("[data-hook='precinct-map']");
+  if (pm) {
+    ReactDOM.render(
+      React.createElement(PrecinctMap, {
+        state: "nc",
+        fips: "37",
+      }),
+      pm
     );
   }
 
