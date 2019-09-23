@@ -13,11 +13,11 @@
     {% if state.status == "need-to-collect" %}
         <div class="state-status-collecting">
             <h4 class="title is-4">Status: Collection In Progress</h4>
-            <p>We are in the process of collecting &amp; cleaning data for {{ state }}, you can help us by collecting contact information or individual files below.</p>
+            <p>We are in the process of collecting &amp; cleaning data for {{ state }}.</p>
     {% elif state.status == "geography" %}
         <div class="state-status-cleaning">
             <h4 class="title is-4">Status: Cleaning In Progress</h4>
-            <p>We are in the process of cleaning data for {{ state }}, stay tuned for more info on how you can help!</p>
+            <p>We are in the process of cleaning data for {{ state }}!</p>
     {% elif state.status == "election-data-linked" or state.status == "census-data-linked" %}
         <div class="state-status-available">
             <h4 class="title is-4">Status: Data Available</h4>
