@@ -32,4 +32,4 @@ geojson_to_mapbox = chain(geojson_to_mbtile.s(), mbtile_upload.s())
 
 
 # add tasks here to expose in admin
-TASK_NAMES = ["zip_files", "to_geojson", "geojson_to_mbtile", "geojson_to_mapbox"]
+TASK_NAMES = ["zip_files", "to_geojson", "geojson_to_mapbox"]
