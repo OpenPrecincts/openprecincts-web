@@ -42,7 +42,7 @@ class Transformation:
 
     def save_output(self, output_bytes, filename, user):
         return upload_file(
-            stage="I",
+            stage="F",
             locality=self.files[0].locality,
             mime_type=self.mime_type,
             size=len(output_bytes.getvalue()),
