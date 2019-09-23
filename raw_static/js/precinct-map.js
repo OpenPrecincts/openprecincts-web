@@ -1,11 +1,58 @@
 import React from "react";
-import ReactMapboxGl, { Layer, Feature, Source } from 'react-mapbox-gl';
+import ReactMapboxGl, { Layer, Popup, Source } from 'react-mapbox-gl';
 import StateBounds from "./state-bounds";
+
+function toFixed(value, precision) {
+  var power = Math.pow(10, precision || 0);
+  return String(Math.round(value * power) / power);
+}
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 
 const Map = ReactMapboxGl({
   accessToken: 'pk.eyJ1Ijoib3BlbnByZWNpbmN0cyIsImEiOiJjanVqMHJtM3gwMXdyM3lzNmZkbmpxaXpwIn0.ZU772lvU-NeKNFAkukT6hw'
 });
+
+
+class ElectionResultPopup extends React.Component {
+  render() {
+    if (!this.props.coordinates) {
+      return null;
+    }
+
+    return <Popup
+      anchor="bottom-left"
+      coordinates={this.props.coordinates}
+      >
+    <div className="precinct-name">{this.props.precinctName}</div>
+    <div className="county-name">{this.props.countyName}</div>
+    <table className="elec-table">
+      <thead>
+        <tr>
+          <th className='cand'>Candidate</th>
+          <th className='votes'>Votes</th>
+          <th className='pct'>%</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td className='cand'><span className="party-dem">&#9679;</span> {this.props.demName} </td>
+          <td>{numberWithCommas(this.props.demValue)}</td>
+          <td>{toFixed((100*parseInt(this.props.demValue) / (parseInt(this.props.demValue) + parseInt(this.props.repValue))), 1)}</td>
+        </tr>
+        <tr>
+          <td className='cand'><span className="party-rep">&#9679;</span> {this.props.repName}</td>
+          <td>{numberWithCommas(this.props.repValue)}</td>
+          <td>{toFixed((100*parseInt(this.props.repValue) / (parseInt(this.props.demValue) + parseInt(this.props.repValue))), 1)}</td>
+        </tr>
+      </tbody>
+    </table>
+    </Popup>
+  }
+}
 
 export default class PrecinctMap extends React.Component {
   constructor(props) {
@@ -14,16 +61,34 @@ export default class PrecinctMap extends React.Component {
       demProperty: "G18DStSEN",
       repProperty: "G18RStSEN",
       showCounties: true,
+      popupCoordinates: null,
+      demValue: 0,
+      repValue: 0,
     };
 
     this.toggleCounties = this.toggleCounties.bind(this);
+    this.onMouseMove = this.onMouseMove.bind(this);
+    this.onMouseLeave = this.onMouseLeave.bind(this);
   }
 
   toggleCounties(e) {
-    console.log(e);
     this.setState({showCounties: !this.state.showCounties});
     e.preventDefault();
     e.stopPropagation();
+  }
+
+  onMouseMove(e) {
+    this.setState({
+      popupCoordinates: e.lngLat,
+      demValue: e.features[0].properties[this.state.demProperty],
+      repValue: e.features[0].properties[this.state.repProperty],
+    });
+  }
+
+  onMouseLeave(e) {
+    this.setState({
+      popupCoordinates: null
+    });
   }
 
   render() {
@@ -88,6 +153,8 @@ export default class PrecinctMap extends React.Component {
         type="fill"
         sourceId="precincts"
         sourceLayer="precincts"
+        onMouseMove={this.onMouseMove}
+        onMouseLeave={this.onMouseLeave}
         paint={{
           'fill-outline-color': ["case",
             ["boolean", ["feature-state", "hover"], false],
@@ -107,6 +174,17 @@ export default class PrecinctMap extends React.Component {
           'fill-opacity': .5,
         }}
       />
+
+      <ElectionResultPopup
+        coordinates={this.state.popupCoordinates}
+        precinctName="" // features[0].properties.precinct
+        countyName="" // features[0].properties.locality
+        demName="Democrat"
+        repName="Republican"
+        demValue={this.state.demValue}
+        repValue={this.state.repValue}
+      />
+
     </Map>
     </div>
   </div>
