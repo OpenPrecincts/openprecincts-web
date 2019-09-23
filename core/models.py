@@ -4,11 +4,11 @@ from markupfield.fields import MarkupField
 
 
 class StateStatus(Enum):
-    UNKNOWN = "unknown"
-    COLLECTION = "collection"
-    CLEANING = "cleaning"
-    PRIOR_YEAR = "prior-year"
-    AVAILABLE = "available"
+    NEED_TO_COLLECT = "need-to-collect"
+    GEOGRAPHY = "geography"
+    ELECTION_DATA_LINKED = "election-data-linked"
+    CENSUS_DATA_LINKED = "census-data-linked"
+    VALIDATED = "validated"
 
 
 class State(models.Model):
@@ -22,13 +22,24 @@ class State(models.Model):
 
     status_text = MarkupField(markup_type="markdown", default="")
     status = models.CharField(
-        max_length=10,
-        default=StateStatus.UNKNOWN.value,
+        max_length=30,
+        default=StateStatus.NEED_TO_COLLECT.value,
         choices=((c.value, c.value) for c in StateStatus),
     )
 
+    show_crowdsourcing_tools = models.BooleanField(default=False)
+
     def current_cycle(self):
         return self.cycles.order_by("-year")[0]
+
+    def display_status(self):
+        return {
+            StateStatus.NEED_TO_COLLECT.value: "Need to Collect Data",
+            StateStatus.GEOGRAPHY.value: "Geography Collected",
+            StateStatus.ELECTION_DATA_LINKED.value: "Election Data Linked",
+            StateStatus.CENSUS_DATA_LINKED.value: "Census Data Linked",
+            StateStatus.VALIDATED.value: "Validated",
+        }[self.status]
 
     def __str__(self):
         return self.name

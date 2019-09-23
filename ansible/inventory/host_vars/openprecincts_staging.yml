@@ -1,0 +1,12 @@
+---
+domain_name: staging.openprecincts.org
+django_environment:
+  DEBUG: false
+  ADMINS: PGP openprecincts@gmail.com
+  SECRET_KEY: "{{ lookup('aws_ssm', '/op/staging/SECRET_KEY') }}"
+  DATABASE_URL: "{{ lookup('aws_ssm', '/op/staging/DATABASE_URL') }}"
+  RAW_FILE_S3_BUCKET: openprecincts-data-staging
+  EMAIL_HOST: email-smtp.us-east-1.amazonaws.com
+  EMAIL_HOST_USER: "{{ lookup('aws_ssm', '/op/SMTP_USER') }}"
+  EMAIL_HOST_PASSWORD: "{{ lookup('aws_ssm', '/op/SMTP_PASSWORD') }}"
+  CELERY_BROKER_URL: pyamqp://localhost

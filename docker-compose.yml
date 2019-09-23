@@ -22,7 +22,7 @@ services:
       - .:/code
   django:
     build: .
-    command: /venv/bin/pipenv run ./manage.py runserver 0.0.0.0:8000
+    command: /venv/bin/poetry run ./manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
@@ -32,7 +32,7 @@ services:
       - RAW_FILE_S3_BUCKET
   celery:
     build: .
-    command: /venv/bin/pipenv run celery -A openprecincts_web worker -l info
+    command: /venv/bin/poetry run celery -A openprecincts_web worker -l info
     volumes:
       - .:/code
     environment:

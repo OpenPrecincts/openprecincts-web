@@ -1,0 +1,29 @@
+---
+- name: enable https transport
+  apt:
+    update_cache: yes
+    pkg:
+      - apt-transport-https
+- name: add rabbitmq apt key
+  apt_key:
+    keyserver: hkps.pool.sks-keyservers.net
+    id: 6B73A36E6026DFCA
+- name: add rabbitmq erlang repo
+  apt_repository: 
+    repo: deb http://dl.bintray.com/rabbitmq-erlang/debian bionic erlang-21.x
+    state: present
+- name: add rabbitmq repo
+  apt_repository: 
+    repo: deb http://dl.bintray.com/rabbitmq/debian bionic main
+    state: present
+- name: install rabbitmq server
+  apt:
+    pkg:
+      - rabbitmq-server
+- name: add ulimit config to file
+  blockinfile:
+    path: /etc/systemd/system/rabbitmq-server.service.d/limits.conf
+    create: yes
+    block: |
+      [Service]
+      LimitNOFILE=64000

@@ -1,7 +1,5 @@
 import os
 import dj_database_url
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -24,9 +22,6 @@ if os.environ.get("DEBUG", "true").lower() == "false":
         DEFAULT_FROM_EMAIL
     ) = SERVER_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "bounce@openprecincts.org")
     RAW_FILE_S3_BUCKET = os.environ["RAW_FILE_S3_BUCKET"]
-
-    SENTRY_DSN = os.environ.get("SENTRY_DSN")
-    sentry_sdk.init(dsn=SENTRY_DSN, integrations=[DjangoIntegration()])
 else:
     # dev settings
     DEBUG = True

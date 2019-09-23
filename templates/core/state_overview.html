@@ -10,33 +10,29 @@
 
     <div class="columns">
     <div class="column">
-    {% if state.status == "unknown" %}
-        <div class="state-status-unknown">
-            <h4 class="title is-4">Status: Pending</h4>
-            <p>We haven't yet determined the best course of action for {{ state }}.  If you're interested in helping us get started <a href="mailto:openprecincts@gmail.com">contact us</a> and we'd be glad to work with you to get things started here!</p>
-    {% elif state.status == "collection" %}
+    {% if state.status == "need-to-collect" %}
         <div class="state-status-collecting">
             <h4 class="title is-4">Status: Collection In Progress</h4>
-            <p>We are in the process of collecting &amp; cleaning data for {{ state }}, you can help us by collecting contact information or individual files below.</p>
-    {% elif state.status == "cleaning" %}
+            <p>We are in the process of collecting &amp; cleaning data for {{ state }}.</p>
+    {% elif state.status == "geography" %}
         <div class="state-status-cleaning">
             <h4 class="title is-4">Status: Cleaning In Progress</h4>
-            <p>We are in the process of cleaning data for {{ state }}, stay tuned for more info on how you can help!</p>
-    {% elif state.status == "prior-year" %}
-        <div class="state-status-prior-year">
-            <h4 class="title is-4">Status: Available for Prior Years</h4>
-            <p>{{ state }} data is available for prior years below, stay tuned for updates on more recent data.</p>
-    {% elif state.status == "available" %}
+            <p>We are in the process of cleaning data for {{ state }}!</p>
+    {% elif state.status == "election-data-linked" or state.status == "census-data-linked" %}
         <div class="state-status-available">
-            <h4 class="title is-4">Status: Available</h4>
+            <h4 class="title is-4">Status: Data Available</h4>
             <p>{{ state }} data is currently up-to-date and available below.</p>
+    {% elif state.status == "validated" %}
+        <div class="state-status-available">
+            <h4 class="title is-4">Status: Validated</h4>
+            <p>{{ state }} data is currently up-to-date, validated, and available below.</p>
     {% endif %}
             <br>
             <p> {{ state.status_text }} </p>
         </div>
 
-{# user permission status, only showing if logged in #}
-{% if not request.user.is_anonymous %}
+{# user permission status, only showing if logged in and crowdsourcing is enabled #}
+{% if not request.user.is_anonymous and state.show_crowdsourcing_tools %}
     <br>
     {% if user_can_contact or user_can_write %}
     <p class="has-text-success has-text-weight-semibold">
@@ -54,22 +50,18 @@
     </p>
     {% endif %}
 {% endif %}
+
+
     </div>
     </div>
 </div>
 </section>
 
-{% if state.status == "available" or state.status == "prior-year" %}
+{% if state.status == "election-data-linked" or state.status == "validated" or state.status == "census-data-linked" %}
 {% include "_components/state_complete.html" %}
 {% endif %}
 
-{% if state.status != "unknown"  %}
-
-<section class="section">
-<div class="container">    
-    {% include "_components/leaderboard.html" %}
-</div>
-</section>
+{% if state.status != "unknown" and state.show_crowdsourcing_tools %}
 
 <section class="section">
 <div class="container">    

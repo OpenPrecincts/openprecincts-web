@@ -13,9 +13,8 @@ before_install:
   - sudo apt-get install -y gdal-bin
   - git clone https://github.com/mapbox/tippecanoe.git; cd tippecanoe; make -j; sudo make install; cd ..
 install:
-  - pip install pipenv
-  - pipenv install --dev
-  - pipenv graph
+  - pip install poetry
+  - poetry install
   - npm ci
   - npm run build
 # before_script:
@@ -24,9 +23,9 @@ install:
 #     - psql -c "CREATE EXTENSION postgis;" -U postgres -d test
 jobs:
   include:
-    - script: pipenv run pytest --ds=openprecincts_web.test_settings --reuse-db -v
+    - script: poetry run pytest --ds=openprecincts_web.test_settings --reuse-db -v
       name: "Run Tests"
-    - script: pipenv run flake8
+    - script: poetry run flake8
       name: "flake8"
 notifications:
     email:

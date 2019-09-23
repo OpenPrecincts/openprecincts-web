@@ -28,5 +28,5 @@ RUN wget https://deb.nodesource.com/setup_10.x -O nodesource.sh \
 
 RUN set -ex \
     && python3.7 -m venv /venv \
-    && /venv/bin/pip install -U pip pipenv \
-    && /venv/bin/pipenv install --dev
+    && /venv/bin/pip install -U pip poetry \
+    && /venv/bin/poetry install
