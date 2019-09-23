@@ -32,10 +32,6 @@
 <script>
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoib3BlbnByZWNpbmN0cyIsImEiOiJjanVqMHJtM3gwMXdyM3lzNmZkbmpxaXpwIn0.ZU772lvU-NeKNFAkukT6hw';
-var bounds = [
-  [-84, 36.3], // SW coordinates
-  [-74.7, 39.7] // NE coordinates
-]
 
 var map = new mapboxgl.Map({
   container: 'precinct-map',
@@ -54,6 +50,14 @@ var map = new mapboxgl.Map({
 // });
 //
 //
+
+//const demProperty = "G16DPRS";
+//const repProperty = "G16RPRS";
+
+const demName = "Democrat";
+const repName = "Republican";
+const demProperty = "G18DStSEN";
+const repProperty = "G18RStSEN";
 
 
 map.on('load', function() {
@@ -89,9 +93,9 @@ map.on('load', function() {
       'fill-color': [
         "interpolate-lab", // perceptual color space interpolation
         ['linear'],
-        ['/', ["to-number", ["get", "G16DPRS"]],
-          ['+', ["to-number", ["get", "G16DPRS"]],
-            ["to-number", ["get", "G16RPRS"]]
+        ['/', ["to-number", ["get", demProperty]],
+          ['+', ["to-number", ["get", demProperty]],
+            ["to-number", ["get", repProperty]]
           ]
         ],
         0, "red",
@@ -163,8 +167,8 @@ map.on('load', function() {
     var coordinates = e.lngLat;
     var description =
       `
-    <div class="precinct-name">${e.features[0].properties.precinct}</div>
-    <div class="county-name">${e.features[0].properties.locality}</div>
+    <div class="precinct-name">${e.features[0].properties.precinct || ""}</div>
+    <div class="county-name">${e.features[0].properties.locality || ""}</div>
     <table class="elec-table">
       <thead>
         <tr>
@@ -175,14 +179,14 @@ map.on('load', function() {
       </thead>
       <tbody>
         <tr>
-          <td class='cand'><span class="party-dem">&#9679;</span> Clinton (2016)</td>
-          <td>${numberWithCommas(e.features[0].properties.G16DPRS)}</td>
-          <td>${toFixed((100*parseInt(e.features[0].properties.G16DPRS) / (parseInt(e.features[0].properties.G16DPRS) + parseInt(e.features[0].properties.G16RPRS))), 1)}</td>
+          <td class='cand'><span class="party-dem">&#9679;</span> ${demName} </td>
+          <td>${numberWithCommas(e.features[0].properties[demProperty])}</td>
+          <td>${toFixed((100*parseInt(e.features[0].properties[demProperty]) / (parseInt(e.features[0].properties[demProperty]) + parseInt(e.features[0].properties[repProperty]))), 1)}</td>
         </tr>
         <tr>
-          <td class='cand'><span class="party-rep">&#9679;</span> Trump (2016)</td>
-          <td>${numberWithCommas(e.features[0].properties.G16RPRS)}</td>
-          <td>${toFixed((100*parseInt(e.features[0].properties.G16RPRS) / (parseInt(e.features[0].properties.G16DPRS) + parseInt(e.features[0].properties.G16RPRS))), 1)}</td>
+          <td class='cand'><span class="party-rep">&#9679;</span> ${repName}</td>
+          <td>${numberWithCommas(e.features[0].properties[repProperty])}</td>
+          <td>${toFixed((100*parseInt(e.features[0].properties[repProperty]) / (parseInt(e.features[0].properties[demProperty]) + parseInt(e.features[0].properties[repProperty]))), 1)}</td>
         </tr>
       </tbody>
     </table>
