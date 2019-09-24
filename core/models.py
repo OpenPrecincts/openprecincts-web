@@ -75,7 +75,7 @@ class StatewideElection(models.Model):
             ("H", "House of Representatives"),
             ("SL", "State Lower Chamber"),
             ("SU", "State Senate"),
-        )
+        ),
     )
 
     def __str__(self):

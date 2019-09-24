@@ -20,7 +20,9 @@ def upload_shapefile(data, dataset_name):
     while True:
         status = service.status(upload_id)
         if status.status_code != 200:
-            raise MapboxException(f"Status check failed with status {status.status_code}")
+            raise MapboxException(
+                f"Status check failed with status {status.status_code}"
+            )
         status = status.json()
         if status["complete"]:
             break
@@ -33,8 +35,7 @@ def upload_shapefile(data, dataset_name):
 
 def upload_mbtiles_for_state(state):
     f = File.active_files.get(
-        cycle__state=state.upper(),
-        mime_type="application/vnd.mapbox-vector-tile",
+        cycle__state=state.upper(), mime_type="application/vnd.mapbox-vector-tile"
     )
     data = get_from_s3(f)
     upload_shapefile(data, f"{state.lower()}-precincts")

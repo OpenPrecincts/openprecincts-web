@@ -100,11 +100,19 @@ export default class PrecinctMap extends React.Component {
 
   onMouseMove(e) {
     if (!(this.state.demProperty in e.features[0].properties)) {
-      console.warn(`demProperty "${this.state.demProperty}" is not in ${Object.keys(e.features[0].properties)}`);
+      console.warn(
+        `demProperty "${this.state.demProperty}" is not in ${Object.keys(
+          e.features[0].properties
+        )}`
+      );
       return;
     }
     if (!(this.state.repProperty in e.features[0].properties)) {
-      console.warn(`repProperty "${this.state.repProperty}" is not in ${Object.keys(e.features[0].properties)}`);
+      console.warn(
+        `repProperty "${this.state.repProperty}" is not in ${Object.keys(
+          e.features[0].properties
+        )}`
+      );
       return;
     }
 

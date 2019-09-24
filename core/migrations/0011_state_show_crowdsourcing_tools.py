@@ -5,14 +5,12 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('core', '0010_auto_20190820_1650'),
-    ]
+    dependencies = [("core", "0010_auto_20190820_1650")]
 
     operations = [
         migrations.AddField(
-            model_name='state',
-            name='show_crowdsourcing_tools',
+            model_name="state",
+            name="show_crowdsourcing_tools",
             field=models.BooleanField(default=False),
-        ),
+        )
     ]

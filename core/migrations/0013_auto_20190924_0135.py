@@ -6,33 +6,49 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('core', '0012_statewideelection'),
-    ]
+    dependencies = [("core", "0012_statewideelection")]
 
     operations = [
         migrations.AddField(
-            model_name='statewideelection',
-            name='cycle',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='elections', to='core.StateCycle'),
+            model_name="statewideelection",
+            name="cycle",
+            field=models.ForeignKey(
+                default=1,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="elections",
+                to="core.StateCycle",
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='statewideelection',
-            name='is_general',
+            model_name="statewideelection",
+            name="is_general",
             field=models.BooleanField(default=True),
         ),
         migrations.AddField(
-            model_name='statewideelection',
-            name='office_type',
-            field=models.CharField(choices=[('P', 'President'), ('G', 'Governor'), ('S', 'Senate'), ('H', 'House of Representatives'), ('SL', 'State Lower Chamber'), ('SU', 'State Senate')], default='P', max_length=2),
+            model_name="statewideelection",
+            name="office_type",
+            field=models.CharField(
+                choices=[
+                    ("P", "President"),
+                    ("G", "Governor"),
+                    ("S", "Senate"),
+                    ("H", "House of Representatives"),
+                    ("SL", "State Lower Chamber"),
+                    ("SU", "State Senate"),
+                ],
+                default="P",
+                max_length=2,
+            ),
         ),
         migrations.AlterField(
-            model_name='electionresult',
-            name='election',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='results', to='core.StatewideElection'),
+            model_name="electionresult",
+            name="election",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="results",
+                to="core.StatewideElection",
+            ),
         ),
-        migrations.DeleteModel(
-            name='Election',
-        ),
+        migrations.DeleteModel(name="Election"),
     ]
