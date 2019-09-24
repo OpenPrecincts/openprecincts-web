@@ -66,6 +66,7 @@ def alter_files(request):
         ensure_permission(request.user, state, Permissions.ADMIN)
         transformation_func = getattr(tasks, transformation)
         transformation_func.delay(request.user.id, file_ids)
+        messages.info(request, f"Sent transformation {transformation} to queue.")
     elif alter_files:
         for f in files:
             ensure_permission(request.user, f.locality.state, Permissions.ADMIN)
