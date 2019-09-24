@@ -25,7 +25,7 @@ class ElectionResultPopup extends React.Component {
 
     return <Popup
       anchor="bottom-left"
-      coordinates={this.props.coordinates}
+      coordinates={[this.props.coordinates.lng, this.props.coordinates.lat]}
       >
     <div className="precinct-name">{this.props.precinctName}</div>
     <div className="county-name">{this.props.countyName}</div>
