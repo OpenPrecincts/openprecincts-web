@@ -141,8 +141,8 @@ export default class PrecinctMap extends React.Component {
         <div id="precinct-map">
           <Map
             style="mapbox://styles/openprecincts/cjuj606800n6l1fpord7d5xy6"
-            zoom={[6.5]}
             fitBounds={StateBounds[this.props.state]}
+            fitBoundsOptions={{ padding: 20, animate: false }}
           >
             <Source
               id="precincts"
