@@ -141,7 +141,6 @@ def emi():
     """ fixture for an EmailMessageInstance """
     user = User.objects.create(username="testuser")
     loc = Locality.objects.get(name="Wake County", state__abbreviation="NC")
-    loc.state.cycles.create(year="2020")
     anne = Official.objects.create(
         first_name="Anne", email="anne@example.com", locality=loc, created_by=user
     )

@@ -10,14 +10,10 @@ from ..models import File
 
 def validate_files_for_transformation(files):
     localities = set()
-    cycles = set()
     for f in files:
         localities.add(f.locality_id)
-        cycles.add(f.cycle_id)
     if len(localities) != 1:
         raise ValueError("files must all be from the same locality")
-    if len(cycles) != 1:
-        raise ValueError("files must all be from the same cycle")
 
 
 class CommandError(Exception):
@@ -47,7 +43,6 @@ class Transformation:
             mime_type=self.mime_type,
             size=len(output_bytes.getvalue()),
             created_by=user,
-            cycle=self.files[0].cycle,
             file_obj=output_bytes,
             from_transformation=self.__class__.__name__,
             filename=filename,

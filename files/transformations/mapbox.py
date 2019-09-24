@@ -35,7 +35,7 @@ def upload_shapefile(data, dataset_name):
 
 def upload_mbtiles_for_state(state):
     f = File.active_files.get(
-        cycle__state=state.upper(), mime_type="application/vnd.mapbox-vector-tile"
+        locality__state=state.upper(), mime_type="application/vnd.mapbox-vector-tile"
     )
     data = get_from_s3(f)
     upload_shapefile(data, f"{state.lower()}-precincts")
