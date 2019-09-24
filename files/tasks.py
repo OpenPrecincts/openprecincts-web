@@ -25,7 +25,7 @@ def geojson_to_mbtile(user, files):
 def mbtile_upload(file_id):
     f = File.objects.get(pk=file_id)
     data = get_from_s3(f)
-    upload_shapefile(data, f"{f.cycle.state.abbreviation.lower()}-precincts")
+    upload_shapefile(data, f"{f.locality.state.abbreviation.lower()}-precincts")
 
 
 geojson_to_mapbox = chain(geojson_to_mbtile.s(), mbtile_upload.s())

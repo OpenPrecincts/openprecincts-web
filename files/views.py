@@ -19,12 +19,10 @@ def upload_files(request):
 
     source_url = request.POST.get("source_url", "")
     stage = request.POST.get("stage", "S")
-    cycle = request.POST.get("cycle", None)
     for file in request.FILES.getlist("files"):
         upload_django_file(
             file,
             stage=stage,
-            cycle=cycle,
             locality=locality,
             created_by=request.user,
             source_url=source_url,
@@ -56,21 +54,21 @@ def alter_files(request):
     assert len(file_ids) == len(files)
 
     # ensure permission for state
-    state = files[0].cycle.state
+    state = files[0].locality.state
 
     if transformation and alter_files:
         messages.error(request, "Cannot set transformation and file alteration.")
     elif not transformation and not alter_files:
         messages.error(request, "Must set transformation or file alteration.")
     elif transformation:
-        # verify that all files have the same locality and cycle
+        # verify that all files have the same locality
         validate_files_for_transformation(files)
         ensure_permission(request.user, state, Permissions.ADMIN)
         transformation_func = getattr(tasks, transformation)
         transformation_func.delay(request.user.id, file_ids)
     elif alter_files:
         for f in files:
-            ensure_permission(request.user, f.cycle.state, Permissions.ADMIN)
+            ensure_permission(request.user, f.locality.state, Permissions.ADMIN)
             if alter_files == "make_final":
                 # can only move from intermediate to final
                 if f.stage == "I":

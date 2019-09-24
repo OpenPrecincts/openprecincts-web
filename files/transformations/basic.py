@@ -18,7 +18,7 @@ class ZipFiles(Transformation):
             zf.writestr(file.filename, fileobj.read())
         zf.close()
         buffer.seek(0)
-        # TODO: name after cycle?
+        # TODO: name after state?
         return buffer, "output.zip"
 
 

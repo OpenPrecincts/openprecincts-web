@@ -33,11 +33,10 @@ def _files_data(**query):
             "stage": f.get_stage_display(),
             "filename": f.filename,
             "locality": str(f.locality),
-            "cycle": str(f.cycle),
             "download_url": reverse("download", kwargs={"uuid": f.id}),
             "created_at": f.created_at.strftime("%Y-%m-%d %H:%M"),
         }
-        for f in File.active_files.filter(**query).select_related("locality", "cycle")
+        for f in File.active_files.filter(**query).select_related("locality")
     ]
 
 
@@ -159,7 +158,7 @@ def state_overview(request, state):
 
     final_zip_file = None
     final_geojson_file = None
-    for f in File.active_files.filter(cycle__state=state, stage="F"):
+    for f in File.active_files.filter(locality__state=state, stage="F"):
         if f.mime_type == "application/zip":
             final_zip_file = f
         elif f.mime_type == "application/vnd.geo+json":
@@ -217,7 +216,6 @@ def state_admin(request, state):
     upper = state.upper()
     state = get_object_or_404(State, pk=upper)
     statewide_locality = state.localities.get(name__endswith="Statewide")
-    cycles = state.cycles.all()
 
     users = User.objects.filter(groups__name__startswith=upper).distinct()
     for perm in Permissions:
@@ -225,7 +223,7 @@ def state_admin(request, state):
             if has_permission(user, upper, perm):
                 setattr(user, perm.value, True)
 
-    files = _files_data(cycle__state=state)
+    files = _files_data(locality__state=state)
 
     context = {
         "state": state,
@@ -234,7 +232,6 @@ def state_admin(request, state):
         "feed": _change_feed(state),
         "statewide_locality": statewide_locality,
         "transformations": TASK_NAMES,
-        "cycles": cycles,
     }
 
     return render(request, "core/state_admin.html", context)

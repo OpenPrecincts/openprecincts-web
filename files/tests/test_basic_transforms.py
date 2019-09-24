@@ -22,7 +22,6 @@ def user():
 @pytest.fixture
 def locality():
     loc = Locality.objects.get(name="Wake County", state_id="NC")
-    loc.state.cycles.create(year="2020")
     return loc
 
 

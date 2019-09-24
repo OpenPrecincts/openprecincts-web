@@ -1,10 +1,5 @@
 from django.contrib import admin
-from .models import State, Locality, StateCycle, ElectionResult, StatewideElection
-
-
-class CycleAdmin(admin.TabularInline):
-    model = StateCycle
-    extra = 0
+from .models import State, Locality, ElectionResult, StatewideElection
 
 
 class StatewideElectionInline(admin.TabularInline):
@@ -15,7 +10,7 @@ class StatewideElectionInline(admin.TabularInline):
 class StateAdmin(admin.ModelAdmin):
     list_display = ("name", "status")
     readonly_fields = ("name", "abbreviation", "census_geoid")
-    inlines = [CycleAdmin, StatewideElectionInline]
+    inlines = [StatewideElectionInline]
 
 
 admin.site.register(State, StateAdmin)
