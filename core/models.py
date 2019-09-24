@@ -29,9 +29,6 @@ class State(models.Model):
 
     show_crowdsourcing_tools = models.BooleanField(default=False)
 
-    def current_cycle(self):
-        return self.cycles.order_by("-year")[0]
-
     def display_status(self):
         return {
             StateStatus.NEED_TO_COLLECT.value: "Need to Collect Data",
@@ -46,14 +43,6 @@ class State(models.Model):
 
     class Meta:
         ordering = ["name"]
-
-
-class StateCycle(models.Model):
-    year = models.CharField(max_length=4)
-    state = models.ForeignKey(State, related_name="cycles", on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.state} {self.year}"
 
 
 class StatewideElection(models.Model):
