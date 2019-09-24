@@ -4,10 +4,12 @@ from .models import State, Locality, StateCycle, ElectionResult, StatewideElecti
 
 class CycleAdmin(admin.TabularInline):
     model = StateCycle
+    extra = 0
 
 
 class StatewideElectionInline(admin.TabularInline):
     model = StatewideElection
+    extra = 0
 
 
 class StateAdmin(admin.ModelAdmin):
