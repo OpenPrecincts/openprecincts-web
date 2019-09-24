@@ -1,15 +1,21 @@
 from django.contrib import admin
-from .models import State, Locality, StateCycle, Election, ElectionResult
+from .models import State, Locality, StateCycle, ElectionResult, StatewideElection
 
 
 class CycleAdmin(admin.TabularInline):
     model = StateCycle
+    extra = 0
+
+
+class StatewideElectionInline(admin.TabularInline):
+    model = StatewideElection
+    extra = 0
 
 
 class StateAdmin(admin.ModelAdmin):
     list_display = ("name", "status")
     readonly_fields = ("name", "abbreviation", "census_geoid")
-    inlines = [CycleAdmin]
+    inlines = [CycleAdmin, StatewideElectionInline]
 
 
 admin.site.register(State, StateAdmin)
@@ -29,11 +35,10 @@ class ElectionResultInline(admin.TabularInline):
     model = ElectionResult
 
 
-class ElectionAdmin(admin.ModelAdmin):
-    list_display = ("__str__", "cycle", "is_general", "office_type")
-    list_filter = ("cycle__state", "cycle__year", "office_type")
-    readonly_fields = ("cycle", "is_general", "office_type")
+class StatewideElectionAdmin(admin.ModelAdmin):
+    list_display = ("__str__", "state", "year", "is_general", "office_type")
+    list_filter = ("state", "year", "is_general", "office_type")
     inlines = [ElectionResultInline]
 
 
-admin.site.register(Election, ElectionAdmin)
+admin.site.register(StatewideElection, StatewideElectionAdmin)

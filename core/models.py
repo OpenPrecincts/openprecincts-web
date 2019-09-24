@@ -44,6 +44,9 @@ class State(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ["name"]
+
 
 class StateCycle(models.Model):
     year = models.CharField(max_length=4)
@@ -51,6 +54,43 @@ class StateCycle(models.Model):
 
     def __str__(self):
         return f"{self.state} {self.year}"
+
+
+class StatewideElection(models.Model):
+    state = models.ForeignKey(State, related_name="elections", on_delete=models.CASCADE)
+    dem_name = models.CharField(max_length=50, default="Democrat")
+    rep_name = models.CharField(max_length=50, default="Republican")
+    dem_property = models.CharField(max_length=20, default="")
+    rep_property = models.CharField(max_length=20, default="")
+
+    year = models.CharField(max_length=4)
+    is_general = models.BooleanField(default=True)
+    office_type = models.CharField(
+        max_length=2,
+        default="P",
+        choices=(
+            ("P", "President"),
+            ("G", "Governor"),
+            ("S", "Senate"),
+            ("H", "House of Representatives"),
+            ("SL", "State Lower Chamber"),
+            ("SU", "State Senate"),
+        )
+    )
+
+    def __str__(self):
+        if self.office_type == "P":
+            return f"{self.year} Presidential"
+        elif self.office_type == "G":
+            return f"{self.year} {self.state.name} Governor"
+        elif self.office_type == "S":
+            return f"{self.year} Senator (from {self.state.name})"
+        elif self.office_type == "S":
+            return f"{self.year} House of Representatives ({self.state.name})"
+        elif self.office_type == "SL":
+            return f"{self.year} {self.state.name} State House"
+        elif self.office_type == "SU":
+            return f"{self.year} {self.state.name} State Senate"
 
 
 class Locality(models.Model):
@@ -74,23 +114,9 @@ class Locality(models.Model):
         verbose_name_plural = "localities"
 
 
-class Election(models.Model):
-    cycle = models.ForeignKey(
-        StateCycle, related_name="elections", on_delete=models.CASCADE
-    )
-    is_general = models.BooleanField(default=True)
-    office_type = models.CharField(
-        max_length=1, choices=(("G", "Governor"), ("P", "President"), ("S", "Senate"))
-    )
-
-    def __str__(self):
-        x = self.get_office_type_display()
-        return f"{x} {self.cycle}"
-
-
 class ElectionResult(models.Model):
     election = models.ForeignKey(
-        Election, related_name="results", on_delete=models.CASCADE
+        StatewideElection, related_name="results", on_delete=models.CASCADE
     )
     party = models.CharField(max_length=10)
     county_name = models.CharField(max_length=100)

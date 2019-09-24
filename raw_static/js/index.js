@@ -5,9 +5,7 @@ import "../styles/main.scss";
 
 import StateMap from "./state-map";
 import FileBrowser from "./file-browser";
-import StateBounds from "./state-bounds";
-
-window.STATE_BOUNDS = StateBounds;
+import PrecinctMap from "./precinct-map";
 
 function reveal() {
   document.querySelector(`[data-hidden=${this.dataset.reveal}]`).style.display =
@@ -67,9 +65,12 @@ window.addEventListener("load", () => {
         statuses: {
           "need-to-collect": { name: "Need to Collect", fill: "#999" },
           geography: { name: "Geography Collected", fill: "#6b94ae" },
-          "election-data-linked": { name: "Election Data Linked", fill: "#87d67f" },
+          "election-data-linked": {
+            name: "Election Data Linked",
+            fill: "#87d67f",
+          },
           "census-data-linked": { name: "Census Data Linked", fill: "#5cb253" },
-          "validated": { name: "Validated", fill: "#1c6414" },
+          validated: { name: "Validated", fill: "#1c6414" },
         },
         link_template: state => `/${state.toLowerCase()}`,
       }),
@@ -86,6 +87,21 @@ window.addEventListener("load", () => {
         columns: files_columns,
       }),
       fb
+    );
+  }
+
+  const pm = document.querySelector("[data-hook='precinct-map']");
+  if (pm) {
+    ReactDOM.render(
+      React.createElement(PrecinctMap, {
+        state: pm.dataset.state,
+        fips: pm.dataset.fips,
+        demProperty: pm.dataset.demProperty,
+        repProperty: pm.dataset.repProperty,
+        demName: pm.dataset.demName,
+        repName: pm.dataset.repName,
+      }),
+      pm
     );
   }
 

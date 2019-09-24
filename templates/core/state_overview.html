@@ -58,7 +58,39 @@
 </section>
 
 {% if state.status == "election-data-linked" or state.status == "validated" or state.status == "census-data-linked" %}
-{% include "_components/state_complete.html" %}
+<div class="section">
+<div class="container">
+  <div data-hook="precinct-map"
+    data-state="{{ state.abbreviation.lower }}"
+    data-fips="{{ state.census_geoid }}"
+    data-dem-property="{{ elections.0.dem_property }}"
+    data-rep-property="{{ elections.0.rep_property }}"
+    data-dem-name="{{ elections.0.dem_name }}"
+    data-rep-name="{{ elections.0.rep_name }}"
+    >
+  </div>
+
+    <div class="center">
+      {% if final_zip_file %}
+      <a href="{% url 'download' final_zip_file.id %}" class="button is-large is-primary final-download">
+      <span class="file-icon">
+        <i class="fas fa-download"></i>
+      </span>
+      Download {{ state }} Shapefile
+      </a>
+      {% endif %}
+
+      {% if final_geojson_file %}
+      <a href="{% url 'download' final_geojson_file.id %}" class="button is-large is-primary final-download">
+      <span class="file-icon">
+        <i class="fas fa-download"></i>
+      </span>
+      Download {{ state }} GeoJSON
+      </a>
+      {% endif %}
+    </div>
+</div>
+</div>
 {% endif %}
 
 {% if state.status != "unknown" and state.show_crowdsourcing_tools %}
