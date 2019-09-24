@@ -85,7 +85,7 @@ class StatewideElection(models.Model):
             return f"{self.year} {self.state.name} Governor"
         elif self.office_type == "S":
             return f"{self.year} Senator (from {self.state.name})"
-        elif self.office_type == "S":
+        elif self.office_type == "H":
             return f"{self.year} House of Representatives ({self.state.name})"
         elif self.office_type == "SL":
             return f"{self.year} {self.state.name} State House"
