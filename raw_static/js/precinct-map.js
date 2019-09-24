@@ -77,6 +77,7 @@ export default class PrecinctMap extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      electionName: this.props.electionName,
       demProperty: this.props.demProperty,
       repProperty: this.props.repProperty,
       demName: this.props.demName,
@@ -136,6 +137,9 @@ export default class PrecinctMap extends React.Component {
         <nav id="precinct-menu">
           <a href="#" className="active" onClick={this.toggleCounties}>
             Counties
+          </a>
+          <a href="#" classname="active" onClick={() => false}>
+            {this.state.electionName}
           </a>
         </nav>
         <div id="precinct-map">

@@ -100,6 +100,7 @@ window.addEventListener("load", () => {
         repProperty: pm.dataset.repProperty,
         demName: pm.dataset.demName,
         repName: pm.dataset.repName,
+        electionName: pm.dataset.electionName,
       }),
       pm
     );
