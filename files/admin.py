@@ -26,7 +26,7 @@ class FileAdmin(admin.ModelAdmin):
         "created_by",
         "created_at",
     )
-    list_display = ("filename", "stage", "cycle", "created_at", "active")
+    list_display = ("filename", "stage", "created_at", "active")
     list_filter = ("stage", "mime_type", "locality__state")
     actions = [make_active, make_inactive, make_final]
 

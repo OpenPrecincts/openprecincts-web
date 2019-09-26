@@ -1,7 +1,7 @@
 import uuid
 from django.db import models
 from django.contrib.auth.models import User
-from core.models import Locality, StateCycle
+from core.models import Locality
 from contact.models import Official
 
 
@@ -30,9 +30,6 @@ class File(models.Model):
     # where the file came from
     locality = models.ForeignKey(
         Locality, on_delete=models.PROTECT, related_name="files"
-    )
-    cycle = models.ForeignKey(
-        StateCycle, on_delete=models.PROTECT, related_name="files", null=False
     )
     filename = models.CharField(max_length=300, blank=False)
 

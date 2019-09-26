@@ -5,7 +5,6 @@ const COLUMN_NAMES = {
   stage: "Stage",
   filename: "File Name",
   locality: "Locality",
-  cycle: "Cycle",
   created_at: "Date",
   download_url: "Link",
   login_to_download: "",
@@ -28,18 +27,10 @@ function sortBy(list, key, direction) {
 export default class FileBrowser extends React.Component {
   constructor(props) {
     super(props);
-    var years = [];
-    for (var c of this.props.files) {
-      if (!years.includes(c.cycle)) {
-        years.push(c.cycle);
-      }
-    }
     this.state = {
       columns: this.props.columns,
-      years: years,
       sort: "locality",
       direction: 1,
-      yearFilter: "",
       stageFilter: "",
     };
     this.renderRow = this.renderRow.bind(this);
@@ -58,10 +49,6 @@ export default class FileBrowser extends React.Component {
     var tds = [];
     var inner = "";
 
-    // remove filtered rows
-    if (this.state.yearFilter && this.state.yearFilter !== f.cycle) {
-      return null;
-    }
     if (this.state.stageFilter && this.state.stageFilter != f.stage) {
       return null;
     }
@@ -109,23 +96,6 @@ export default class FileBrowser extends React.Component {
     return (
       <div className="level">
         <div className="level-left">
-          <div className="level-item">
-            <div className="select">
-              <select
-                name="filebrowser-year"
-                onChange={e =>
-                  this.setState({ yearFilter: event.target.value })
-                }
-              >
-                <option value="">-- All Cycles --</option>
-                {this.state.years.map(y => (
-                  <option key={y} value={y}>
-                    {y}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
           <div className="level-item">
             <div className="select">
               <select

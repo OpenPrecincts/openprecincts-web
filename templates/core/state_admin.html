@@ -21,7 +21,7 @@
 <div class="container">
     {{ files|json_script:"files-data" }}
     <script>
-      const files_columns = ["checkbox", "cycle", "stage", "filename", "created_at", "download_url"];
+      const files_columns = ["checkbox", "stage", "filename", "created_at", "download_url"];
     </script>
 
     <form action="{% url 'alter_files' %}" method="POST">
@@ -86,19 +86,6 @@
               <option value="S">Source</option>
               <option value="I">Intermediate</option>
               <option value="F">Final</option>
-          </select>
-      </div>
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="label">Cycle</label>
-      <div class="control">
-      <div class="select">
-          <select name="cycle">
-              {% for c in cycles %}
-                  <option value="{{ c.id }}">{{ c }}</option>
-              {% endfor %} 
           </select>
       </div>
       </div>

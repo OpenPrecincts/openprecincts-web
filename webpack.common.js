@@ -19,7 +19,7 @@ module.exports = {
         // query: { plugins: ['transform-runtime'] } 
       },
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         use: [
           { loader: "style-loader", options: {sourceMap: true} },
           { loader: "css-loader" },

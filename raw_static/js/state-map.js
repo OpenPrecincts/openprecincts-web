@@ -8,15 +8,17 @@ export default class StateMap extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { activeMap: "grid" };
+    this.state = { activeMap: "map" };
     this.colorMap = this.colorMap.bind(this);
   }
 
   colorMap() {
+    const link_template = this.props.link_template;
     for (var [state, status] of Object.entries(this.props.states)) {
       const el = document.getElementById(state + "___mapsvg");
       if (el) {
         el.style["fill"] = this.props.statuses[status].fill;
+        el.onclick = function(e) { window.location = link_template(e.target.id.substr(0, 2)); }
       }
     }
   }

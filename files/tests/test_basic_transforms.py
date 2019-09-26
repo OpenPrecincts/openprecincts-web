@@ -22,7 +22,6 @@ def user():
 @pytest.fixture
 def locality():
     loc = Locality.objects.get(name="Wake County", state_id="NC")
-    loc.state.cycles.create(year="2020")
     return loc
 
 
@@ -77,7 +76,7 @@ def files(locality, user):
 @pytest.mark.django_db
 def test_zip_transform_end_to_end(user, s3, files):
     ZipFiles([f["file"].id for f in files.values()]).run(user.id)
-    new = File.objects.get(stage="I")
+    new = File.objects.get(stage="F")
     assert new.from_transformation == "ZipFiles"
     data = get_from_s3(new)
     zf = zipfile.ZipFile(BytesIO(data.read()))

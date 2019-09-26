@@ -6,9 +6,7 @@ import "../styles/main.scss";
 import StateMap from "./state-map";
 import FileBrowser from "./file-browser";
 import MergeTool from "./mergetool";
-import StateBounds from "./state-bounds";
-
-window.STATE_BOUNDS = StateBounds;
+import PrecinctMap from "./precinct-map";
 
 function reveal() {
   document.querySelector(`[data-hidden=${this.dataset.reveal}]`).style.display =
@@ -96,6 +94,22 @@ window.addEventListener("load", () => {
   const mt = document.querySelector('[data-hook="mergetool"]');
   if (mt) {
     ReactDOM.render(React.createElement(MergeTool, {}), mt);
+  }
+
+  const pm = document.querySelector("[data-hook='precinct-map']");
+  if (pm) {
+    ReactDOM.render(
+      React.createElement(PrecinctMap, {
+        state: pm.dataset.state,
+        fips: pm.dataset.fips,
+        demProperty: pm.dataset.demProperty,
+        repProperty: pm.dataset.repProperty,
+        demName: pm.dataset.demName,
+        repName: pm.dataset.repName,
+        electionName: pm.dataset.electionName,
+      }),
+      pm
+    );
   }
 
   // bind hidden/reveal hooks

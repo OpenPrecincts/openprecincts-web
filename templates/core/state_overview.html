@@ -13,11 +13,11 @@
     {% if state.status == "need-to-collect" %}
         <div class="state-status-collecting">
             <h4 class="title is-4">Status: Collection In Progress</h4>
-            <p>We are in the process of collecting &amp; cleaning data for {{ state }}, you can help us by collecting contact information or individual files below.</p>
+            <p>We are in the process of collecting &amp; cleaning data for {{ state }}.</p>
     {% elif state.status == "geography" %}
         <div class="state-status-cleaning">
             <h4 class="title is-4">Status: Cleaning In Progress</h4>
-            <p>We are in the process of cleaning data for {{ state }}, stay tuned for more info on how you can help!</p>
+            <p>We are in the process of cleaning data for {{ state }}!</p>
     {% elif state.status == "election-data-linked" or state.status == "census-data-linked" %}
         <div class="state-status-available">
             <h4 class="title is-4">Status: Data Available</h4>
@@ -31,8 +31,8 @@
             <p> {{ state.status_text }} </p>
         </div>
 
-{# user permission status, only showing if logged in #}
-{% if not request.user.is_anonymous %}
+{# user permission status, only showing if logged in and crowdsourcing is enabled #}
+{% if not request.user.is_anonymous and state.show_crowdsourcing_tools %}
     <br>
     {% if user_can_contact or user_can_write %}
     <p class="has-text-success has-text-weight-semibold">
@@ -50,26 +50,55 @@
     </p>
     {% endif %}
 {% endif %}
+
+
     </div>
     </div>
 </div>
 </section>
 
 {% if state.status == "election-data-linked" or state.status == "validated" or state.status == "census-data-linked" %}
-{% include "_components/state_complete.html" %}
+<div class="section">
+<div class="container">
+  <div data-hook="precinct-map"
+    data-state="{{ state.abbreviation.lower }}"
+    data-fips="{{ state.census_geoid }}"
+    data-dem-property="{{ elections.0.dem_property }}"
+    data-rep-property="{{ elections.0.rep_property }}"
+    data-dem-name="{{ elections.0.dem_name }}"
+    data-rep-name="{{ elections.0.rep_name }}"
+    data-election-name="{{ elections.0 }}"
+    >
+  </div>
+
+    <div class="center">
+      {% if final_zip_file %}
+      <a href="{% url 'download' final_zip_file.id %}" class="button is-large is-primary final-download">
+      <span class="file-icon">
+        <i class="fas fa-download"></i>
+      </span>
+      Download {{ state }} Shapefile
+      </a>
+      {% endif %}
+
+      {% if final_geojson_file %}
+      <a href="{% url 'download' final_geojson_file.id %}" class="button is-large is-primary final-download">
+      <span class="file-icon">
+        <i class="fas fa-download"></i>
+      </span>
+      Download {{ state }} GeoJSON
+      </a>
+      {% endif %}
+    </div>
+</div>
+</div>
 {% endif %}
 
-{% if state.status != "unknown"  %}
+{% if state.status != "unknown" and state.show_crowdsourcing_tools %}
 
 <section class="section">
 <div class="container">    
-    {% include "_components/leaderboard.html" %}
-</div>
-</section>
-
-<section class="section">
-<div class="container">    
-    <h3 class="title is-3">Data Collection for {{ state.current_cycle }} cycle</h3>
+    <h3 class="title is-3">Data Collection</h3>
 
     <div class="level">
         <div class="level-item has-text-centered">

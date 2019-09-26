@@ -1,6 +1,10 @@
 #precinct-map {
   height: 400px;
 }
+#precinct-map .mapboxgl-map {
+  width: 100%;
+  height: 90%;
+}
 
 #precinct-info {
   display: block;

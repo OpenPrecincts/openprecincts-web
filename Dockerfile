@@ -15,8 +15,12 @@ RUN BUILD_DEPS=" \
         gdal-bin \
         wget \
         git \
+        libsqlite3-dev \
+        zlib1g-dev \
     " \
     && apt-get update && apt-get install -y --no-install-recommends $BUILD_DEPS
+
+RUN git clone https://github.com/mapbox/tippecanoe.git && cd tippecanoe && make -j && make install
 
 ADD . /code/
 
