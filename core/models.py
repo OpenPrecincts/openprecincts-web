@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from enum import Enum
 from markupfield.fields import MarkupField
 
@@ -111,3 +112,14 @@ class ElectionResult(models.Model):
     county_name = models.CharField(max_length=100)
     precinct_name = models.CharField(max_length=100)
     votes = models.PositiveIntegerField()
+
+
+class PrecinctNameMatch(models.Model):
+    state = models.ForeignKey(State, related_name="precinct_names", on_delete=models.PROTECT)
+    election_precinct_name = models.CharField(max_length=100)
+    shapefile_precinct_name = models.CharField(max_length=100, blank=True, default="")
+    notes = models.TextField(default="")
+
+    matched_by = models.ForeignKey(User, related_name="names_matched", on_delete=models.PROTECT,
+                                   null=True, default=None)
+    updated_at = models.DateTimeField(auto_now=True)
