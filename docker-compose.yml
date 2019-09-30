@@ -30,6 +30,8 @@ services:
     environment:
       - DATABASE_URL
       - RAW_FILE_S3_BUCKET
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
   celery:
     build: .
     command: /venv/bin/poetry run celery -A openprecincts_web worker -l info
