@@ -279,6 +279,8 @@ def locality_overview(request, id):
 
 
 def match(request, state):
+    ensure_permission(request.user, state, Permissions.ADMIN)
+
     geojson = File.objects.filter(
         locality__state__abbreviation=state.upper(),
         stage="F",
