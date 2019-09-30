@@ -166,7 +166,6 @@ function choose(choices) {
 
 function loadElectionPrecincts(n) {
   var sideA = {};
-  var sideB = {};
 
   for (var i = 1; i < n; ++i) {
     var name = choose(words);
@@ -179,25 +178,9 @@ function loadElectionPrecincts(n) {
     }
 
     sideA[i] = { id: i, name: name };
-
-    if (Math.random() < 0.4) {
-      name = name.toUpperCase();
-    }
-    if (Math.random() < 0.3) {
-      // add a typo
-      var pos = Math.floor(Math.random() * 6);
-      name = name.slice(0, pos) + name.slice(pos + 1);
-    }
-    if (Math.random() < 0.3) {
-      name = name.replace(" ", "      ");
-    }
-    if (Math.random() < 0.1) {
-      name = name[0] + Math.floor(Math.random() * 100000);
-    }
-    sideB[200 + i] = { id: 200 + i, name: name };
   }
 
-  return { sideA: sideA, sideB: sideB };
+  return { sideA: sideA };
 }
 
 export default class MergeTool extends React.Component {
@@ -206,7 +189,7 @@ export default class MergeTool extends React.Component {
     const d = loadElectionPrecincts(80);
     this.state = {
       sideA: d.sideA,
-      sideB: d.sideB,
+      sideB: [],
       matched: [],
       activeTransforms: [],
       proposedMatches: [],
@@ -218,6 +201,7 @@ export default class MergeTool extends React.Component {
     this.acceptProposed = this.acceptProposed.bind(this);
     this.mergeRowClick = this.mergeRowClick.bind(this);
     this.acceptManual = this.acceptManual.bind(this);
+    this.shapefilePropertyChange = this.shapefilePropertyChange.bind(this);
   }
 
   componentDidMount() {
@@ -285,6 +269,18 @@ export default class MergeTool extends React.Component {
     this.setState({ name: side });
   }
 
+  shapefilePropertyChange(event) {
+    console.log(event.target.value);
+
+    const shapefileData = this.props.featureProperties.map(x => 
+      ({id: 0, name: x[event.target.value]})
+    );
+
+    this.setState({
+      sideB: shapefileData,
+    });
+  }
+
   refreshTransforms(transforms) {
     var sideA = { ...this.state.sideA };
     var sideB = { ...this.state.sideB };
@@ -342,6 +338,9 @@ export default class MergeTool extends React.Component {
   }
 
   render() {
+    const featurePropNames = Object.entries(this.props.featureProperties[1]).map(([k, v]) =>
+      <option key={k} value={k}>{k} (e.g. {v})</option>
+    );
     return (
       <div
         onKeyDown={this.acceptManual}
@@ -358,6 +357,10 @@ export default class MergeTool extends React.Component {
             />
           </div>
           <div className="column">
+            Select Property:
+            <select className="select" onChange={this.shapefilePropertyChange}>
+              {featurePropNames}
+            </select>
             <MergeTable
               title="Shapefile Precincts"
               items={this.state.sideB}

@@ -3,9 +3,11 @@
 
 {% block body %}
 
+{{ feature_properties|json_script:"feature_properties" }}
+
 <section class="section">
     <div class="container">
-      <div data-hook="mergetool"> </div>
+      <div data-hook="mergetool" data-state="{{ state }}"> </div>
     </div>
 </section>
 {% endblock %}
