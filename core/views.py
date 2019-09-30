@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render, get_object_or_404, reverse
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -9,6 +10,7 @@ from .permissions import ensure_permission, has_permission, Permissions
 from contact.models import Official, ContactLog
 from files.models import File
 from files.tasks import TASK_NAMES
+from files.utils import get_from_s3
 
 
 class OfficialForm(ModelForm):
@@ -273,4 +275,33 @@ def locality_overview(request, id):
             "user_can_write": user_can_write,
             "official_form": official_form,
         },
+    )
+
+
+def match(request, state):
+    geojson = File.objects.filter(
+        locality__state__abbreviation=state.upper(),
+        stage="F",
+        mime_type="application/vnd.geo+json"
+    )
+
+    field_names = []
+    geojson_file = None
+    feature_properties = []
+
+    if len(geojson) == 1:
+        geojson_file = geojson[0]
+        geojson_data = json.load(get_from_s3(geojson_file))
+        feature_properties = [f["properties"] for f in geojson_data["features"]]
+        field_names = feature_properties[0].keys()
+
+    return render(
+        request,
+        "merge/mergetool.html",
+        {
+            "state": state,
+            "geojson_file": geojson_file,
+            "field_names": field_names,
+            "feature_properties": feature_properties,
+        }
     )
