@@ -4,7 +4,7 @@ from django.core.management.base import BaseCommand
 from core.models import State, PrecinctNameMatch
 
 
-@functools.lru_cache
+@functools.lru_cache(60)
 def get_state_obj(name):
     return State.objects.get(name=name)
 
