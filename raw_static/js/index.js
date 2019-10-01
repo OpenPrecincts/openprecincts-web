@@ -5,6 +5,7 @@ import "../styles/main.scss";
 
 import StateMap from "./state-map";
 import FileBrowser from "./file-browser";
+import MergeTool from "./mergetool";
 import PrecinctMap from "./precinct-map";
 
 function reveal() {
@@ -37,7 +38,6 @@ function initTabs() {
     });
     document.querySelectorAll("[data-tab]").forEach(function(t) {
       if (t.dataset.tab === clicked) {
-        console.log(t.parentNode);
         t.parentNode.className = "is-active";
       } else {
         t.parentNode.className = "";
@@ -88,6 +88,15 @@ window.addEventListener("load", () => {
       }),
       fb
     );
+  }
+
+  const mt = document.querySelector('[data-hook="mergetool"]');
+  if (mt) {
+    const featureProperties = JSON.parse(document.getElementById('feature_properties').textContent);
+    ReactDOM.render(React.createElement(MergeTool, {
+      state: mt.dataset.state,
+      featureProperties: featureProperties,
+    }), mt);
   }
 
   const pm = document.querySelector("[data-hook='precinct-map']");
