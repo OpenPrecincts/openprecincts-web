@@ -284,7 +284,7 @@ def match(request, state):
     geojson = File.objects.filter(
         locality__state__abbreviation=state.upper(),
         stage="F",
-        mime_type="application/vnd.geo+json"
+        mime_type="application/vnd.geo+json",
     )
 
     field_names = []
@@ -305,5 +305,5 @@ def match(request, state):
             "geojson_file": geojson_file,
             "field_names": field_names,
             "feature_properties": feature_properties,
-        }
+        },
     )

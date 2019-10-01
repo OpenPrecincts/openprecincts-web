@@ -92,11 +92,16 @@ window.addEventListener("load", () => {
 
   const mt = document.querySelector('[data-hook="mergetool"]');
   if (mt) {
-    const featureProperties = JSON.parse(document.getElementById('feature_properties').textContent);
-    ReactDOM.render(React.createElement(MergeTool, {
-      state: mt.dataset.state,
-      featureProperties: featureProperties,
-    }), mt);
+    const featureProperties = JSON.parse(
+      document.getElementById("feature_properties").textContent
+    );
+    ReactDOM.render(
+      React.createElement(MergeTool, {
+        state: mt.dataset.state,
+        featureProperties: featureProperties,
+      }),
+      mt
+    );
   }
 
   const pm = document.querySelector("[data-hook='precinct-map']");
