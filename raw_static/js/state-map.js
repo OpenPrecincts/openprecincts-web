@@ -18,7 +18,9 @@ export default class StateMap extends React.Component {
       const el = document.getElementById(state + "___mapsvg");
       if (el) {
         el.style["fill"] = this.props.statuses[status].fill;
-        el.onclick = function(e) { window.location = link_template(e.target.id.substr(0, 2)); }
+        el.onclick = function(e) {
+          window.location = link_template(e.target.id.substr(0, 2));
+        };
       }
     }
   }

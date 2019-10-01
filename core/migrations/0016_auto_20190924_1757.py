@@ -5,13 +5,8 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('core', '0015_remove_statewideelection_election_name'),
-    ]
+    dependencies = [("core", "0015_remove_statewideelection_election_name")]
 
     operations = [
-        migrations.AlterModelOptions(
-            name='state',
-            options={'ordering': ['name']},
-        ),
+        migrations.AlterModelOptions(name="state", options={"ordering": ["name"]})
     ]
