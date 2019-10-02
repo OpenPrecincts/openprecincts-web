@@ -28,8 +28,6 @@ def upload_shapefile(data, dataset_name):
             break
         if status["error"]:
             raise MapboxException("mapbox error: " + status["error"])
-        else:
-            print(status)
         time.sleep(10)
 
 

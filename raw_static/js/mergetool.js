@@ -270,8 +270,6 @@ export default class MergeTool extends React.Component {
   }
 
   shapefilePropertyChange(event) {
-    console.log(event.target.value);
-
     const shapefileData = this.props.featureProperties.map(x => ({
       id: 0,
       name: x[event.target.value],

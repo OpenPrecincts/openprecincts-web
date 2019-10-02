@@ -109,7 +109,6 @@ def _locality_key(loc):
 def state_overview(request, state):
     state = get_object_or_404(State, pk=state.upper())
     elections = list(state.elections.all())
-    print(elections)
 
     context = {"state": state}
 
