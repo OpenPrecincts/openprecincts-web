@@ -5,7 +5,7 @@ django_environment:
   ADMINS: PGP openprecincts@gmail.com
   SECRET_KEY: "{{ lookup('aws_ssm', '/op/production/SECRET_KEY') }}"
   DATABASE_URL: "{{ lookup('aws_ssm', '/op/production/DATABASE_URL') }}"
-  MAPBOX_ACCESS_KEY: "{{ lookup('aws_ssm', '/op/production/MAPBOX_ACCESS_KEY') }}"
+  MAPBOX_ACCESS_TOKEN: "{{ lookup('aws_ssm', '/op/production/MAPBOX_ACCESS_TOKEN') }}"
   RAW_FILE_S3_BUCKET: openprecincts-data-production
   EMAIL_HOST: email-smtp.us-east-1.amazonaws.com
   EMAIL_HOST_USER: "{{ lookup('aws_ssm', '/op/SMTP_USER') }}"
