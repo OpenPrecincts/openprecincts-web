@@ -55,6 +55,25 @@ dd {
   margin: auto;
 }
 
+.update-txt span{
+  text-transform:uppercase;
+  font-weight:700;
+  background:#fd0;
+  padding:3px;
+}
+
+.update-txt {
+  display: inline-block;
+  text-align: center;
+  padding-top: 25px;
+  width: 100%;
+}
+
+.update-txt a {
+  color: #00d1b2
+}
+
+
 /* header */
 #welcome-back {
   padding-right: 1em;
