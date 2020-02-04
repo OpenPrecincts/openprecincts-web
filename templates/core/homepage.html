@@ -2,6 +2,7 @@
 
 {% block body %}
 {{ state_status|json_script:"state-status" }}
+{{ files|json_script:"files"}}
 
 <section class="hero is-medium">
     <div class="hero-body">
@@ -12,8 +13,14 @@
     </div>
 </section>
 
-<section>
-    <p class="update-txt"><span>Update</span>&nbsp;&nbsp;January 2020: <a href="/ar"><strong>Arkansas</strong> 2016 elections and shapefiles matched (from VEST)</a></p>
+<section class="section-update">
+    {% for file in files %}
+    <p class="update-txt">
+        <span>Update</span>
+        &nbsp;&nbsp;{{ file.created_at }}:
+        <a href="/{{ file.abbrev }}"><strong>{{ file.state }}</strong></a>
+    </p>
+    {% endfor %}
 </section>
 
 
