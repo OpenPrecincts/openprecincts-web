@@ -47,7 +47,8 @@ def homepage(request):
     # Get 3 most recently created mbtiles files
     file_list = []
     for f in File.active_files.get_queryset().filter(stage="F").filter(
-        filename__iendswith="mbtiles").order_by('-created_at').all()[:3]:
+        filename__iendswith="mbtiles"
+    ).order_by('-created_at').all()[:3]:
         file_list.append({
             "filename": f.filename,
             "created_at": f.created_at.strftime("%B	%Y"),
