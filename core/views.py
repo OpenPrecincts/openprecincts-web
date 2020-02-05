@@ -44,9 +44,10 @@ def _files_data(**query):
 
 def homepage(request):
     state_status = {s.abbreviation: s.status for s in State.objects.all()}
-    # Get most recent mbtiles files
+    # Get 3 most recently created mbtiles files
     file_list = []
-    for f in File.active_files.get_queryset().filter(stage="F").filter(filename__iendswith="mbtiles").order_by('-created_at').all()[:3]:
+    for f in File.active_files.get_queryset().filter(stage="F").filter(
+        filename__iendswith="mbtiles").order_by('-created_at').all()[:3]:
         file_list.append({
             "filename": f.filename,
             "created_at": f.created_at.strftime("%B	%Y"),
@@ -54,7 +55,8 @@ def homepage(request):
             "abbrev": f.locality.state.abbreviation.lower()
         })
 
-    return render(request, "core/homepage.html", {"state_status": state_status, "files": file_list})
+    return render(request, "core/homepage.html", {
+        "state_status": state_status, "files": file_list})
 
 
 def national_overview(request):
