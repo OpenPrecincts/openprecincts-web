@@ -55,6 +55,13 @@ dd {
   margin: auto;
 }
 
+.section-update {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 0 auto;
+}
+
 .update-txt span{
   text-transform:uppercase;
   font-weight:700;
@@ -63,10 +70,7 @@ dd {
 }
 
 .update-txt {
-  display: inline-block;
-  text-align: center;
   padding-top: 25px;
-  width: 100%;
 }
 
 .update-txt a {
