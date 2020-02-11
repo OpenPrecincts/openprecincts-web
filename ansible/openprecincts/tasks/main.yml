@@ -16,6 +16,10 @@
 - name: add robots.txt
   template: src=robots.j2 dest=/home/{{ user }}/robots.txt mode=644
   become_user: "{{ user }}"
+- name: write nginx template
+  template: src=nginx.j2 dest=/etc/nginx/sites-enabled/{{ user }}
+  notify:
+    - restart nginx
 
 # node installation
 - name: download nodesource script
