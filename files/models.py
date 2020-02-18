@@ -20,6 +20,9 @@ class File(models.Model):
         max_length=1, choices=(("S", "Source"), ("I", "Intermediate"), ("F", "Final"))
     )
 
+    # Election year for this file
+    election_year = models.PositiveIntegerField(null=True)
+
     # information on the file itself
     mime_type = models.CharField(max_length=100)
     size = models.PositiveIntegerField()
