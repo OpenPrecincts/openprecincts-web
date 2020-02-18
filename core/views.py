@@ -37,6 +37,7 @@ def _files_data(**query):
             "locality": str(f.locality),
             "download_url": reverse("download", kwargs={"uuid": f.id}),
             "created_at": f.created_at.strftime("%Y-%m-%d %H:%M"),
+            "election_year": f.election_year
         }
         for f in File.active_files.filter(**query).select_related("locality")
     ]

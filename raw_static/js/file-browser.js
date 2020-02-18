@@ -8,6 +8,7 @@ const COLUMN_NAMES = {
   created_at: "Date",
   download_url: "Link",
   login_to_download: "",
+  election_year: "Election Year"
 };
 
 function sortBy(list, key, direction) {
