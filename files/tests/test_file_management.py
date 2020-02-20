@@ -36,6 +36,7 @@ def test_upload_files(client, user, locality, s3):
     client.force_login(user)
     faux_file = StringIO("file contents")
     faux_file.name = "fake.txt"
+    faux_file.election_year = 2016
     resp = client.post(
         "/files/upload/", {"locality": locality.id, "files": [faux_file]}
     )
@@ -50,6 +51,7 @@ def test_upload_files(client, user, locality, s3):
     assert f.size == 13
     assert f.locality == locality
     assert f.filename == "fake.txt"
+    assert f.election_year == 2016
     assert f.created_by == user
 
     # check s3 for the file
@@ -168,3 +170,30 @@ def test_alter_files_in_place(client, user, locality, s3):
     )
     assert resp.status_code == 302
     assert File.objects.filter(active=True).count() == 0
+
+@pytest.mark.django_db
+def test_alter_files_election_year_in_place(client, user, locality, s3):
+    user.groups.create(name="NC admin")
+    client.force_login(user)
+    faux_file = StringIO("file contents")
+    faux_file.name = "fake.txt"
+    faux_file.election_year = None
+    faux_file2 = StringIO("different file")
+    faux_file2.name = "other.txt"
+    faux_file2.election_year = None
+    resp = client.post(
+        "/files/upload/", {"locality": locality.id, "files": [faux_file, faux_file2]}
+    )
+
+    file_ids = File.objects.values_list("id", flat=True)
+
+    # update one file to intermediate (shouldn't actually happen, but for testing is OK)
+    f = File.objects.all().first()
+    f.stage = "I"
+    f.save()
+
+    resp = client.post(
+        "/files/alter_files/", {"files": file_ids, "election_year": 2016}
+    )
+    # only the intermediate file will be updated to final
+    assert File.objects.filter(election_year=2016).count() == 2

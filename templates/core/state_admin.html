@@ -21,7 +21,7 @@
 <div class="container">
     {{ files|json_script:"files-data" }}
     <script>
-      const files_columns = ["checkbox", "stage", "filename", "created_at", "download_url", "election_year"];
+      const files_columns = ["checkbox", "stage", "filename", "created_at", "download_url", "elections"];
     </script>
 
     <form action="{% url 'alter_files' %}" method="POST">
@@ -61,8 +61,15 @@
             <div class="field">
               <label class="label">Alter Election Year</label>
               <div class="control">
-                <input name="election_year" type="number" />
-              </div>
+                <div class="select is-multiple">
+                    <select multiple name="elections">
+                        <option value="">-----</option>
+                        {% for id, name in elections %}
+                          <option value="{{ id }}">{{ name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                </div>
             </div>
             </div>
           </div>

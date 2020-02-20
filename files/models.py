@@ -1,7 +1,7 @@
 import uuid
 from django.db import models
 from django.contrib.auth.models import User
-from core.models import Locality
+from core.models import Locality, StatewideElection
 from contact.models import Official
 
 
@@ -21,7 +21,10 @@ class File(models.Model):
     )
 
     # Election year for this file
-    election_year = models.PositiveIntegerField(null=True)
+    statewide_elections = models.ManyToManyField(
+        StatewideElection,
+        related_name="files",
+    )
 
     # information on the file itself
     mime_type = models.CharField(max_length=100)

@@ -2,7 +2,7 @@ from django.http import FileResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.views.decorators.http import require_POST, require_GET
 from django.contrib import messages
-from core.models import Locality
+from core.models import Locality, StatewideElection
 from core.permissions import ensure_permission, Permissions
 from .models import File
 from .utils import upload_django_file, get_from_s3
@@ -48,7 +48,7 @@ def download_zip(request):
 def alter_files(request):
     transformation = request.POST.get("transformation")
     alter_files = request.POST.get("alter_files")
-    election_year = request.POST.get("election_year")
+    elections = request.POST.getlist("elections")
 
     file_ids = request.POST.getlist("files")
     files = File.active_files.filter(pk__in=file_ids)
@@ -57,9 +57,9 @@ def alter_files(request):
     # ensure permission for state
     state = files[0].locality.state
 
-    if transformation and alter_files and election_year:
+    if transformation and alter_files and elections:
         messages.error(request, "Cannot set transformation and file alteration.")
-    elif not transformation and not alter_files and not election_year:
+    elif not transformation and not alter_files and not elections:
         messages.error(request, "Must set transformation or file alteration.")
     elif transformation:
         # verify that all files have the same locality
@@ -68,7 +68,7 @@ def alter_files(request):
         transformation_func = getattr(tasks, transformation)
         transformation_func.delay(request.user.id, file_ids)
         messages.info(request, f"Sent transformation {transformation} to queue.")
-    elif alter_files or election_year:
+    elif alter_files or elections:
         for f in files:
             ensure_permission(request.user, f.locality.state, Permissions.ADMIN)
             if alter_files == "make_final":
@@ -77,8 +77,9 @@ def alter_files(request):
                     f.stage = "F"
             elif alter_files == "deactivate":
                 f.active = False
-            elif election_year:
-                f.election_year = election_year
+            elif elections:
+                for election in elections:
+                    f.statewide_elections.add(StatewideElection.objects.get(id=election))
             f.save()
 
     return redirect("state_admin", state.abbreviation.lower())

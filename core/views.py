@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.db.models.expressions import RawSQL
 from django.db.models import Count, Q
 from django.forms import ModelForm
-from .models import Locality, State
+from .models import Locality, State, StatewideElection
 from .permissions import ensure_permission, has_permission, Permissions
 from contact.models import Official, ContactLog
 from files.models import File
@@ -37,7 +37,7 @@ def _files_data(**query):
             "locality": str(f.locality),
             "download_url": reverse("download", kwargs={"uuid": f.id}),
             "created_at": f.created_at.strftime("%Y-%m-%d %H:%M"),
-            "election_year": f.election_year
+            "elections": [str(e) for e in f.statewide_elections.all()]
         }
         for f in File.active_files.filter(**query).select_related("locality")
     ]
@@ -231,7 +231,7 @@ def state_admin(request, state):
     upper = state.upper()
     state = get_object_or_404(State, pk=upper)
     statewide_locality = state.localities.get(name__endswith="Statewide")
-
+    elections = tuple((el.id, str(el)) for el in state.elections.all())
     users = User.objects.filter(groups__name__startswith=upper).distinct()
     for perm in Permissions:
         for user in users:
@@ -247,6 +247,7 @@ def state_admin(request, state):
         "feed": _change_feed(state),
         "statewide_locality": statewide_locality,
         "transformations": TASK_NAMES,
+        "elections": elections
     }
 
     return render(request, "core/state_admin.html", context)
