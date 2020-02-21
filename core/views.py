@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.db.models.expressions import RawSQL
 from django.db.models import Count, Q
 from django.forms import ModelForm
-from .models import Locality, State, StatewideElection
+from .models import Locality, State
 from .permissions import ensure_permission, has_permission, Permissions
 from contact.models import Official, ContactLog
 from files.models import File
