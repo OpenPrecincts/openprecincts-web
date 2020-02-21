@@ -65,6 +65,11 @@ export default class FileBrowser extends React.Component {
         case "login_to_download":
           inner = "login to download";
           break;
+        case "elections":
+          inner = f[col].map((election, index) => {
+            return <span className="tag is-info" key={election}>{election}</span>;
+          });
+          break;
         default:
           inner = f[col];
           break;
