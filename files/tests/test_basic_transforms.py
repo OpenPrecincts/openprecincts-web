@@ -18,10 +18,12 @@ from files.transformations.basic import ZipFiles, ToGeoJSON
 def user():
     return User.objects.create(username="testuser")
 
+
 @pytest.fixture
 def state():
     state = State.objects.create(abbreviation='NC', name='North Carolina', census_geoid='37')
     return state
+
 
 @pytest.fixture
 def locality(state):

@@ -14,6 +14,7 @@ def user():
     u.groups.add(g)
     return u
 
+
 def setup():
     bot = User.objects.create(username="bot")
     state = State.objects.create(abbreviation='NC', name='North Carolina', census_geoid='37')

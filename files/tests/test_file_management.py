@@ -20,6 +20,7 @@ def state():
     state = State.objects.create(abbreviation='NC', name='North Carolina', census_geoid='37')
     return state
 
+
 @pytest.fixture
 def locality(state):
     loc = Locality.objects.create(
