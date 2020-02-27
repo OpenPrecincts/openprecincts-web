@@ -14,10 +14,17 @@ def user():
     u.groups.add(g)
     return u
 
-
 def setup():
     bot = User.objects.create(username="bot")
-    loc = Locality.objects.get(name="Wake County", state__abbreviation="NC")
+    state = State.objects.create(abbreviation='NC', name='North Carolina', census_geoid='37')
+    loc = Locality.objects.create(
+        name="Wake County",
+        state_id=state.abbreviation,
+        wikipedia_url='https://en.wikipedia.org/wiki/Wake_County,_North_Carolina',
+        official_url='http://www.wakegov.com',
+        ocd_id='ocd-division/country:us/state:nc/county:wake',
+        census_geoid='37183',
+    )
     Official.objects.create(
         first_name="Anne", email="anne@example.com", locality=loc, created_by=bot
     )
