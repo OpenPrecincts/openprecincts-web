@@ -8,6 +8,7 @@ const COLUMN_NAMES = {
   created_at: "Date",
   download_url: "Link",
   login_to_download: "",
+  elections: "Elections"
 };
 
 function sortBy(list, key, direction) {
@@ -63,6 +64,11 @@ export default class FileBrowser extends React.Component {
           break;
         case "login_to_download":
           inner = "login to download";
+          break;
+        case "elections":
+          inner = f[col].map((election, index) => {
+            return <span className="tag is-info" key={election}>{election}</span>;
+          });
           break;
         default:
           inner = f[col];

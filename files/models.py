@@ -1,7 +1,7 @@
 import uuid
 from django.db import models
 from django.contrib.auth.models import User
-from core.models import Locality
+from core.models import Locality, StatewideElection
 from contact.models import Official
 
 
@@ -18,6 +18,12 @@ class File(models.Model):
 
     stage = models.CharField(
         max_length=1, choices=(("S", "Source"), ("I", "Intermediate"), ("F", "Final"))
+    )
+
+    # Election year for this file
+    statewide_elections = models.ManyToManyField(
+        StatewideElection,
+        related_name="files",
     )
 
     # information on the file itself
