@@ -6,7 +6,7 @@ from moto import mock_s3
 import boto3
 from django.contrib.auth.models import User
 from django.conf import settings
-from core.models import Locality
+from core.models import Locality, State
 from files.models import File
 
 
@@ -16,8 +16,21 @@ def user():
 
 
 @pytest.fixture
-def locality():
-    loc = Locality.objects.get(name="Wake County", state_id="NC")
+def state():
+    state = State.objects.create(abbreviation='NC', name='North Carolina', census_geoid='37')
+    return state
+
+
+@pytest.fixture
+def locality(state):
+    loc = Locality.objects.create(
+        name="Wake County",
+        state_id=state.abbreviation,
+        wikipedia_url='https://en.wikipedia.org/wiki/Wake_County,_North_Carolina',
+        official_url='http://www.wakegov.com',
+        ocd_id='ocd-division/country:us/state:nc/county:wake',
+        census_geoid='37183',
+    )
     return loc
 
 
@@ -65,11 +78,11 @@ def test_upload_files(client, user, locality, s3):
 
 
 @pytest.mark.django_db
-def test_upload_files_unauthorized(client, user, s3):
+def test_upload_files_unauthorized(client, user, s3, locality):
     client.force_login(user)
     faux_file = StringIO("file contents")
     faux_file.name = "fake.txt"
-    resp = client.post("/files/upload/", {"locality": 1, "files": [faux_file]})
+    resp = client.post("/files/upload/", {"locality": locality.id, "files": [faux_file]})
     # user isn't in NC write group
     assert resp.status_code == 403
 

@@ -7,7 +7,7 @@ from moto import mock_s3
 import boto3
 from django.conf import settings
 from django.contrib.auth.models import User
-from core.models import Locality
+from core.models import Locality, State
 from files.models import File
 from files.utils import upload_file, get_from_s3
 from files.transformations.base import CommandError
@@ -20,8 +20,21 @@ def user():
 
 
 @pytest.fixture
-def locality():
-    loc = Locality.objects.get(name="Wake County", state_id="NC")
+def state():
+    state = State.objects.create(abbreviation='NC', name='North Carolina', census_geoid='37')
+    return state
+
+
+@pytest.fixture
+def locality(state):
+    loc = Locality.objects.create(
+        name="Wake County",
+        state_id=state.abbreviation,
+        wikipedia_url='https://en.wikipedia.org/wiki/Wake_County,_North_Carolina',
+        official_url='http://www.wakegov.com',
+        ocd_id='ocd-division/country:us/state:nc/county:wake',
+        census_geoid='37183',
+    )
     return loc
 
 
