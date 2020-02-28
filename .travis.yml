@@ -23,7 +23,7 @@ install:
 #     - psql -c "CREATE EXTENSION postgis;" -U postgres -d test
 jobs:
   include:
-    - script: poetry run pytest --ds=openprecincts_web.test_settings --reuse-db -v
+    - script: poetry run pytest --ds=openprecincts_web.test_settings -v --nomigrations
       name: "Run Tests"
     - script: poetry run flake8
       name: "flake8"
