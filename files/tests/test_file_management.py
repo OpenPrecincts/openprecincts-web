@@ -181,4 +181,3 @@ def test_alter_files_in_place(client, user, locality, s3):
     )
     assert resp.status_code == 302
     assert File.objects.filter(active=True).count() == 0
-
