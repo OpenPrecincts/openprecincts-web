@@ -122,8 +122,25 @@ def _locality_key(loc):
 
 def state_overview(request, state):
     state = get_object_or_404(State, pk=state.upper())
-    elections = list(state.elections.all())
 
+    # collate elections by years 
+    # collate files by years
+    elections = list(state.elections.all().order_by('-year'))
+    elections_by_year = {}
+    final_files_by_year = {}
+    for e in elections:
+        if e.year not in final_files_by_year:
+            final_files_by_year[e.year] = { "zip": [], "geojson": []}
+        if e.year not in elections_by_year:
+            elections_by_year[e.year] = []
+        elections_by_year[e.year].append(e.as_json())
+        zip_id = e.files.get(mime_type="application/zip").id
+        geojson_id = e.files.get(mime_type="application/vnd.geo+json").id
+        if zip_id not in final_files_by_year[e.year]["zip"]:
+            final_files_by_year[e.year]["zip"].append(zip_id)
+        if geojson_id not in final_files_by_year[e.year]["geojson"]:
+            final_files_by_year[e.year]["geojson"].append(geojson_id)
+    
     context = {"state": state}
 
     localities = Locality.objects.filter(state=state)
@@ -171,13 +188,6 @@ def state_overview(request, state):
     user_can_contact = has_permission(request.user, state, Permissions.CONTACT)
     user_can_write = has_permission(request.user, state, Permissions.WRITE)
 
-    final_zip_file = None
-    final_geojson_file = None
-    for f in File.active_files.filter(locality__state=state, stage="F"):
-        if f.mime_type == "application/zip":
-            final_zip_file = f
-        elif f.mime_type == "application/vnd.geo+json":
-            final_geojson_file = f
 
     context.update(
         {
@@ -191,9 +201,8 @@ def state_overview(request, state):
             "user_can_contact": user_can_contact,
             "user_can_write": user_can_write,
             "contributors": contributors,
-            "final_zip_file": final_zip_file,
-            "final_geojson_file": final_geojson_file,
-            "elections": elections,
+            "elections": elections_by_year,
+            "files": final_files_by_year,
         }
     )
     return render(request, "core/state_overview.html", context)
