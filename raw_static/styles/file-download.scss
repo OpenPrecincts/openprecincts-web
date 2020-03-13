@@ -1,0 +1,16 @@
+.FD-year-download {
+    display: flex;
+    flex-direction: row;
+    max-width: 600px;
+}
+
+.FD-year-title {
+    // vertical-align: bottom;
+    flex: 1;
+}
+
+.FD-buttons {
+    flex: 4;
+    display: flex;
+    flex-wrap: wrap;
+}

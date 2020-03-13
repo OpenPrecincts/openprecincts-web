@@ -100,17 +100,17 @@ export default class PrecinctMap extends React.Component {
   }
 
   onMouseMove(e) {
-    if (!(this.state.demProperty in e.features[0].properties)) {
+    if (!(this.props.demProperty in e.features[0].properties)) {
       console.warn(
-        `demProperty "${this.state.demProperty}" is not in ${Object.keys(
+        `demProperty "${this.props.demProperty}" is not in ${Object.keys(
           e.features[0].properties
         )}`
       );
       return;
     }
-    if (!(this.state.repProperty in e.features[0].properties)) {
+    if (!(this.props.repProperty in e.features[0].properties)) {
       console.warn(
-        `repProperty "${this.state.repProperty}" is not in ${Object.keys(
+        `repProperty "${this.props.repProperty}" is not in ${Object.keys(
           e.features[0].properties
         )}`
       );
@@ -120,8 +120,8 @@ export default class PrecinctMap extends React.Component {
     // update popup
     this.setState({
       popupCoordinates: e.lngLat,
-      demValue: e.features[0].properties[this.state.demProperty],
-      repValue: e.features[0].properties[this.state.repProperty],
+      demValue: e.features[0].properties[this.props.demProperty],
+      repValue: e.features[0].properties[this.props.repProperty],
     });
   }
 
@@ -134,13 +134,31 @@ export default class PrecinctMap extends React.Component {
   render() {
     return (
       <div>
-        <nav id="precinct-menu">
-          <a href="#" className="active" onClick={this.toggleCounties}>
-            Counties
-          </a>
-          <a href="#" classname="active" onClick={() => false}>
-            {this.state.electionName}
-          </a>
+        <nav id="precinct-menu-left">
+          <div className="field">
+              Election Year
+              <div className="control">
+                  <div className="select">
+                      <select onChange={this.props.handleSelectYear}>
+                      {
+                          Object.keys(this.props.electionsByYear).map((year, index) => {
+                          return <option
+                              key={index}>
+                                  {year}
+                              </option>
+                          })
+                      }
+                      </select>
+                  </div>
+              </div>
+          </div>
+          <div className="field">
+            <button
+              className={this.state.showCounties ? 'button is-normal' : 'button is-primary is-active'}
+              onClick={this.toggleCounties}>
+              {this.state.showCounties ? 'Hide Counties' : 'Show Counties'}
+            </button>
+          </div>
         </nav>
         <div id="precinct-map">
           <Map
@@ -224,11 +242,11 @@ export default class PrecinctMap extends React.Component {
                   ["linear"],
                   [
                     "/",
-                    ["to-number", ["get", this.state.demProperty]],
+                    ["to-number", ["get", this.props.demProperty]],
                     [
                       "+",
-                      ["to-number", ["get", this.state.demProperty]],
-                      ["to-number", ["get", this.state.repProperty]],
+                      ["to-number", ["get", this.props.demProperty]],
+                      ["to-number", ["get", this.props.repProperty]],
                     ],
                   ],
                   0,
@@ -245,8 +263,8 @@ export default class PrecinctMap extends React.Component {
               coordinates={this.state.popupCoordinates}
               precinctName="" // features[0].properties.precinct
               countyName="" // features[0].properties.locality
-              demName={this.state.demName}
-              repName={this.state.repName}
+              demName={this.props.demName}
+              repName={this.props.repName}
               demValue={this.state.demValue}
               repValue={this.state.repValue}
             />
