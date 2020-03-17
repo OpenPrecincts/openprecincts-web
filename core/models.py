@@ -49,8 +49,8 @@ class StatewideElection(models.Model):
     state = models.ForeignKey(State, related_name="elections", on_delete=models.CASCADE)
     dem_name = models.CharField(max_length=50, default="Democrat")
     rep_name = models.CharField(max_length=50, default="Republican")
-    dem_property = models.CharField(max_length=20, default="")
-    rep_property = models.CharField(max_length=20, default="")
+    dem_property = models.CharField(max_length=20, default="", null=True, blank=True)
+    rep_property = models.CharField(max_length=20, default="", null=True, blank=True)
 
     year = models.CharField(max_length=4)
     is_general = models.BooleanField(default=True)
@@ -64,6 +64,10 @@ class StatewideElection(models.Model):
             ("H", "House of Representatives"),
             ("SL", "State Lower Chamber"),
             ("SU", "State Senate"),
+            ("AG", "Attorney General"),
+            ("ST", "Secretary of State"),
+            ("TR", "Treasurer"),
+            ("LG", "Lieutenant Governor"),
         ),
     )
 
@@ -96,6 +100,14 @@ class StatewideElection(models.Model):
             return f"{self.year} {self.state.name} State House"
         elif self.office_type == "SU":
             return f"{self.year} {self.state.name} State Senate"
+        elif self.office_type == "AG":
+            return f"{self.year} {self.state.name} Attorney General"
+        elif self.office_type == "ST":
+            return f"{self.year} {self.state.name} Secretary of State"
+        elif self.office_type == "TR":
+            return f"{self.year} {self.state.name} Treasurer"
+        elif self.office_type == "LG":
+            return f"{self.year} {self.state.name} Lieutenant Governor"
 
 
 class Locality(models.Model):
