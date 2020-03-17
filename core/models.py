@@ -49,8 +49,8 @@ class StatewideElection(models.Model):
     state = models.ForeignKey(State, related_name="elections", on_delete=models.CASCADE)
     dem_name = models.CharField(max_length=50, default="Democrat")
     rep_name = models.CharField(max_length=50, default="Republican")
-    dem_property = models.CharField(max_length=20, default="")
-    rep_property = models.CharField(max_length=20, default="")
+    dem_property = models.CharField(max_length=20, default="", null=True, blank=True)
+    rep_property = models.CharField(max_length=20, default="", null=True, blank=True)
 
     year = models.CharField(max_length=4)
     is_general = models.BooleanField(default=True)
