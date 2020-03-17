@@ -92,7 +92,6 @@ class StatewideElection(models.Model):
             return f"{self.year} {self.state.name} Treasurer"
         elif self.office_type == "LG":
             return f"{self.year} {self.state.name} Lieutenant Governor"
-        
 
 
 class Locality(models.Model):
