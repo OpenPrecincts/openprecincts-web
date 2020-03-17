@@ -123,14 +123,14 @@ def _locality_key(loc):
 def state_overview(request, state):
     state = get_object_or_404(State, pk=state.upper())
 
-    # collate elections by years 
+    # collate elections by years
     # collate files by years
     elections = list(state.elections.all().order_by('-year'))
     elections_by_year = {}
     final_files_by_year = {}
     for e in elections:
         if e.year not in final_files_by_year:
-            final_files_by_year[e.year] = { "zip": [], "geojson": []}
+            final_files_by_year[e.year] = {"zip": [], "geojson": []}
         if e.year not in elections_by_year:
             elections_by_year[e.year] = []
         elections_by_year[e.year].append(e.as_json())
@@ -140,7 +140,7 @@ def state_overview(request, state):
             final_files_by_year[e.year]["zip"].append(zip_id)
         if geojson_id not in final_files_by_year[e.year]["geojson"]:
             final_files_by_year[e.year]["geojson"].append(geojson_id)
-    
+
     context = {"state": state}
 
     localities = Locality.objects.filter(state=state)
@@ -187,7 +187,6 @@ def state_overview(request, state):
 
     user_can_contact = has_permission(request.user, state, Permissions.CONTACT)
     user_can_write = has_permission(request.user, state, Permissions.WRITE)
-
 
     context.update(
         {
