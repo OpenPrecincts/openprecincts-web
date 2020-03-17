@@ -64,6 +64,10 @@ class StatewideElection(models.Model):
             ("H", "House of Representatives"),
             ("SL", "State Lower Chamber"),
             ("SU", "State Senate"),
+            ("AG", "Attorney General"),
+            ("ST", "Secretary of State"),
+            ("TR", "Treasurer"),
+            ("LG", "Lieutenant Governor"),
         ),
     )
 
@@ -80,6 +84,15 @@ class StatewideElection(models.Model):
             return f"{self.year} {self.state.name} State House"
         elif self.office_type == "SU":
             return f"{self.year} {self.state.name} State Senate"
+        elif self.office_type == "AG":
+            return f"{self.year} {self.state.name} Attorney General"
+        elif self.office_type == "ST":
+            return f"{self.year} {self.state.name} Secretary of State"
+        elif self.office_type == "TR":
+            return f"{self.year} {self.state.name} Treasurer"
+        elif self.office_type == "LG":
+            return f"{self.year} {self.state.name} Lieutenant Governor"
+        
 
 
 class Locality(models.Model):
