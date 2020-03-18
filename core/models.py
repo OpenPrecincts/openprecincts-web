@@ -83,8 +83,8 @@ class StatewideElection(models.Model):
             repProperty=self.rep_property,
             year=self.year,
             officeType=self.office_type,
-            zip_file_id=self.files.get(stage="F", mime_type="application/zip").id,
-            geojson_file_id=self.files.get(stage="F", mime_type="application/vnd.geo+json").id
+            zip_file_id=self.files.filter(stage="F", mime_type="application/zip").first().id,
+            geojson_file_id=self.files.filter(stage="F", mime_type="application/zip").first().id
         )
 
     def __str__(self):

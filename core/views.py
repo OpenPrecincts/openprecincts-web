@@ -134,8 +134,8 @@ def state_overview(request, state):
         if e.year not in elections_by_year:
             elections_by_year[e.year] = []
         elections_by_year[e.year].append(e.as_json())
-        zip_id = e.files.get(mime_type="application/zip").id
-        geojson_id = e.files.get(mime_type="application/vnd.geo+json").id
+        zip_id = e.files.filter(stage="F", mime_type="application/zip").first().id
+        geojson_id = e.files.filter(stage="F", mime_type="application/vnd.geo+json").first().id
         if zip_id not in final_files_by_year[e.year]["zip"]:
             final_files_by_year[e.year]["zip"].append(zip_id)
         if geojson_id not in final_files_by_year[e.year]["geojson"]:
