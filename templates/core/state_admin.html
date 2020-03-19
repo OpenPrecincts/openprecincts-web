@@ -59,7 +59,7 @@
         </div>
           <div class="level-item">
             <div class="field">
-              <label class="label">Alter Election Year</label>
+              <label class="label">Add Election Year</label>
               <div class="control">
                 <div class="select is-multiple">
                     <select multiple name="elections">
@@ -72,6 +72,21 @@
                 </div>
             </div>
             </div>
+            <div class="level-item">
+              <div class="field">
+                <label class="label">Delete Election Year</label>
+                <div class="control">
+                  <div class="select is-multiple">
+                      <select multiple name="delete_elections">
+                          <option value="">-----</option>
+                          {% for id, name in elections %}
+                            <option value="{{ id }}">{{ name }}</option>
+                          {% endfor %}
+                      </select>
+                  </div>
+                  </div>
+              </div>
+              </div>
           </div>
       <div class="level-right">
           <div class="level-item">
