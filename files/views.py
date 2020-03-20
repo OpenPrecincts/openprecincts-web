@@ -58,9 +58,9 @@ def alter_files(request):
     # ensure permission for state
     state = files[0].locality.state
 
-    if transformation and alter_files and elections:
+    if transformation and alter_files and (elections or delete_elections):
         messages.error(request, "Cannot set transformation and file alteration.")
-    elif not transformation and not alter_files and not elections:
+    elif not transformation and not alter_files and not elections and not delete_elections:
         messages.error(request, "Must set transformation or file alteration.")
     elif transformation:
         # verify that all files have the same locality
@@ -69,7 +69,7 @@ def alter_files(request):
         transformation_func = getattr(tasks, transformation)
         transformation_func.delay(request.user.id, file_ids)
         messages.info(request, f"Sent transformation {transformation} to queue.")
-    elif alter_files or elections:
+    elif alter_files or elections or delete_elections:
         for f in files:
             ensure_permission(request.user, f.locality.state, Permissions.ADMIN)
             if alter_files == "make_final":
