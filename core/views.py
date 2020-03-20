@@ -129,6 +129,9 @@ def state_overview(request, state):
     elections_by_year = {}
     final_files_by_year = {}
     for e in elections:
+        if (not e.files.filter(stage="F", mime_type="application/zip").first() and
+        not e.files.filter(stage="F", mime_type="application/vnd.geo+json").first()):
+                continue
         if e.year not in final_files_by_year:
             final_files_by_year[e.year] = {"zip": [], "geojson": []}
         if e.year not in elections_by_year:
