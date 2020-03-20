@@ -107,13 +107,14 @@ window.addEventListener("load", () => {
 
   const elections = JSON.parse(document.getElementById("elections-data").textContent);
   const files = JSON.parse(document.getElementById("files-data").textContent);
-
+  const stateAbbrev = window.location.pathname.replace(/\//g, "");
   const sc = document.querySelector("[data-hook='state-container']");
   if (sc) {
     ReactDOM.render(
       React.createElement(StateContainer, {
         electionsByYear: elections,
         filesByYear: files,
+        stateFromPath: stateAbbrev,
       }),
       sc
     );

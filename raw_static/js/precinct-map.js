@@ -163,7 +163,7 @@ export default class PrecinctMap extends React.Component {
         <div id="precinct-map">
           <Map
             style="mapbox://styles/openprecincts/cjuj606800n6l1fpord7d5xy6"
-            fitBounds={StateBounds[this.props.state]}
+            fitBounds={StateBounds[this.props.stateFromPath]}
             fitBoundsOptions={{ padding: 20, animate: false }}
           >
             <Source
@@ -171,7 +171,7 @@ export default class PrecinctMap extends React.Component {
               tileJsonSource={{
                 type: "vector",
                 url:
-                  "mapbox://openprecincts." + this.props.state + "-precincts",
+                  "mapbox://openprecincts." + this.props.stateFromPath + "-precincts",
               }}
             />
             <Source

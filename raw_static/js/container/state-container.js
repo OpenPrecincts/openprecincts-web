@@ -31,6 +31,7 @@ export default class StateContainer extends React.Component {
     return (
         <React.Fragment>
             <PrecinctMap
+                stateFromPath={this.props.stateFromPath}
                 handleSelectYear={this.handleSelectYear}
                 electionsByYear={this.props.electionsByYear}
                 {...this.props.electionsByYear[selectedYear][this.state.selectedElectionIndex]} />
