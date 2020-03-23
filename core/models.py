@@ -71,6 +71,22 @@ class StatewideElection(models.Model):
         ),
     )
 
+    def as_json(self):
+        return dict(
+            id=self.id,
+            electionName=str(self),
+            fips=self.state.census_geoid,
+            state=self.state.abbreviation.lower(),
+            demName=self.dem_name,
+            repName=self.rep_name,
+            demProperty=self.dem_property,
+            repProperty=self.rep_property,
+            year=self.year,
+            officeType=self.office_type,
+            zip_file_id=self.files.filter(stage="F", mime_type="application/zip").first().id,
+            geojson_file_id=self.files.filter(stage="F", mime_type="application/zip").first().id
+        )
+
     def __str__(self):
         if self.office_type == "P":
             return f"{self.year} Presidential"

@@ -1,6 +1,8 @@
 @import "colors";
 @import "state-map";
+@import "state-container";
 @import "precinct-map";
+@import "file-download";
 
 /* generic */
 dt {
@@ -15,6 +17,7 @@ dd {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .hero-body {
   background-image: url("/static/img/precincts.png");

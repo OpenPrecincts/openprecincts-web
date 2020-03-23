@@ -7,6 +7,7 @@ import StateMap from "./state-map";
 import FileBrowser from "./file-browser";
 import MergeTool from "./mergetool";
 import PrecinctMap from "./precinct-map";
+import StateContainer from "./container/state-container";
 
 function reveal() {
   document.querySelector(`[data-hidden=${this.dataset.reveal}]`).style.display =
@@ -104,19 +105,18 @@ window.addEventListener("load", () => {
     );
   }
 
-  const pm = document.querySelector("[data-hook='precinct-map']");
-  if (pm) {
+  const elections = JSON.parse(document.getElementById("elections-data").textContent);
+  const files = JSON.parse(document.getElementById("files-data").textContent);
+  const stateAbbrev = window.location.pathname.replace(/\//g, "");
+  const sc = document.querySelector("[data-hook='state-container']");
+  if (sc) {
     ReactDOM.render(
-      React.createElement(PrecinctMap, {
-        state: pm.dataset.state,
-        fips: pm.dataset.fips,
-        demProperty: pm.dataset.demProperty,
-        repProperty: pm.dataset.repProperty,
-        demName: pm.dataset.demName,
-        repName: pm.dataset.repName,
-        electionName: pm.dataset.electionName,
+      React.createElement(StateContainer, {
+        electionsByYear: elections,
+        filesByYear: files,
+        stateFromPath: stateAbbrev,
       }),
-      pm
+      sc
     );
   }
 
