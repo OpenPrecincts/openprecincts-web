@@ -127,7 +127,6 @@ def state_overview(request, state):
     # collate files by years
     elections = list(state.elections.all().order_by('-year'))
     election_output = []
-    elections_by_year = {}
     final_files_by_year = {}
     for e in elections:
         if (not e.files.filter(stage="F", mime_type="application/zip").first() and
