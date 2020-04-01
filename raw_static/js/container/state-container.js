@@ -7,16 +7,8 @@ export default class StateContainer extends React.Component {
     super(props);
     this.state = {
       selectedElectionIndex: 0,
-      selectedYearIndex: 0,
     };
     this.handleSelectElection = this.handleSelectElection.bind(this);
-    this.handleSelectYear = this.handleSelectYear.bind(this);
-  }
-
-  handleSelectYear(e) {
-    this.setState({
-      selectedYearIndex: e.target.selectedIndex,
-    })
   }
 
   handleSelectElection(e) {
@@ -26,21 +18,23 @@ export default class StateContainer extends React.Component {
   }
 
   render() {
-    const selectedYear = Object.keys(this.props.electionsByYear)[this.state.selectedYearIndex];
+    const selectedYear = this.props.elections[this.state.selectedElectionIndex].year || null;
+    const selectedElectionType = this.props.elections[this.state.selectedElectionIndex].officeType || null;
+    const selectedElection = this.props.elections.filter((election) => election.year === selectedYear && election.officeType === selectedElectionType) || null;
 
     return (
         <React.Fragment>
             <PrecinctMap
                 stateFromPath={this.props.stateFromPath}
-                handleSelectYear={this.handleSelectYear}
-                electionsByYear={this.props.electionsByYear}
-                {...this.props.electionsByYear[selectedYear][this.state.selectedElectionIndex]} />
+                selectedYear={selectedYear}
+                handleSelectElection={this.handleSelectElection}
+                elections={this.props.elections}
+                {...selectedElection[0]} />
 
             <FileDownload
                 filesByYear={this.props.filesByYear}
                 selectedYear={selectedYear}
-                selectedElectionIndex={this.state.selectedElectionIndex}
-                elections={this.props.electionsByYear[selectedYear]} />
+                elections={this.props.elections[selectedYear]} />
       </React.Fragment>
     );
   }
