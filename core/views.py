@@ -126,7 +126,7 @@ def state_overview(request, state):
     # collate elections by years
     # collate files by years
     elections = list(state.elections.all().order_by('-year'))
-    elections_by_year = {}
+    election_output = []
     final_files_by_year = {}
     for e in elections:
         if (not e.files.filter(stage="F", mime_type="application/zip").first() and
@@ -134,10 +134,8 @@ def state_overview(request, state):
             continue
         if e.year not in final_files_by_year:
             final_files_by_year[e.year] = {"zip": [], "geojson": []}
-        if e.year not in elections_by_year and (e.dem_property or e.rep_property):
-            elections_by_year[e.year] = []
         if (e.dem_property or e.rep_property):
-            elections_by_year[e.year].append(e.as_json())
+            election_output.append(e.as_json())
         zip_id = e.files.filter(stage="F", mime_type="application/zip").first().id
         geojson_id = e.files.filter(stage="F", mime_type="application/vnd.geo+json").first().id
         if zip_id not in final_files_by_year[e.year]["zip"]:
@@ -204,7 +202,7 @@ def state_overview(request, state):
             "user_can_contact": user_can_contact,
             "user_can_write": user_can_write,
             "contributors": contributors,
-            "elections": elections_by_year,
+            "elections": election_output,
             "files": final_files_by_year,
         }
     )

@@ -1,6 +1,7 @@
 import React from "react";
 import ReactMapboxGl, { Layer, Popup, Source } from "react-mapbox-gl";
 import StateBounds from "./state-bounds";
+import ElectionTypes from './election-types';
 
 function toFixed(value, precision) {
   var power = Math.pow(10, precision || 0);
@@ -77,15 +78,7 @@ export default class PrecinctMap extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      electionName: this.props.electionName,
-      demProperty: this.props.demProperty,
-      repProperty: this.props.repProperty,
-      demName: this.props.demName,
-      repName: this.props.repName,
       showCounties: true,
-      popupCoordinates: null,
-      demValue: 0,
-      repValue: 0,
     };
 
     this.toggleCounties = this.toggleCounties.bind(this);
@@ -136,15 +129,15 @@ export default class PrecinctMap extends React.Component {
       <div>
         <nav id="precinct-menu-left">
           <div className="field">
-              Election Year
+              Election
               <div className="control">
                   <div className="select">
-                      <select onChange={this.props.handleSelectYear}>
+                      <select onChange={this.props.handleSelectElection}>
                       {
-                          Object.keys(this.props.electionsByYear).map((year, index) => {
+                          this.props.elections.map((election, index) => {
                           return <option
                               key={index}>
-                                  {year}
+                                  {`${election.year} ${ElectionTypes[election.officeType]}`}
                               </option>
                           })
                       }
