@@ -78,6 +78,17 @@ class StateReport(models.Model):
     used_maup_for_county_assignment = models.BooleanField()
 
 
+class CountyReport(models.Model):
+    state = models.ForeignKey(StateReport, on_delete=models.DO_NOTHING)
+    census_geoid = models.CharField(max_length=5, unique=True)
+    name = models.CharField(max_length=100)
+
+    # Election results verfication
+    n_votes_democrat = models.IntegerField()
+    n_votes_republican = models.IntegerField()
+    countywide_accuracy = models.FloatField()
+
+
 class StatewideElection(models.Model):
     state = models.ForeignKey(State, related_name="elections", on_delete=models.CASCADE)
     dem_name = models.CharField(max_length=50, default="Democrat")
