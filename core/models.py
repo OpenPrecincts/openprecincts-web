@@ -10,6 +10,7 @@ class StateStatus(Enum):
     CENSUS_DATA_LINKED = "census-data-linked"
     VALIDATED = "validated"
 
+
 class State(models.Model):
     """
     States, used for configuration.
@@ -43,6 +44,7 @@ class State(models.Model):
     class Meta:
         ordering = ["name"]
 
+
 class StateReport(models.Model):
     state = models.ForeignKey(State, on_delete=models.DO_NOTHING)
 
@@ -57,9 +59,9 @@ class StateReport(models.Model):
     source = models.CharField(
         max_length=4,
         choices=SOURCE_CHOICES,
-        default=PGP
+        default=PGP,
     )
-    year = models.CharField(max_length=4, default = '2016')
+    year = models.CharField(max_length=4, default='2016')
 
     # Topology fields
     all_precincts_have_a_geometry = models.BooleanField(default=False)
