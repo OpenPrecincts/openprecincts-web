@@ -10,7 +10,6 @@ class StateStatus(Enum):
     CENSUS_DATA_LINKED = "census-data-linked"
     VALIDATED = "validated"
 
-
 class State(models.Model):
     """
     States, used for configuration.
@@ -43,6 +42,38 @@ class State(models.Model):
 
     class Meta:
         ordering = ["name"]
+
+class StateReport(models.Model):
+    state = models.ForeignKey(State, on_delete=models.DO_NOTHING)
+
+    PGP = "PGP"
+    VEST = "VEST"
+    MGGG = "MGGG"
+    SOURCE_CHOICES = [
+        (PGP, "Princeton Gerrymandering Project"),
+        (VEST, "Voting and Election Science Team"),
+        (MGGG, "Metric Geometry and Gerrymandering Group")
+    ]
+    source = models.CharField(
+        max_length=4,
+        choices=SOURCE_CHOICES,
+        default=PGP
+    )
+    year = models.CharField(max_length=4, default = '2016')
+
+    # Topology fields
+    all_precincts_have_a_geometry = models.BooleanField(default=False)
+    can_use_maup = models.BooleanField(default=False)
+    can_use_gerrychain = models.BooleanField(default=False)
+
+    # Election results verfication
+    n_votes_democrat = models.IntegerField()
+    n_votes_republican = models.IntegerField()
+
+    # Election metrics
+    statewide_accuracy = models.FloatField()
+    county_variance = models.FloatField()
+    used_maup_for_county_assignment = models.BooleanField()
 
 
 class StatewideElection(models.Model):
