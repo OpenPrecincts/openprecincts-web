@@ -12,7 +12,7 @@ export default class ReadmeViewer extends React.Component {
 
   componentDidMount() {
       Object.keys(this.props.readmes).map((id) => {
-        fetch(`/files/download/${id}`).then(res => res.text())
+        fetch(`/files/download/${id}`)
         .then(res => res.text())
           .then((text) => {
               this.setState({
