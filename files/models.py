@@ -59,5 +59,15 @@ class File(models.Model):
         User, on_delete=models.PROTECT, related_name="created_files"
     )
 
+    def as_json(self):
+        return dict(
+            id=self.id,
+            s3_path=self.s3_path,
+            filename=self.filename,
+            mime_type=self.mime_type,
+            elections=[str(s) for s in self.statewide_elections.all()],
+            size=self.size
+        )
+
     def __str__(self):
         return f"{self.s3_path}"

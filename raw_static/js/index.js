@@ -113,7 +113,7 @@ window.addEventListener("load", () => {
     ReactDOM.render(
       React.createElement(StateContainer, {
         elections: elections,
-        filesByYear: files,
+        files: files,
         stateFromPath: stateAbbrev,
       }),
       sc

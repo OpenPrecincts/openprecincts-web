@@ -14,3 +14,18 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.FD-files-grid {
+    display: flex;
+    flex-direction: column;
+}
+
+.FD-file {
+    display: flex;
+    flex-direction: column;
+}
+
+.FD-info {
+    display: flex;
+    justify-content: space-between;
+}
