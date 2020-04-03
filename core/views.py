@@ -144,7 +144,7 @@ def state_overview(request, state):
         for zf in zip_files:
             files_output[str(zf.id)] = zf.as_json()
         for gf in geojson_files:
-            files_output[str(gf.id)] = gf.as_json() 
+            files_output[str(gf.id)] = gf.as_json()
     context = {"state": state}
 
     localities = Locality.objects.filter(state=state)
