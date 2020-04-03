@@ -127,6 +127,7 @@ def state_overview(request, state):
     # collate files
     election_output = []
     files_output = {}
+    readmes = {}
     elections = list(state.elections.all().order_by('-year'))
     for e in elections:
         if (not e.files.filter(stage="F", mime_type="application/zip").first() and
@@ -134,8 +135,12 @@ def state_overview(request, state):
             continue
         if (e.dem_property or e.rep_property):
             election_output.append(e.as_json())
+        readme_files = e.files.filter(filename__iendswith="md")
+        print(readme_files)
         zip_files = e.files.filter(stage="F", mime_type="application/zip")
         geojson_files = e.files.filter(stage="F", mime_type="application/vnd.geo+json")
+        for r in readme_files:
+            readmes[str(r.id)] = r.as_json()
         for zf in zip_files:
             files_output[str(zf.id)] = zf.as_json()
         for gf in geojson_files:
@@ -201,6 +206,7 @@ def state_overview(request, state):
             "contributors": contributors,
             "elections": election_output,
             "files": files_output,
+            "readmes": readmes
         }
     )
     return render(request, "core/state_overview.html", context)

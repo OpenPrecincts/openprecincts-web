@@ -9,3 +9,14 @@
     border-radius: 4px;
     border: 1px solid rgba(0,0,0,0.4);
 }
+
+.OP-State-Info-Container {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    width: 67vw;
+}
+
+.OP-State-Info-Container > div {
+    margin-right: 5px;
+}
