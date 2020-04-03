@@ -1,0 +1,27 @@
+.OP-Readme-Container {
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.OP-Readme-Container h1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.OP-Readme-Container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: 1px solid grey;
+}
+
+.OP-Readme-Container ul {
+    list-style: inside;
+}
+
+.OP-Readme-Container p {
+    line-height: 2em;
+}
+
+.OP-Readme-Container li > ul {
+    margin-left: 20px;
+}

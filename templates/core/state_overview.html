@@ -60,6 +60,7 @@
 {% if state.status == "election-data-linked" or state.status == "validated" or state.status == "census-data-linked" %}
 <div>
     {{ elections|json_script:"elections-data" }}
+    {{ readmes|json_script:"readmes-data" }}
     {{ files|json_script:"files-data" }}
     <div data-hook="state-container">
     </div>

@@ -105,6 +105,7 @@ window.addEventListener("load", () => {
     );
   }
 
+  const readmes = JSON.parse(document.getElementById("readmes-data").textContent);
   const elections = JSON.parse(document.getElementById("elections-data").textContent);
   const files = JSON.parse(document.getElementById("files-data").textContent);
   const stateAbbrev = window.location.pathname.replace(/\//g, "");
@@ -113,7 +114,8 @@ window.addEventListener("load", () => {
     ReactDOM.render(
       React.createElement(StateContainer, {
         elections: elections,
-        filesByYear: files,
+        files: files,
+        readmes: readmes,
         stateFromPath: stateAbbrev,
       }),
       sc

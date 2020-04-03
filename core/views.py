@@ -123,26 +123,28 @@ def _locality_key(loc):
 def state_overview(request, state):
     state = get_object_or_404(State, pk=state.upper())
 
-    # collate elections by years
-    # collate files by years
-    elections = list(state.elections.all().order_by('-year'))
+    # collate elections
+    # collate files
     election_output = []
-    final_files_by_year = {}
+    files_output = {}
+    readmes = {}
+    elections = list(state.elections.all().order_by('-year'))
     for e in elections:
         if (not e.files.filter(stage="F", mime_type="application/zip").first() and
                 not e.files.filter(stage="F", mime_type="application/vnd.geo+json").first()):
             continue
-        if e.year not in final_files_by_year:
-            final_files_by_year[e.year] = {"zip": [], "geojson": []}
         if (e.dem_property or e.rep_property):
             election_output.append(e.as_json())
-        zip_id = e.files.filter(stage="F", mime_type="application/zip").first().id
-        geojson_id = e.files.filter(stage="F", mime_type="application/vnd.geo+json").first().id
-        if zip_id not in final_files_by_year[e.year]["zip"]:
-            final_files_by_year[e.year]["zip"].append(zip_id)
-        if geojson_id not in final_files_by_year[e.year]["geojson"]:
-            final_files_by_year[e.year]["geojson"].append(geojson_id)
-
+        readme_files = e.files.filter(filename__iendswith="md")
+        print(readme_files)
+        zip_files = e.files.filter(stage="F", mime_type="application/zip")
+        geojson_files = e.files.filter(stage="F", mime_type="application/vnd.geo+json")
+        for r in readme_files:
+            readmes[str(r.id)] = r.as_json()
+        for zf in zip_files:
+            files_output[str(zf.id)] = zf.as_json()
+        for gf in geojson_files:
+            files_output[str(gf.id)] = gf.as_json()
     context = {"state": state}
 
     localities = Locality.objects.filter(state=state)
@@ -203,7 +205,8 @@ def state_overview(request, state):
             "user_can_write": user_can_write,
             "contributors": contributors,
             "elections": election_output,
-            "files": final_files_by_year,
+            "files": files_output,
+            "readmes": readmes
         }
     )
     return render(request, "core/state_overview.html", context)
