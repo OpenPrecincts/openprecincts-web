@@ -29,6 +29,9 @@ export default class ReadmeViewer extends React.Component {
         {
             this.props.selectedReadmeId ?
             <ReactMarkdown
+                renderers={{
+                  'table': <table className={"table"} />
+                }}
                 source={this.state[this.props.selectedReadmeId]}
                 className={"OP-Readme-Container box"}/>
             : <div className="is-size-5">

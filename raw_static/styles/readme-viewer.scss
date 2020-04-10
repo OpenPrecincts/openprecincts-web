@@ -1,5 +1,6 @@
 .OP-Readme-Container {
     height: 100vh;
+    width: 60vw;
     overflow-y: scroll;
 }
 
@@ -24,4 +25,10 @@
 
 .OP-Readme-Container li > ul {
     margin-left: 20px;
+}
+
+.OP-Readme-Container > table {
+    display: block;
+    width: 100%;
+    overflow: auto;
 }
