@@ -130,15 +130,30 @@ def state_overview(request, state):
     readmes = {}
     elections = list(state.elections.all().order_by('-year'))
     for e in elections:
-        if (not e.files.filter(stage="F", mime_type="application/zip").first() and
-                not e.files.filter(stage="F", mime_type="application/vnd.geo+json").first()):
+        if (not e.files.filter(
+            active=True,
+            stage="F",
+            mime_type="application/zip"
+        ).first() and
+                not e.files.filter(
+                    active=True,
+                    stage="F",
+                    mime_type="application/vnd.geo+json"
+                ).first()):
             continue
         if (e.dem_property or e.rep_property):
             election_output.append(e.as_json())
         readme_files = e.files.filter(filename__iendswith="md")
-        print(readme_files)
-        zip_files = e.files.filter(stage="F", mime_type="application/zip")
-        geojson_files = e.files.filter(stage="F", mime_type="application/vnd.geo+json")
+        zip_files = e.files.filter(
+            active=True,
+            stage="F",
+            mime_type="application/zip"
+        )
+        geojson_files = e.files.filter(
+            active=True,
+            stage="F",
+            mime_type="application/vnd.geo+json"
+        )
         for r in readme_files:
             readmes[str(r.id)] = r.as_json()
         for zf in zip_files:
