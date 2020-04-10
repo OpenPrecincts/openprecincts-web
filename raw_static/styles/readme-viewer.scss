@@ -31,4 +31,16 @@
     display: block;
     width: 100%;
     overflow: auto;
+    /* copy the Bulma table styles */
+    margin-bottom: 1.5rem;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.OP-Readme-Container > table td,
+.OP-Readme-Container > table th {
+    /* copy the Bulma table styles */
+    border: 1px solid #dbdbdb;
+    border-width: 0 0 1px;
+    padding: 0.5em 0.75em;
+    vertical-align: top;
 }
