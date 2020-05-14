@@ -30,8 +30,7 @@ def mbtile_upload(file_id):
         if (election.dem_property or election.rep_property):
             upload_shapefile(
                 data,
-                f"{f.locality.state.abbreviation.lower()}"
-                "-{election.year}-{election.office_type}-precincts"
+                f"{f.locality.state.abbreviation.lower()}-{election.year}-precincts"
             )
 
 
