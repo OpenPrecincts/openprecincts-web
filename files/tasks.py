@@ -27,6 +27,7 @@ def mbtile_upload(file_id):
     data = get_from_s3(f)
     upload_shapefile(data, f"{f.locality.state.abbreviation.lower()}-precincts")
 
+
 @shared_task
 def mbtile_upload_by_year(file_id):
     f = File.objects.get(pk=file_id)
