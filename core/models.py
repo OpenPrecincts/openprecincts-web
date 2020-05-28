@@ -51,7 +51,7 @@ class StatewideElection(models.Model):
     rep_name = models.CharField(max_length=50, default="Republican")
     dem_property = models.CharField(max_length=20, default="", null=True, blank=True)
     rep_property = models.CharField(max_length=20, default="", null=True, blank=True)
-
+    mbtile_name = models.CharField(max_length=50, default="", null=True, blank=True)
     year = models.CharField(max_length=4)
     is_general = models.BooleanField(default=True)
     office_type = models.CharField(
@@ -81,6 +81,7 @@ class StatewideElection(models.Model):
             repName=self.rep_name,
             demProperty=self.dem_property,
             repProperty=self.rep_property,
+            mbtileName=self.mbtile_name,
             year=self.year,
             officeType=self.office_type,
             zip_file_id=self.files.filter(
