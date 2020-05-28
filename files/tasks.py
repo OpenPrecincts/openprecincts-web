@@ -51,7 +51,7 @@ geojson_to_mapbox = chain(geojson_to_mbtile.s(), mbtile_upload.s())
 TASK_NAMES = [
     "zip_files",
     "to_geojson",
-    "geojson_to_mapbox",
+    # "geojson_to_mapbox",
     "geojson_to_mbtile",
     "mbtile_upload_by_year"
 ]
