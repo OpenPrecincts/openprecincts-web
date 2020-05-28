@@ -164,7 +164,7 @@ export default class PrecinctMap extends React.Component {
               tileJsonSource={{
                 type: "vector",
                 url:
-                  "mapbox://openprecincts." + this.props.stateFromPath + "-precincts",
+                  "mapbox://openprecincts." + this.props.mbtileName,
               }}
             />
             <Source
