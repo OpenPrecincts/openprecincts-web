@@ -35,6 +35,8 @@ def mbtile_upload_by_year(user, files):
     years = set()
     for e in elections:
         if (e.dem_property or e.rep_property):
+            e.mbtile_name = f"{f.locality.state.abbreviation.lower()}-{year}-precincts"
+            e.save()
             years.add(e.year)
     data = get_from_s3(f)
     for year in years:
