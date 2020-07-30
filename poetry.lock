@@ -484,7 +484,7 @@ python-versions = ">=2.7"
 version = "0.12.3"
 
 [package.dependencies]
-setuptools = "*"
+setuptools = "44.0.0"
 
 [package.dependencies.ipython]
 python = ">=3.4"
@@ -634,7 +634,7 @@ version = "3.2.0"
 [package.dependencies]
 attrs = ">=17.4.0"
 pyrsistent = ">=0.14.0"
-setuptools = "*"
+setuptools = "44.0.0"
 six = ">=1.11.0"
 
 [package.dependencies.importlib-metadata]
