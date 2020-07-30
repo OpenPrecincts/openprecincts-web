@@ -22,10 +22,17 @@ def geojson_to_mbtile(user, files):
 
 
 @shared_task
-def mbtile_upload(file_id):
+def mbtile_upload_old(file_id):
     f = File.objects.get(pk=file_id)
     data = get_from_s3(f)
     upload_shapefile(data, f"{f.locality.state.abbreviation.lower()}-precincts")
+
+@shared_task
+def mbtile_upload(user, files):
+    f = File.objects.get(pk=files[0])
+    data = get_from_s3(f)
+    # upload_shapefile(data, f"{f.locality.state.abbreviation.lower()}-precincts")
+    upload_shapefile(data, f"{f.filename.lower()}")
 
 
 @shared_task
@@ -55,5 +62,6 @@ TASK_NAMES = [
     "to_geojson",
     # "geojson_to_mapbox",
     "geojson_to_mbtile",
+    "mbtile_upload",
     "mbtile_upload_by_year"
 ]
