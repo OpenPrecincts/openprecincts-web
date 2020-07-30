@@ -109,7 +109,6 @@ export default class PrecinctMap extends React.Component {
       );
       return;
     }
-
     // update popup
     this.setState({
       popupCoordinates: e.lngLat,
@@ -193,7 +192,7 @@ export default class PrecinctMap extends React.Component {
                   sourceLayer="us_counties"
                   paint={{
                     "line-color": "#777",
-                    "line-width": 1,
+                    "line-width": 3,
                   }}
                   filter={["==", "STATEFP", this.props.fips]}
                 />
@@ -224,12 +223,13 @@ export default class PrecinctMap extends React.Component {
               onMouseMove={this.onMouseMove}
               onMouseLeave={this.onMouseLeave}
               paint={{
-                "fill-outline-color": [
-                  "case",
-                  ["boolean", ["feature-state", "hover"], false],
-                  "rgba(0,0,0,1)",
-                  "rgba(0,0,0,0.0)",
-                ], // if we want to change the width of the outline on hover, we will unfortunately have to make a separate type: 'line' layer
+                "fill-outline-color": 'rgb(0,0,0)',
+                // "fill-outline-color": [
+                //   "case",
+                //   ["boolean", ["feature-state", "hover"], false],
+                //   "rgba(0,0,0,1)",
+                //   "rgba(0,0,0,1)",
+                // ], // if we want to change the width of the outline on hover, we will unfortunately have to make a separate type: 'line' layer
                 "fill-color": [
                   "interpolate-lab", // perceptual color space interpolation
                   ["linear"],
