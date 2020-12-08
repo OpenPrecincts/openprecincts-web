@@ -20,6 +20,7 @@ urlpatterns = [
     path("overview/", views.national_overview, name="national_overview"),
     path("<state:state>/", views.state_overview, name="state_overview"),
     path("<state:state>/admin/", views.state_admin, name="state_admin"),
+    path("<state:state>/elections/", views.state_elections, name="state_elections"),
     path("<state:state>/match/", views.match, name="match"),
     path("locality/<int:id>/", views.locality_overview, name="locality_overview"),
 ]
