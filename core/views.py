@@ -245,15 +245,15 @@ def state_overview(request, state):
     total_contacts = 0
     localities_with_files = 0
     total_files = 0
-    for l in localities:
-        if l.total_officials:
-            total_officials += l.total_officials
+    for locality in localities:
+        if locality.total_officials:
+            total_officials += locality.total_officials
             localities_with_officials += 1
-        if l.total_contacts:
-            total_contacts += l.total_contacts
+        if locality.total_contacts:
+            total_contacts += locality.total_contacts
             localities_with_contacts += 1
-        if l.total_files:
-            total_files += l.total_files
+        if locality.total_files:
+            total_files += locality.total_files
             localities_with_files += 1
 
     user_can_contact = has_permission(request.user, state, Permissions.CONTACT)
@@ -347,7 +347,7 @@ def locality_overview(request, id):
             messages.info(request, f"Added {official}")
             official_form = OfficialForm()
         else:
-            messages.error(request, f"Error adding official")
+            messages.error(request, "Error adding official")
     else:
         official_form = OfficialForm()
 
