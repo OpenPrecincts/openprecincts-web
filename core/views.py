@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.db.models.expressions import RawSQL
 from django.db.models import Count, Q
 from django.forms import ModelForm
+from django.http import JsonResponse
 from .models import Locality, State
 from .permissions import ensure_permission, has_permission, Permissions
 from contact.models import Official, ContactLog
@@ -119,6 +120,56 @@ def _locality_key(loc):
         return ""
     return loc.name
 
+def state_elections(request, state):
+    state = get_object_or_404(State, pk=state.upper())
+
+    # collate elections
+    # collate files
+    election_output = []
+    files_output = {}
+    readmes = {}
+    election_file_map = {}
+    elections = list(state.elections.all().order_by('-year'))
+    for e in elections:
+        if (not e.files.filter(
+            active=True,
+            stage="F",
+            mime_type="application/zip"
+        ).first() and
+                not e.files.filter(
+                    active=True,
+                    stage="F",
+                    mime_type="application/vnd.geo+json"
+                ).first()):
+            continue
+        if (e.dem_property or e.rep_property):
+            election_output.append(e.as_json())
+        readme_files = e.files.filter(filename__iendswith="md")
+        zip_files = e.files.filter(
+            active=True,
+            stage="F",
+            mime_type="application/zip"
+        )
+        geojson_files = e.files.filter(
+            active=True,
+            stage="F",
+            mime_type="application/vnd.geo+json"
+        )
+        for r in readme_files:
+            readmes[str(r.id)] = r.as_json()
+        for zf in zip_files:
+            files_output[str(zf.id)] = zf.as_json()
+        for gf in geojson_files:
+            files_output[str(gf.id)] = gf.as_json()
+        for e in election_output:
+            if e['year'] not in election_file_map:
+                election_file_map[e['year']] = {}
+            election_file_map[e['year']][e['officeType']] = {**e, **{
+                'geojson_file': files_output[str(e['geojson_file_id'])],
+                'zip_file': files_output[str(e['zip_file_id'])],
+            }}
+    context = list(election_file_map)
+    return JsonResponse(election_file_map)
 
 def state_overview(request, state):
     state = get_object_or_404(State, pk=state.upper())
