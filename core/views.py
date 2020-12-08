@@ -120,6 +120,7 @@ def _locality_key(loc):
         return ""
     return loc.name
 
+
 def state_elections(request, state):
     state = get_object_or_404(State, pk=state.upper())
 
@@ -168,8 +169,8 @@ def state_elections(request, state):
                 'geojson_file': files_output[str(e['geojson_file_id'])],
                 'zip_file': files_output[str(e['zip_file_id'])],
             }}
-    context = list(election_file_map)
     return JsonResponse(election_file_map)
+
 
 def state_overview(request, state):
     state = get_object_or_404(State, pk=state.upper())
