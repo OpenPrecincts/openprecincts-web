@@ -11,7 +11,7 @@
 - name: add teamrabbitmq main apt key
   apt_key:
     keyserver: hkps://keys.openpgp.org
-    id: 0x0A9AF2115F4687BD29803A206B73A36E6026DFCA
+    id: '0x0A9AF2115F4687BD29803A206B73A36E6026DFCA'
 - name: add Launchpad Erlang PPA apt key
   apt_key:
     keyserver: keyserver.ubuntu.com
