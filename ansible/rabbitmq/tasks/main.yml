@@ -10,11 +10,11 @@
     id: 6B73A36E6026DFCA
 - name: add rabbitmq erlang repo
   apt_repository: 
-    repo: deb http://dl.bintray.com/rabbitmq-erlang/debian bionic erlang-21.x
+    repo: deb http://ppa.launchpad.net/rabbitmq/rabbitmq-erlang/ubuntu bionic erlang-21.x
     state: present
 - name: add rabbitmq repo
   apt_repository: 
-    repo: deb http://dl.bintray.com/rabbitmq/debian bionic main
+    repo: deb https://packagecloud.io/rabbitmq/rabbitmq-server/ubuntu/ bionic main
     state: present
 - name: install rabbitmq server
   apt:
